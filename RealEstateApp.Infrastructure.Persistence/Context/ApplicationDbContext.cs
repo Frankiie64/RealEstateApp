@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using RealEstateApp.Core.Application.Dtos.Account;
 using RealEstateApp.Core.Application.helper;
 using RealEstateApp.Core.Domain.Common;
+using RealEstateApp.Core.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Threading;
@@ -17,7 +18,16 @@ namespace RealEstateApp.Infrastructure.Persistence.Context
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options, IHttpContextAccessor httpContextAccessor) : base(options)
         {
             _httpContextAccessor = httpContextAccessor;
-        }       
+        }
+
+
+        public DbSet<Property> Properties { get; set; }
+        public DbSet<TypeProperty> TypeProperties { get; set; }
+        public DbSet<TypeSale> TypeSales { get; set; }
+        public DbSet<Improvement> Improvements { get; set; }
+
+
+
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
         {
@@ -66,6 +76,17 @@ namespace RealEstateApp.Infrastructure.Persistence.Context
             #region Table
 
 
+            modelBuilder.Entity<Property>()
+                .ToTable("Properties");
+
+            modelBuilder.Entity<TypeProperty>()
+                .ToTable("TypeProperties");
+
+            modelBuilder.Entity<TypeSale>()
+                .ToTable("TypeSales");
+
+            modelBuilder.Entity<Improvement>()
+                .ToTable("Improvements");
 
             #endregion
 
@@ -73,25 +94,150 @@ namespace RealEstateApp.Infrastructure.Persistence.Context
 
             #region Primary Key
 
-    
+            modelBuilder.Entity<Property>()
+                .HasKey(property => property.Id);
+
+            modelBuilder.Entity<TypeProperty>()
+                .HasKey(typeProperty => typeProperty.Id);
+
+            modelBuilder.Entity<TypeSale>()
+                .HasKey(typeSale => typeSale.Id);
+
+            modelBuilder.Entity<Improvement>()
+                .HasKey(improvement => improvement.Id);
+
+            modelBuilder.Entity<PropertyImprovement>()  // Many to Many
+                .HasKey(x => new { x.PropertyId, x.ImprovementId });
+
 
 
             #endregion
+
 
             #region Relationships
 
 
+            modelBuilder.Entity<TypeProperty>()
+         .HasMany<Property>(typeProperty => typeProperty.Properties)
+         .WithOne(property => property.TypeProperty)
+         .HasForeignKey(property => property.TypePropertyId)
+         .OnDelete(deleteBehavior: DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<TypeSale>()
+         .HasMany<Property>(typeSale => typeSale.Properties)
+         .WithOne(property => property.TypeSale)
+         .HasForeignKey(property => property.TypeSaleId)
+         .OnDelete(deleteBehavior: DeleteBehavior.Cascade);
+
+
+
+
+            modelBuilder.Entity<Property>()
+                .HasMany(property => property.Improvements)
+                .WithMany(improvement => improvement.Properties)
+                .UsingEntity<PropertyImprovement>(
+                    j => j
+                        .HasOne(propertyImprovement => propertyImprovement.Improvement)
+                        .WithMany(improvement => improvement.PropertyImprovements)
+                        .HasForeignKey(propertyImprovement => propertyImprovement.PropertyId),
+                    j => j
+                        .HasOne(propertyImprovement => propertyImprovement.Property)
+                        .WithMany(property => property.PropertyImprovements)
+                        .HasForeignKey(propertyImprovement => propertyImprovement.ImprovementId),
+                    j =>
+                    {
+                        j.ToTable("PropertyImprovement");
+                        j.HasKey(e => new { e.PropertyId, e.ImprovementId });
+                    });
+
+
+
+
 
 
             #endregion
 
-
-            #endregion
 
             #region "Validation Required"
 
-            
+            #region Property
+            modelBuilder.Entity<Property>()
+                .Property(a => a.Code)
+                .IsRequired()
+                .HasMaxLength(6);
+
+            modelBuilder.Entity<Property>()
+                .Property(a => a.Description)
+                .IsRequired();
+
+            modelBuilder.Entity<Property>()
+                .Property(a => a.Price)
+                .IsRequired();
+
+            modelBuilder.Entity<Property>()
+                .Property(a => a.Meters)
+                .IsRequired();
+
+            modelBuilder.Entity<Property>()
+                .Property(a => a.Bathroom)
+                .IsRequired();
+
+            modelBuilder.Entity<Property>()
+                .Property(a => a.AgentId)
+                .IsRequired();
+
+            modelBuilder.Entity<Property>()
+                .Property(a => a.TypePropertyId)
+                .IsRequired();
+
+            modelBuilder.Entity<Property>()
+                .Property(a => a.TypeSaleId)
+                .IsRequired();
             #endregion
+
+
+            #region TypeProperty
+            modelBuilder.Entity<TypeProperty>()
+                .Property(a => a.Name)
+                .IsRequired();
+
+            modelBuilder.Entity<TypeProperty>()
+                .Property(a => a.Description)
+                .IsRequired();
+            #endregion
+
+
+
+            #region TypeSale
+
+            modelBuilder.Entity<TypeSale>()
+                .Property(a => a.Name)
+                .IsRequired();
+
+            modelBuilder.Entity<TypeSale>()
+                .Property(a => a.Description)
+                .IsRequired();
+
+            #endregion
+
+
+            #region Improvement
+            modelBuilder.Entity<Improvement>()
+                .Property(a => a.Name)
+                .IsRequired();
+
+            modelBuilder.Entity<Improvement>()
+                .Property(a => a.Description)
+                .IsRequired();
+
+            #endregion
+
+
+            #endregion
+
+
+            #endregion
+
         }
     }
 }
