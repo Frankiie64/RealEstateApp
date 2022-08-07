@@ -6,7 +6,6 @@
 
   <ItemGroup>
     <Folder Include="Dtos\Account\" />
-    <Folder Include="Interfaces\Repository\" />
     <Folder Include="Interfaces\Service\Service App\" />
     <Folder Include="Interfaces\Service\Service Api\" />
     <Folder Include="Mappings\" />
@@ -14,7 +13,6 @@
     <Folder Include="Enums\" />
     <Folder Include="Services\ServicesApi\" />
     <Folder Include="Services\ServicesApp\" />
-    <Folder Include="ViewModels\" />
   </ItemGroup>
 
   <ItemGroup>
