@@ -17,8 +17,9 @@ namespace RealEstateApp.Core.Application
             #endregion
             #region Services 
 
-            services.AddTransient(typeof(IGenericServices<,,>), typeof(GenericServices<,,>));
             services.AddTransient<IUserService, UserService>();
+
+            services.AddTransient(typeof(IGenericServices<,,>), typeof(GenericServices<,,>));
 
             #region ServicesApp
 
