@@ -1582,19 +1582,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Eleikel\\.nuget\\packages\\": {}
+    "C:\\Users\\Franklyn\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Eleikel\\Desktop\\ITLA\\Programacion III\\Real Estate\\RealEstateApp\\RealEstateApp.Infrastructure.Shared\\RealEstateApp.Infrastructure.Shared.csproj",
+      "projectUniqueName": "C:\\Users\\Franklyn\\source\\repos\\Proyecto MVC .NET CORE\\RealEstateApp\\RealEstateApp.Infrastructure.Shared\\RealEstateApp.Infrastructure.Shared.csproj",
       "projectName": "RealEstateApp.Infrastructure.Shared",
-      "projectPath": "C:\\Users\\Eleikel\\Desktop\\ITLA\\Programacion III\\Real Estate\\RealEstateApp\\RealEstateApp.Infrastructure.Shared\\RealEstateApp.Infrastructure.Shared.csproj",
-      "packagesPath": "C:\\Users\\Eleikel\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Eleikel\\Desktop\\ITLA\\Programacion III\\Real Estate\\RealEstateApp\\RealEstateApp.Infrastructure.Shared\\obj\\",
+      "projectPath": "C:\\Users\\Franklyn\\source\\repos\\Proyecto MVC .NET CORE\\RealEstateApp\\RealEstateApp.Infrastructure.Shared\\RealEstateApp.Infrastructure.Shared.csproj",
+      "packagesPath": "C:\\Users\\Franklyn\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Franklyn\\source\\repos\\Proyecto MVC .NET CORE\\RealEstateApp\\RealEstateApp.Infrastructure.Shared\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Eleikel\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Franklyn\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -1608,11 +1608,11 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Users\\Eleikel\\Desktop\\ITLA\\Programacion III\\Real Estate\\RealEstateApp\\RealEstateApp.Core.Application\\RealEstateApp.Core.Application.csproj": {
-              "projectPath": "C:\\Users\\Eleikel\\Desktop\\ITLA\\Programacion III\\Real Estate\\RealEstateApp\\RealEstateApp.Core.Application\\RealEstateApp.Core.Application.csproj"
+            "C:\\Users\\Franklyn\\source\\repos\\Proyecto MVC .NET CORE\\RealEstateApp\\RealEstateApp.Core.Application\\RealEstateApp.Core.Application.csproj": {
+              "projectPath": "C:\\Users\\Franklyn\\source\\repos\\Proyecto MVC .NET CORE\\RealEstateApp\\RealEstateApp.Core.Application\\RealEstateApp.Core.Application.csproj"
             },
-            "C:\\Users\\Eleikel\\Desktop\\ITLA\\Programacion III\\Real Estate\\RealEstateApp\\RealEstateApp.Core.Domain\\RealEstateApp.Core.Domain.csproj": {
-              "projectPath": "C:\\Users\\Eleikel\\Desktop\\ITLA\\Programacion III\\Real Estate\\RealEstateApp\\RealEstateApp.Core.Domain\\RealEstateApp.Core.Domain.csproj"
+            "C:\\Users\\Franklyn\\source\\repos\\Proyecto MVC .NET CORE\\RealEstateApp\\RealEstateApp.Core.Domain\\RealEstateApp.Core.Domain.csproj": {
+              "projectPath": "C:\\Users\\Franklyn\\source\\repos\\Proyecto MVC .NET CORE\\RealEstateApp\\RealEstateApp.Core.Domain\\RealEstateApp.Core.Domain.csproj"
             }
           }
         }
@@ -1655,7 +1655,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.302\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
       }
     }
   },
@@ -1663,7 +1663,7 @@
     {
       "code": "NU1605",
       "level": "Error",
-      "message": "Degradación del paquete detectada: Microsoft.Extensions.Options.ConfigurationExtensions de 6.0.0 a 5.0.0. Haga referencia al paquete directamente desde el proyecto para seleccionar una versión diferente. \r\n RealEstateApp.Infrastructure.Shared -> RealEstateApp.Core.Application -> Microsoft.Extensions.Options.ConfigurationExtensions (>= 6.0.0) \r\n RealEstateApp.Infrastructure.Shared -> Microsoft.Extensions.Options.ConfigurationExtensions (>= 5.0.0)",
+      "message": "Detected package downgrade: Microsoft.Extensions.Options.ConfigurationExtensions from 6.0.0 to 5.0.0. Reference the package directly from the project to select a different version. \r\n RealEstateApp.Infrastructure.Shared -> RealEstateApp.Core.Application -> Microsoft.Extensions.Options.ConfigurationExtensions (>= 6.0.0) \r\n RealEstateApp.Infrastructure.Shared -> Microsoft.Extensions.Options.ConfigurationExtensions (>= 5.0.0)",
       "libraryId": "Microsoft.Extensions.Options.ConfigurationExtensions",
       "targetGraphs": [
         "net5.0"
