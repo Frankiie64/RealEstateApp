@@ -1,7 +1,7 @@
 {
   "version": 2,
-  "dgSpecHash": "Fs7z61gMaFUuzXoPqVmUneMut2CB4mdPBfK6aHTwCKUrH5cfNT2hVOUkyILh2dKpOQmqVPnJPKkxV5XlNgv0Gw==",
-  "success": true,
+  "dgSpecHash": "g/bUwMirCl1oFoRp2mm/76yyrumoIVzEBjqvaD9zKaWOESdUNQnqDFZJC5ybMuBP+GarTRUXg7QRieIT5Cm8vw==",
+  "success": false,
   "projectFilePath": "C:\\Users\\Eleikel\\Desktop\\ITLA\\Programacion III\\Real Estate\\RealEstateApp\\RealEstateApp.Infrastructure.Persistence\\RealEstateApp.Infrastructure.Persistence.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Eleikel\\.nuget\\packages\\automapper\\11.0.1\\automapper.11.0.1.nupkg.sha512",
@@ -111,5 +111,15 @@
     "C:\\Users\\Eleikel\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
     "C:\\Users\\Eleikel\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1605",
+      "level": "Error",
+      "message": "Degradación del paquete detectada: Microsoft.Extensions.Options.ConfigurationExtensions de 6.0.0 a 5.0.0. Haga referencia al paquete directamente desde el proyecto para seleccionar una versión diferente. \r\n RealEstateApp.Infrastructure.Persistence -> RealEstateApp.Core.Application -> Microsoft.Extensions.Options.ConfigurationExtensions (>= 6.0.0) \r\n RealEstateApp.Infrastructure.Persistence -> Microsoft.Extensions.Options.ConfigurationExtensions (>= 5.0.0)",
+      "libraryId": "Microsoft.Extensions.Options.ConfigurationExtensions",
+      "targetGraphs": [
+        "net5.0"
+      ]
+    }
+  ]
 }

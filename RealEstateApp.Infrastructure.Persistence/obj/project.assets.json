@@ -1587,7 +1587,7 @@
           "Microsoft.AspNetCore.Http.Extensions": "2.2.0",
           "Microsoft.EntityFrameworkCore": "5.0.17",
           "Microsoft.EntityFrameworkCore.InMemory": "5.0.17",
-          "Microsoft.Extensions.Options.ConfigurationExtensions": "5.0.0",
+          "Microsoft.Extensions.Options.ConfigurationExtensions": "6.0.0",
           "Newtonsoft.Json": "13.0.1",
           "RealEstateApp.Core.Domain": "1.0.0"
         },
@@ -5903,5 +5903,16 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.302\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1605",
+      "level": "Error",
+      "message": "Degradación del paquete detectada: Microsoft.Extensions.Options.ConfigurationExtensions de 6.0.0 a 5.0.0. Haga referencia al paquete directamente desde el proyecto para seleccionar una versión diferente. \r\n RealEstateApp.Infrastructure.Persistence -> RealEstateApp.Core.Application -> Microsoft.Extensions.Options.ConfigurationExtensions (>= 6.0.0) \r\n RealEstateApp.Infrastructure.Persistence -> Microsoft.Extensions.Options.ConfigurationExtensions (>= 5.0.0)",
+      "libraryId": "Microsoft.Extensions.Options.ConfigurationExtensions",
+      "targetGraphs": [
+        "net5.0"
+      ]
+    }
+  ]
 }
