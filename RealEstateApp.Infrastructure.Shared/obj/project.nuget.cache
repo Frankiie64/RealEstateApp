@@ -1,7 +1,7 @@
 {
   "version": 2,
-  "dgSpecHash": "cEncgbqdRRUFoHDrZ/3iUTk+nTs03GTXLYXcHy8IeO89qAWlrfXUTy1duE9namAEiy54tPnhEQK1f1C3qO+wiA==",
-  "success": false,
+  "dgSpecHash": "a/nzJb3va03ALv3JcsmGI8lmgcw+qw+vG29V+NWjrHM/t30Nt9+Ijt8ziYSDEz6w/OAgztQPcFjCBlINhIvJBQ==",
+  "success": true,
   "projectFilePath": "C:\\Users\\Eleikel\\Desktop\\ITLA\\Programacion III\\Real Estate\\RealEstateApp\\RealEstateApp.Infrastructure.Shared\\RealEstateApp.Infrastructure.Shared.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Eleikel\\.nuget\\packages\\automapper\\11.0.1\\automapper.11.0.1.nupkg.sha512",
@@ -44,15 +44,5 @@
     "C:\\Users\\Eleikel\\.nuget\\packages\\system.security.cryptography.pkcs\\5.0.0\\system.security.cryptography.pkcs.5.0.0.nupkg.sha512",
     "C:\\Users\\Eleikel\\.nuget\\packages\\system.text.encodings.web\\4.5.0\\system.text.encodings.web.4.5.0.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "NU1605",
-      "level": "Error",
-      "message": "Degradación del paquete detectada: Microsoft.Extensions.Options.ConfigurationExtensions de 6.0.0 a 5.0.0. Haga referencia al paquete directamente desde el proyecto para seleccionar una versión diferente. \r\n RealEstateApp.Infrastructure.Shared -> RealEstateApp.Core.Application -> Microsoft.Extensions.Options.ConfigurationExtensions (>= 6.0.0) \r\n RealEstateApp.Infrastructure.Shared -> Microsoft.Extensions.Options.ConfigurationExtensions (>= 5.0.0)",
-      "libraryId": "Microsoft.Extensions.Options.ConfigurationExtensions",
-      "targetGraphs": [
-        "net5.0"
-      ]
-    }
-  ]
+  "logs": []
 }

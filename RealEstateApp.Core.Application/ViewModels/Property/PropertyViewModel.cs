@@ -12,8 +12,9 @@ namespace RealEstateApp.Core.Application.ViewModels.Property
     public class PropertyViewModel
     {
         public int Id { get; set; }
-
         public int Code { get; set; }
+        public string Location { get; set; }
+        public int Room { get; set; }
         public double Price { get; set; }
         public string Description { get; set; }
         public double Meters { get; set; }
