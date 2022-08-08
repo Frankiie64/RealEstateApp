@@ -7,11 +7,11 @@
 
 
 <div class="container-fluid">
-    <form>
+    <form asp-controller="Home" asp-action="PropertysByFilter">
         <div class=" row">
             <div class="col-12">
                 <div class="input-group ">
-                    <input name="keyword" type="text" class="form-control" placeholder="Codigo" aria-label="Recipient's username" aria-describedby="button-addon2">
+                    <input name="code" type="text" class="form-control" placeholder="Codigo" aria-label="Recipient's username" aria-describedby="button-addon2">
                     <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                         Seleccionar por tipo de propiedad
                     </button>
