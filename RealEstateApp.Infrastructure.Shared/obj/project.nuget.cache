@@ -1,12 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "B+x2d+ptv89L9Eo50/Ldav533pm88nLcc1LkdGbiY05VQ7s8+SMeo7kacioIJFmoQ1Uw8FV2mP6cEvLQHo8MUA==",
-  "success": true,
+  "dgSpecHash": "yqk+uNeM/k7HJbpIxZQluzrZQsEMo/1lgbEOxE1vng7SJDzLrLpLU8oz9JAeOmXxIFRitPj1Ka1X0ymRLfY8vA==",
+  "success": false,
   "projectFilePath": "C:\\Users\\Franklyn\\source\\repos\\Proyecto MVC .NET CORE\\RealEstateApp\\RealEstateApp.Infrastructure.Shared\\RealEstateApp.Infrastructure.Shared.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Franklyn\\.nuget\\packages\\automapper\\11.0.1\\automapper.11.0.1.nupkg.sha512",
     "C:\\Users\\Franklyn\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\11.0.0\\automapper.extensions.microsoft.dependencyinjection.11.0.0.nupkg.sha512",
     "C:\\Users\\Franklyn\\.nuget\\packages\\mailkit\\3.3.0\\mailkit.3.3.0.nupkg.sha512",
+    "C:\\Users\\Franklyn\\.nuget\\packages\\mediatr\\10.0.1\\mediatr.10.0.1.nupkg.sha512",
+    "C:\\Users\\Franklyn\\.nuget\\packages\\mediatr.contracts\\1.0.1\\mediatr.contracts.1.0.1.nupkg.sha512",
+    "C:\\Users\\Franklyn\\.nuget\\packages\\mediatr.extensions.microsoft.dependencyinjection\\10.0.1\\mediatr.extensions.microsoft.dependencyinjection.10.0.1.nupkg.sha512",
     "C:\\Users\\Franklyn\\.nuget\\packages\\microsoft.aspnetcore.http\\2.2.2\\microsoft.aspnetcore.http.2.2.2.nupkg.sha512",
     "C:\\Users\\Franklyn\\.nuget\\packages\\microsoft.aspnetcore.http.abstractions\\2.2.0\\microsoft.aspnetcore.http.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\Franklyn\\.nuget\\packages\\microsoft.aspnetcore.http.extensions\\2.2.0\\microsoft.aspnetcore.http.extensions.2.2.0.nupkg.sha512",
@@ -44,5 +47,15 @@
     "C:\\Users\\Franklyn\\.nuget\\packages\\system.security.cryptography.pkcs\\5.0.0\\system.security.cryptography.pkcs.5.0.0.nupkg.sha512",
     "C:\\Users\\Franklyn\\.nuget\\packages\\system.text.encodings.web\\4.5.0\\system.text.encodings.web.4.5.0.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1605",
+      "level": "Error",
+      "message": "Detected package downgrade: Microsoft.Extensions.Options.ConfigurationExtensions from 6.0.0 to 5.0.0. Reference the package directly from the project to select a different version. \r\n RealEstateApp.Infrastructure.Shared -> RealEstateApp.Core.Application -> Microsoft.Extensions.Options.ConfigurationExtensions (>= 6.0.0) \r\n RealEstateApp.Infrastructure.Shared -> Microsoft.Extensions.Options.ConfigurationExtensions (>= 5.0.0)",
+      "libraryId": "Microsoft.Extensions.Options.ConfigurationExtensions",
+      "targetGraphs": [
+        "net5.0"
+      ]
+    }
+  ]
 }
