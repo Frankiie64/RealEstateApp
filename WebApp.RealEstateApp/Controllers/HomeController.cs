@@ -31,6 +31,7 @@ namespace WebApp.RealEstateApp.Controllers
             return View();
         }
 
+
         public async Task<IActionResult> PropertysByFilter(PropertyByFiltering filter)
         {
             ViewBag.TypePropertys = await serviceTypeProperty.GetAllViewModelAsync();
