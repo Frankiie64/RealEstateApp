@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace RealEstateApp.Core.Application.Interfaces.Service
 {
-    public interface ITypeProperty : IGenericServices<SaveTypePropertyViewModel, TypePropertyViewModel, TypeProperty>
+    public interface ITypePropertyService : IGenericServices<SaveTypePropertyViewModel, TypePropertyViewModel, TypeProperty>
     {
     }
 }

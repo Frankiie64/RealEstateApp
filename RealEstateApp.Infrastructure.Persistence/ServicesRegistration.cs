@@ -1,4 +1,4 @@
-﻿using RealEstateApp.Core.Application.Interfaces.Repositories;
+﻿using RealEstateApp.Core.Application.Interfaces.Repository;
 using RealEstateApp.Infrastructure.Persistence.Context;
 using RealEstateApp.Infrastructure.Persistence.Repositories;
 using Microsoft.EntityFrameworkCore;

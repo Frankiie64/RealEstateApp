@@ -3,6 +3,8 @@ using RealEstateApp.Core.Application.Services;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 using RealEstateApp.Application.Services;
+using RealEstateApp.Core.Application.Interfaces.Service;
+using RealEstateApp.Core.Application.Services.ServicesApp;
 
 namespace RealEstateApp.Core.Application
 {
@@ -22,6 +24,10 @@ namespace RealEstateApp.Core.Application
             services.AddTransient(typeof(IGenericServices<,,>), typeof(GenericServices<,,>));
 
             #region ServicesApp
+
+            services.AddTransient<IPropertyService, PropertyServices>();
+            services.AddTransient<ITypePropertyService, TypePropertyServices>();
+
 
             #endregion
 
