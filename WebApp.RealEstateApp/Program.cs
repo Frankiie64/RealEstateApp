@@ -23,8 +23,9 @@ namespace WebApp.RealEstateApp
                     var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
 
                     await DefaultRoles.SeedAsync(userManager, roleManager);
-                    await DefaultBasicUser.SeedAsync(userManager, roleManager);
+                    await DefaultClientUser.SeedAsync(userManager, roleManager);
                     await DefaultAdminUser.SeedAsync(userManager, roleManager);
+                    await DefaultDeveloperUser.SeedAsync(userManager, roleManager);
                     await DefaultSuperAdminUser.SeedAsync(userManager, roleManager);
 
                 }

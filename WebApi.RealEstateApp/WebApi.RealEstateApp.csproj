@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Program.cs~RF1f44057a.TMP" />
+  </ItemGroup>
+
+  <ItemGroup>
 	<PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="5.0.17" />
 	<PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="5.0.0" />
 	<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.17">

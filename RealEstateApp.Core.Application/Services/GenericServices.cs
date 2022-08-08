@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using RealEstateApp.Core.Application.Interfaces.Repositories;
+using RealEstateApp.Core.Application.Interfaces.Repository;
 using RealEstateApp.Core.Application.Interfaces.Services;
 using System;
 using System.Collections.Generic;
