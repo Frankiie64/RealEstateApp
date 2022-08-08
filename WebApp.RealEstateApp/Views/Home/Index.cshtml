@@ -1,8 +1,146 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@using RealEstateApp.Core.Application.ViewModels.Property;
+@using RealEstateApp.Core.Application.ViewModels.TypeProperty;
+
+@{
+    ViewData["Title"] = "Home";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+<div class="container-fluid">
+    <form>
+        <div class=" row">
+            <div class="col-12">
+                <div class="input-group ">
+                    <input name="keyword" type="text" class="form-control" placeholder="Codigo" aria-label="Recipient's username" aria-describedby="button-addon2">
+                    <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        Seleccionar por tipo de propiedad
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                        <li class="dropdown-item">
+                            <input class="form-check-input" value="0" type="checkbox" name="categoryId" id="category" />
+                            <label class="form-check-label" for="category">Todas</label>
+                        </li>
+                        @foreach (TypePropertyViewModel item in ViewBag.TypePropertys)
+                        {
+                            <li class="dropdown-item">
+                                <input class="form-check-input" value="@item.Id" type="checkbox" name="TypeProperty" id="TypeProperty@(item.Id)" />
+                                <label class="form-check-label" for="TypeProperty@(item.Id)">@item.Name</label>
+                            </li>
+                        }
+                    </ul>
+                    <button class="btn btn-primary" type="submit" id="button-addon2">Buscar</button>
+                </div>
+            </div>
+            <div class="col-11 bg-secondary p-4 d-flex my-3 text-center justify-content-center ms-4 mt-0">
+                <select class="form-select-sm m-2" aria-label="Default select example">
+                    <option selected value="0">Habitaciones</option>
+                    @for (int i = 0; i < 6; i++)
+                    {
+                        <option value="@i">@i</option>
+                    }
+                    <option value="6">Superior</option>
+                </select>
+
+                <select class="form-select-sm m-2" aria-label="Default select example">
+                    <option selected value="0">Baños</option>
+                    @for (int i = 0; i < 5; i++)
+                    {
+                        <option value="@i">@i</option>
+                    }
+                    <option value="5">Superior</option>
+                </select>
+
+                <select class="form-select-sm m-2" aria-label="Default select example">
+                    <option selected value="0">Precio Minimo</option>
+                    @for (int i = 1000000; i <= 1280000000; i += i)
+                    {
+                        <option value="@i">RD$ @i</option>
+                    }
+                </select>
+
+                <select class="form-select-sm m-2" aria-label="Default select example">
+                    <option selected value="0">Precio Maximo</option>
+                    @for (int i = 1000000; i <= 1280000000; i += i)
+                    {
+                        <option value="@i">RD$ @i</option>
+                    }
+                    <option value="6">Superior</option>
+
+                </select>
+
+
+                <div class="d-grid gap-2 d-md-block">
+                    <button type="submit" class="btn btn-light btn-sm mt-2 ">Guardar</button>
+                </div>
+
+            </div>
+        </div>       
+    </form>
+
+    @if (ViewBag.Propertys.Count != 0 || ViewBag.Propertys == null)
+    {
+        <div class=" m-1 row mt-3">
+            @foreach (PropertyViewModel item in ViewBag.Propertys)
+            {
+                <div class="col-4 ">
+                    <a asp-controller="Home" asp-action="Details" asp-route-id="@item.Id" type="button" class="w-100 text-decoration-none text-dark mb-2" style="text-decoration:none">
+                        <div class="card" style="width: 16rem;">
+                            <img src="@item.ImageUrl" class="card-img-top" alt="Imagen Terreno">
+                            <div class="card-body">
+                                <small class="card-title fw-bolder fs-5">
+                                    @item.TypeProperty.Name
+                                </small>
+                                <br />
+                                <small class="text-center text-capitalize fw-bolder text-muted mb-2 ">@item.Location</small>
+                                <br />
+                                <small class="card-subtitle text-dark fs-6">
+                                    Codigo
+                                </small>
+                                <br />
+                                <small class="text-center text-capitalize fw-bolder  ">@item.Code</small>
+                                <br />
+                                <small class="card-subtitle text-dark fs-6">                                                                       
+                                    @item.TypeSale.Name
+                                </small>
+                                <br />
+                                <small class="text-center text-capitalize fw-bolder text-danger ">RD$ @item.Price  - US$ @(item.Price / 54 ) </small>
+                                <br />
+                                <hr clas />
+                                <small class="fs-6 d-flex justify-content-evenly">
+
+                                    @if (item.Bathroom != 0)
+                                    {
+                                        <div class="me-2"><i class="fa-solid fa-hot-tub-person"></i> @item.Bathroom</div>
+                                    }
+
+                                    @if (item.Room != 0)
+                                    {
+                                        <div class="me-2"><i class="fa-solid fa-bed"></i> @item.Room</div>
+                                    }
+                                    <div class="me-2"><i class="fa-solid fa-building"></i> @(item.Meters)mt</div>
+                                </small>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+            }
+        </div> }
+    else
+    {
+        <div class="row mt-5">
+            <div class="col-6 offset-3">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <h2 class="text-center">No hay disponibilidad</h2>
+                            <div class="text-center ">
+                                <p>No hay propiedades disponibles por el momento</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
 </div>
