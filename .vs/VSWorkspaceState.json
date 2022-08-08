@@ -2,15 +2,16 @@
   "ExpandedNodes": [
     "",
     "\\RealEstateApp.Core.Application",
-    "\\RealEstateApp.Core.Application\\Enums",
-    "\\RealEstateApp.Infrastructure.Identity",
-    "\\RealEstateApp.Infrastructure.Identity\\Contexts",
-    "\\RealEstateApp.Infrastructure.Identity\\Seeds",
-    "\\RealEstateApp.Infrastructure.Persistence",
-    "\\RealEstateApp.Infrastructure.Persistence\\Migrations",
-    "\\RealEstateApp.Infrastructure.Persistence\\Repositories",
-    "\\WebApi.RealEstateApp"
+    "\\RealEstateApp.Core.Application\\ViewModels",
+    "\\RealEstateApp.Core.Application\\ViewModels\\Property",
+    "\\RealEstateApp.Core.Domain",
+    "\\RealEstateApp.Core.Domain\\Entities",
+    "\\WebApp.RealEstateApp",
+    "\\WebApp.RealEstateApp\\Views",
+    "\\WebApp.RealEstateApp\\Views\\Shared",
+    "\\WebApp.RealEstateApp\\wwwroot",
+    "\\WebApp.RealEstateApp\\wwwroot\\css"
   ],
-  "SelectedNode": "\\WebApp.RealEstateApp\\Views\\Home\\Index.cshtml",
+  "SelectedNode": "\\WebApp.RealEstateApp\\Controllers\\HomeController.cs",
   "PreviewInSolutionExplorer": false
 }
