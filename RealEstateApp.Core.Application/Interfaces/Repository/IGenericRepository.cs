@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace RealEstateApp.Core.Application.Interfaces.Repositories
+namespace RealEstateApp.Core.Application.Interfaces.Repository
 {
     public interface IGenericRepository<T> where T : class
     {

@@ -26,7 +26,7 @@ namespace WebApi.RealEstateApp
         {
 
             services.AddPersitsenceInfrastructure(_Config);
-            services.AddIdentityInfrastructure(_Config);
+            services.AddIdentityInfrastructureApi(_Config);
             services.AddApplicationLayer();
             services.AddSharedInfrastructure(_Config);
             services.AddControllers();

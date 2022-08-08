@@ -1,37 +1,44 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using RealEstateApp.Core.Application.Dtos.Account;
+using RealEstateApp.Core.Application.helper;
+using RealEstateApp.Core.Application.Interfaces.Service;
+using RealEstateApp.Core.Application.ViewModels.Property;
 using System.Threading.Tasks;
-using WebApp.RealEstateApp.Models;
 
 namespace WebApp.RealEstateApp.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly IPropertyService serviceProperty;
+        private readonly ITypePropertyService serviceTypeProperty;
+        private readonly IHttpContextAccessor context;
+        AuthenticationResponse user;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(IPropertyService serviceProperty, ITypePropertyService serviceTypeProperty, IHttpContextAccessor context)
         {
-            _logger = logger;
+            this.serviceProperty = serviceProperty;
+            this.serviceTypeProperty = serviceTypeProperty;
+            this.context = context;
+            user = context.HttpContext.Session.Get<AuthenticationResponse>("user");
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
+            ViewBag.Propertys = await serviceProperty.GetAllViewModelWithIncludeAsync();
+            ViewBag.TypePropertys = await serviceTypeProperty.GetAllViewModelAsync();
+
             return View();
         }
 
-        public IActionResult Privacy()
+        public async Task<IActionResult> PropertysByFilter(PropertyByFiltering filter)
         {
-            return View();
+            ViewBag.TypePropertys = await serviceTypeProperty.GetAllViewModelAsync();
+
+            ViewBag.Propertys = await serviceProperty.GetAllViewModelWithIncludeByFilterAsync(filter);
+
+            return View("Index");
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
     }
 }
