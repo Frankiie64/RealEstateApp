@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "vTdSK7paTaOr4/FKXVektHnJq459dKTPmNZPvwydGjhUYnlbh0bj8OedrXa4YGap4i0ihUKebES1cLWdgMAorw==",
+  "dgSpecHash": "LrxZ+u2KDFMoo14ShcGHvSGbk9ZXQythQImEJuBnI/wtqwTHuHOMGCi9jvySt2h4IX96abKgla+0VEWpW7HcPw==",
   "success": true,
   "projectFilePath": "C:\\Users\\Eleikel\\Desktop\\ITLA\\Programacion III\\Real Estate\\RealEstateApp\\WebApi.RealEstateApp\\WebApi.RealEstateApp.csproj",
   "expectedPackageFiles": [
@@ -8,6 +8,9 @@
     "C:\\Users\\Eleikel\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\11.0.0\\automapper.extensions.microsoft.dependencyinjection.11.0.0.nupkg.sha512",
     "C:\\Users\\Eleikel\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Eleikel\\.nuget\\packages\\mailkit\\3.3.0\\mailkit.3.3.0.nupkg.sha512",
+    "C:\\Users\\Eleikel\\.nuget\\packages\\mediatr\\10.0.1\\mediatr.10.0.1.nupkg.sha512",
+    "C:\\Users\\Eleikel\\.nuget\\packages\\mediatr.contracts\\1.0.1\\mediatr.contracts.1.0.1.nupkg.sha512",
+    "C:\\Users\\Eleikel\\.nuget\\packages\\mediatr.extensions.microsoft.dependencyinjection\\10.0.1\\mediatr.extensions.microsoft.dependencyinjection.10.0.1.nupkg.sha512",
     "C:\\Users\\Eleikel\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\5.0.17\\microsoft.aspnetcore.authentication.jwtbearer.5.0.17.nupkg.sha512",
     "C:\\Users\\Eleikel\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\5.0.17\\microsoft.aspnetcore.cryptography.internal.5.0.17.nupkg.sha512",
     "C:\\Users\\Eleikel\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\5.0.17\\microsoft.aspnetcore.cryptography.keyderivation.5.0.17.nupkg.sha512",

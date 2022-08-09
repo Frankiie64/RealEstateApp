@@ -1,12 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "a/nzJb3va03ALv3JcsmGI8lmgcw+qw+vG29V+NWjrHM/t30Nt9+Ijt8ziYSDEz6w/OAgztQPcFjCBlINhIvJBQ==",
+  "dgSpecHash": "xV3xIaOqbOZK5UM2vuQZ5zvmzlbhZV67B22efYg69/fVFkZZ1MnyH6O+mRmT01rJ99Pku6jdMvamxsKNQXJPHg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Eleikel\\Desktop\\ITLA\\Programacion III\\Real Estate\\RealEstateApp\\RealEstateApp.Infrastructure.Shared\\RealEstateApp.Infrastructure.Shared.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Eleikel\\.nuget\\packages\\automapper\\11.0.1\\automapper.11.0.1.nupkg.sha512",
     "C:\\Users\\Eleikel\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\11.0.0\\automapper.extensions.microsoft.dependencyinjection.11.0.0.nupkg.sha512",
     "C:\\Users\\Eleikel\\.nuget\\packages\\mailkit\\3.3.0\\mailkit.3.3.0.nupkg.sha512",
+    "C:\\Users\\Eleikel\\.nuget\\packages\\mediatr\\10.0.1\\mediatr.10.0.1.nupkg.sha512",
+    "C:\\Users\\Eleikel\\.nuget\\packages\\mediatr.contracts\\1.0.1\\mediatr.contracts.1.0.1.nupkg.sha512",
+    "C:\\Users\\Eleikel\\.nuget\\packages\\mediatr.extensions.microsoft.dependencyinjection\\10.0.1\\mediatr.extensions.microsoft.dependencyinjection.10.0.1.nupkg.sha512",
     "C:\\Users\\Eleikel\\.nuget\\packages\\microsoft.aspnetcore.http\\2.2.2\\microsoft.aspnetcore.http.2.2.2.nupkg.sha512",
     "C:\\Users\\Eleikel\\.nuget\\packages\\microsoft.aspnetcore.http.abstractions\\2.2.0\\microsoft.aspnetcore.http.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\Eleikel\\.nuget\\packages\\microsoft.aspnetcore.http.extensions\\2.2.0\\microsoft.aspnetcore.http.extensions.2.2.0.nupkg.sha512",
