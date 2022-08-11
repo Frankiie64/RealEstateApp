@@ -2,6 +2,7 @@
 using RealEstateApp.Core.Application.Dtos.PropertyImprovement;
 using RealEstateApp.Core.Application.Dtos.TypeProperty;
 using RealEstateApp.Core.Application.Dtos.TypeSale;
+using RealEstateApp.Core.Application.ViewModels.Users;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +23,7 @@ namespace RealEstateApp.Core.Application.Dtos.Property
         public int Bathroom { get; set; }
         public int AgentId { get; set; }        
         public string AgentName { get; set; }
+        public UserVM User { get; set; }
 
         public int TypePropertyId { get; set; }
         public TypePropertyDto TypeProperty { get; set; }

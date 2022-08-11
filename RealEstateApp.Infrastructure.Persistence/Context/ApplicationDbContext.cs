@@ -88,6 +88,9 @@ namespace RealEstateApp.Infrastructure.Persistence.Context
             modelBuilder.Entity<Improvement>()
                 .ToTable("Improvements");
 
+            modelBuilder.Entity<PhotosOfProperties>()
+          .ToTable("PhotosOfProperties");
+
             #endregion
 
             #region constraint
@@ -105,6 +108,9 @@ namespace RealEstateApp.Infrastructure.Persistence.Context
 
             modelBuilder.Entity<Improvement>()
                 .HasKey(improvement => improvement.Id);
+
+                modelBuilder.Entity<PhotosOfProperties>()
+          .HasKey(photosOfProperties => photosOfProperties.Id);
 
             modelBuilder.Entity<PropertyImprovement>()  // Many to Many
                 .HasKey(x => new { x.PropertyId, x.ImprovementId });
@@ -130,6 +136,11 @@ namespace RealEstateApp.Infrastructure.Persistence.Context
          .OnDelete(deleteBehavior: DeleteBehavior.Cascade);
 
 
+            modelBuilder.Entity<Property>()
+                .HasMany(photos => photos.UrlPhotos)
+                .WithOne(property => property.Property)
+                .HasForeignKey(idProperty => idProperty.IdProperty)
+                .OnDelete(deleteBehavior: DeleteBehavior.Cascade);
 
 
             modelBuilder.Entity<Property>()
@@ -149,10 +160,6 @@ namespace RealEstateApp.Infrastructure.Persistence.Context
                         j.ToTable("PropertyImprovement");
                         j.HasKey(e => new { e.PropertyId, e.ImprovementId });
                     });
-
-
-
-
 
 
             #endregion
@@ -230,6 +237,17 @@ namespace RealEstateApp.Infrastructure.Persistence.Context
                 .Property(a => a.Description)
                 .IsRequired();
 
+            #endregion
+
+            #region PhotosOfProperty
+
+            modelBuilder.Entity<PhotosOfProperties>()
+                .Property(a => a.ImagUrl)
+                .IsRequired();
+
+            modelBuilder.Entity<PhotosOfProperties>()
+                .Property(a => a.IdProperty)
+                .IsRequired();
             #endregion
 
 
