@@ -51,6 +51,27 @@ namespace RealEstateApp.Infrastructure.Persistence.Migrations
                     b.ToTable("Improvements");
                 });
 
+            modelBuilder.Entity("RealEstateApp.Core.Domain.Entities.PhotosOfProperties", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("IdProperty")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ImagUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IdProperty");
+
+                    b.ToTable("PhotosOfProperties");
+                });
+
             modelBuilder.Entity("RealEstateApp.Core.Domain.Entities.Property", b =>
                 {
                     b.Property<int>("Id")
@@ -76,9 +97,6 @@ namespace RealEstateApp.Infrastructure.Persistence.Migrations
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ImageUrl")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("LastModified")
@@ -193,6 +211,17 @@ namespace RealEstateApp.Infrastructure.Persistence.Migrations
                     b.ToTable("TypeSales");
                 });
 
+            modelBuilder.Entity("RealEstateApp.Core.Domain.Entities.PhotosOfProperties", b =>
+                {
+                    b.HasOne("RealEstateApp.Core.Domain.Entities.Property", "Property")
+                        .WithMany("UrlPhotos")
+                        .HasForeignKey("IdProperty")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Property");
+                });
+
             modelBuilder.Entity("RealEstateApp.Core.Domain.Entities.Property", b =>
                 {
                     b.HasOne("RealEstateApp.Core.Domain.Entities.TypeProperty", "TypeProperty")
@@ -239,6 +268,8 @@ namespace RealEstateApp.Infrastructure.Persistence.Migrations
             modelBuilder.Entity("RealEstateApp.Core.Domain.Entities.Property", b =>
                 {
                     b.Navigation("PropertyImprovements");
+
+                    b.Navigation("UrlPhotos");
                 });
 
             modelBuilder.Entity("RealEstateApp.Core.Domain.Entities.TypeProperty", b =>
