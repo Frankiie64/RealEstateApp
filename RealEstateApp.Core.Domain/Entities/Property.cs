@@ -22,7 +22,7 @@ namespace RealEstateApp.Core.Domain.Entities
         public TypeProperty TypeProperty { get; set; }
         public int TypeSaleId { get; set; }
         public TypeSale TypeSale { get; set; }
-        public ICollection<PropertyImprovement> PropertyImprovements { get; set; } // M * M
+        public ICollection<PropertyImprovement> PropertyImprovements { get; set; } 
         public ICollection<Improvement> Improvements { get; set; } 
 
 
