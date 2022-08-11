@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using RealEstateApp.Core.Application.Interfaces.Repository;
 using RealEstateApp.Core.Application.Interfaces.Service;
+using RealEstateApp.Core.Application.ViewModels.PhotoProperties;
 using RealEstateApp.Core.Application.ViewModels.Property;
 using RealEstateApp.Core.Domain.Entities;
 using System.Collections.Generic;
@@ -14,7 +15,7 @@ namespace RealEstateApp.Core.Application.Services.ServicesApp
         private readonly IMapper mapper;
         private readonly IPropertyRepository repo;
 
-        public PropertyServices(IMapper mapper, IPropertyRepository repo ): base(repo,mapper)
+        public PropertyServices(IMapper mapper, IPropertyRepository repo, IPhotosPropertyRepository PhotoRepo) : base(repo,mapper)
         {
             this.mapper = mapper;
             this.repo = repo;
@@ -22,14 +23,14 @@ namespace RealEstateApp.Core.Application.Services.ServicesApp
 
         public async Task<List<PropertyViewModel>> GetAllViewModelWithIncludeAsync()
         {
-            var entityList = await repo.GetAllWithIncludeAsync(new List<string> { "TypeProperty", "TypeSale", "Improvements", "PropertyImprovements" });
+            var entityList = await repo.GetAllWithIncludeAsync(new List<string> { "TypeProperty", "TypeSale", "Improvements", "PropertyImprovements", "UrlPhotos" });
 
             return mapper.Map<List<PropertyViewModel>>(entityList);
         }
 
         public async Task<List<PropertyViewModel>> GetAllViewModelWithIncludeByFilterAsync(PropertyByFiltering filter)
         {
-            var entityList = await repo.GetAllWithIncludeAsync(new List<string> { "TypeProperty", "TypeSale", "Improvements", "PropertyImprovements" });
+            var entityList = await repo.GetAllWithIncludeAsync(new List<string> { "TypeProperty", "TypeSale", "Improvements", "PropertyImprovements", "UrlPhotos" });
 
             var listMapped = mapper.Map<List<PropertyViewModel>>(entityList);
 
@@ -45,5 +46,6 @@ namespace RealEstateApp.Core.Application.Services.ServicesApp
 
             ).ToList();
         }
+       
     }
 }

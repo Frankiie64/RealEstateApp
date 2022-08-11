@@ -73,5 +73,10 @@ namespace RealEstateApp.Application.Services
             return mapper.Map<UserVM>(await accountServices.GetUserByIdAsync(id));
         }
 
+        public async Task<RegisterResponse> UpdateAgentAsync(SaveUserVM vm)
+        {
+            RegisterRequest registerRequest = mapper.Map<RegisterRequest>(vm);
+            return await accountServices.UpdateAgentAsync(registerRequest);
+        }
     }
 }
