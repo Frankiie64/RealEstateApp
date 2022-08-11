@@ -57,11 +57,11 @@ namespace RealEstateApp.Infrastructure.Persistence.Context
                 {
                     case EntityState.Modified:
                         entry.Entity.LastModified = DateTime.Now;
-                        entry.Entity.LastModifiedBy = user.Username;
+                        entry.Entity.LastModifiedBy = "user";
                         break;
                     case EntityState.Added:
                         entry.Entity.Creadted = DateTime.Now;
-                        entry.Entity.CreatedBy = user.Username;
+                        entry.Entity.CreatedBy = "user";
                         break;
                 }
             }
