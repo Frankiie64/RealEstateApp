@@ -17,13 +17,13 @@
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
                         <li class="dropdown-item">
-                            <input class="form-check-input" value="0" type="checkbox" name="categoryId" id="category" />
-                            <label class="form-check-label" for="category">Todas</label>
+                            <input class="form-check-input" value="0" type="checkbox" name="IdTypeProperty" id="TypeProperty" />
+                            <label class="form-check-label" for="TypeProperty">Todas</label>
                         </li>
                         @foreach (TypePropertyViewModel item in ViewBag.TypePropertys)
                         {
                             <li class="dropdown-item">
-                                <input class="form-check-input" value="@item.Id" type="checkbox" name="TypeProperty" id="TypeProperty@(item.Id)" />
+                                <input class="form-check-input" value="@item.Id" type="checkbox" name="IdTypeProperty" id="TypeProperty@(item.Id)" />
                                 <label class="form-check-label" for="TypeProperty@(item.Id)">@item.Name</label>
                             </li>
                         }
@@ -32,25 +32,43 @@
                 </div>
             </div>
             <div class="col-11 bg-secondary p-4 d-flex my-3 text-center justify-content-center ms-4 mt-0">
-                <select class="form-select-sm m-2" aria-label="Default select example">
-                    <option selected value="0">Habitaciones</option>
-                    @for (int i = 0; i < 6; i++)
+                <select class="form-select-sm m-2" name="MinRooms">
+                    <option selected value="0">Minimo de habitaciones</option>
+                    @for (int i = 1; i < 6; i++)
                     {
                         <option value="@i">@i</option>
                     }
                     <option value="6">Superior</option>
                 </select>
 
-                <select class="form-select-sm m-2" aria-label="Default select example">
-                    <option selected value="0">Baños</option>
-                    @for (int i = 0; i < 5; i++)
+                <select class="form-select-sm m-2" name="MaxRooms">
+                    <option selected value="0">Maximo de habitaciones</option>
+                    @for (int i = 1; i < 6; i++)
+                    {
+                        <option value="@i">@i</option>
+                    }
+                    <option value="6">Superior</option>
+                </select>
+
+                <select class="form-select-sm m-2" name="MinBathRooms">
+                    <option selected value="0">Minimo de Baños</option>
+                    @for (int i = 1; i < 5; i++)
                     {
                         <option value="@i">@i</option>
                     }
                     <option value="5">Superior</option>
                 </select>
 
-                <select class="form-select-sm m-2" aria-label="Default select example">
+                <select class="form-select-sm m-2" name="MaxBathRooms">
+                    <option selected value="0">Maximo Baños</option>
+                    @for (int i = 1; i < 5; i++)
+                    {
+                        <option value="@i">@i</option>
+                    }
+                    <option value="5">Superior</option>
+                </select>
+
+                <select class="form-select-sm m-2" name="MinPrince">
                     <option selected value="0">Precio Minimo</option>
                     @for (int i = 1000000; i <= 1280000000; i += i)
                     {
@@ -58,7 +76,7 @@
                     }
                 </select>
 
-                <select class="form-select-sm m-2" aria-label="Default select example">
+                <select class="form-select-sm m-2" name="MaxPrice">
                     <option selected value="0">Precio Maximo</option>
                     @for (int i = 1000000; i <= 1280000000; i += i)
                     {
@@ -67,12 +85,6 @@
                     <option value="6">Superior</option>
 
                 </select>
-
-
-                <div class="d-grid gap-2 d-md-block">
-                    <button type="submit" class="btn btn-light btn-sm mt-2 ">Guardar</button>
-                </div>
-
             </div>
         </div>       
     </form>
