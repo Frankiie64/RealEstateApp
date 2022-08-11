@@ -34,10 +34,15 @@ namespace RealEstateApp.Core.Application.Services.ServicesApp
             var listMapped = mapper.Map<List<PropertyViewModel>>(entityList);
 
             return listMapped.Where(x =>
-            (x.Code.ToString().Contains(filter.code.ToString()))&&
-            (x.Bathroom >= filter.MinBathRooms && x.Bathroom <= filter.MaxBathRooms) &&
-            (x.Room >= filter.MinRooms && x.Room <= filter.MaxRooms) &&
-            (x.Price >= filter.MinPrince && x.Price <= filter.MaxPrice)                               
+
+            (x.Code != 0 ? x.Code == x.Code : x.Code != 0) &&
+
+            (x.Bathroom >= (filter.MinBathRooms != 0 ? filter.MinBathRooms : 0) && x.Bathroom <= (filter.MaxBathRooms != 0 ? filter.MaxBathRooms : x.Bathroom)) &&
+
+            (x.Room >= (filter.MinRooms != 0?filter.MinRooms:0)  && x.Room <= (filter.MaxRooms != 0 ? filter.MaxRooms: x.Room)) &&
+
+            (x.Price >= (filter.MinPrince != 0 ? filter.MinPrince : 0) && x.Price <= (filter.MaxPrice != 0 ? filter.MaxPrice : x.Price)) 
+
             ).ToList();
         }
     }
