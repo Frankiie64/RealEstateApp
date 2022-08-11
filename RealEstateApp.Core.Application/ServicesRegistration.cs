@@ -5,6 +5,7 @@ using System.Reflection;
 using RealEstateApp.Application.Services;
 using RealEstateApp.Core.Application.Interfaces.Service;
 using RealEstateApp.Core.Application.Services.ServicesApp;
+using MediatR;
 
 namespace RealEstateApp.Core.Application
 {
@@ -34,7 +35,7 @@ namespace RealEstateApp.Core.Application
             #region ServiceApi
 
             #endregion
-
+            services.AddMediatR(Assembly.GetExecutingAssembly());
             #endregion
         }
     }
