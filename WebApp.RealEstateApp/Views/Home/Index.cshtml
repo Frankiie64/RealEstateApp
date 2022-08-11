@@ -17,7 +17,7 @@
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
                         <li class="dropdown-item">
-                            <input class="form-check-input" value="0" type="checkbox" name="IdTypeProperty" id="TypeProperty" />
+                            <input class="form-check-input" value="0" checked type="checkbox" name="IdTypeProperty" id="TypeProperty" />
                             <label class="form-check-label" for="TypeProperty">Todas</label>
                         </li>
                         @foreach (TypePropertyViewModel item in ViewBag.TypePropertys)
@@ -38,7 +38,6 @@
                     {
                         <option value="@i">@i</option>
                     }
-                    <option value="6">Superior</option>
                 </select>
 
                 <select class="form-select-sm m-2" name="MaxRooms">
@@ -47,7 +46,6 @@
                     {
                         <option value="@i">@i</option>
                     }
-                    <option value="6">Superior</option>
                 </select>
 
                 <select class="form-select-sm m-2" name="MinBathRooms">
@@ -56,7 +54,6 @@
                     {
                         <option value="@i">@i</option>
                     }
-                    <option value="5">Superior</option>
                 </select>
 
                 <select class="form-select-sm m-2" name="MaxBathRooms">
@@ -65,7 +62,6 @@
                     {
                         <option value="@i">@i</option>
                     }
-                    <option value="5">Superior</option>
                 </select>
 
                 <select class="form-select-sm m-2" name="MinPrince">
@@ -82,7 +78,6 @@
                     {
                         <option value="@i">RD$ @i</option>
                     }
-                    <option value="6">Superior</option>
 
                 </select>
             </div>
