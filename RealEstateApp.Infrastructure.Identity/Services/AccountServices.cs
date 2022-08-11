@@ -131,7 +131,7 @@ namespace RealEstateApp.Infrastructure.Identity.Services
 
             var item = await userManager.FindByEmailAsync(user.Email);
 
-            response.IdClient = item.Id;
+            //response.IdClient = item.Id;  //No veo esto necesario
 
             return response;
         }
@@ -334,10 +334,49 @@ namespace RealEstateApp.Infrastructure.Identity.Services
 
             var item = await userManager.FindByEmailAsync(user.Email);
 
-            response.IdClient = item.Id;
+            //response.IdClient = item.Id;
 
             return response;
         }
 
+        //
+        public async Task<RegisterResponse> UpdateAgentAsync(RegisterRequest request)
+        {
+            RegisterResponse response = new();
+            response.HasError = false;
+
+            var user = await userManager.FindByIdAsync(request.Id);
+
+            var userWithUsername = await userManager.FindByNameAsync(request.Username);
+
+            if (userWithUsername != null && user.UserName != request.Username)
+            {
+                response.HasError = true;
+                response.Error = $"El nombre de usuario '{request.Username}' ya  existe.";
+                return response;
+            }
+
+            var userWithEmail = await userManager.FindByEmailAsync(request.Email);
+
+            if (userWithEmail != null && user.Email != request.Email)
+            {
+                response.HasError = true;
+                response.Error = $"El email '{request.Email}' ya esta en uso.";
+                return response;
+            }
+
+            user.Email = request.Email;
+            user.Firstname = request.Firstname;
+            user.Lastname = request.Lastname;
+            user.DocumementId = request.DocumementId;
+            user.UserName = request.Username;
+            user.PhoneNumber = request.PhoneNumber;
+            user.EmailConfirmed = true;
+            user.PhoneNumberConfirmed = true;
+
+            await userManager.UpdateAsync(user);
+            return response;
+
+        }
     }
 }

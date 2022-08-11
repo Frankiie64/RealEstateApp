@@ -47,7 +47,7 @@ namespace WebApi.RealEstateApp.Controllers.v1
             }
         }
 
-        [HttpGet("{code}")]
+        [HttpGet("GetPropertyByCode/{code}")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(PropertyDto))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]

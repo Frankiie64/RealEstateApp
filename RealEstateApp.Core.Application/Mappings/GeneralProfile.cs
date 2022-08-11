@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
 using RealEstateApp.Core.Application.Dtos.Account;
+using RealEstateApp.Core.Application.Dtos.Agent;
 using RealEstateApp.Core.Application.Dtos.Improvement;
 using RealEstateApp.Core.Application.Dtos.Property;
 using RealEstateApp.Core.Application.Dtos.TypeProperty;
 using RealEstateApp.Core.Application.Dtos.TypeSale;
+using RealEstateApp.Core.Application.Features.Agent.Commands.ChangeAgentStatus;
 using RealEstateApp.Core.Application.Features.Improvements.Commands.CreateImprovement;
 using RealEstateApp.Core.Application.Features.Improvements.Commands.UpdateImprovement;
 using RealEstateApp.Core.Application.Features.TypeProperties.Commands.CreateTypeProperty;
@@ -15,6 +17,7 @@ using RealEstateApp.Core.Application.ViewModels.Property;
 using RealEstateApp.Core.Application.ViewModels.PropertyImprovement;
 using RealEstateApp.Core.Application.ViewModels.TypeProperty;
 using RealEstateApp.Core.Application.ViewModels.TypeSale;
+using RealEstateApp.Core.Application.ViewModels.Users;
 using RealEstateApp.Core.Domain.Entities;
 
 namespace RealEstateApp.Core.Application.Mappings
@@ -55,6 +58,70 @@ namespace RealEstateApp.Core.Application.Mappings
                .ForMember(x => x.Error, opt => opt.Ignore());
             */
 
+            CreateMap<AuthenticationResponse, UserVM>()
+               .ReverseMap()
+               .ForMember(x => x.HasError, opt => opt.Ignore())
+               .ForMember(x => x.Error, opt => opt.Ignore());
+
+            CreateMap<AuthenticationResponse, AgentDto>()
+               .ForMember(x => x.PropertiesQuantity, opt => opt.Ignore())
+               .ReverseMap()
+               .ForMember(x => x.HasError, opt => opt.Ignore())
+               .ForMember(x => x.Error, opt => opt.Ignore());
+            ////
+
+
+            CreateMap<AuthenticationResponse, ChangeAgentStatusCommand>()
+               .ForMember(x => x.PropertiesQuantity, opt => opt.Ignore())
+               .ReverseMap()
+               .ForMember(x => x.HasError, opt => opt.Ignore())
+               .ForMember(x => x.JWTtoken, opt => opt.Ignore())
+               .ForMember(x => x.Error, opt => opt.Ignore())
+               .ForMember(x => x.RefreshToken, opt => opt.Ignore())
+               .ForMember(x => x.Error, opt => opt.Ignore());
+
+            CreateMap<AuthenticationResponse, AgentChangeStatusResponse>()
+               .ForMember(x => x.PropertiesQuantity, opt => opt.Ignore())
+               .ReverseMap()
+               .ForMember(x => x.HasError, opt => opt.Ignore())
+               .ForMember(x => x.JWTtoken, opt => opt.Ignore())
+               .ForMember(x => x.Error, opt => opt.Ignore())
+               .ForMember(x => x.RefreshToken, opt => opt.Ignore())
+               .ForMember(x => x.Error, opt => opt.Ignore());
+
+            CreateMap<AuthenticationResponse, RegisterRequest>()
+               .ForMember(x => x.ConfirmPassword, opt => opt.Ignore())
+               .ReverseMap()
+               .ForMember(x => x.JWTtoken, opt => opt.Ignore())
+               .ForMember(x => x.Error, opt => opt.Ignore())
+               .ForMember(x => x.HasError, opt => opt.Ignore())
+               .ForMember(x => x.RefreshToken, opt => opt.Ignore())
+               .ForMember(x => x.Error, opt => opt.Ignore());
+
+
+            //A ver si sirve   ------------------>
+            CreateMap<UserVM, ChangeAgentStatusCommand>()
+               .ForMember(x => x.PropertiesQuantity, opt => opt.Ignore())
+               .ReverseMap();
+
+            CreateMap<RegisterRequest, ChangeAgentStatusCommand>()
+               .ForMember(x => x.PropertiesQuantity, opt => opt.Ignore())
+               .ReverseMap();
+
+            CreateMap<UserVM, AgentChangeStatusResponse>()
+               .ForMember(x => x.PropertiesQuantity, opt => opt.Ignore())
+               .ReverseMap();
+
+            CreateMap<UserVM, ChangeAgentStatusCommand>()
+               .ForMember(x => x.PropertiesQuantity, opt => opt.Ignore())
+               .ReverseMap();
+
+            // ------------------------->
+
+
+            //CreateMap<AgentDto, UserVM>()
+            //   .ReverseMap()
+            //   .ForMember(x => x.PropertiesQuantity, opt => opt.Ignore());
 
 
             CreateMap<Property, PropertyViewModel>()
@@ -134,6 +201,7 @@ namespace RealEstateApp.Core.Application.Mappings
             #region DTO's
 
             CreateMap<Property, PropertyDto>()
+                .ForMember(x => x.User, opt => opt.Ignore())
                .ReverseMap()
                 .ForMember(x => x.Creadted, opt => opt.Ignore())
                 .ForMember(x => x.LastModified, opt => opt.Ignore())
