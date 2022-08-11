@@ -4,6 +4,7 @@ using RealEstateApp.Core.Application.Dtos.Property;
 using RealEstateApp.Core.Application.Dtos.TypeProperty;
 using RealEstateApp.Core.Application.Dtos.TypeSale;
 using RealEstateApp.Core.Application.Interfaces.Repository;
+using RealEstateApp.Core.Application.Interfaces.Services;
 using RealEstateApp.Core.Application.ViewModels.Property;
 using System;
 using System.Collections.Generic;
@@ -22,12 +23,14 @@ namespace RealEstateApp.Core.Application.Features.Properties.Queries.GetAllPrope
     public class GetAllPropertiesQueryHandler : IRequestHandler<GetAllPropertiesQuery, IList<PropertyDto>>
     {
         private readonly IPropertyRepository _propertyRepository;
+        private readonly IUserService  _userService;
         private readonly IMapper _mapper;
 
 
-        public GetAllPropertiesQueryHandler(IPropertyRepository propertyRepository, IMapper mapper)
+        public GetAllPropertiesQueryHandler(IPropertyRepository propertyRepository, IMapper mapper, IUserService userService)
         {
             _propertyRepository = propertyRepository;
+            _userService = userService;
             _mapper = mapper;
         }
 
@@ -40,6 +43,7 @@ namespace RealEstateApp.Core.Application.Features.Properties.Queries.GetAllPrope
         private async Task<List<PropertyDto>> GetAllDto()
         {
             var propertyList = await _propertyRepository.GetAllWithIncludeAsync(new List<string> { "Improvements", "TypeProperty", "TypeSale" });
+            //var users = await _userService.GetAllUsersAsync();
 
             return propertyList.Select(property => new PropertyDto
             {
@@ -54,6 +58,7 @@ namespace RealEstateApp.Core.Application.Features.Properties.Queries.GetAllPrope
                 AgentId = property.AgentId,
                 TypeProperty = _mapper.Map<TypePropertyDto>(property.TypeProperty),
                 TypeSale = _mapper.Map<TypeSaleDto>(property.TypeSale)
+                //AgentName = users.Where(x => x.Id == property.AgentId).FirstOrDefault()
             }).ToList();
         }
     }

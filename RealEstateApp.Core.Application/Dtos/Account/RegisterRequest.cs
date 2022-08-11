@@ -1,4 +1,6 @@
-﻿namespace RealEstateApp.Core.Application.Dtos.Account 
+﻿using System.Text.Json.Serialization;
+
+namespace RealEstateApp.Core.Application.Dtos.Account 
 { 
     public class RegisterRequest
     {
@@ -11,6 +13,11 @@
         public string Password { get; set; }
         public string ConfirmPassword { get; set; }
         public string PhoneNumber { get; set; }
+
+        public bool IsVerified { get; set; }
+
+        [JsonIgnore]
+
         public string Rol { get; set; }
     }
 }
