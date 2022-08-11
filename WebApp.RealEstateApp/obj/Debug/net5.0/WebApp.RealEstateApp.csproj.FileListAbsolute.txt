@@ -899,3 +899,6 @@ C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApp.
 C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5.0\WebApp.RealEstateApp.pdb
 C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5.0\WebApp.RealEstateApp.genruntimeconfig.cache
 C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5.0\ref\WebApp.RealEstateApp.dll
+C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\RealEstateApp\WebApp.RealEstateApp\bin\Debug\net5.0\MediatR.dll
+C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\RealEstateApp\WebApp.RealEstateApp\bin\Debug\net5.0\MediatR.Contracts.dll
+C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\RealEstateApp\WebApp.RealEstateApp\bin\Debug\net5.0\MediatR.Extensions.Microsoft.DependencyInjection.dll
