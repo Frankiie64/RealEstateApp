@@ -912,3 +912,5 @@ C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\RealEstateApp\WebApp.RealE
 C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5.0\ref\WebApp.RealEstateApp.dll
 C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5.0\WebApp.RealEstateApp.pdb
 C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5.0\WebApp.RealEstateApp.genruntimeconfig.cache
+C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5.0\Razor\Views\Agent\Index.cshtml.g.cs
+C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5.0\Razor\Views\Agent\Details.cshtml.g.cs
