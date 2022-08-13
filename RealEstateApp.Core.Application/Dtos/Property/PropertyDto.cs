@@ -21,7 +21,7 @@ namespace RealEstateApp.Core.Application.Dtos.Property
         public string Description { get; set; }
         public double Meters { get; set; }
         public int Bathroom { get; set; }
-        public int AgentId { get; set; }        
+        public string AgentId { get; set; }        
         public string AgentName { get; set; }
         public UserVM User { get; set; }
 

@@ -42,7 +42,6 @@ namespace RealEstateApp.Infrastructure.Persistence
             //Other repos
             services.AddTransient<IPropertyRepository, PropertyRepository>();
             services.AddTransient<IImprovementRepository, ImprovementRepository>();
-            services.AddTransient<IPropertyImprovementRepository, PropertyImprovementRepository>();
             services.AddTransient<ITypePropertyRepository, TypePropertyRepository>();
             services.AddTransient<ITypeSaleRepository, TypeSaleRepository>();
             services.AddTransient<IPhotosPropertyRepository, PhotosPropertyRepository>();

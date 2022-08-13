@@ -1,9 +1,4 @@
-﻿using RealEstateApp.Core.Application.ViewModels.PropertyImprovement;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using RealEstateApp.Core.Application.ViewModels.Property;
 
 namespace RealEstateApp.Core.Application.ViewModels.Improvement
 {
@@ -13,8 +8,7 @@ namespace RealEstateApp.Core.Application.ViewModels.Improvement
 
         public string Name { get; set; }
         public string Description { get; set; }
-
-        public ICollection<PropertyImprovementViewModel> PropertyImprovements { get; set; }
-
+        public int IdProperty { get; set; }
+        public PropertyViewModel Property { get; set; }
     }
 }
