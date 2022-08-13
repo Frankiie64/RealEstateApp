@@ -22,29 +22,48 @@
         </div>
     </div>
     <div class=" col col-12 form-control bg-light shadow ">
-        <form>
+        <form method="post" asp-controller="Agent" asp-action="Index">
             <div class="col-6 mb-3 p-3 me-1">
                 <label for="AgentName" class="form-label">Nombre del agente</label>
-                <input type="text" class="form-text" id="AgentName">
+                <input name="fullname" type="text" class="form-text" id="AgentName">
             </div>
         </form>
         <div class="row m-3">
-            @foreach (UserVM item in ViewBag.Agents)
-            {               
-            <div class="col col-4">
-                <a class="text-decoration-none text-dark" type="button" asp-controller="Agent" asp-action="Details" asp-route-id="@item.Id">
-                    <div class="card m-1" style="width: 18rem;">
-                        <img src="@item.PhotoProfileUrl" class="card-img-top" alt="PhotoPrile">
+            @if (ViewBag.Agents.Count == 0)
+            {
+                <div class="col-6 offset-3">
+                    <div class="card shadow-sm">
                         <div class="card-body">
-                            <h5 class="card-title">@item.Firstname @item.Lastname</h5>
-                            <p class="card-subtitle fs-6 fw-bolder"> Numero de telefono</p>
-                            <small>@item.PhoneNumber</small>
-                            <p class="card-subtitle fs-6 fw-bolder">Correo Eletronico </p>
-                            <small> @item.Email</small>
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <h2 class="text-center">NO EXISTE</h2>
+                                <div class="text-center ">
+                                    <p>El agente que desea encontrar no se encuentra en nuestros registros.</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </a>
-            </div>
+                </div>
+            }
+            else
+            {
+
+                @foreach (UserVM item in ViewBag.Agents)
+                {
+                    <div class="col col-4">
+                        <a class="text-decoration-none text-dark" type="button" asp-controller="Agent" asp-action="Details" asp-route-id="@item.Id">
+                            <div class="card m-1" style="width: 18rem;">
+                                <img src="@item.PhotoProfileUrl" class="card-img-top" alt="PhotoPrile">
+                                <div class="card-body">
+                                    <h5 class="card-title">@item.Firstname @item.Lastname</h5>
+                                    <p class="card-subtitle fs-6 fw-bolder"> Numero de telefono</p>
+                                    <small>@item.PhoneNumber</small>
+                                    <p class="card-subtitle fs-6 fw-bolder">Correo Eletronico </p>
+                                    <small> @item.Email</small>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                }
             }
         </div>
     </div>
