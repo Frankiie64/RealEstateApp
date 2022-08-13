@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RealEstateApp.Core.Application.Dtos.Account;
+using RealEstateApp.Core.Application.helper;
 using RealEstateApp.Core.Application.Interfaces.Services;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,14 @@ namespace WebApp.RealEstateApp.Controllers
         private readonly IUserService userService;
         private readonly IHttpContextAccessor context;
         AuthenticationResponse user;
+
+        public AgentController(IHttpContextAccessor context, IUserService userService)
+        {
+            this.userService = userService;
+            this.context = context;
+            user = context.HttpContext.Session.Get<AuthenticationResponse>("user");
+        }
+
         public async Task<IActionResult> Index()
         {
             ViewBag.Agents = await userService.GetAllAgentAsync();

@@ -1,0 +1,49 @@
+﻿@using RealEstateApp.Core.Application.ViewModels.Users;
+@{
+    ViewData["Title"] = "Agentes";
+}
+
+<div class="row mt-3">
+    <div class="col col-8 mx-auto">
+        <div class="card mb-3 border border-2 border-dark">
+            <div id="carouselExampleSlidesOnly" class="carousel slide " data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="https://img.freepik.com/foto-gratis/vista-frontal-agente-inmobiliario-femenino-que-muestra-nuevo-plan-casa-emparejar_23-2148895495.jpg?w=2000" class="d-block w-100 mx-auto" alt="inmbiliaria">
+                    </div>
+                    <div class="carousel-item ">
+                        <img src="https://img.freepik.com/foto-gratis/retrato-agente-inmobiliaria-mirando-camara-mientras-pareja-feliz-pie-fondo_637285-6097.jpg?w=2000" class="d-block w-100 mx-auto" alt="inmbiliaria">
+                    </div>
+                    <div class="carousel-item ">
+                        <img src="https://img.freepik.com/fotos-premium/propietario-desbloquea-llave-casa-nuevo-hogar-agentes-inmobiliarios-agentes-ventas_112699-358.jpg?w=2000" class="d-block w-100 mx-auto" alt="inmbiliaria">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class=" col col-12 form-control bg-light shadow ">
+        <form>
+            <div class="col-6 mb-3 p-3 me-1">
+                <label for="AgentName" class="form-label">Nombre del agente</label>
+                <input type="text" class="form-text" id="AgentName">
+            </div>
+        </form>
+        <div class="row m-3">
+            @foreach (UserVM item in ViewBag.Agents)
+            {                
+                <div class="col col-4">
+                    <div class="card m-1" style="width: 18rem;">
+                        <img src="@item.PhotoProfileUrl" class="card-img-top" alt="PhotoPrile">
+                        <div class="card-body">
+                            <h5 class="card-title">@item.Firstname @item.Lastname</h5>
+                            <p class="card-subtitle fs-6 fw-bolder"> Numero de telefono</p>
+                            <small>@item.PhoneNumber</small>
+                            <p class="card-subtitle fs-6 fw-bolder">Correo Eletronico </p>
+                            <small> @item.Email</small>
+                        </div>
+                    </div>
+                </div>                    
+            }
+        </div>
+    </div>
+</div>
