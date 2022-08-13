@@ -20,14 +20,10 @@ namespace RealEstateApp.Infrastructure.Persistence.Context
             _httpContextAccessor = httpContextAccessor;
         }
 
-
         public DbSet<Property> Properties { get; set; }
         public DbSet<TypeProperty> TypeProperties { get; set; }
         public DbSet<TypeSale> TypeSales { get; set; }
         public DbSet<Improvement> Improvements { get; set; }
-
-
-
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
         {
@@ -112,10 +108,6 @@ namespace RealEstateApp.Infrastructure.Persistence.Context
                 modelBuilder.Entity<PhotosOfProperties>()
           .HasKey(photosOfProperties => photosOfProperties.Id);
 
-            modelBuilder.Entity<PropertyImprovement>()  // Many to Many
-                .HasKey(x => new { x.PropertyId, x.ImprovementId });
-
-
 
             #endregion
 
@@ -142,7 +134,13 @@ namespace RealEstateApp.Infrastructure.Persistence.Context
                 .HasForeignKey(idProperty => idProperty.IdProperty)
                 .OnDelete(deleteBehavior: DeleteBehavior.Cascade);
 
+            modelBuilder.Entity<Property>()
+          .HasMany(property => property.Improvements)
+          .WithOne(improvement => improvement.Property)
+          .HasForeignKey(improvement => improvement.IdProperty)
+          .OnDelete(deleteBehavior: DeleteBehavior.Cascade);
 
+            /*
             modelBuilder.Entity<Property>()
                 .HasMany(property => property.Improvements)
                 .WithMany(improvement => improvement.Properties)
@@ -160,7 +158,7 @@ namespace RealEstateApp.Infrastructure.Persistence.Context
                         j.ToTable("PropertyImprovement");
                         j.HasKey(e => new { e.PropertyId, e.ImprovementId });
                     });
-
+            */
 
             #endregion
 

@@ -20,7 +20,7 @@ namespace RealEstateApp.Core.Application.ViewModels.Property
         public double Meters { get; set; }
         public int Bathroom { get; set; }
         public List<string> UrlPhotos { get; set; }
-        public int AgentId { get; set; }
+        public string AgentId { get; set; }
         public List<IFormFile> File { get; set; }
 
         //Combobox

@@ -102,8 +102,7 @@ namespace RealEstateApp.Infrastructure.Identity.Services
                 Firstname = request.Firstname,
                 Lastname = request.Lastname,
                 DocumementId = request.DocumementId,
-                UserName = request.Username,
-                IsActive = request.IsActive
+                UserName = request.Username,                
             };
 
             var result = await userManager.CreateAsync(user, request.Password);
@@ -261,14 +260,10 @@ namespace RealEstateApp.Infrastructure.Identity.Services
                     Email = vm.Email,
                     Roles = rol.ToList(),
                     IsVerified = vm.EmailConfirmed,
-                    IsActive = vm.IsActive
+                    PhoneNumber = vm.PhoneNumber,
+                    PhotoProfileUrl = vm.PhotoProfileUrl,
+                    
                 };
-
-                if(item.Roles[0] == "Basic" && item.Roles.Count() == 1)
-                {
-                    item.Roles.Clear();
-                    item.Roles.Add("Cliente");
-                }
 
                 list.Add(item);
             };
@@ -318,7 +313,8 @@ namespace RealEstateApp.Infrastructure.Identity.Services
                 Firstname = request.Firstname,
                 Lastname = request.Lastname,
                 DocumementId = request.DocumementId,
-                UserName = request.Username,                  
+                UserName = request.Username,   
+                PhotoProfileUrl = request.PhotoProfileUrl
             };
 
             var result = await userManager.UpdateAsync(user);
@@ -373,10 +369,10 @@ namespace RealEstateApp.Infrastructure.Identity.Services
             user.DocumementId = request.DocumementId;
             user.UserName = request.Username;
             user.PhoneNumber = request.PhoneNumber;
+            user.PhotoProfileUrl = request.PhotoProfileUrl;
             user.EmailConfirmed = true;
             user.PhoneNumberConfirmed = true;
-            user.IsActive = request.IsActive;
-
+            
             await userManager.UpdateAsync(user);
             return response;
 

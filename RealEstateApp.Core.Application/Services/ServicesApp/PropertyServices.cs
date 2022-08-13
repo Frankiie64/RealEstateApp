@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using RealEstateApp.Core.Application.Interfaces.Repository;
 using RealEstateApp.Core.Application.Interfaces.Service;
-using RealEstateApp.Core.Application.ViewModels.PhotoProperties;
+using RealEstateApp.Core.Application.Interfaces.Services;
 using RealEstateApp.Core.Application.ViewModels.Property;
 using RealEstateApp.Core.Domain.Entities;
 using System.Collections.Generic;
@@ -14,18 +14,28 @@ namespace RealEstateApp.Core.Application.Services.ServicesApp
     {
         private readonly IMapper mapper;
         private readonly IPropertyRepository repo;
+        private readonly IUserService userService;
 
-        public PropertyServices(IMapper mapper, IPropertyRepository repo, IPhotosPropertyRepository PhotoRepo) : base(repo,mapper)
+        public PropertyServices(IMapper mapper, IPropertyRepository repo, IPhotosPropertyRepository PhotoRepo, IUserService userService) : base(repo,mapper)
         {
             this.mapper = mapper;
             this.repo = repo;
+            this.userService = userService;
         }
 
         public async Task<List<PropertyViewModel>> GetAllViewModelWithIncludeAsync()
         {
-            var entityList = await repo.GetAllWithIncludeAsync(new List<string> { "TypeProperty", "TypeSale", "Improvements", "PropertyImprovements", "UrlPhotos" });
+            var entityList = await repo.GetAllWithIncludeAsync(new List<string> { "TypeProperty", "TypeSale", "Improvements", "UrlPhotos" });
 
-            return mapper.Map<List<PropertyViewModel>>(entityList);
+            var listMapped = mapper.Map<List<PropertyViewModel>>(entityList);
+            var users = await userService.GetAllUsersAsync();
+
+            foreach (var item in listMapped)
+            {
+                item.agent = users.Where(agent => agent.Id == item.AgentId).SingleOrDefault();
+            }
+
+            return listMapped;
         }
 
         public async Task<List<PropertyViewModel>> GetAllViewModelWithIncludeByFilterAsync(PropertyByFiltering filter)
@@ -33,6 +43,13 @@ namespace RealEstateApp.Core.Application.Services.ServicesApp
             var entityList = await repo.GetAllWithIncludeAsync(new List<string> { "TypeProperty", "TypeSale", "Improvements", "PropertyImprovements", "UrlPhotos" });
 
             var listMapped = mapper.Map<List<PropertyViewModel>>(entityList);
+
+            var users = await userService.GetAllUsersAsync();
+
+            foreach (var item in listMapped)
+            {
+                item.agent = users.Where(agent => agent.Id == item.AgentId).SingleOrDefault();
+            }
 
             return listMapped.Where(x =>
 
