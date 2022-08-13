@@ -6,13 +6,17 @@ using RealEstateApp.Core.Application.Features.Improvements.Commands.DeleteImprov
 using RealEstateApp.Core.Application.Features.Improvements.Commands.UpdateImprovement;
 using RealEstateApp.Core.Application.Features.Improvements.Queries.GetAllImprovements;
 using RealEstateApp.Core.Application.Features.Improvements.Queries.GetImprovementById;
+using Swashbuckle.AspNetCore.Annotations;
 using System;
+using System.Net.Mime;
 using System.Threading.Tasks;
 using WebAPI.RealEstateApp.Controllers;
 
 namespace WebApi.RealEstateApp.Controllers.v1
 {
     [ApiVersion("1.0")]
+    [SwaggerTag("Mantenimiento Mejoras")]
+
     public class ImprovementController : BaseApiController
     {
 
@@ -20,6 +24,10 @@ namespace WebApi.RealEstateApp.Controllers.v1
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ImprovementDto))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [SwaggerOperation(
+            Summary = "Listado de mejoras",
+            Description = "Obtener todas las mejoras"
+         )]
         public async Task<IActionResult> Get()
         {
             try
@@ -36,6 +44,10 @@ namespace WebApi.RealEstateApp.Controllers.v1
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ImprovementDto))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [SwaggerOperation(
+            Summary = "Mejoras por Id",
+            Description = "Obtener una mejora por Id"
+         )]
         public async Task<IActionResult> Get(int id)
         {
             try
@@ -49,10 +61,15 @@ namespace WebApi.RealEstateApp.Controllers.v1
         }
 
         [HttpPost]
+        [Consumes(MediaTypeNames.Application.Json)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> Post(CreateImprovementCommand command)
+        [SwaggerOperation(
+            Summary = "Crear una mejora",
+            Description = "Recibe los parametros para crear una nueva mejora"
+         )]
+        public async Task<IActionResult> Post([FromBody] CreateImprovementCommand command)
         {
             try
             {
@@ -72,10 +89,15 @@ namespace WebApi.RealEstateApp.Controllers.v1
 
 
         [HttpPut("{id}")]
+        [Consumes(MediaTypeNames.Application.Json)]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SaveImprovementDto))]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> Put(int id, UpdateImprovementCommand command)
+        [SwaggerOperation(
+            Summary = "Actualizacion mejora",
+            Description = "Recibe los parametros para modificar una mejora existente"
+         )]
+        public async Task<IActionResult> Put(int id, [FromBody] UpdateImprovementCommand command)
         {
             try
             {
@@ -99,6 +121,10 @@ namespace WebApi.RealEstateApp.Controllers.v1
         [HttpDelete("{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [SwaggerOperation(
+            Summary = "Eliminar una mejora",
+            Description = "Recibe los parametros para eliminar una mejora existente"
+         )]
         public async Task<IActionResult> Delete(int id)
         {
             try

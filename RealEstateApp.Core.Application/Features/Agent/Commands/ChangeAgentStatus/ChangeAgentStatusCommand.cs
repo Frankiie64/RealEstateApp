@@ -41,41 +41,28 @@ namespace RealEstateApp.Core.Application.Features.Agent.Commands.ChangeAgentStat
 
         public async Task<AgentChangeStatusResponse> Handle(ChangeAgentStatusCommand command, CancellationToken cancellationToken)
         {
-            //AuthenticationResponse
 
-            var allUsers = await _userServices.GetAllUsersAsync();
-            var Agent = allUsers.Where(x => x.Id == command.Id).ToList();
+            //AÑADIR IsVerified a la BD de Identity
 
-            foreach (var agentUser in Agent)
-            {
-                command.Id = agentUser.Id;
-                command.Firstname = agentUser.Firstname;
-                //agent.PhoneNumber = command.PhoneNumber;
-                command.Lastname = agentUser.Lastname;
-                command.DocumementId = agentUser.DocumementId;
-                command.Email = agentUser.Email;
-                command.Username = agentUser.Username;
-            }
-
-            var changeStatus = await _userServices.GetUserByIdAsync(command.Id);
+            AuthenticationResponse changeStatus = await _accountServices.GetUserByIdAsync(command.Id);
             if (changeStatus == null) throw new Exception($"Improvement Not Found.");
+            //changeStatus.PhoneNumber = 
 
-            //AuthenticationResponse agent = new();
-            //agent.Id = command.Id;
-            //agent.Firstname = command.Firstname;
-            ////agent.PhoneNumber = command.PhoneNumber;
-            //agent.Lastname = command.Lastname;
-            //agent.DocumementId = command.DocumementId;
-            //agent.Email = command.Email;
-            //agent.Username = command.Username;
+            AuthenticationResponse agent = new();
+            agent.Id = command.Id;
+            agent.Firstname = command.Firstname;
+            //agent.PhoneNumber = command.PhoneNumber;
+            agent.Lastname = command.Lastname;
+            agent.DocumementId = command.DocumementId;
+            agent.Email = command.Email;
+            agent.Username = command.Username;
 
-            ResetPasswordRequest pass = new();
-            changeStatus = _mapper.Map<UserVM>(command);
+
+            changeStatus = _mapper.Map<AuthenticationResponse>(command);
             //var mapping = _mapper.Map<RegisterRequest>(agent);
-            await _accountServices.UpdateAgentAsync(_mapper.Map<RegisterRequest>(command));
+            await _accountServices.UpdateAgentAsync(_mapper.Map<RegisterRequest>(agent));
 
-            //var changeStatusDto = _mapper.Map<AgentChangeStatusResponse>(changeStatus);
-            var changeStatusDto = _mapper.Map<AgentChangeStatusResponse>(command);
+            var changeStatusDto = _mapper.Map<AgentChangeStatusResponse>(changeStatus);
 
             return changeStatusDto;
         }

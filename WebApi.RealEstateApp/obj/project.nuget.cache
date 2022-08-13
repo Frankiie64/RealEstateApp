@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "zyDm2ypj/dYlFvbpCmh0bGErTaQKsxyNinUZpQY8ogTGy6iS+sMgSziO3JynT0ZtqukJGKbT8iJvAY3JybsGqA==",
+  "dgSpecHash": "K/OA1NBfuFwudsWayIzHA8EzsjMa5XVl87+GQU3urlZZS5TQ73cfr0lnC1yc4QhSCxJLaZuhZbOpFcVQeFCgng==",
   "success": true,
   "projectFilePath": "C:\\Users\\Franklyn\\source\\repos\\Proyecto MVC .NET CORE\\RealEstateApp\\WebApi.RealEstateApp\\WebApi.RealEstateApp.csproj",
   "expectedPackageFiles": [
@@ -89,8 +89,9 @@
     "C:\\Users\\Franklyn\\.nuget\\packages\\portable.bouncycastle\\1.9.0\\portable.bouncycastle.1.9.0.nupkg.sha512",
     "C:\\Users\\Franklyn\\.nuget\\packages\\runtime.native.system\\4.3.0\\runtime.native.system.4.3.0.nupkg.sha512",
     "C:\\Users\\Franklyn\\.nuget\\packages\\swashbuckle.aspnetcore\\5.6.3\\swashbuckle.aspnetcore.5.6.3.nupkg.sha512",
+    "C:\\Users\\Franklyn\\.nuget\\packages\\swashbuckle.aspnetcore.annotations\\6.3.1\\swashbuckle.aspnetcore.annotations.6.3.1.nupkg.sha512",
     "C:\\Users\\Franklyn\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.3.1\\swashbuckle.aspnetcore.swagger.6.3.1.nupkg.sha512",
-    "C:\\Users\\Franklyn\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\5.6.3\\swashbuckle.aspnetcore.swaggergen.5.6.3.nupkg.sha512",
+    "C:\\Users\\Franklyn\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.3.1\\swashbuckle.aspnetcore.swaggergen.6.3.1.nupkg.sha512",
     "C:\\Users\\Franklyn\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\5.6.3\\swashbuckle.aspnetcore.swaggerui.5.6.3.nupkg.sha512",
     "C:\\Users\\Franklyn\\.nuget\\packages\\system.buffers\\4.5.0\\system.buffers.4.5.0.nupkg.sha512",
     "C:\\Users\\Franklyn\\.nuget\\packages\\system.collections\\4.3.0\\system.collections.4.3.0.nupkg.sha512",

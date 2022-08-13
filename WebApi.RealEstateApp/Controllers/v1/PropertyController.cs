@@ -4,6 +4,7 @@ using RealEstateApp.Core.Application.Dtos.Property;
 using RealEstateApp.Core.Application.Features.Properties.Queries.GetAllProperties;
 using RealEstateApp.Core.Application.Features.Properties.Queries.GetPropertyByCode;
 using RealEstateApp.Core.Application.Features.Properties.Queries.GetPropertyById;
+using Swashbuckle.AspNetCore.Annotations;
 using System;
 using System.Threading.Tasks;
 using WebAPI.RealEstateApp.Controllers;
@@ -11,7 +12,7 @@ using WebAPI.RealEstateApp.Controllers;
 namespace WebApi.RealEstateApp.Controllers.v1
 {
     [ApiVersion("1.0")]
-
+    [SwaggerTag("Mantenimiento Propiedades")]
     public class PropertyController : BaseApiController
     {
 
@@ -19,6 +20,10 @@ namespace WebApi.RealEstateApp.Controllers.v1
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(PropertyDto))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [SwaggerOperation(
+            Summary = "Listado de Propiedades",
+            Description = "Obtener todas las Propiedades"
+         )]
         public async Task<IActionResult> Get()
         {
             try
@@ -35,6 +40,10 @@ namespace WebApi.RealEstateApp.Controllers.v1
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(PropertyDto))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [SwaggerOperation(
+            Summary = "Propiedades por Id",
+            Description = "Obtener una propiedad por Id"
+         )]
         public async Task<IActionResult> GetById(int id)
         {
             try
@@ -51,6 +60,10 @@ namespace WebApi.RealEstateApp.Controllers.v1
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(PropertyDto))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [SwaggerOperation(
+            Summary = "Mejoras por Codigo",
+            Description = "Obtener una mejora por Codigo"
+         )]
         public async Task<IActionResult> GetByCode(int code)
         {
             try
