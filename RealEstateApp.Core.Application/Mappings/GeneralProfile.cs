@@ -146,6 +146,7 @@ namespace RealEstateApp.Core.Application.Mappings
 
 
             CreateMap<Property, PropertyViewModel>()
+               .ForMember(x => x.agent, opt => opt.Ignore())
                .ReverseMap();
 
             CreateMap<Property, SavePropertyViewModel>()
@@ -158,7 +159,8 @@ namespace RealEstateApp.Core.Application.Mappings
             CreateMap<PropertyViewModel, SavePropertyViewModel>()
                 .ForMember(x => x.UrlPhotos, opt => opt.Ignore())
                .ForMember(x => x.File, opt => opt.Ignore())
-               .ReverseMap();
+               .ReverseMap()
+               .ForMember(x => x.agent, opt => opt.Ignore());
 
             CreateMap<Improvement, ImprovementViewModel>()
                .ReverseMap();

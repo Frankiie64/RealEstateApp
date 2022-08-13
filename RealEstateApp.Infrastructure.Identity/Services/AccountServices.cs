@@ -260,6 +260,7 @@ namespace RealEstateApp.Infrastructure.Identity.Services
                     Email = vm.Email,
                     Roles = rol.ToList(),
                     IsVerified = vm.EmailConfirmed,
+                    PhoneNumber = vm.PhoneNumber,
                     PhotoProfileUrl = vm.PhotoProfileUrl,
                     
                 };

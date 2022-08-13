@@ -2,6 +2,7 @@
 using RealEstateApp.Core.Application.ViewModels.PhotoProperties;
 using RealEstateApp.Core.Application.ViewModels.TypeProperty;
 using RealEstateApp.Core.Application.ViewModels.TypeSale;
+using RealEstateApp.Core.Application.ViewModels.Users;
 using System;
 using System.Collections.Generic;
 
@@ -17,6 +18,7 @@ namespace RealEstateApp.Core.Application.ViewModels.Property
         public string Description { get; set; }
         public double Meters { get; set; }
         public int Bathroom { get; set; }
+        public UserVM agent { get; set; }
         public string AgentId { get; set; }
         public int TypePropertyId { get; set; }
         public TypePropertyViewModel TypeProperty { get; set; }
