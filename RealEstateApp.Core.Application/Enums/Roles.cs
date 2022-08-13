@@ -5,6 +5,7 @@
         SuperAdmin,
         Admin,
         Client,
-        Developer
+        Developer,
+        Agent
     }
 }
