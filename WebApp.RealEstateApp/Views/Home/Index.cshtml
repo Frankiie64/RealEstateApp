@@ -92,7 +92,12 @@
                 <div class="col-4 ">
                     <a asp-controller="Home" asp-action="Details" asp-route-id="@item.Id" type="button" class="w-100 text-decoration-none text-dark mb-2" style="text-decoration:none">
                         <div class="card" style="width: 16rem;">
-                            <img src="@item.ImageUrl" class="card-img-top" alt="Imagen Terreno">
+                            @{ 
+                                Random random = new Random();
+
+                                int photo = random.Next(0,(item.UrlPhotos.Count - 1));
+                            }
+                            <img src="@item.UrlPhotos[photo].ImagUrl" class="card-img-top" alt="Imagen Terreno">
                             <div class="card-body">
                                 <small class="card-title fw-bolder fs-5">
                                     @item.TypeProperty.Name

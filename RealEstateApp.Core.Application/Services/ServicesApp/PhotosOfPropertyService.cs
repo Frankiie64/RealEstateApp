@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using RealEstateApp.Core.Application.Interfaces.Repository;
+using RealEstateApp.Core.Application.Interfaces.Service.Service_App;
 using RealEstateApp.Core.Application.ViewModels.PhotoProperties;
 using RealEstateApp.Core.Domain.Entities;
 using System;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace RealEstateApp.Core.Application.Services.ServicesApp
 {
-    public class PhotosOfPropertyService : GenericServices<SavePhotosPropertyViewModel,PhotosPropertyViewModel,PhotosOfProperties>
+    public class PhotosOfPropertyService : GenericServices<SavePhotosPropertyViewModel,PhotosPropertyViewModel,PhotosOfProperties>, IPhotosOfPropertyService
     {
         private readonly IMapper mapper;
         private readonly IPhotosPropertyRepository repo;
