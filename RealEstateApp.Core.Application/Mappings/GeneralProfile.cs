@@ -13,6 +13,7 @@ using RealEstateApp.Core.Application.Features.TypeProperties.Commands.UpdateType
 using RealEstateApp.Core.Application.Features.TypeSales.Commands.CreateTypeSale;
 using RealEstateApp.Core.Application.Features.TypeSales.Commands.UpdateTypeSale;
 using RealEstateApp.Core.Application.ViewModels.Improvement;
+using RealEstateApp.Core.Application.ViewModels.PhotoProperties;
 using RealEstateApp.Core.Application.ViewModels.Property;
 using RealEstateApp.Core.Application.ViewModels.PropertyImprovement;
 using RealEstateApp.Core.Application.ViewModels.TypeProperty;
@@ -152,11 +153,14 @@ namespace RealEstateApp.Core.Application.Mappings
 
             CreateMap<Property, SavePropertyViewModel>()
                .ForMember(x => x.File, opt => opt.Ignore())
+               .ForMember(x => x.UrlPhotos, opt => opt.Ignore())
                .ReverseMap()
+                .ForMember(x => x.UrlPhotos, opt => opt.Ignore())
                .ForMember(x => x.PropertyImprovements, opt => opt.Ignore())
                .ForMember(x => x.Improvements, opt => opt.Ignore());
 
             CreateMap<PropertyViewModel, SavePropertyViewModel>()
+                .ForMember(x => x.UrlPhotos, opt => opt.Ignore())
                .ForMember(x => x.File, opt => opt.Ignore())
                .ReverseMap();
 
@@ -217,8 +221,16 @@ namespace RealEstateApp.Core.Application.Mappings
                .ForMember(x => x.Property, opt => opt.Ignore())
                .ForMember(x => x.Improvement, opt => opt.Ignore());
 
+            CreateMap<PhotosOfProperties, PhotosPropertyViewModel>()
+             .ReverseMap();
 
+            CreateMap<PhotosPropertyViewModel, SavePhotosPropertyViewModel>()
+              .ReverseMap()
+              .ForMember(x => x.Property, opt => opt.Ignore());
 
+            CreateMap<PhotosOfProperties, SavePhotosPropertyViewModel>()
+              .ReverseMap()
+              .ForMember(x => x.Property, opt => opt.Ignore());
             #region DTO's
 
             CreateMap<Property, PropertyDto>()
