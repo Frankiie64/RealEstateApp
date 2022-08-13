@@ -5,7 +5,7 @@
     ViewData["Title"] = "Detalles de la vivienda";
 }
 
-<div class="row mx-auto mt-5 p-2">
+<div class="row mx-auto mt-1 p-2">
     @*Borde generales *@
     <form class="form-control bg-light shadow">
         <div class="col col-12 p-3">
@@ -65,7 +65,7 @@
                             <div class="d-flex justify-content-lg-around gap-3 my-auto">
                                 <p class="card-text text-start"><small class="text-muted">Last updated 3 mins ago</small></p>
                                 <small>
-                                    <a class="btn btn-primary btn-sm ">@Model.Code</a>
+                                    <a class="btn btn-outline-success btn-sm ">@Model.Code</a>
                                 </small>
                             </div>
                         </div>
@@ -74,4 +74,43 @@
             </div>
         </div>
     </form>
+</div>
+
+<div class="row d-flex gap-3  mx-auto mt-1">
+    <div class="col flex-column bg-light shadow border-1 rounded-1 rounded">
+        <div class="row p-2 m-1">
+            <div class="col col-4 mx-auto my-auto">
+                <small class="text-dark fw-bolder fs-4 pt-5 text-center">
+                    Mejoras <i class="fa-solid fa-circle-check"></i>
+                </small>
+            </div>
+        </div>
+        <hr />
+        <div class="row p-1 m-2">
+            @for (int x = 0; x < 4; x++)
+            {
+                <div class="col col-sm-3 my-2">
+                    <small class="btn btn-sm btn-dark text-light text-center">
+                        Garaje <i class="fa-solid fa-pencil"></i>
+                    </small>
+                </div>
+            }
+        </div>
+    </div>
+    <div class="col flex-column bg-light shadow border-1 rounded-1 rounded">
+        <div class="card mb-3 bg-transparent border-0 my-auto">
+            <div class="row g-0 ">
+                <div class="col-md-4">
+                    <img src="https://th.bing.com/th/id/R.397bf3355403cf073fb4a7e95b024cef?rik=nsGLf9dRwPJGnA&pid=ImgRaw&r=0" class="img-fluid rounded pt-3 m-1 w-100" alt="agente">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
