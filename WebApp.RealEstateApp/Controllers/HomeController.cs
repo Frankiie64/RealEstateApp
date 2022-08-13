@@ -4,6 +4,7 @@ using RealEstateApp.Core.Application.Dtos.Account;
 using RealEstateApp.Core.Application.helper;
 using RealEstateApp.Core.Application.Interfaces.Service;
 using RealEstateApp.Core.Application.ViewModels.Property;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace WebApp.RealEstateApp.Controllers
@@ -31,7 +32,6 @@ namespace WebApp.RealEstateApp.Controllers
             return View();
         }
 
-
         public async Task<IActionResult> PropertysByFilter(PropertyByFiltering filter)
         {
             ViewBag.TypePropertys = await serviceTypeProperty.GetAllViewModelAsync();
@@ -40,6 +40,15 @@ namespace WebApp.RealEstateApp.Controllers
 
             return View("Index");
         }
+
+        public async Task<IActionResult> Details(int id)
+        {
+            // No me mire, no hay mucho tiempo xD
+            var properties = await serviceProperty.GetAllViewModelWithIncludeAsync();
+            var property = properties.Where(property => property.Id == id).SingleOrDefault();
+            return View("Details",property);
+        }
+
 
     }
 }
