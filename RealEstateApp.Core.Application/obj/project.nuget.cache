@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "wkmAcs52Y4kJM1idt1Jy8jYHMVmGALlA3PtgPcqE5jbNJzaU4N2yRrp0ETbgUvaKsAc/gH3P7xd2qCnaJJgfTQ==",
+  "dgSpecHash": "yWmqq8lmGGCKIeb5TQBoM+7YsjRIA4u/Ggf6wDuiU9/+OLj3aoj0dGmeDUGjRh8Y/1qz7Jc0vgLhJEXiMLsl1Q==",
   "success": true,
   "projectFilePath": "C:\\Users\\Franklyn\\source\\repos\\Proyecto MVC .NET CORE\\RealEstateApp\\RealEstateApp.Core.Application\\RealEstateApp.Core.Application.csproj",
   "expectedPackageFiles": [
@@ -33,7 +33,11 @@
     "C:\\Users\\Franklyn\\.nuget\\packages\\microsoft.extensions.options.configurationextensions\\5.0.0\\microsoft.extensions.options.configurationextensions.5.0.0.nupkg.sha512",
     "C:\\Users\\Franklyn\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0\\microsoft.extensions.primitives.6.0.0.nupkg.sha512",
     "C:\\Users\\Franklyn\\.nuget\\packages\\microsoft.net.http.headers\\2.2.0\\microsoft.net.http.headers.2.2.0.nupkg.sha512",
+    "C:\\Users\\Franklyn\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
     "C:\\Users\\Franklyn\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
+    "C:\\Users\\Franklyn\\.nuget\\packages\\swashbuckle.aspnetcore.annotations\\6.3.1\\swashbuckle.aspnetcore.annotations.6.3.1.nupkg.sha512",
+    "C:\\Users\\Franklyn\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.3.1\\swashbuckle.aspnetcore.swagger.6.3.1.nupkg.sha512",
+    "C:\\Users\\Franklyn\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.3.1\\swashbuckle.aspnetcore.swaggergen.6.3.1.nupkg.sha512",
     "C:\\Users\\Franklyn\\.nuget\\packages\\system.buffers\\4.5.0\\system.buffers.4.5.0.nupkg.sha512",
     "C:\\Users\\Franklyn\\.nuget\\packages\\system.collections.immutable\\5.0.0\\system.collections.immutable.5.0.0.nupkg.sha512",
     "C:\\Users\\Franklyn\\.nuget\\packages\\system.componentmodel.annotations\\5.0.0\\system.componentmodel.annotations.5.0.0.nupkg.sha512",

@@ -2550,7 +2550,8 @@
           "Microsoft.EntityFrameworkCore.InMemory": "5.0.17",
           "Microsoft.Extensions.Options.ConfigurationExtensions": "5.0.0",
           "Newtonsoft.Json": "13.0.1",
-          "RealEstateApp.Core.Domain": "1.0.0"
+          "RealEstateApp.Core.Domain": "1.0.0",
+          "Swashbuckle.AspNetCore.Annotations": "6.3.1"
         },
         "compile": {
           "bin/placeholder/RealEstateApp.Core.Application.dll": {}
