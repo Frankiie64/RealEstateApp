@@ -450,15 +450,11 @@ C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApp.
 C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5.0\WebApp.RealEstateApp.pdb
 C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5.0\WebApp.RealEstateApp.genruntimeconfig.cache
 C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5.0\ref\WebApp.RealEstateApp.dll
-C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5.0\WebApp.RealEstateApp.csproj.AssemblyReference.cache
-C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5.0\WebApp.RealEstateApp.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5.0\WebApp.RealEstateApp.AssemblyInfoInputs.cache
-C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5.0\WebApp.RealEstateApp.AssemblyInfo.cs
-C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5.0\WebApp.RealEstateApp.csproj.CoreCompileInputs.cache
-C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5.0\WebApp.RealEstateApp.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5.0\WebApp.RealEstateApp.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5.0\WebApp.RealEstateApp.RazorAssemblyInfo.cache
-C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5.0\WebApp.RealEstateApp.RazorAssemblyInfo.cs
+C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApp.RealEstateApp\bin\Debug\net5.0\Microsoft.OpenApi.dll
+C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApp.RealEstateApp\bin\Debug\net5.0\Swashbuckle.AspNetCore.Annotations.dll
+C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApp.RealEstateApp\bin\Debug\net5.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApp.RealEstateApp\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5.0\Razor\Views\Home\Details.cshtml.g.cs
 C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\RealEstateApp\WebApp.RealEstateApp\bin\Debug\net5.0\appsettings.Development.json
 C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\RealEstateApp\WebApp.RealEstateApp\bin\Debug\net5.0\appsettings.json
 C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\RealEstateApp\WebApp.RealEstateApp\bin\Debug\net5.0\WebApp.RealEstateApp.exe
@@ -785,6 +781,7 @@ C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\RealEstateApp\WebApp.RealE
 C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\RealEstateApp\WebApp.RealEstateApp\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.dll
 C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\RealEstateApp\WebApp.RealEstateApp\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\RealEstateApp\WebApp.RealEstateApp\bin\Debug\net5.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\RealEstateApp\WebApp.RealEstateApp\bin\Debug\net5.0\Microsoft.OpenApi.dll
 C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\RealEstateApp\WebApp.RealEstateApp\bin\Debug\net5.0\Microsoft.VisualStudio.Web.CodeGeneration.dll
 C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\RealEstateApp\WebApp.RealEstateApp\bin\Debug\net5.0\Microsoft.VisualStudio.Web.CodeGeneration.Contracts.dll
 C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\RealEstateApp\WebApp.RealEstateApp\bin\Debug\net5.0\Microsoft.VisualStudio.Web.CodeGeneration.Core.dll
@@ -796,6 +793,9 @@ C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\RealEstateApp\WebApp.RealE
 C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\RealEstateApp\WebApp.RealEstateApp\bin\Debug\net5.0\MimeKit.dll
 C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\RealEstateApp\WebApp.RealEstateApp\bin\Debug\net5.0\Newtonsoft.Json.dll
 C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\RealEstateApp\WebApp.RealEstateApp\bin\Debug\net5.0\BouncyCastle.Crypto.dll
+C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\RealEstateApp\WebApp.RealEstateApp\bin\Debug\net5.0\Swashbuckle.AspNetCore.Annotations.dll
+C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\RealEstateApp\WebApp.RealEstateApp\bin\Debug\net5.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\RealEstateApp\WebApp.RealEstateApp\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\RealEstateApp\WebApp.RealEstateApp\bin\Debug\net5.0\System.Composition.AttributedModel.dll
 C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\RealEstateApp\WebApp.RealEstateApp\bin\Debug\net5.0\System.Composition.Convention.dll
 C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\RealEstateApp\WebApp.RealEstateApp\bin\Debug\net5.0\System.Composition.Hosting.dll
@@ -883,6 +883,15 @@ C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\RealEstateApp\WebApp.RealE
 C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\RealEstateApp\WebApp.RealEstateApp\bin\Debug\net5.0\RealEstateApp.Infrastructure.Identity.pdb
 C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\RealEstateApp\WebApp.RealEstateApp\bin\Debug\net5.0\RealEstateApp.Infrastructure.Persistence.pdb
 C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\RealEstateApp\WebApp.RealEstateApp\bin\Debug\net5.0\RealEstateApp.Infrastructure.Shared.pdb
+C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5.0\WebApp.RealEstateApp.csproj.AssemblyReference.cache
+C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5.0\WebApp.RealEstateApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5.0\WebApp.RealEstateApp.AssemblyInfoInputs.cache
+C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5.0\WebApp.RealEstateApp.AssemblyInfo.cs
+C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5.0\WebApp.RealEstateApp.csproj.CoreCompileInputs.cache
+C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5.0\WebApp.RealEstateApp.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5.0\WebApp.RealEstateApp.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5.0\WebApp.RealEstateApp.RazorAssemblyInfo.cache
+C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5.0\WebApp.RealEstateApp.RazorAssemblyInfo.cs
 C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5.0\scopedcss\bundle\WebApp.RealEstateApp.styles.css
 C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5.0\staticwebassets\WebApp.RealEstateApp.StaticWebAssets.Manifest.cache
 C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5.0\WebApp.RealEstateApp.TagHelpers.input.cache
@@ -903,8 +912,3 @@ C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\RealEstateApp\WebApp.RealE
 C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5.0\ref\WebApp.RealEstateApp.dll
 C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5.0\WebApp.RealEstateApp.pdb
 C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5.0\WebApp.RealEstateApp.genruntimeconfig.cache
-C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApp.RealEstateApp\bin\Debug\net5.0\Microsoft.OpenApi.dll
-C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApp.RealEstateApp\bin\Debug\net5.0\Swashbuckle.AspNetCore.Annotations.dll
-C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApp.RealEstateApp\bin\Debug\net5.0\Swashbuckle.AspNetCore.Swagger.dll
-C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApp.RealEstateApp\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerGen.dll
-C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5.0\Razor\Views\Home\Details.cshtml.g.cs
