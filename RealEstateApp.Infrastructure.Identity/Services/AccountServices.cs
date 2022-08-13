@@ -259,14 +259,10 @@ namespace RealEstateApp.Infrastructure.Identity.Services
                     Username = vm.UserName,
                     Email = vm.Email,
                     Roles = rol.ToList(),
-                    IsVerified = vm.EmailConfirmed
+                    IsVerified = vm.EmailConfirmed,
+                    PhotoProfileUrl = vm.PhotoProfileUrl,
+                    
                 };
-
-                if(item.Roles[0] == "Basic" && item.Roles.Count() == 1)
-                {
-                    item.Roles.Clear();
-                    item.Roles.Add("Cliente");
-                }
 
                 list.Add(item);
             };
@@ -316,7 +312,8 @@ namespace RealEstateApp.Infrastructure.Identity.Services
                 Firstname = request.Firstname,
                 Lastname = request.Lastname,
                 DocumementId = request.DocumementId,
-                UserName = request.Username,                  
+                UserName = request.Username,   
+                PhotoProfileUrl = request.PhotoProfileUrl
             };
 
             var result = await userManager.UpdateAsync(user);
@@ -371,9 +368,10 @@ namespace RealEstateApp.Infrastructure.Identity.Services
             user.DocumementId = request.DocumementId;
             user.UserName = request.Username;
             user.PhoneNumber = request.PhoneNumber;
+            user.PhotoProfileUrl = request.PhotoProfileUrl;
             user.EmailConfirmed = true;
             user.PhoneNumberConfirmed = true;
-
+            
             await userManager.UpdateAsync(user);
             return response;
 

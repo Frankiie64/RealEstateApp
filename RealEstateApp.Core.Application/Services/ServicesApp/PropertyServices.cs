@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using RealEstateApp.Core.Application.Interfaces.Repository;
 using RealEstateApp.Core.Application.Interfaces.Service;
-using RealEstateApp.Core.Application.ViewModels.PhotoProperties;
 using RealEstateApp.Core.Application.ViewModels.Property;
 using RealEstateApp.Core.Domain.Entities;
 using System.Collections.Generic;
@@ -23,7 +22,7 @@ namespace RealEstateApp.Core.Application.Services.ServicesApp
 
         public async Task<List<PropertyViewModel>> GetAllViewModelWithIncludeAsync()
         {
-            var entityList = await repo.GetAllWithIncludeAsync(new List<string> { "TypeProperty", "TypeSale", "Improvements", "PropertyImprovements", "UrlPhotos" });
+            var entityList = await repo.GetAllWithIncludeAsync(new List<string> { "TypeProperty", "TypeSale", "Improvements", "UrlPhotos" });
 
             return mapper.Map<List<PropertyViewModel>>(entityList);
         }

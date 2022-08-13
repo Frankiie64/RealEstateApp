@@ -13,5 +13,6 @@ namespace RealEstateApp.Core.Application.Dtos.Improvement
         public string Name { get; set; }
         [Required(ErrorMessage = "Debes ingresar la Descripcion")]
         public string Description { get; set; }
+        public int IdProperty { get; set; }
     }
 }

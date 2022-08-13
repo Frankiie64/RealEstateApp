@@ -63,7 +63,7 @@
                             <hr />
                             <p class="card-text">@Model.Description</p>
                             <div class="d-flex justify-content-lg-around gap-3 my-auto">
-                                <p class="card-text text-start"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                <p class="card-text text-start"><small class="text-muted">Fecha de publicación @Model.Creadted.Date.ToString()</small></p>
                                 <small>
                                     <a class="btn btn-outline-success btn-sm ">@Model.Code</a>
                                 </small>
@@ -87,11 +87,11 @@
         </div>
         <hr />
         <div class="row p-1 m-2">
-            @for (int x = 0; x < 4; x++)
+            @foreach (var item in Model.Improvements)          
             {
                 <div class="col col-sm-3 my-2">
                     <small class="btn btn-sm btn-dark text-light text-center">
-                        Garaje <i class="fa-solid fa-pencil"></i>
+                        @item.Name <i class="fa-solid fa-pencil"></i>
                     </small>
                 </div>
             }
