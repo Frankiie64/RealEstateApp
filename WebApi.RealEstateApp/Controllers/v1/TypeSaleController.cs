@@ -6,19 +6,26 @@ using RealEstateApp.Core.Application.Features.TypeSale.Queries.GetTypeSaleById;
 using RealEstateApp.Core.Application.Features.TypeSales.Commands.CreateTypeSale;
 using RealEstateApp.Core.Application.Features.TypeSales.Commands.DeleteTypeSaleById;
 using RealEstateApp.Core.Application.Features.TypeSales.Commands.UpdateTypeSale;
+using Swashbuckle.AspNetCore.Annotations;
 using System;
+using System.Net.Mime;
 using System.Threading.Tasks;
 using WebAPI.RealEstateApp.Controllers;
 
 namespace WebApi.RealEstateApp.Controllers.v1
 {
     [ApiVersion("1.0")]
+    [SwaggerTag("Mantenimiento Tipos de Ventas")]
     public class TypeSaleController : BaseApiController
     {
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(TypeSaleDto))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [SwaggerOperation(
+            Summary = "Listado de Tipos de Ventas",
+            Description = "Obtener todas laos Tipos de Ventas"
+         )]
         public async Task<IActionResult> Get()
         {
             try
@@ -35,6 +42,10 @@ namespace WebApi.RealEstateApp.Controllers.v1
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(TypeSaleDto))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [SwaggerOperation(
+            Summary = "Tipos de Ventas por Id",
+            Description = "Obtener un Tipo Propiedad por Id"
+         )]
         public async Task<IActionResult> Get(int id)
         {
             try
@@ -51,7 +62,12 @@ namespace WebApi.RealEstateApp.Controllers.v1
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> Post(CreateTypeSaleCommand command)
+        [Consumes(MediaTypeNames.Application.Json)]
+        [SwaggerOperation(
+            Summary = "Crear un Tipo de Ventas",
+            Description = "Recibe los parametros para crear un nuevo Tipo de Venta"
+         )]
+        public async Task<IActionResult> Post([FromBody] CreateTypeSaleCommand command)
         {
             try
             {
@@ -74,7 +90,12 @@ namespace WebApi.RealEstateApp.Controllers.v1
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SaveTypeSaleDto))]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> Put(int id, UpdateTypeSaleCommand command)
+        [Consumes(MediaTypeNames.Application.Json)]
+        [SwaggerOperation(
+            Summary = "Actualizacion Tipo de Venta",
+            Description = "Recibe los parametros para modificar un Tipo de Venta existente"
+         )]
+        public async Task<IActionResult> Put(int id, [FromBody] UpdateTypeSaleCommand command)
         {
             try
             {
@@ -98,6 +119,10 @@ namespace WebApi.RealEstateApp.Controllers.v1
         [HttpDelete("{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [SwaggerOperation(
+            Summary = "Eliminar un Tipo de Venta",
+            Description = "Recibe los parametros para eliminar un Tipo de Venta"
+         )]
         public async Task<IActionResult> Delete(int id)
         {
             try

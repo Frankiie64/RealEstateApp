@@ -903,3 +903,8 @@ C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\RealEstateApp\WebApp.RealE
 C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5.0\ref\WebApp.RealEstateApp.dll
 C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5.0\WebApp.RealEstateApp.pdb
 C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5.0\WebApp.RealEstateApp.genruntimeconfig.cache
+C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApp.RealEstateApp\bin\Debug\net5.0\Microsoft.OpenApi.dll
+C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApp.RealEstateApp\bin\Debug\net5.0\Swashbuckle.AspNetCore.Annotations.dll
+C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApp.RealEstateApp\bin\Debug\net5.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApp.RealEstateApp\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5.0\Razor\Views\Home\Details.cshtml.g.cs

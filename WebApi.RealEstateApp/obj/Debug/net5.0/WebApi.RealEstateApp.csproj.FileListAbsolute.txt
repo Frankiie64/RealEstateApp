@@ -164,6 +164,15 @@ C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\RealEstateApp\WebApi.RealE
 C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\RealEstateApp\WebApi.RealEstateApp\obj\Debug\net5.0\ref\WebApi.RealEstateApp.dll
 C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\RealEstateApp\WebApi.RealEstateApp\obj\Debug\net5.0\WebApi.RealEstateApp.pdb
 C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\RealEstateApp\WebApi.RealEstateApp\obj\Debug\net5.0\WebApi.RealEstateApp.genruntimeconfig.cache
+C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\RealEstateApp\WebApi.RealEstateApp\bin\Debug\net5.0\MediatR.dll
+C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\RealEstateApp\WebApi.RealEstateApp\bin\Debug\net5.0\MediatR.Contracts.dll
+C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\RealEstateApp\WebApi.RealEstateApp\bin\Debug\net5.0\MediatR.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApi.RealEstateApp\obj\Debug\net5.0\WebApi.RealEstateApp.csproj.AssemblyReference.cache
+C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApi.RealEstateApp\obj\Debug\net5.0\WebApi.RealEstateApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApi.RealEstateApp\obj\Debug\net5.0\WebApi.RealEstateApp.AssemblyInfoInputs.cache
+C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApi.RealEstateApp\obj\Debug\net5.0\WebApi.RealEstateApp.AssemblyInfo.cs
+C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApi.RealEstateApp\obj\Debug\net5.0\WebApi.RealEstateApp.csproj.CoreCompileInputs.cache
+C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApi.RealEstateApp\obj\Debug\net5.0\WebApi.RealEstateApp.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApi.RealEstateApp\bin\Debug\net5.0\appsettings.Development.json
 C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApi.RealEstateApp\bin\Debug\net5.0\appsettings.json
 C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApi.RealEstateApp\bin\Debug\net5.0\WebApi.RealEstateApp.exe
@@ -227,6 +236,7 @@ C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApi.
 C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApi.RealEstateApp\bin\Debug\net5.0\Newtonsoft.Json.dll
 C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApi.RealEstateApp\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll
 C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApi.RealEstateApp\bin\Debug\net5.0\BouncyCastle.Crypto.dll
+C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApi.RealEstateApp\bin\Debug\net5.0\Swashbuckle.AspNetCore.Annotations.dll
 C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApi.RealEstateApp\bin\Debug\net5.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApi.RealEstateApp\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApi.RealEstateApp\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerUI.dll
@@ -317,13 +327,7 @@ C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApi.
 C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApi.RealEstateApp\bin\Debug\net5.0\RealEstateApp.Infrastructure.Identity.pdb
 C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApi.RealEstateApp\bin\Debug\net5.0\RealEstateApp.Infrastructure.Persistence.pdb
 C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApi.RealEstateApp\bin\Debug\net5.0\RealEstateApp.Infrastructure.Shared.pdb
-C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApi.RealEstateApp\obj\Debug\net5.0\WebApi.RealEstateApp.csproj.AssemblyReference.cache
-C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApi.RealEstateApp\obj\Debug\net5.0\WebApi.RealEstateApp.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApi.RealEstateApp\obj\Debug\net5.0\WebApi.RealEstateApp.AssemblyInfoInputs.cache
-C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApi.RealEstateApp\obj\Debug\net5.0\WebApi.RealEstateApp.AssemblyInfo.cs
-C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApi.RealEstateApp\obj\Debug\net5.0\WebApi.RealEstateApp.csproj.CoreCompileInputs.cache
 C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApi.RealEstateApp\obj\Debug\net5.0\WebApi.RealEstateApp.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApi.RealEstateApp\obj\Debug\net5.0\WebApi.RealEstateApp.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApi.RealEstateApp\obj\Debug\net5.0\scopedcss\bundle\WebApi.RealEstateApp.styles.css
 C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApi.RealEstateApp\obj\Debug\net5.0\staticwebassets\WebApi.RealEstateApp.StaticWebAssets.Manifest.cache
 C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApi.RealEstateApp\obj\Debug\net5.0\WebApi.RealEstateApp.RazorTargetAssemblyInfo.cache
@@ -333,6 +337,3 @@ C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApi.
 C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApi.RealEstateApp\obj\Debug\net5.0\WebApi.RealEstateApp.pdb
 C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApi.RealEstateApp\obj\Debug\net5.0\WebApi.RealEstateApp.genruntimeconfig.cache
 C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApi.RealEstateApp\obj\Debug\net5.0\ref\WebApi.RealEstateApp.dll
-C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\RealEstateApp\WebApi.RealEstateApp\bin\Debug\net5.0\MediatR.dll
-C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\RealEstateApp\WebApi.RealEstateApp\bin\Debug\net5.0\MediatR.Contracts.dll
-C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\RealEstateApp\WebApi.RealEstateApp\bin\Debug\net5.0\MediatR.Extensions.Microsoft.DependencyInjection.dll

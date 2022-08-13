@@ -117,6 +117,27 @@ namespace RealEstateApp.Core.Application.Mappings
                .ForMember(x => x.PropertiesQuantity, opt => opt.Ignore())
                .ReverseMap();
 
+            CreateMap<SaveUserVM, UserVM>()
+               .ReverseMap()
+               .ForMember(x => x.Password, opt => opt.Ignore())
+               .ForMember(x => x.ConfirmPassword, opt => opt.Ignore())
+               .ForMember(x => x.Error, opt => opt.Ignore())
+               .ForMember(x => x.HasError, opt => opt.Ignore());
+
+            //CreateMap<SaveUserVM, ChangeAgentStatusCommand>() //
+            //   .ForMember(x => x.PropertiesQuantity, opt => opt.Ignore())
+            //   .ForMember(x => x.IsVerified, opt => opt.Ignore())
+            //   .ReverseMap()
+            //                  .ForMember(x => x.Password, opt => opt.Ignore())
+            //   .ForMember(x => x.ConfirmPassword, opt => opt.Ignore())
+            //   .ForMember(x => x.Error, opt => opt.Ignore())
+            //   .ForMember(x => x.HasError, opt => opt.Ignore());
+
+            //CreateMap<SaveUserVM, RegisterRequest>()
+            //   .ForMember(x => x.IsVerified, opt => opt.Ignore())
+            //   .ReverseMap()
+            //   .ForMember(x => x.Error, opt => opt.Ignore())
+            //   .ForMember(x => x.HasError, opt => opt.Ignore());
             // ------------------------->
 
 
