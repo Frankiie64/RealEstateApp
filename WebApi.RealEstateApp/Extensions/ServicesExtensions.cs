@@ -30,6 +30,8 @@ namespace WebAPI.RealEstateApp.Extensions
                     }
                 });
 
+                opt.EnableAnnotations();
+
                 opt.DescribeAllParametersInCamelCase();
                 opt.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
                 {

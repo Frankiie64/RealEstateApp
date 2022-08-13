@@ -5,20 +5,29 @@ using RealEstateApp.Core.Application.Dtos.Agent;
 using RealEstateApp.Core.Application.Features.Agent.Commands.ChangeAgentStatus;
 using RealEstateApp.Core.Application.Features.Agent.Queries.GetAgentById;
 using RealEstateApp.Core.Application.Features.Agent.Queries.GetAllAgents;
+using Swashbuckle.AspNetCore.Annotations;
 using System;
 using System.Collections.Generic;
+using System.Net.Mime;
 using System.Threading.Tasks;
 using WebAPI.RealEstateApp.Controllers;
 
 namespace WebApi.RealEstateApp.Controllers.v1
 {
     [ApiVersion("1.0")]
+    [SwaggerTag("Mantenimiento Agentes")]
     public class AgentController : BaseApiController
     {
+
+
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<AgentDto>))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [SwaggerOperation(
+            Summary = "Listado de Agentes",
+            Description = "Obtiene todos los agentes registrados"
+         )]
         public async Task<IActionResult> Get()
         {
             try
@@ -36,6 +45,10 @@ namespace WebApi.RealEstateApp.Controllers.v1
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(AgentDto))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [SwaggerOperation(
+            Summary = "Listado de Agentes por ID",
+            Description = "Obtiene un agente por ID"
+         )]
         public async Task<IActionResult> GetById(string id)
         {
             try
@@ -49,24 +62,22 @@ namespace WebApi.RealEstateApp.Controllers.v1
         }
 
 
-
-
-
-
-
-
         //[Authorize(Roles = "")]
-
         [HttpPut("ChangeState/{id}")]
+        [Consumes(MediaTypeNames.Application.Json)]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(AgentDto))]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> ChangeState(string id, ChangeAgentStatusCommand command)
+        [SwaggerOperation(
+            Summary = "Estado del Agente",
+            Description = "Activar o Desactivar estado del agente"
+         )]
+        public async Task<IActionResult> ChangeState(string id, [FromBody] ChangeAgentStatusCommand command)
         {
             try
             {
                 if (!ModelState.IsValid)
-                {
+                { 
                     return BadRequest();
                 }
                 if (id != command.Id)
