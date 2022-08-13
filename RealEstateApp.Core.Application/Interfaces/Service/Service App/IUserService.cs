@@ -14,6 +14,7 @@ namespace RealEstateApp.Core.Application.Interfaces.Services
         Task<ResetPasswordResponse> ResetPasswordAsync(ResetPasswordVM vm);
         Task<List<UserVM>> GetAllUsersAsync();
         Task<List<UserVM>> GetAllClientsAsync();
+        Task<List<UserVM>> GetAllAgentAsync();
         Task<UserVM> GetUserByIdAsync(string id);
         Task<RegisterResponse> UpdateAsync(SaveUserVM vm, ResetPasswordVM vmPass);
 
