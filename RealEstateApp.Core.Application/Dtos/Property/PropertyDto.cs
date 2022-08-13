@@ -31,7 +31,7 @@ namespace RealEstateApp.Core.Application.Dtos.Property
         public int TypeSaleId { get; set; }
         public TypeSaleDto TypeSale { get; set; }
 
-        public ICollection<PropertyImprovementDto> PropertyImprovements { get; set; } //last
+        //public ICollection<PropertyImprovementDto> PropertyImprovements { get; set; } //last
         public ICollection<ImprovementDto> Improvements { get; set; }
 
     }

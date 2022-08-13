@@ -6,6 +6,7 @@ using RealEstateApp.Core.Application.Features.Properties.Queries.GetPropertyByCo
 using RealEstateApp.Core.Application.Features.Properties.Queries.GetPropertyById;
 using Swashbuckle.AspNetCore.Annotations;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using WebAPI.RealEstateApp.Controllers;
 
@@ -17,7 +18,7 @@ namespace WebApi.RealEstateApp.Controllers.v1
     {
 
         [HttpGet]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(PropertyDto))]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<PropertyDto>))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [SwaggerOperation(

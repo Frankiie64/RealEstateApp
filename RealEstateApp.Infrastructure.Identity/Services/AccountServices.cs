@@ -102,7 +102,8 @@ namespace RealEstateApp.Infrastructure.Identity.Services
                 Firstname = request.Firstname,
                 Lastname = request.Lastname,
                 DocumementId = request.DocumementId,
-                UserName = request.Username,                
+                UserName = request.Username,
+                IsActive = request.IsActive
             };
 
             var result = await userManager.CreateAsync(user, request.Password);
@@ -259,7 +260,8 @@ namespace RealEstateApp.Infrastructure.Identity.Services
                     Username = vm.UserName,
                     Email = vm.Email,
                     Roles = rol.ToList(),
-                    IsVerified = vm.EmailConfirmed
+                    IsVerified = vm.EmailConfirmed,
+                    IsActive = vm.IsActive
                 };
 
                 if(item.Roles[0] == "Basic" && item.Roles.Count() == 1)
@@ -373,6 +375,7 @@ namespace RealEstateApp.Infrastructure.Identity.Services
             user.PhoneNumber = request.PhoneNumber;
             user.EmailConfirmed = true;
             user.PhoneNumberConfirmed = true;
+            user.IsActive = request.IsActive;
 
             await userManager.UpdateAsync(user);
             return response;
