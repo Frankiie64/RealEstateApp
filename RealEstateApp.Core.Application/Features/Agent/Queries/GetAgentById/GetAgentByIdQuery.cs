@@ -29,7 +29,7 @@ namespace RealEstateApp.Core.Application.Features.Agent.Queries.GetAgentById
         public async Task<AgentDto> Handle(GetAgentByIdQuery query, CancellationToken cancellationToken)
         {
             var agents = await _accountServices.GetAllUsersAsync();
-            agents = agents.Where(agent => agent.Roles[0] == "Admin").ToList();
+            agents = agents.Where(agent => agent.Roles[0] == "Agent").ToList();
 
             var agent = agents.FirstOrDefault(w => w.Id == query.Id);
             if (agent == null) throw new Exception($"Agent Not Found.");

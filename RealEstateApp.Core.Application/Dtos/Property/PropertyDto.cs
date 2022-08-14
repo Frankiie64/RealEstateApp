@@ -2,11 +2,13 @@
 using RealEstateApp.Core.Application.Dtos.PropertyImprovement;
 using RealEstateApp.Core.Application.Dtos.TypeProperty;
 using RealEstateApp.Core.Application.Dtos.TypeSale;
+using RealEstateApp.Core.Application.ViewModels.Improvement;
 using RealEstateApp.Core.Application.ViewModels.Users;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace RealEstateApp.Core.Application.Dtos.Property
@@ -23,6 +25,7 @@ namespace RealEstateApp.Core.Application.Dtos.Property
         public int Bathroom { get; set; }
         public string AgentId { get; set; }        
         public string AgentName { get; set; }
+        [JsonIgnore]
         public UserVM User { get; set; }
 
         public int TypePropertyId { get; set; }
@@ -31,7 +34,7 @@ namespace RealEstateApp.Core.Application.Dtos.Property
         public int TypeSaleId { get; set; }
         public TypeSaleDto TypeSale { get; set; }
 
-        public ICollection<PropertyImprovementDto> PropertyImprovements { get; set; } //last
+        //public ICollection<PropertyImprovementDto> PropertyImprovements { get; set; } //last
         public ICollection<ImprovementDto> Improvements { get; set; }
 
     }

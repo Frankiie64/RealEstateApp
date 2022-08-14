@@ -35,9 +35,20 @@ namespace RealEstateApp.Core.Application.Features.Agent.Queries.GetAllAgents
         {
             List<AgentDto> agentList =  _mapper.Map<List<AgentDto>>(await _accountServices.GetAllUsersAsync());
 
-            agentList = agentList.Where(agent => agent.Roles[0] == "Admin").ToList();
+            //agentList = agentList.Where(agent => agent.Roles[0] == "Admin").ToList();
 
-            return agentList;
+            return agentList.Where(agent => agent.Roles[0] == "Agent").Select(agent => new AgentDto
+            {
+                Id = agent.Id,
+                Firstname = agent.Firstname,
+                Lastname = agent.Lastname,
+                Email = agent.Email,
+                PhoneNumber = agent.PhoneNumber,
+                IsActive = agent.IsActive
+                //PropertiesQuantity = agent.Properties.Where(property => property.AgentId == agent.Id).Count()
+            }).ToList();
+
+            //return agentList;
         }
     }
 }
