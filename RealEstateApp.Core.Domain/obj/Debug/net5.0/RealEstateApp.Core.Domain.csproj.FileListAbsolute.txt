@@ -10,15 +10,3 @@ C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\RealEstateApp\RealEstateAp
 C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\RealEstateApp\RealEstateApp.Core.Domain\obj\Debug\net5.0\RealEstateApp.Core.Domain.dll
 C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\RealEstateApp\RealEstateApp.Core.Domain\obj\Debug\net5.0\ref\RealEstateApp.Core.Domain.dll
 C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\RealEstateApp\RealEstateApp.Core.Domain\obj\Debug\net5.0\RealEstateApp.Core.Domain.pdb
-C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\RealEstateApp.Core.Domain\bin\Debug\net5.0\RealEstateApp.Core.Domain.deps.json
-C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\RealEstateApp.Core.Domain\bin\Debug\net5.0\RealEstateApp.Core.Domain.dll
-C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\RealEstateApp.Core.Domain\bin\Debug\net5.0\RealEstateApp.Core.Domain.pdb
-C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\RealEstateApp.Core.Domain\obj\Debug\net5.0\RealEstateApp.Core.Domain.csproj.AssemblyReference.cache
-C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\RealEstateApp.Core.Domain\obj\Debug\net5.0\RealEstateApp.Core.Domain.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\RealEstateApp.Core.Domain\obj\Debug\net5.0\RealEstateApp.Core.Domain.AssemblyInfoInputs.cache
-C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\RealEstateApp.Core.Domain\obj\Debug\net5.0\RealEstateApp.Core.Domain.AssemblyInfo.cs
-C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\RealEstateApp.Core.Domain\obj\Debug\net5.0\RealEstateApp.Core.Domain.csproj.CoreCompileInputs.cache
-C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\RealEstateApp.Core.Domain\obj\Debug\net5.0\RealEstateApp.Core.Domain.dll
-C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\RealEstateApp.Core.Domain\obj\Debug\net5.0\refint\RealEstateApp.Core.Domain.dll
-C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\RealEstateApp.Core.Domain\obj\Debug\net5.0\RealEstateApp.Core.Domain.pdb
-C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\RealEstateApp.Core.Domain\obj\Debug\net5.0\ref\RealEstateApp.Core.Domain.dll
