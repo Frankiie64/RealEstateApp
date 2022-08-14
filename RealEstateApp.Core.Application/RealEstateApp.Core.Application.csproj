@@ -8,9 +8,6 @@
 	
   <ItemGroup>
     <Folder Include="Dtos\Account\" />
-    <Folder Include="Features\Properties\Commands\CreateProperty\" />
-    <Folder Include="Features\Properties\Commands\UpdateProperty\" />
-    <Folder Include="Features\Properties\Commands\DeletePropertyById\" />
     <Folder Include="Features\TypeProperties\Queries\NewFolder\" />
     <Folder Include="Interfaces\Service\Service Api\" />
     <Folder Include="Mappings\" />

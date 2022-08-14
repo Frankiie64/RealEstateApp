@@ -37,7 +37,7 @@ namespace RealEstateApp.Core.Application.Features.Agent.Queries.GetAllAgents
 
             //agentList = agentList.Where(agent => agent.Roles[0] == "Admin").ToList();
 
-            return agentList.Where(agent => agent.Roles[0] == "Admin").Select(agent => new AgentDto
+            return agentList.Where(agent => agent.Roles[0] == "Agent").Select(agent => new AgentDto
             {
                 Id = agent.Id,
                 Firstname = agent.Firstname,

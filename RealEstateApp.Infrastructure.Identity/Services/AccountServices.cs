@@ -372,6 +372,7 @@ namespace RealEstateApp.Infrastructure.Identity.Services
             user.PhotoProfileUrl = request.PhotoProfileUrl;
             user.EmailConfirmed = true;
             user.PhoneNumberConfirmed = true;
+            //user.IsActive = request.IsActive;
             
             await userManager.UpdateAsync(user);
             return response;
