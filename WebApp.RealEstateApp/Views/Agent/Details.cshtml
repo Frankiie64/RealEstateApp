@@ -1,0 +1,101 @@
+﻿@using RealEstateApp.Core.Application.ViewModels.Users;
+@using RealEstateApp.Core.Application.ViewModels.Property;
+@model UserVM;
+@{
+    ViewData["Title"] = "Detalles del agente";
+}
+
+<div class="row">
+    <div class=" col col-12 form-control bg-light shadow mx-auto ">
+        <div class="card bg-transparent mb-3 border-0 m-3">
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="@Model.PhotoProfileUrl" class="img-fluid rounded-start" alt="PhotoProfile">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h4 class="card-title fs-3">@Model.Firstname @Model.Lastname</h4>
+                        <p class="text-body">
+                            @Model.Firstname @Model.Lastname es uno de nuestros agentes inmbiliarios, tiene un total de @Model.Properties.Count propiedades de alto calibre a
+                            su disposicion, si encuentra alguna que le guste puede comunicarse con el, mediante algunos de los siguientes metodos de comunicacion que le
+                            ofrecemos.
+                        </p>
+
+                        <div class="row">
+                            <div class="col col-5 mt-1">
+                                <h5 class="card-subtitle fs-6 fw-bolder text-start"> Numero de telefono</h5>
+                            </div>
+                            <div class="col col-5">
+                                <p class="fs-6">@Model.PhoneNumber</p>
+                            </div>
+                            <div class="col col-5 mt-1">
+                                <h5 class="card-subtitle fs-6 fw-bolder">Correo Eletronico </h5>
+                            </div>
+                            <div class="col col-5">
+                                <p class="fs-6"> @Model.Email</p>
+                            </div>
+                            <div class="col col-5 mt-1">
+                                <h5 class="card-subtitle fs-6 fw-bolder">Total de propiedades </h5>
+                            </div>
+                            <div class="col col-5">
+                                <p class="fs-6">@Model.Properties.Count</p>
+                            </div>
+                        </div>                    
+                </div>
+            </div>
+        </div>
+        <hr />
+        <h5 class="text-title m-4 ms-5">Propiedades</h5>
+        <div class="row m-3">
+            @foreach (PropertyViewModel item in Model.Properties)
+            {
+            <div class="col col-4">
+                <a asp-controller="Home" asp-action="Details" asp-route-id="@item.Id" type="button" class="w-100 text-decoration-none text-dark" style="text-decoration:none">
+                    <div class="card m-1" style="width: 18rem;">
+                        @{
+                            Random random = new Random();
+
+                            int photo = random.Next(0, (item.UrlPhotos.Count - 1));
+                        }
+                        <img src="@item.UrlPhotos[photo].ImagUrl" class="card-img-top" alt="Imagen Terreno">
+                        <div class="card-body">
+                            <small class="card-title fw-bolder fs-5">
+                                @item.TypeProperty.Name
+                            </small>
+                            <br />
+                            <small class="text-center text-capitalize fw-bolder text-muted mb-2 ">@item.Location</small>
+                            <br />
+                            <small class="card-subtitle text-dark fs-6">
+                                Codigo
+                            </small>
+                            <br />
+                            <small class="text-center text-capitalize fw-bolder  ">@item.Code</small>
+                            <br />
+                            <small class="card-subtitle text-dark fs-6">
+                                @item.TypeSale.Name
+                            </small>
+                            <br />
+                            <small class="text-center text-capitalize fw-bolder text-danger ">RD$ @item.Price  - US$ @(item.Price / 54 ) </small>
+                            <br />
+                            <hr clas />
+                            <small class="fs-6 d-flex justify-content-evenly">
+
+                                @if (item.Bathroom != 0)
+                                {
+                                    <div class="me-2"><i class="fa-solid fa-hot-tub-person"></i> @item.Bathroom</div>
+                                }
+
+                                @if (item.Room != 0)
+                                {
+                                    <div class="me-2"><i class="fa-solid fa-bed"></i> @item.Room</div>
+                                }
+                                <div class="me-2"><i class="fa-solid fa-building"></i> @(item.Meters)mt</div>
+                            </small>
+                        </div>
+                    </div>
+                </a>
+            </div>
+                    }
+            </div>
+    </div>
+</div>

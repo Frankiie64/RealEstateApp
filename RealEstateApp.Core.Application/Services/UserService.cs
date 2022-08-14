@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
 using RealEstateApp.Core.Application.Dtos.Account;
+using RealEstateApp.Core.Application.Enums;
+using RealEstateApp.Core.Application.Interfaces.Service;
 using RealEstateApp.Core.Application.Interfaces.Services;
 using RealEstateApp.Core.Application.ViewModels.Users;
 using System.Collections.Generic;
@@ -64,10 +66,11 @@ namespace RealEstateApp.Application.Services
         {
             List<UserVM> items = mapper.Map<List<UserVM>>(await accountServices.GetAllUsersAsync());
 
-            items = items.Where(clients => clients.Roles[0] == "Cliente" && clients.IsVerified == true).ToList();
+            items = items.Where(clients => clients.Roles[0] == Roles.Client.ToString()).ToList();
 
             return items;
         }
+ 
         public async Task<UserVM> GetUserByIdAsync(string id)
         {
             return mapper.Map<UserVM>(await accountServices.GetUserByIdAsync(id));
@@ -77,6 +80,16 @@ namespace RealEstateApp.Application.Services
         {
             RegisterRequest registerRequest = mapper.Map<RegisterRequest>(vm);
             return await accountServices.UpdateAgentAsync(registerRequest);
+        }
+
+        public async Task<List<UserVM>> GetAllAgentAsync()
+        {
+
+            List<UserVM> items = mapper.Map<List<UserVM>>(await accountServices.GetAllUsersAsync());
+
+            items = items.Where(clients => clients.Roles[0] == Roles.Agent.ToString()).ToList();
+            return items;
+            
         }
     }
 }
