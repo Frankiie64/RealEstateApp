@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -39,6 +40,8 @@ namespace RealEstateApp.Core.Application.ViewModels.Users
         [DataType(DataType.Password)]
         public string ConfirmPassword { get; set; }
         public string Rol { get; set; }
+        public string PhotoProfileUrl { get; set; }
+        public IFormFile file { get; set; }
         public bool HasError { get; set; }
         public string Error { get; set; }
 

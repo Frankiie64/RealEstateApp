@@ -9,9 +9,9 @@ namespace RealEstateApp.Core.Application.ViewModels.Users
 {
     public class LoginVM
     {
-        [Required(ErrorMessage = "Debes de colocar el correo del usuario. ")]
+        [Required(ErrorMessage = "Es necesario el correo o nombre del usuario ")]
         [DataType(DataType.Text)]
-        public string Email { get; set; }
+        public string Name { get; set; }
         [Required(ErrorMessage = "Debes de colocar la contraseña. ")]
         [DataType(DataType.Password)]
         public string Password { get; set; }

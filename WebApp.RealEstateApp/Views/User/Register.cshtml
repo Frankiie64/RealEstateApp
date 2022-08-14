@@ -1,0 +1,101 @@
+﻿@using RealEstateApp.Core.Application.ViewModels.Users
+@using RealEstateApp.Core.Application.Enums
+@model SaveUserVM;
+@{
+    ViewData["Title"] = "Unete a la APP";
+}
+
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-10 mx-auto">
+            <div class="card">
+                <div class="card-header bg-dark text-light">
+                    <h4>Registro de nuevo usuario</h4>
+                </div>
+                <div class="card-body">
+
+                    @if (Model.HasError)
+                    {
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <p>@Model.Error</p>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    }
+                <form method="post" asp-controller="User" asp-action="Register" enctype="multipart/form-data">
+                    <div class="row container-fluid">
+                        <div class="col col-12 d-flex gap-3">
+                            <div class="mb-3">
+                                <label asp-for="Firstname" class="form-label">Nombre: </label>
+                                <input asp-for="Firstname" class="form-control" />
+                                <span asp-validation-for="Firstname" class="text-danger"></span>
+                            </div>
+
+                            <div class="mb-3">
+                                <label asp-for="Lastname" class="form-label">Apellido: </label>
+                                <input asp-for="Lastname" class="form-control" />
+                                <span asp-validation-for="Lastname" class="text-danger"></span>
+                            </div>
+
+                            <div class="mb-3">
+                                <label asp-for="DocumementId" class="form-label">Cedula: </label>
+                                <input asp-for="DocumementId" class="form-control" />
+                                <span asp-validation-for="DocumementId" class="text-danger"></span>
+                            </div>
+                            <div class="mb-3">
+                                <label asp-for="Username" class="form-label">Nombre de usuario: </label>
+                                <input asp-for="Username" class="form-control" />
+                                <span asp-validation-for="Username" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="col col-12 d-flex gap-3">
+
+                            <div class="mb-3">
+                                <label asp-for="Password" class="form-label">Contraseña: </label>
+                                <input asp-for="Password" class="form-control" />
+                                <span asp-validation-for="Password" class="text-danger"></span>
+                            </div>
+
+                            <div class="mb-3">
+                                <label asp-for="ConfirmPassword" class="form-label">Confirmar contraseña: </label>
+                                <input asp-for="ConfirmPassword" class="form-control" />
+                                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                            </div>
+
+                            <div class="mb-3">
+                                <label asp-for="PhoneNumber" class="form-label">Telefono: </label>
+                                <input asp-for="PhoneNumber" class="form-control" />
+                                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                            </div>
+                            <div class="mb-3">
+                                <label asp-for="Email" class="form-label">Correo: </label>
+                                <input asp-for="Email" class="form-control" />
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col col-12 d-flex gap-3">
+                            <div class="mb-2 form-group">
+                                <label asp-for="file" class="form-label">Foto de perfil</label>
+                                <input required asp-for="file" class="form-control form-control-sm" />
+                            </div>                            
+
+                            <div class="mb-3">
+                                <label class="form-label" asp-for="Rol">Rol:</label>
+                                <select asp-for="Rol" class="form-control form-select form-select-sm">
+                                    <option selected value="@Roles.Client.ToString()">Cliente</option>
+                                    <option value="@Roles.Agent.ToString()">Agente</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col col-12 d-flex gap-3 justify-content-end">
+                            <button type="submit" class="btn btn-primary">Guardar</button>
+                            <a asp-controller="User" asp-action="Index" class="btn btn-warning">Ir a Login</a>
+                        </div>
+                    </div>
+                </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

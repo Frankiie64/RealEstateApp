@@ -32,12 +32,17 @@ namespace RealEstateApp.Infrastructure.Identity.Services
             AuthenticationResponse response = new();
 
 
-            var user = await userManager.FindByEmailAsync(request.Email);
+            var user = await userManager.FindByEmailAsync(request.Name);
+
+            if (user == null)
+            {
+                 user = await userManager.FindByNameAsync(request.Name);
+            }
 
             if (user == null)
             {
                 response.HasError = true;
-                response.Error = $"La cuenta {request.Email} no se encuentra registrada.";
+                response.Error = $"La cuenta {request.Name} no se encuentra registrada.";
                 return response;
             }
 
@@ -102,8 +107,15 @@ namespace RealEstateApp.Infrastructure.Identity.Services
                 Firstname = request.Firstname,
                 Lastname = request.Lastname,
                 DocumementId = request.DocumementId,
-                UserName = request.Username,                
-            };
+                UserName = request.Username,     
+                PhotoProfileUrl = request.PhotoProfileUrl,
+                PhoneNumberConfirmed = true
+        };
+
+            if (request.Rol == Roles.Agent.ToString())
+            {
+                user.EmailConfirmed = true;
+            }
 
             var result = await userManager.CreateAsync(user, request.Password);
 
@@ -111,27 +123,29 @@ namespace RealEstateApp.Infrastructure.Identity.Services
             {
                 await userManager.AddToRoleAsync(user, request.Rol);
                 
-                /*var url = await SendVerificationEmailUrl(user, origin);
+                var url = await SendVerificationEmailUrl(user, origin);
 
-                await emailService.SendAsync(new EmailRequest()
+                if (request.Rol == Roles.Client.ToString())
                 {
-                    To = user.Email,
-                    Body = $"Por favor confirma tu cuenta, mediante la visita de este link. \n \n {url}",
-                    Subject = "Confirmar nuevo usuario"
-                }); */
-
+                    await emailService.SendAsync(new EmailRequest()
+                    {
+                        To = user.Email,
+                        Body = $"Por favor confirma tu cuenta, mediante la visita de este link. \n \n {url}",
+                        Subject = "Confirmar nuevo usuario"
+                    });
+                }
                 
             }
             else
             {
                 response.HasError = true;
-                response.Error = $"Ha ocurrido un error creando el usuario";
+                response.Error = $"Por favor ingresé una contraseña que contega al menos 8 caracteres entre ellos, una mayúscula ,una minúscula, caracter especial y un número";
                 return response;
             }
 
-            var item = await userManager.FindByEmailAsync(user.Email);
+            var item = await userManager.FindByNameAsync(user.UserName);
 
-            //response.IdClient = item.Id;  //No veo esto necesario
+            response.IdUser = item.Id;  
 
             return response;
         }
@@ -284,14 +298,16 @@ namespace RealEstateApp.Infrastructure.Identity.Services
 
             return item;
         }
-        public async Task<RegisterResponse> UpdateUserAsync(RegisterRequest request, ResetPasswordRequest requestPass)
+        public async Task<RegisterResponse> UpdateUserAsync(RegisterRequest request)
         {
             RegisterResponse response = new();
             response.HasError = false;
 
+            var user = await userManager.FindByIdAsync(request.Id);
+
             var userWithUsername = await userManager.FindByNameAsync(request.Username);
 
-            if (userWithUsername != null)
+            if (userWithUsername != null && request.Username != request.Username)
             {
                 response.HasError = true;
                 response.Error = $"El nombre de usuario '{request.Username}' ya fue creado.";
@@ -300,44 +316,37 @@ namespace RealEstateApp.Infrastructure.Identity.Services
 
             var userWithEmail = await userManager.FindByEmailAsync(request.Email);
 
-            if (userWithEmail != null)
+            if (userWithEmail != null && request.Email != request.Email)
             {
                 response.HasError = true;
                 response.Error = $"El email '{request.Email}' ya fue registrado.";
                 return response;
             }
 
-            var user = new ApplicationUser
-            {
-                Email = request.Email,
-                Firstname = request.Firstname,
-                Lastname = request.Lastname,
-                DocumementId = request.DocumementId,
-                UserName = request.Username,   
-                PhotoProfileUrl = request.PhotoProfileUrl
-            };
+            user.Email = request.Email;
+            user.Firstname = request.Firstname;
+            user.Lastname = request.Lastname;
+            user.DocumementId = request.DocumementId;
+            user.UserName = request.Username;
+            user.PhoneNumber = request.PhoneNumber;
+            user.EmailConfirmed = true;
+            user.PhoneNumberConfirmed = true;
+            user.PhotoProfileUrl = request.PhotoProfileUrl;
+
 
             var result = await userManager.UpdateAsync(user);
 
-            if (result.Succeeded)
-            {
-                await ResetPasswordAsync(requestPass);
-            }
-            else
+            if (!result.Succeeded)
             {
                 response.HasError = true;
                 response.Error = $"Ha ocurrido un error actualizando el usuario";
                 return response;
             }
-
-            var item = await userManager.FindByEmailAsync(user.Email);
-
-            //response.IdClient = item.Id;
+           
+            response.IdUser = user.Id;
 
             return response;
         }
-
-        //
         public async Task<RegisterResponse> UpdateAgentAsync(RegisterRequest request)
         {
             RegisterResponse response = new();
@@ -372,6 +381,7 @@ namespace RealEstateApp.Infrastructure.Identity.Services
             user.PhotoProfileUrl = request.PhotoProfileUrl;
             user.EmailConfirmed = true;
             user.PhoneNumberConfirmed = true;
+            user.IsActive = user.IsActive == true ? false : true;
             
             await userManager.UpdateAsync(user);
             return response;

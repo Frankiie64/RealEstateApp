@@ -31,7 +31,7 @@ namespace RealEstateApp.Core.Application.Mappings
              .ForMember(x => x.Id, opt => opt.Ignore())
              .ForMember(x => x.Rol, opt => opt.Ignore())
              .ReverseMap();
-
+            */
             CreateMap<AuthenticationRequest, LoginVM>()
                .ForMember(x => x.HasError, opt => opt.Ignore())
                .ForMember(x => x.Error, opt => opt.Ignore())
@@ -40,6 +40,7 @@ namespace RealEstateApp.Core.Application.Mappings
             CreateMap<RegisterRequest, SaveUserVM>()
                 .ForMember(x => x.HasError, opt => opt.Ignore())
                 .ForMember(x => x.Error, opt => opt.Ignore())
+                .ForMember(x => x.file, opt => opt.Ignore())
                 .ReverseMap();
 
             CreateMap<ForgotPassowordRequest, ForgotPasswordVM>()
@@ -52,11 +53,6 @@ namespace RealEstateApp.Core.Application.Mappings
                 .ForMember(x => x.Error, opt => opt.Ignore())
                 .ReverseMap();
 
-            CreateMap<AuthenticationResponse, UserVM>()
-               .ReverseMap()
-               .ForMember(x => x.HasError, opt => opt.Ignore())
-               .ForMember(x => x.Error, opt => opt.Ignore());
-            */
 
             CreateMap<AuthenticationResponse, UserVM>()
                .ForMember(x => x.Properties, opt => opt.Ignore())
@@ -69,7 +65,6 @@ namespace RealEstateApp.Core.Application.Mappings
                .ReverseMap()
                .ForMember(x => x.HasError, opt => opt.Ignore())
                .ForMember(x => x.Error, opt => opt.Ignore());
-            ////
 
 
             CreateMap<AuthenticationResponse, ChangeAgentStatusCommand>()
@@ -126,6 +121,7 @@ namespace RealEstateApp.Core.Application.Mappings
                .ForMember(x => x.Password, opt => opt.Ignore())
                .ForMember(x => x.ConfirmPassword, opt => opt.Ignore())
                .ForMember(x => x.Error, opt => opt.Ignore())
+               .ForMember(x => x.file, opt => opt.Ignore())
                .ForMember(x => x.HasError, opt => opt.Ignore());
 
             //CreateMap<SaveUserVM, ChangeAgentStatusCommand>() //

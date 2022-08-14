@@ -1,0 +1,49 @@
+﻿@using RealEstateApp.Core.Application.ViewModels.Users;
+@model LoginVM;
+@{
+    ViewData["Title"] = "Iniciar Sesion";
+}
+<div class="container mt-5">
+    <form method="post" asp-controller="User" asp-action="Index" class="p-1 pt-0 form-control bg-transparent border-1 shadow" style="background-position: center center; background-image: url(https://ww2.propital.com/hubfs/mercado%20inmobiliario%20coronavirus.jpg); opacity: 0.9; ">
+        <div class="row mt-3 p-2 mx-auto">
+            <div class="col-12 text-center">
+                <h3>Real Estate </h3>
+            </div>
+        </div>
+        <div class="row mt-2 p-1 pt-0 mx-auto">
+            <div class="col-12 text-center">
+                <h5 class="card-title fw-bolder text-dark fs-4 me-2">Inicio de Sesión</h5>
+            </div>
+        </div>
+        @if (Model.HasError)
+        {
+            <div class="alert alert-danger alert-dismissible fade show mx-auto" style="width:500px;" role="alert">
+                <p>@Model.Error</p>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        }
+        <div class="row p-3 m-2">
+            <div class="col-12 mx-auto">
+                <div class="form-group  align-items-center " style="margin-left:30%">
+                    <div class="w-50 me-4   ">
+                        <input asp-for="@Model.Name" class="form-control text-center border-1 border-dark mb-3 " placeholder="Email o Username" />
+                        <span asp-validation-for="Name" class="text-danger mb-2 mt-2 fw-bolder"></span>
+                    </div>
+                    <div class="w-50 me-4 ">
+                        <input asp-for="@Model.Password" class="form-control text-center border-1 border-dark mt-3" placeholder="Contraseña" />
+                        <span asp-validation-for="Password" class="text-danger mt-1 fw-bolder"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 mx-auto mt-2 p-3 pt-0">
+                <div class="form-group  text-center me-3 my-2 pt-1 pb-1">
+                    <button type="submit" class="btn btn-success mb-2">Iniciar sesion</button>
+                    <br />
+                </div>
+                <div class="me-4 my-2 pt-1 pb-1 text-center">
+                    <a asp-controller="User" asp-action="ForgotPassword" class="text-black  fw-bolder">Olvidaste tu contraseña?</a>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

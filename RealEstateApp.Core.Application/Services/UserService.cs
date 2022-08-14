@@ -37,11 +37,11 @@ namespace RealEstateApp.Application.Services
             RegisterRequest registerRequest = mapper.Map<RegisterRequest>(vm);
             return await accountServices.RegisterUserAsync(registerRequest, origin);
         }
-        public async Task<RegisterResponse> UpdateAsync(SaveUserVM vm, ResetPasswordVM vmPass)
+        public async Task<RegisterResponse> UpdateAsync(SaveUserVM vm,string id)
         {
             RegisterRequest registerRequest = mapper.Map<RegisterRequest>(vm);
-            ResetPasswordRequest resetRequest = mapper.Map<ResetPasswordRequest>(vmPass);
-            return await accountServices.UpdateUserAsync(registerRequest, resetRequest);
+            registerRequest.Id = id;
+            return await accountServices.UpdateUserAsync(registerRequest);
         }
         public async Task<string> ConfirmEmailAsync(string userId, string token)
         {

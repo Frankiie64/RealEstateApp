@@ -1,4 +1,17 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Http
+@using RealEstateApp.Core.Application.Dtos.Account
+@using RealEstateApp.Core.Application.helper;
+@using RealEstateApp.Core.Application.ViewModels.Users;
+@inject IHttpContextAccessor httpContextAccessor
+@{
+    var User = httpContextAccessor.HttpContext.Session.Get<AuthenticationResponse>("user");
+    var isAdmin = User != null ? User.Roles.Any(r => r == "Admin") : false;
+    var isBasic = User != null ? User.Roles.Any(r => r == "Client") : false;
+    var isDev = User != null ? User.Roles.Any(r => r == "Developer") : false;
+    var isAgent = User != null ? User.Roles.Any(r => r == "Agent") : false;
+
+}
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -26,6 +39,23 @@
                         <li class="nav-item">
                             <a class="nav-link text-light fw-bolder" asp-area="" asp-controller="Agent" asp-action="Index">Agentes</a>
                         </li>
+                    </ul>
+                    <ul class="navbar-nav flex-grow-1 justify-content-end">
+                        @if (User != null)
+                        {
+                            <li class="nav-item text-end">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="LogOut">Cerrar Sesion <i class="fa-solid fa-arrow-right-from-bracket"></i> </a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-light fw-bolder" asp-area="" asp-controller="User" asp-action="Index"><i class="fa-solid fa-arrow-right-to-bracket"></i> Inicio de Sesión</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-light fw-bolder" asp-area="" asp-controller="User" asp-action="Register"><i class="fa-solid fa-address-card"></i> Únete a la app</a>
+                            </li>
+                        }
                     </ul>
                 </div>
             </div>
