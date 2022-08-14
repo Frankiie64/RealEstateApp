@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "No9NmFyh0tu7uzOhUbDJdf7XahlU1b4p1QVCIy4IZRnrHADBVF33t2LRJ/MttAR2Cr4vLKXJv6ID/hTIHjqBGw==",
+  "dgSpecHash": "KLZHuBstUmz4zbBjig0mcIZexMKW+kyEuR9K8Z1ZpXtlUHTbYFKvdw2uYkX18UHK8+kGsUcfzlvYAyOj9lvXcg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Franklyn\\source\\repos\\Proyecto MVC .NET CORE\\RealEstateApp\\RealEstateApp.Infrastructure.Shared\\RealEstateApp.Infrastructure.Shared.csproj",
+  "projectFilePath": "C:\\Users\\Franklyn\\source\\repos\\Proyecto MVC .NET CORE\\version de real\\RealEstateApp.Infrastructure.Shared\\RealEstateApp.Infrastructure.Shared.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Franklyn\\.nuget\\packages\\automapper\\11.0.1\\automapper.11.0.1.nupkg.sha512",
     "C:\\Users\\Franklyn\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\11.0.0\\automapper.extensions.microsoft.dependencyinjection.11.0.0.nupkg.sha512",
