@@ -16,8 +16,7 @@ namespace RealEstateApp.Core.Application.Interfaces.Services
         Task<List<UserVM>> GetAllClientsAsync();
         Task<List<UserVM>> GetAllAgentAsync();
         Task<UserVM> GetUserByIdAsync(string id);
-        Task<RegisterResponse> UpdateAsync(SaveUserVM vm, ResetPasswordVM vmPass);
-
+        Task<RegisterResponse> UpdateAsync(SaveUserVM vm,string id);
         Task<RegisterResponse> UpdateAgentAsync(SaveUserVM vm);
 
         Task SignOutAsync();

@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WebApp.RealEstateApp.middlewares;
+using RealEstateApp;
 
 namespace WebApp.RealEstateApp.Controllers
 {
@@ -44,6 +45,43 @@ namespace WebApp.RealEstateApp.Controllers
                 vm.Error = userVm.Error;
                 return View(vm);
             }            
+        }
+        [ServiceFilter(typeof(LoginAuthorize))]
+        public IActionResult Register()
+        {            
+            return View(new SaveUserVM());
+        }
+        [ServiceFilter(typeof(LoginAuthorize))]
+        [HttpPost]
+        public async Task<IActionResult> Register(SaveUserVM vm)
+        {
+           
+            if (!ModelState.IsValid)
+            {
+                return View(vm);
+            }
+            var origin = Request.Headers["origin"];
+
+            RegisterResponse response = await userService.RegisterAsync(vm,origin);
+
+            if (response.HasError)
+            {
+                vm.HasError = true;
+                vm.Error = response.Error;
+                return View(vm);
+
+            }
+            else
+            {
+                if (!string.IsNullOrWhiteSpace(response.IdUser))
+                {
+                    vm.PhotoProfileUrl = UploadPhoto.UploadFile(vm.file, "User", response.IdUser);
+
+                    await userService.UpdateAsync(vm,response.IdUser);
+                }
+
+                return RedirectToRoute(new { controller = "User", action = "Index" });
+            }
         }
         public async Task<IActionResult> LogOut()
         {
