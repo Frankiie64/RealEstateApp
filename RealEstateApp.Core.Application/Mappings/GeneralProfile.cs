@@ -66,6 +66,8 @@ namespace RealEstateApp.Core.Application.Mappings
 
             CreateMap<AuthenticationResponse, AgentDto>()
                .ForMember(x => x.PropertiesQuantity, opt => opt.Ignore())
+               .ForMember(x => x.Properties, opt => opt.Ignore())
+
                .ReverseMap()
                .ForMember(x => x.HasError, opt => opt.Ignore())
                .ForMember(x => x.Error, opt => opt.Ignore());
