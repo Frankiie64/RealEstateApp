@@ -59,19 +59,52 @@ namespace RealEstateApp.Core.Application.Mappings
             */
 
             CreateMap<AuthenticationResponse, UserVM>()
+               .ForMember(x => x.Properties, opt => opt.Ignore())
                .ReverseMap()
                .ForMember(x => x.HasError, opt => opt.Ignore())
-               .ForMember(x => x.IsActive, opt => opt.Ignore())
                .ForMember(x => x.Error, opt => opt.Ignore());
 
             CreateMap<AuthenticationResponse, AgentDto>()
                .ForMember(x => x.PropertiesQuantity, opt => opt.Ignore())
-               .ForMember(x => x.Properties, opt => opt.Ignore())
-
                .ReverseMap()
                .ForMember(x => x.HasError, opt => opt.Ignore())
                .ForMember(x => x.Error, opt => opt.Ignore());
+            ////
 
+
+            CreateMap<AuthenticationResponse, ChangeAgentStatusCommand>()
+               .ForMember(x => x.PropertiesQuantity, opt => opt.Ignore())
+               .ReverseMap()
+               .ForMember(x => x.HasError, opt => opt.Ignore())
+               .ForMember(x => x.JWTtoken, opt => opt.Ignore())
+               .ForMember(x => x.Error, opt => opt.Ignore())
+               .ForMember(x => x.RefreshToken, opt => opt.Ignore())
+               .ForMember(x => x.Error, opt => opt.Ignore());
+
+            CreateMap<AuthenticationResponse, AgentChangeStatusResponse>()
+               .ForMember(x => x.PropertiesQuantity, opt => opt.Ignore())
+               .ReverseMap()
+               .ForMember(x => x.HasError, opt => opt.Ignore())
+               .ForMember(x => x.JWTtoken, opt => opt.Ignore())
+               .ForMember(x => x.Error, opt => opt.Ignore())
+               .ForMember(x => x.RefreshToken, opt => opt.Ignore())
+               .ForMember(x => x.Error, opt => opt.Ignore());
+
+            CreateMap<AuthenticationResponse, RegisterRequest>()
+               .ForMember(x => x.ConfirmPassword, opt => opt.Ignore())
+               .ReverseMap()
+               .ForMember(x => x.JWTtoken, opt => opt.Ignore())
+               .ForMember(x => x.Error, opt => opt.Ignore())
+               .ForMember(x => x.HasError, opt => opt.Ignore())
+               .ForMember(x => x.RefreshToken, opt => opt.Ignore())
+               .ForMember(x => x.Error, opt => opt.Ignore());
+
+
+            //A ver si sirve   ------------------>
+            CreateMap<UserVM, ChangeAgentStatusCommand>()
+               .ForMember(x => x.PropertiesQuantity, opt => opt.Ignore())
+               .ReverseMap()
+               .ForMember(x => x.Properties, opt => opt.Ignore());
 
             CreateMap<RegisterRequest, ChangeAgentStatusCommand>()
                .ForMember(x => x.PropertiesQuantity, opt => opt.Ignore())
@@ -79,15 +112,42 @@ namespace RealEstateApp.Core.Application.Mappings
 
             CreateMap<UserVM, AgentChangeStatusResponse>()
                .ForMember(x => x.PropertiesQuantity, opt => opt.Ignore())
-               .ReverseMap();
+               .ReverseMap()
+               .ForMember(x => x.Properties, opt => opt.Ignore());
+
+            CreateMap<UserVM, ChangeAgentStatusCommand>()
+               .ForMember(x => x.PropertiesQuantity, opt => opt.Ignore())
+               .ReverseMap()
+               .ForMember(x => x.Properties, opt => opt.Ignore());
 
             CreateMap<SaveUserVM, UserVM>()
+               .ForMember(x => x.Properties, opt => opt.Ignore())
                .ReverseMap()
                .ForMember(x => x.Password, opt => opt.Ignore())
                .ForMember(x => x.ConfirmPassword, opt => opt.Ignore())
                .ForMember(x => x.Error, opt => opt.Ignore())
                .ForMember(x => x.HasError, opt => opt.Ignore());
 
+            //CreateMap<SaveUserVM, ChangeAgentStatusCommand>() //
+            //   .ForMember(x => x.PropertiesQuantity, opt => opt.Ignore())
+            //   .ForMember(x => x.IsVerified, opt => opt.Ignore())
+            //   .ReverseMap()
+            //                  .ForMember(x => x.Password, opt => opt.Ignore())
+            //   .ForMember(x => x.ConfirmPassword, opt => opt.Ignore())
+            //   .ForMember(x => x.Error, opt => opt.Ignore())
+            //   .ForMember(x => x.HasError, opt => opt.Ignore());
+
+            //CreateMap<SaveUserVM, RegisterRequest>()
+            //   .ForMember(x => x.IsVerified, opt => opt.Ignore())
+            //   .ReverseMap()
+            //   .ForMember(x => x.Error, opt => opt.Ignore())
+            //   .ForMember(x => x.HasError, opt => opt.Ignore());
+            // ------------------------->
+
+
+            //CreateMap<AgentDto, UserVM>()
+            //   .ReverseMap()
+            //   .ForMember(x => x.PropertiesQuantity, opt => opt.Ignore());
 
 
             CreateMap<Property, PropertyViewModel>()

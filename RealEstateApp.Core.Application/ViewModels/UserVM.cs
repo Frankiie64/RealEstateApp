@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RealEstateApp.Core.Application.ViewModels.Property;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,5 +26,6 @@ namespace RealEstateApp.Core.Application.ViewModels.Users
         public List<string> Roles { get; set; }
         [JsonIgnore]
         public bool IsVerified { get; set; }
+        public List<PropertyViewModel> Properties { get; set; }
     }
 }

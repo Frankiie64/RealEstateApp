@@ -26,6 +26,7 @@ namespace WebApi.RealEstateApp
                     await DefaultClientUser.SeedAsync(userManager, roleManager);
                     await DefaultAdminUser.SeedAsync(userManager, roleManager);
                     await DefaultDeveloperUser.SeedAsync(userManager, roleManager);
+                    await DefaultAgentUser.SeedAsync(userManager, roleManager);
                     await DefaultSuperAdminUser.SeedAsync(userManager, roleManager);
 
                 }
