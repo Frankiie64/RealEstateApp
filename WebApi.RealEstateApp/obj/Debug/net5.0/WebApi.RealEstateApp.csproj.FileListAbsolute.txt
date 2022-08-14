@@ -16,6 +16,9 @@ C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApi.
 C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApi.RealEstateApp\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApi.RealEstateApp\bin\Debug\net5.0\Humanizer.dll
 C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApi.RealEstateApp\bin\Debug\net5.0\MailKit.dll
+C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApi.RealEstateApp\bin\Debug\net5.0\MediatR.dll
+C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApi.RealEstateApp\bin\Debug\net5.0\MediatR.Contracts.dll
+C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApi.RealEstateApp\bin\Debug\net5.0\MediatR.Extensions.Microsoft.DependencyInjection.dll
 C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApi.RealEstateApp\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApi.RealEstateApp\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.Internal.dll
 C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApi.RealEstateApp\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
@@ -64,6 +67,7 @@ C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApi.
 C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApi.RealEstateApp\bin\Debug\net5.0\Newtonsoft.Json.dll
 C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApi.RealEstateApp\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll
 C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApi.RealEstateApp\bin\Debug\net5.0\BouncyCastle.Crypto.dll
+C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApi.RealEstateApp\bin\Debug\net5.0\Swashbuckle.AspNetCore.Annotations.dll
 C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApi.RealEstateApp\bin\Debug\net5.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApi.RealEstateApp\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApi.RealEstateApp\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerUI.dll
@@ -177,6 +181,9 @@ C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\RealEstateApp\WebApi.RealE
 C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\RealEstateApp\WebApi.RealEstateApp\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\RealEstateApp\WebApi.RealEstateApp\bin\Debug\net5.0\Humanizer.dll
 C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\RealEstateApp\WebApi.RealEstateApp\bin\Debug\net5.0\MailKit.dll
+C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\RealEstateApp\WebApi.RealEstateApp\bin\Debug\net5.0\MediatR.dll
+C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\RealEstateApp\WebApi.RealEstateApp\bin\Debug\net5.0\MediatR.Contracts.dll
+C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\RealEstateApp\WebApi.RealEstateApp\bin\Debug\net5.0\MediatR.Extensions.Microsoft.DependencyInjection.dll
 C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\RealEstateApp\WebApi.RealEstateApp\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\RealEstateApp\WebApi.RealEstateApp\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.Internal.dll
 C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\RealEstateApp\WebApi.RealEstateApp\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
@@ -225,6 +232,7 @@ C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\RealEstateApp\WebApi.RealE
 C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\RealEstateApp\WebApi.RealEstateApp\bin\Debug\net5.0\Newtonsoft.Json.dll
 C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\RealEstateApp\WebApi.RealEstateApp\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll
 C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\RealEstateApp\WebApi.RealEstateApp\bin\Debug\net5.0\BouncyCastle.Crypto.dll
+C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\RealEstateApp\WebApi.RealEstateApp\bin\Debug\net5.0\Swashbuckle.AspNetCore.Annotations.dll
 C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\RealEstateApp\WebApi.RealEstateApp\bin\Debug\net5.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\RealEstateApp\WebApi.RealEstateApp\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\Franklyn\source\repos\Proyecto MVC .NET CORE\RealEstateApp\WebApi.RealEstateApp\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerUI.dll

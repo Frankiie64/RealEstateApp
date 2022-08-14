@@ -8,7 +8,7 @@ namespace RealEstateApp.Core.Application.ViewModels.Property
 {
    public class PropertyByFiltering
     {
-        public string code { get; set; }
+        public int code { get; set; } = 0;
         public List<int> IdTypeProperty { get; set; }
         public int MinRooms { get; set; }
         public int MaxRooms { get; set; }

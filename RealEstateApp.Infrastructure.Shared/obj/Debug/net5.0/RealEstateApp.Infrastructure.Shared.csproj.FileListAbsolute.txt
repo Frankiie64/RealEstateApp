@@ -1,8 +1,3 @@
-C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\RealEstateApp.Infrastructure.Shared\obj\Debug\net5.0\RealEstateApp.Infrastructure.Shared.csproj.AssemblyReference.cache
-C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\RealEstateApp.Infrastructure.Shared\obj\Debug\net5.0\RealEstateApp.Infrastructure.Shared.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\RealEstateApp.Infrastructure.Shared\obj\Debug\net5.0\RealEstateApp.Infrastructure.Shared.AssemblyInfoInputs.cache
-C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\RealEstateApp.Infrastructure.Shared\obj\Debug\net5.0\RealEstateApp.Infrastructure.Shared.AssemblyInfo.cs
-C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\RealEstateApp.Infrastructure.Shared\obj\Debug\net5.0\RealEstateApp.Infrastructure.Shared.csproj.CoreCompileInputs.cache
 C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\RealEstateApp.Infrastructure.Shared\bin\Debug\net5.0\RealEstateApp.Infrastructure.Shared.deps.json
 C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\RealEstateApp.Infrastructure.Shared\bin\Debug\net5.0\RealEstateApp.Infrastructure.Shared.dll
 C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\RealEstateApp.Infrastructure.Shared\bin\Debug\net5.0\RealEstateApp.Infrastructure.Shared.pdb
@@ -10,6 +5,11 @@ C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\RealEst
 C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\RealEstateApp.Infrastructure.Shared\bin\Debug\net5.0\RealEstateApp.Core.Domain.dll
 C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\RealEstateApp.Infrastructure.Shared\bin\Debug\net5.0\RealEstateApp.Core.Application.pdb
 C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\RealEstateApp.Infrastructure.Shared\bin\Debug\net5.0\RealEstateApp.Core.Domain.pdb
+C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\RealEstateApp.Infrastructure.Shared\obj\Debug\net5.0\RealEstateApp.Infrastructure.Shared.csproj.AssemblyReference.cache
+C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\RealEstateApp.Infrastructure.Shared\obj\Debug\net5.0\RealEstateApp.Infrastructure.Shared.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\RealEstateApp.Infrastructure.Shared\obj\Debug\net5.0\RealEstateApp.Infrastructure.Shared.AssemblyInfoInputs.cache
+C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\RealEstateApp.Infrastructure.Shared\obj\Debug\net5.0\RealEstateApp.Infrastructure.Shared.AssemblyInfo.cs
+C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\RealEstateApp.Infrastructure.Shared\obj\Debug\net5.0\RealEstateApp.Infrastructure.Shared.csproj.CoreCompileInputs.cache
 C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\RealEstateApp.Infrastructure.Shared\obj\Debug\net5.0\RealEstateApp.Infrastructure.Shared.csproj.CopyComplete
 C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\RealEstateApp.Infrastructure.Shared\obj\Debug\net5.0\RealEstateApp.Infrastructure.Shared.dll
 C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\RealEstateApp.Infrastructure.Shared\obj\Debug\net5.0\refint\RealEstateApp.Infrastructure.Shared.dll

@@ -2,12 +2,16 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RealEstateApp.Core.Application.Dtos.Account;
+using RealEstateApp.Core.Application.Enums;
 using RealEstateApp.Core.Application.Interfaces.Services;
+using Swashbuckle.AspNetCore.Annotations;
+using System.Net.Mime;
 using System.Threading.Tasks;
 
 namespace WebAPI.RealEstateApp.Controllers
 {
     [Route("api/[controller]")]
+    [SwaggerTag("Sistema de Membresias")]
     [ApiController]
     public class AccountController : ControllerBase
     {
@@ -18,40 +22,45 @@ namespace WebAPI.RealEstateApp.Controllers
             _accountService = accountService;
             this.mapper = mapper;
         }
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+
+
+
         [HttpPost("authenticate")]
+        [Consumes(MediaTypeNames.Application.Json)]
+        [SwaggerOperation(
+            Summary = "Iniciar Session ",
+            Description = "Iniciar Session como Administrador o Desarrollador"
+         )]
         public async Task<IActionResult> AuthenticateAsync(AuthenticationRequest request)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(StatusCodes.Status400BadRequest);
-            }
-
-            var response = await _accountService.AuthenticationAsync(request);
-            if (response.HasError)
-            {
-                return NotFound(response.Error);
-            }
-            return Ok(response);
-        }        
-        [HttpGet("confirm-email")]
-        public async Task<IActionResult> RegisterAsync([FromQuery] string userId, [FromQuery] string token)
-        {
-            return Ok(await _accountService.ConfirmEmailAsync(userId, token));
+            return Ok(await _accountService.AuthenticationAsync(request));
         }
-        [HttpPost("forgot-password")]
-        public async Task<IActionResult> ForgotPasswordAsync(ForgotPassowordRequest request)
+
+        [HttpPost("RegisterAdmin")]
+        [Consumes(MediaTypeNames.Application.Json)]
+        [SwaggerOperation(
+            Summary = "Registrar un nuevo Administrador",
+            Description = "Recibe los parametros para crear un usuario con el Rol Administrador"
+         )]
+        public async Task<IActionResult> RegisterAdminAsync(RegisterRequest request)
         {
             var origin = Request.Headers["origin"];
-            return Ok(await _accountService.ForgotPasswordRequestAsync(request, origin));
+            request.Rol = Roles.Admin.ToString();
+            return Ok(await _accountService.RegisterUserAsync(request, origin));
         }
-        [HttpPost("reset-password")]
-        public async Task<IActionResult> ResetPasswordAsync(ResetPasswordRequest request)
+
+        [HttpPost("RegisterDeveloper")]
+        [Consumes(MediaTypeNames.Application.Json)]
+        [SwaggerOperation(
+            Summary = "Registrar un nuevo Desarrollador",
+            Description = "Recibe los parametros para crear un usuario con el Rol Desarrollador"
+         )]
+        public async Task<IActionResult> RegisterDeveloperAsync(RegisterRequest request)
         {
-            return Ok(await _accountService.ResetPasswordAsync(request));
+            var origin = Request.Headers["origin"];
+            request.Rol = Roles.Developer.ToString();
+            return Ok(await _accountService.RegisterUserAsync(request, origin));
         }
+      
     }
 }

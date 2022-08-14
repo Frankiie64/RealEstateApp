@@ -9,7 +9,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using RealEstateApp.Core.Application.Interfaces.Repository;
 
 namespace RealEstateApp.Infrastructure.Persistence
 {
@@ -43,9 +42,9 @@ namespace RealEstateApp.Infrastructure.Persistence
             //Other repos
             services.AddTransient<IPropertyRepository, PropertyRepository>();
             services.AddTransient<IImprovementRepository, ImprovementRepository>();
-            services.AddTransient<IPropertyImprovementRepository, PropertyImprovementRepository>();
             services.AddTransient<ITypePropertyRepository, TypePropertyRepository>();
             services.AddTransient<ITypeSaleRepository, TypeSaleRepository>();
+            services.AddTransient<IPhotosPropertyRepository, PhotosPropertyRepository>();
 
             #endregion
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RealEstateApp.Core.Application.ViewModels.Property;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,8 +14,11 @@ namespace RealEstateApp.Core.Application.ViewModels.Users
         public string Lastname { get; set; }
         public string DocumementId { get; set; }
         public string Email { get; set; }
+        public string PhotoProfileUrl { get; set; }
+        public string PhoneNumber { get; set; }
         public string Username { get; set; }
         public List<string> Roles { get; set; }
         public bool IsVerified { get; set; }
+        public List<PropertyViewModel> Properties { get; set; }
     }
 }

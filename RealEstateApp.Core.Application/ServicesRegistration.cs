@@ -5,6 +5,8 @@ using System.Reflection;
 using RealEstateApp.Application.Services;
 using RealEstateApp.Core.Application.Interfaces.Service;
 using RealEstateApp.Core.Application.Services.ServicesApp;
+using MediatR;
+using RealEstateApp.Core.Application.Interfaces.Service.Service_App;
 
 namespace RealEstateApp.Core.Application
 {
@@ -27,14 +29,20 @@ namespace RealEstateApp.Core.Application
 
             services.AddTransient<IPropertyService, PropertyServices>();
             services.AddTransient<ITypePropertyService, TypePropertyServices>();
+            services.AddTransient<IPhotosOfPropertyService, PhotosOfPropertyService>();
+            /*
+            services.AddTransient<IImprovementService, IMPRO>();
+            services.AddTransient<IPropertyImprovementService, PhotosOfPropertyService>();
+            services.AddTransient<ITypePropertyService, PhotosOfPropertyService>();
 
+            */
 
             #endregion
 
             #region ServiceApi
 
             #endregion
-
+            services.AddMediatR(Assembly.GetExecutingAssembly());
             #endregion
         }
     }

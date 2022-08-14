@@ -16,16 +16,13 @@ namespace RealEstateApp.Core.Domain.Entities
         public double Meters { get; set; }
         public int Room { get; set; }
         public int Bathroom { get; set; }
-        public string ImageUrl { get; set; }
-        public int AgentId { get; set; }
+        public string AgentId { get; set; }        
         public int TypePropertyId { get; set; }
         public TypeProperty TypeProperty { get; set; }
         public int TypeSaleId { get; set; }
         public TypeSale TypeSale { get; set; }
-        public ICollection<PropertyImprovement> PropertyImprovements { get; set; } // M * M
-        public ICollection<Improvement> Improvements { get; set; } 
-
-
+        public ICollection<Improvement> Improvements { get; set; }
+        public ICollection<PhotosOfProperties> UrlPhotos { get; set; }
 
     }
 }

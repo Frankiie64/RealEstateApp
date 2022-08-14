@@ -19,9 +19,9 @@ namespace RealEstateApp.Core.Application.ViewModels.Property
         public string Description { get; set; }
         public double Meters { get; set; }
         public int Bathroom { get; set; }
-        public string ImageUrl { get; set; }
-        public int AgentId { get; set; }
-        public IFormFile File { get; set; }
+        public List<string> UrlPhotos { get; set; }
+        public string AgentId { get; set; }
+        public List<IFormFile> File { get; set; }
 
         //Combobox
         public int TypePropertyId { get; set; }

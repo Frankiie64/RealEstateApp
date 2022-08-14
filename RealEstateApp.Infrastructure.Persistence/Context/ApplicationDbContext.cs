@@ -20,14 +20,10 @@ namespace RealEstateApp.Infrastructure.Persistence.Context
             _httpContextAccessor = httpContextAccessor;
         }
 
-
         public DbSet<Property> Properties { get; set; }
         public DbSet<TypeProperty> TypeProperties { get; set; }
         public DbSet<TypeSale> TypeSales { get; set; }
         public DbSet<Improvement> Improvements { get; set; }
-
-
-
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
         {
@@ -57,11 +53,11 @@ namespace RealEstateApp.Infrastructure.Persistence.Context
                 {
                     case EntityState.Modified:
                         entry.Entity.LastModified = DateTime.Now;
-                        entry.Entity.LastModifiedBy = user.Username;
+                        entry.Entity.LastModifiedBy = "user";
                         break;
                     case EntityState.Added:
                         entry.Entity.Creadted = DateTime.Now;
-                        entry.Entity.CreatedBy = user.Username;
+                        entry.Entity.CreatedBy = "user";
                         break;
                 }
             }
@@ -88,6 +84,9 @@ namespace RealEstateApp.Infrastructure.Persistence.Context
             modelBuilder.Entity<Improvement>()
                 .ToTable("Improvements");
 
+            modelBuilder.Entity<PhotosOfProperties>()
+          .ToTable("PhotosOfProperties");
+
             #endregion
 
             #region constraint
@@ -106,9 +105,8 @@ namespace RealEstateApp.Infrastructure.Persistence.Context
             modelBuilder.Entity<Improvement>()
                 .HasKey(improvement => improvement.Id);
 
-            modelBuilder.Entity<PropertyImprovement>()  // Many to Many
-                .HasKey(x => new { x.PropertyId, x.ImprovementId });
-
+                modelBuilder.Entity<PhotosOfProperties>()
+          .HasKey(photosOfProperties => photosOfProperties.Id);
 
 
             #endregion
@@ -130,8 +128,19 @@ namespace RealEstateApp.Infrastructure.Persistence.Context
          .OnDelete(deleteBehavior: DeleteBehavior.Cascade);
 
 
+            modelBuilder.Entity<Property>()
+                .HasMany(photos => photos.UrlPhotos)
+                .WithOne(property => property.Property)
+                .HasForeignKey(idProperty => idProperty.IdProperty)
+                .OnDelete(deleteBehavior: DeleteBehavior.Cascade);
 
+            modelBuilder.Entity<Property>()
+          .HasMany(property => property.Improvements)
+          .WithOne(improvement => improvement.Property)
+          .HasForeignKey(improvement => improvement.IdProperty)
+          .OnDelete(deleteBehavior: DeleteBehavior.Cascade);
 
+            /*
             modelBuilder.Entity<Property>()
                 .HasMany(property => property.Improvements)
                 .WithMany(improvement => improvement.Properties)
@@ -149,11 +158,7 @@ namespace RealEstateApp.Infrastructure.Persistence.Context
                         j.ToTable("PropertyImprovement");
                         j.HasKey(e => new { e.PropertyId, e.ImprovementId });
                     });
-
-
-
-
-
+            */
 
             #endregion
 
@@ -230,6 +235,17 @@ namespace RealEstateApp.Infrastructure.Persistence.Context
                 .Property(a => a.Description)
                 .IsRequired();
 
+            #endregion
+
+            #region PhotosOfProperty
+
+            modelBuilder.Entity<PhotosOfProperties>()
+                .Property(a => a.ImagUrl)
+                .IsRequired();
+
+            modelBuilder.Entity<PhotosOfProperties>()
+                .Property(a => a.IdProperty)
+                .IsRequired();
             #endregion
 
 

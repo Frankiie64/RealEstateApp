@@ -1,8 +1,3 @@
-C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\RealEstateApp.Infrastructure.Identity\obj\Debug\net5.0\RealEstateApp.Infrastructure.Identity.csproj.AssemblyReference.cache
-C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\RealEstateApp.Infrastructure.Identity\obj\Debug\net5.0\RealEstateApp.Infrastructure.Identity.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\RealEstateApp.Infrastructure.Identity\obj\Debug\net5.0\RealEstateApp.Infrastructure.Identity.AssemblyInfoInputs.cache
-C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\RealEstateApp.Infrastructure.Identity\obj\Debug\net5.0\RealEstateApp.Infrastructure.Identity.AssemblyInfo.cs
-C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\RealEstateApp.Infrastructure.Identity\obj\Debug\net5.0\RealEstateApp.Infrastructure.Identity.csproj.CoreCompileInputs.cache
 C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\RealEstateApp.Infrastructure.Identity\bin\Debug\net5.0\RealEstateApp.Infrastructure.Identity.deps.json
 C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\RealEstateApp.Infrastructure.Identity\bin\Debug\net5.0\RealEstateApp.Infrastructure.Identity.runtimeconfig.json
 C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\RealEstateApp.Infrastructure.Identity\bin\Debug\net5.0\RealEstateApp.Infrastructure.Identity.runtimeconfig.dev.json
@@ -14,6 +9,11 @@ C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\RealEst
 C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\RealEstateApp.Infrastructure.Identity\bin\Debug\net5.0\RealEstateApp.Core.Application.pdb
 C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\RealEstateApp.Infrastructure.Identity\bin\Debug\net5.0\RealEstateApp.Infrastructure.Shared.pdb
 C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\RealEstateApp.Infrastructure.Identity\bin\Debug\net5.0\RealEstateApp.Core.Domain.pdb
+C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\RealEstateApp.Infrastructure.Identity\obj\Debug\net5.0\RealEstateApp.Infrastructure.Identity.csproj.AssemblyReference.cache
+C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\RealEstateApp.Infrastructure.Identity\obj\Debug\net5.0\RealEstateApp.Infrastructure.Identity.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\RealEstateApp.Infrastructure.Identity\obj\Debug\net5.0\RealEstateApp.Infrastructure.Identity.AssemblyInfoInputs.cache
+C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\RealEstateApp.Infrastructure.Identity\obj\Debug\net5.0\RealEstateApp.Infrastructure.Identity.AssemblyInfo.cs
+C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\RealEstateApp.Infrastructure.Identity\obj\Debug\net5.0\RealEstateApp.Infrastructure.Identity.csproj.CoreCompileInputs.cache
 C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\RealEstateApp.Infrastructure.Identity\obj\Debug\net5.0\RealEstateApp.Infrastructure.Identity.csproj.CopyComplete
 C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\RealEstateApp.Infrastructure.Identity\obj\Debug\net5.0\RealEstateApp.Infrastructure.Identity.dll
 C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\RealEstateApp.Infrastructure.Identity\obj\Debug\net5.0\refint\RealEstateApp.Infrastructure.Identity.dll
