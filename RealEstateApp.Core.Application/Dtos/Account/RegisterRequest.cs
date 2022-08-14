@@ -14,7 +14,8 @@ namespace RealEstateApp.Core.Application.Dtos.Account
         public string PhotoProfileUrl { get; set; }
         public string ConfirmPassword { get; set; }
         public string PhoneNumber { get; set; }
-
+        public bool IsActive { get; set; }
+        
         public bool IsVerified { get; set; } = false;
 
         [JsonIgnore]
