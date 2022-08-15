@@ -62,6 +62,13 @@ namespace RealEstateApp.Infrastructure.Identity.Services
                 return response;
             }
 
+            if (!user.IsActive)
+            {
+                response.HasError = true;
+                response.Error = $"Comuniquese con su administrador para acceder a los permisos de agente.";
+                return response;
+            }
+
             response.Id = user.Id;
             response.Email = user.Email;
             response.Username = user.UserName;
@@ -110,11 +117,16 @@ namespace RealEstateApp.Infrastructure.Identity.Services
                 UserName = request.Username,     
                 PhotoProfileUrl = request.PhotoProfileUrl,
                 PhoneNumberConfirmed = true
-        };
+             };
 
             if (request.Rol == Roles.Agent.ToString())
             {
                 user.EmailConfirmed = true;
+            }
+
+            if(request.Rol == Roles.Client.ToString())
+            {
+                user.IsActive = true;
             }
 
             var result = await userManager.CreateAsync(user, request.Password);
@@ -162,7 +174,7 @@ namespace RealEstateApp.Infrastructure.Identity.Services
 
             var result = await userManager.ConfirmEmailAsync(user, token);
             if (result.Succeeded)
-            {
+            {               
                 return $"La cuenta ha sido confirmada para el correo de {user.Email}. Ahora puede utilizar nuestra aplicacion.";
             }
             else
@@ -182,6 +194,15 @@ namespace RealEstateApp.Infrastructure.Identity.Services
             {
                 response.HasError = true;
                 response.Error = $"La cuenta {request.Email} no se encuentra registrada.";
+                return response;
+            }
+
+            var rolList = await userManager.GetRolesAsync(account);
+
+            if (rolList.Any(r=>r != Roles.Client.ToString()))
+            {
+                response.HasError = true;
+                response.Error = $"Esta opcion solo esta disponible para usuario tipo clientes.";
                 return response;
             }
             var url = await SendForgotPasswordVerificationEmailUrl(account, origin);
@@ -332,7 +353,6 @@ namespace RealEstateApp.Infrastructure.Identity.Services
             user.DocumementId = request.DocumementId;
             user.UserName = request.Username;
             user.PhoneNumber = request.PhoneNumber;
-            user.EmailConfirmed = true;
             user.PhoneNumberConfirmed = true;
             user.PhotoProfileUrl = request.PhotoProfileUrl;
 
@@ -356,21 +376,16 @@ namespace RealEstateApp.Infrastructure.Identity.Services
             response.HasError = false;
 
             var user = await userManager.FindByIdAsync(request.Id);
+            
+            user.IsActive = user.IsActive == true?false:true;
 
-            user.Id = request.Id;
-            user.Email = request.Email;
-            user.Firstname = request.Firstname;
-            user.Lastname = request.Lastname;
-            user.DocumementId = request.DocumementId;
-            user.UserName = request.Username;
-            user.PhoneNumber = request.PhoneNumber;
-            user.PhotoProfileUrl = request.PhotoProfileUrl;
-            user.EmailConfirmed = true;
-            user.PhoneNumberConfirmed = true;
-            user.IsActive = request.IsActive;
+            var result = await userManager.UpdateAsync(user);
 
-
-            await userManager.UpdateAsync(user);
+            if (!result.Succeeded)
+            {
+                response.HasError = true;
+                response.Error = "Haocurrido algun problema cuando se intento cambiar el estado del usuario.";
+            }
             return response;
 
         }
