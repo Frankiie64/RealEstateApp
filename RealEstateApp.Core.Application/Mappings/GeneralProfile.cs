@@ -95,7 +95,6 @@ namespace RealEstateApp.Core.Application.Mappings
                .ForMember(x => x.Error, opt => opt.Ignore());
 
 
-            //A ver si sirve   ------------------>
             CreateMap<UserVM, ChangeAgentStatusCommand>()
                .ForMember(x => x.PropertiesQuantity, opt => opt.Ignore())
                .ReverseMap()
@@ -109,6 +108,15 @@ namespace RealEstateApp.Core.Application.Mappings
                .ForMember(x => x.PropertiesQuantity, opt => opt.Ignore())
                .ReverseMap()
                .ForMember(x => x.Properties, opt => opt.Ignore());
+
+
+
+
+
+
+
+
+
 
             CreateMap<UserVM, ChangeAgentStatusCommand>()
                .ForMember(x => x.PropertiesQuantity, opt => opt.Ignore())
@@ -124,26 +132,10 @@ namespace RealEstateApp.Core.Application.Mappings
                .ForMember(x => x.file, opt => opt.Ignore())
                .ForMember(x => x.HasError, opt => opt.Ignore());
 
-            //CreateMap<SaveUserVM, ChangeAgentStatusCommand>() //
-            //   .ForMember(x => x.PropertiesQuantity, opt => opt.Ignore())
-            //   .ForMember(x => x.IsVerified, opt => opt.Ignore())
-            //   .ReverseMap()
-            //                  .ForMember(x => x.Password, opt => opt.Ignore())
-            //   .ForMember(x => x.ConfirmPassword, opt => opt.Ignore())
-            //   .ForMember(x => x.Error, opt => opt.Ignore())
-            //   .ForMember(x => x.HasError, opt => opt.Ignore());
-
-            //CreateMap<SaveUserVM, RegisterRequest>()
-            //   .ForMember(x => x.IsVerified, opt => opt.Ignore())
-            //   .ReverseMap()
-            //   .ForMember(x => x.Error, opt => opt.Ignore())
-            //   .ForMember(x => x.HasError, opt => opt.Ignore());
-            // ------------------------->
+            CreateMap<ChangeAgentStatusCommand, AgentChangeStatusResponse>()
+               .ReverseMap();
 
 
-            //CreateMap<AgentDto, UserVM>()
-            //   .ReverseMap()
-            //   .ForMember(x => x.PropertiesQuantity, opt => opt.Ignore());
 
 
             CreateMap<Property, PropertyViewModel>()
@@ -209,6 +201,8 @@ namespace RealEstateApp.Core.Application.Mappings
             CreateMap<PhotosOfProperties, SavePhotosPropertyViewModel>()
               .ReverseMap()
               .ForMember(x => x.Property, opt => opt.Ignore());
+
+
             #region DTO's
 
             CreateMap<Property, PropertyDto>()

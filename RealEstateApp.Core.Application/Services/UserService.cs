@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using RealEstateApp.Core.Application.Dtos.Account;
+using RealEstateApp.Core.Application.Dtos.Agent;
 using RealEstateApp.Core.Application.Enums;
 using RealEstateApp.Core.Application.Interfaces.Service;
 using RealEstateApp.Core.Application.Interfaces.Services;
@@ -76,10 +77,11 @@ namespace RealEstateApp.Application.Services
             return mapper.Map<UserVM>(await accountServices.GetUserByIdAsync(id));
         }
 
-        public async Task<RegisterResponse> UpdateAgentAsync(SaveUserVM vm)
+        public async Task<RegisterResponse> ChangeStatus(AgentDto vm, string id)
         {
             RegisterRequest registerRequest = mapper.Map<RegisterRequest>(vm);
-            return await accountServices.UpdateAgentAsync(registerRequest);
+            registerRequest.Id = id;
+            return await accountServices.ChangeStatusAsync(registerRequest);
         }
 
         public async Task<List<UserVM>> GetAllAgentAsync()

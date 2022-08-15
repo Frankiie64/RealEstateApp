@@ -2,8 +2,10 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RealEstateApp.Core.Application.Dtos.Agent;
+using RealEstateApp.Core.Application.Dtos.Property;
 using RealEstateApp.Core.Application.Features.Agent.Commands.ChangeAgentStatus;
 using RealEstateApp.Core.Application.Features.Agent.Queries.GetAgentById;
+using RealEstateApp.Core.Application.Features.Agent.Queries.GetAgentPropertyById;
 using RealEstateApp.Core.Application.Features.Agent.Queries.GetAllAgents;
 using Swashbuckle.AspNetCore.Annotations;
 using System;
@@ -86,6 +88,28 @@ namespace WebApi.RealEstateApp.Controllers.v1
                 }
 
                 return Ok(await Mediator.Send(command));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+            }
+        }
+
+
+        [HttpGet("GetAgentProperty/{agentId}")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<PropertyDto>))]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [SwaggerOperation(
+            Summary = "Listado de Propiedades de Agentes",
+            Description = "Obtiene las Propiedades de un Agente"
+         )]
+        public async Task<IActionResult> GetAgentProperty(string agentId)
+        {
+
+            try
+            {
+                return Ok(await Mediator.Send(new GetAgentPropertyByIdQuery { AgentId = agentId }));
             }
             catch (Exception ex)
             {

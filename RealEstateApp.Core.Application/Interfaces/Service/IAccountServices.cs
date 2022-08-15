@@ -17,7 +17,7 @@ namespace RealEstateApp.Core.Application.Interfaces.Services
         Task<RegisterResponse> UpdateUserAsync(RegisterRequest request);
         Task SignOutAsync();
 
-        Task<RegisterResponse> UpdateAgentAsync(RegisterRequest request);
+        Task<RegisterResponse> ChangeStatusAsync(RegisterRequest request);
 
 
     }

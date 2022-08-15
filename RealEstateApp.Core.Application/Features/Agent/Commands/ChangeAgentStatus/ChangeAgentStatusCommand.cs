@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -15,14 +16,25 @@ namespace RealEstateApp.Core.Application.Features.Agent.Commands.ChangeAgentStat
     public class ChangeAgentStatusCommand : IRequest<AgentChangeStatusResponse>
     {
         public string Id { get; set; }
+        [JsonIgnore]
         public string Firstname { get; set; }
+        [JsonIgnore]
         public string Lastname { get; set; }
+        [JsonIgnore]
         public string DocumementId { get; set; }
+        [JsonIgnore]
         public string Email { get; set; }
+        [JsonIgnore]
         public string Username { get; set; }
+        [JsonIgnore]
+        public string PhoneNumber { get; set; }
+        [JsonIgnore]
         public List<string> Roles { get; set; }
+        [JsonIgnore]
         public bool IsVerified { get; set; }
-        public string PropertiesQuantity { get; set; }
+        public bool IsActive { get; set; }
+        [JsonIgnore]
+        public int PropertiesQuantity { get; set; }
     }
 
     public class ChangeAgentStatusCommandHandler : IRequestHandler<ChangeAgentStatusCommand, AgentChangeStatusResponse>
@@ -42,27 +54,22 @@ namespace RealEstateApp.Core.Application.Features.Agent.Commands.ChangeAgentStat
         public async Task<AgentChangeStatusResponse> Handle(ChangeAgentStatusCommand command, CancellationToken cancellationToken)
         {
 
-            //AÑADIR IsVerified a la BD de Identity
+            var allUsers = await _userServices.GetAllUsersAsync();
 
-            AuthenticationResponse changeStatus = await _accountServices.GetUserByIdAsync(command.Id);
-            if (changeStatus == null) throw new Exception($"Improvement Not Found.");
-            //changeStatus.PhoneNumber = 
+            var agent = allUsers.FirstOrDefault(x => x.Id == command.Id);
+            if (agent == null) throw new Exception($"Agent Not Found.");
 
-            AuthenticationResponse agent = new();
-            agent.Id = command.Id;
-            agent.Firstname = command.Firstname;
-            //agent.PhoneNumber = command.PhoneNumber;
-            agent.Lastname = command.Lastname;
-            agent.DocumementId = command.DocumementId;
-            agent.Email = command.Email;
-            agent.Username = command.Username;
+            command.Id = agent.Id;
+            command.Firstname = agent.Firstname;
+            command.PhoneNumber = agent.PhoneNumber;
+            command.Lastname = agent.Lastname;
+            command.DocumementId = agent.DocumementId;
+            command.Email = agent.Email;
+            command.Username = agent.Username;
 
+            await _accountServices.ChangeStatusAsync(_mapper.Map<RegisterRequest>(command));
 
-            changeStatus = _mapper.Map<AuthenticationResponse>(command);
-            //var mapping = _mapper.Map<RegisterRequest>(agent);
-            await _accountServices.UpdateAgentAsync(_mapper.Map<RegisterRequest>(agent));
-
-            var changeStatusDto = _mapper.Map<AgentChangeStatusResponse>(changeStatus);
+            var changeStatusDto = _mapper.Map<AgentChangeStatusResponse>(command);
 
             return changeStatusDto;
         }
