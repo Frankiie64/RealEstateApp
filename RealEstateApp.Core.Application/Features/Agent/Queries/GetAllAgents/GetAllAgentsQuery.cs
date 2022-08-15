@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using MediatR;
 using RealEstateApp.Core.Application.Dtos.Agent;
+using RealEstateApp.Core.Application.Interfaces.Repository;
 using RealEstateApp.Core.Application.Interfaces.Services;
 using System;
 using System.Collections.Generic;
@@ -18,11 +19,13 @@ namespace RealEstateApp.Core.Application.Features.Agent.Queries.GetAllAgents
     public class GetAllAgentsQueryHandler : IRequestHandler<GetAllAgentsQuery, IEnumerable<AgentDto>>
     {
         private readonly IAccountServices _accountServices;
+        private readonly IPropertyRepository _propertyRepository;
         private readonly IMapper _mapper;
 
-        public GetAllAgentsQueryHandler(IAccountServices accountServices, IMapper mapper)
+        public GetAllAgentsQueryHandler(IAccountServices accountServices, IPropertyRepository propertyRepository, IMapper mapper)
         {
             _accountServices = accountServices;
+            _propertyRepository = propertyRepository;
             _mapper = mapper;
         }
 
@@ -34,10 +37,18 @@ namespace RealEstateApp.Core.Application.Features.Agent.Queries.GetAllAgents
         private async Task<List<AgentDto>> GetAllDto()
         {
             List<AgentDto> agentList =  _mapper.Map<List<AgentDto>>(await _accountServices.GetAllUsersAsync());
+            var properties = await _propertyRepository.GetAllAsync();
 
-            agentList = agentList.Where(agent => agent.Roles[0] == "Admin").ToList();
-
-            return agentList;
+            return agentList.Where(agent => agent.Roles[0] == "Agent").Select(agent => new AgentDto
+            {
+                Id = agent.Id,
+                Firstname = agent.Firstname,
+                Lastname = agent.Lastname,
+                Email = agent.Email,
+                PhoneNumber = agent.PhoneNumber,
+                IsActive = agent.IsActive,
+                PropertiesQuantity = properties.Where(property => property.AgentId == agent.Id).Count()
+            }).ToList();
         }
     }
 }
