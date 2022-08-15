@@ -376,21 +376,16 @@ namespace RealEstateApp.Infrastructure.Identity.Services
             response.HasError = false;
 
             var user = await userManager.FindByIdAsync(request.Id);
+            
+            user.IsActive = user.IsActive == true?false:true;
 
-            user.Id = request.Id;
-            user.Email = request.Email;
-            user.Firstname = request.Firstname;
-            user.Lastname = request.Lastname;
-            user.DocumementId = request.DocumementId;
-            user.UserName = request.Username;
-            user.PhoneNumber = request.PhoneNumber;
-            user.PhotoProfileUrl = request.PhotoProfileUrl;
-            user.EmailConfirmed = true;
-            user.PhoneNumberConfirmed = true;
-            user.IsActive = request.IsActive;
+            var result = await userManager.UpdateAsync(user);
 
-
-            await userManager.UpdateAsync(user);
+            if (!result.Succeeded)
+            {
+                response.HasError = true;
+                response.Error = "Haocurrido algun problema cuando se intento cambiar el estado del usuario.";
+            }
             return response;
 
         }
