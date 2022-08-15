@@ -297,6 +297,7 @@ namespace RealEstateApp.Infrastructure.Identity.Services
                     IsVerified = vm.EmailConfirmed,
                     PhoneNumber = vm.PhoneNumber,
                     PhotoProfileUrl = vm.PhotoProfileUrl,
+                    IsActive = vm.IsActive
                     
                 };
 
@@ -308,6 +309,8 @@ namespace RealEstateApp.Infrastructure.Identity.Services
         public async Task<AuthenticationResponse> GetUserByIdAsync(string id)
         {
             var vm = await userManager.FindByIdAsync(id);
+
+            if (vm == null) throw new Exception("No se ha encontrado ningun usuario con este Id");
 
             var rol = await userManager.GetRolesAsync(vm).ConfigureAwait(false);
 
@@ -367,31 +370,14 @@ namespace RealEstateApp.Infrastructure.Identity.Services
 
             return response;
         }
-        public async Task<RegisterResponse> UpdateAgentAsync(RegisterRequest request)
+        public async Task<RegisterResponse> ChangeStatusAsync(RegisterRequest request)
         {
             RegisterResponse response = new();
             response.HasError = false;
 
             var user = await userManager.FindByIdAsync(request.Id);
 
-            var userWithUsername = await userManager.FindByNameAsync(request.Username);
-
-            if (userWithUsername != null && user.UserName != request.Username)
-            {
-                response.HasError = true;
-                response.Error = $"El nombre de usuario '{request.Username}' ya  existe.";
-                return response;
-            }
-
-            var userWithEmail = await userManager.FindByEmailAsync(request.Email);
-
-            if (userWithEmail != null && user.Email != request.Email)
-            {
-                response.HasError = true;
-                response.Error = $"El email '{request.Email}' ya esta en uso.";
-                return response;
-            }
-
+            user.Id = request.Id;
             user.Email = request.Email;
             user.Firstname = request.Firstname;
             user.Lastname = request.Lastname;
@@ -401,8 +387,9 @@ namespace RealEstateApp.Infrastructure.Identity.Services
             user.PhotoProfileUrl = request.PhotoProfileUrl;
             user.EmailConfirmed = true;
             user.PhoneNumberConfirmed = true;
-            user.IsActive = user.IsActive == true ? false : true;
-            
+            user.IsActive = request.IsActive;
+
+
             await userManager.UpdateAsync(user);
             return response;
 

@@ -1,4 +1,5 @@
 ﻿using RealEstateApp.Core.Application.Dtos.Account;
+using RealEstateApp.Core.Application.Dtos.Agent;
 using RealEstateApp.Core.Application.ViewModels.Users;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -17,7 +18,7 @@ namespace RealEstateApp.Core.Application.Interfaces.Services
         Task<List<UserVM>> GetAllAgentAsync();
         Task<UserVM> GetUserByIdAsync(string id);
         Task<RegisterResponse> UpdateAsync(SaveUserVM vm,string id);
-        Task<RegisterResponse> UpdateAgentAsync(SaveUserVM vm);
+        Task<RegisterResponse> ChangeStatus(AgentDto vm, string id);
 
         Task SignOutAsync();
     }
