@@ -8580,11 +8580,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Franklyn\\source\\repos\\Proyecto MVC .NET CORE\\version de real\\WebApi.RealEstateApp\\WebApi.RealEstateApp.csproj",
+      "projectUniqueName": "C:\\Users\\Franklyn\\Source\\Repos\\RealEstateApp\\WebApi.RealEstateApp\\WebApi.RealEstateApp.csproj",
       "projectName": "WebApi.RealEstateApp",
-      "projectPath": "C:\\Users\\Franklyn\\source\\repos\\Proyecto MVC .NET CORE\\version de real\\WebApi.RealEstateApp\\WebApi.RealEstateApp.csproj",
+      "projectPath": "C:\\Users\\Franklyn\\Source\\Repos\\RealEstateApp\\WebApi.RealEstateApp\\WebApi.RealEstateApp.csproj",
       "packagesPath": "C:\\Users\\Franklyn\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Franklyn\\source\\repos\\Proyecto MVC .NET CORE\\version de real\\WebApi.RealEstateApp\\obj\\",
+      "outputPath": "C:\\Users\\Franklyn\\Source\\Repos\\RealEstateApp\\WebApi.RealEstateApp\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Franklyn\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -8601,20 +8601,20 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Users\\Franklyn\\source\\repos\\Proyecto MVC .NET CORE\\version de real\\RealEstateApp.Core.Application\\RealEstateApp.Core.Application.csproj": {
-              "projectPath": "C:\\Users\\Franklyn\\source\\repos\\Proyecto MVC .NET CORE\\version de real\\RealEstateApp.Core.Application\\RealEstateApp.Core.Application.csproj"
+            "C:\\Users\\Franklyn\\Source\\Repos\\RealEstateApp\\RealEstateApp.Core.Application\\RealEstateApp.Core.Application.csproj": {
+              "projectPath": "C:\\Users\\Franklyn\\Source\\Repos\\RealEstateApp\\RealEstateApp.Core.Application\\RealEstateApp.Core.Application.csproj"
             },
-            "C:\\Users\\Franklyn\\source\\repos\\Proyecto MVC .NET CORE\\version de real\\RealEstateApp.Core.Domain\\RealEstateApp.Core.Domain.csproj": {
-              "projectPath": "C:\\Users\\Franklyn\\source\\repos\\Proyecto MVC .NET CORE\\version de real\\RealEstateApp.Core.Domain\\RealEstateApp.Core.Domain.csproj"
+            "C:\\Users\\Franklyn\\Source\\Repos\\RealEstateApp\\RealEstateApp.Core.Domain\\RealEstateApp.Core.Domain.csproj": {
+              "projectPath": "C:\\Users\\Franklyn\\Source\\Repos\\RealEstateApp\\RealEstateApp.Core.Domain\\RealEstateApp.Core.Domain.csproj"
             },
-            "C:\\Users\\Franklyn\\source\\repos\\Proyecto MVC .NET CORE\\version de real\\RealEstateApp.Infrastructure.Identity\\RealEstateApp.Infrastructure.Identity.csproj": {
-              "projectPath": "C:\\Users\\Franklyn\\source\\repos\\Proyecto MVC .NET CORE\\version de real\\RealEstateApp.Infrastructure.Identity\\RealEstateApp.Infrastructure.Identity.csproj"
+            "C:\\Users\\Franklyn\\Source\\Repos\\RealEstateApp\\RealEstateApp.Infrastructure.Identity\\RealEstateApp.Infrastructure.Identity.csproj": {
+              "projectPath": "C:\\Users\\Franklyn\\Source\\Repos\\RealEstateApp\\RealEstateApp.Infrastructure.Identity\\RealEstateApp.Infrastructure.Identity.csproj"
             },
-            "C:\\Users\\Franklyn\\source\\repos\\Proyecto MVC .NET CORE\\version de real\\RealEstateApp.Infrastructure.Persistence\\RealEstateApp.Infrastructure.Persistence.csproj": {
-              "projectPath": "C:\\Users\\Franklyn\\source\\repos\\Proyecto MVC .NET CORE\\version de real\\RealEstateApp.Infrastructure.Persistence\\RealEstateApp.Infrastructure.Persistence.csproj"
+            "C:\\Users\\Franklyn\\Source\\Repos\\RealEstateApp\\RealEstateApp.Infrastructure.Persistence\\RealEstateApp.Infrastructure.Persistence.csproj": {
+              "projectPath": "C:\\Users\\Franklyn\\Source\\Repos\\RealEstateApp\\RealEstateApp.Infrastructure.Persistence\\RealEstateApp.Infrastructure.Persistence.csproj"
             },
-            "C:\\Users\\Franklyn\\source\\repos\\Proyecto MVC .NET CORE\\version de real\\RealEstateApp.Infrastructure.Shared\\RealEstateApp.Infrastructure.Shared.csproj": {
-              "projectPath": "C:\\Users\\Franklyn\\source\\repos\\Proyecto MVC .NET CORE\\version de real\\RealEstateApp.Infrastructure.Shared\\RealEstateApp.Infrastructure.Shared.csproj"
+            "C:\\Users\\Franklyn\\Source\\Repos\\RealEstateApp\\RealEstateApp.Infrastructure.Shared\\RealEstateApp.Infrastructure.Shared.csproj": {
+              "projectPath": "C:\\Users\\Franklyn\\Source\\Repos\\RealEstateApp\\RealEstateApp.Infrastructure.Shared\\RealEstateApp.Infrastructure.Shared.csproj"
             }
           }
         }
