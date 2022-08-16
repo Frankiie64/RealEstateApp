@@ -20,7 +20,7 @@
                             <input class="form-check-input" value="0" checked type="checkbox" name="IdTypeProperty" id="TypeProperty" />
                             <label class="form-check-label" for="TypeProperty">Todas</label>
                         </li>
-                        @foreach (TypePropertyViewModel item in ViewBag.TypePropertys)
+                        @foreach (TypePropertyViewModel item in ViewBag.TypeProperties)
                         {
                             <li class="dropdown-item">
                                 <input class="form-check-input" value="@item.Id" type="checkbox" name="IdTypeProperty" id="TypeProperty@(item.Id)" />
@@ -84,10 +84,10 @@
         </div>       
     </form>
 
-    @if (ViewBag.Propertys.Count != 0 || ViewBag.Propertys == null)
+    @if (ViewBag.Properties.Count != 0 || ViewBag.Properties == null)
     {
         <div class=" m-1 row mt-3">
-            @foreach (PropertyViewModel item in ViewBag.Propertys)
+            @foreach (PropertyViewModel item in ViewBag.Properties)
             {
                 <div class="col-4 ">
                     <a asp-controller="Home" asp-action="Details" asp-route-id="@item.Id" type="button" class="w-100 text-decoration-none text-dark mb-2" style="text-decoration:none">
@@ -103,7 +103,7 @@
                                     <small class="card-title fw-bolder fs-5">
                                         @item.TypeProperty.Name
                                     </small>
-                                        @if (true)
+                                        @if (item.IsFavorite)
                                         {
                                             <a type="button" asp-controller="Client" asp-action="EstatusFavorite" asp-route-id="@item.Id" class="mt-1"><i class="fa-solid fa-star text-warning bg-transparent"></i></a>
                                         }

@@ -9,9 +9,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using WebApp.RealEstateApp.middlewares;
 using RealEstateApp;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WebApp.RealEstateApp.Controllers
 {
+    
     public class UserController : Controller
     {
         private readonly IUserService userService;
