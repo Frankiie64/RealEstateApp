@@ -26,6 +26,11 @@ namespace WebApp.RealEstateApp.Controllers
 
         public async Task<IActionResult> Index()
         {
+            if (user != null)
+            {
+
+            }
+
             ViewBag.Propertys = await serviceProperty.GetAllViewModelWithIncludeAsync();
             ViewBag.TypePropertys = await serviceTypeProperty.GetAllViewModelAsync();
 

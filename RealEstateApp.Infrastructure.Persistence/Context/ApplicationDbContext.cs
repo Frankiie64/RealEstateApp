@@ -24,6 +24,7 @@ namespace RealEstateApp.Infrastructure.Persistence.Context
         public DbSet<TypeProperty> TypeProperties { get; set; }
         public DbSet<TypeSale> TypeSales { get; set; }
         public DbSet<Improvement> Improvements { get; set; }
+        public DbSet<FavoriteProperty> FavoriteProperty { get; set; }
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
         {
@@ -87,6 +88,10 @@ namespace RealEstateApp.Infrastructure.Persistence.Context
             modelBuilder.Entity<PhotosOfProperties>()
           .ToTable("PhotosOfProperties");
 
+            modelBuilder.Entity<FavoriteProperty>()
+        .ToTable("FavoriteProperty");
+
+
             #endregion
 
             #region constraint
@@ -108,6 +113,8 @@ namespace RealEstateApp.Infrastructure.Persistence.Context
                 modelBuilder.Entity<PhotosOfProperties>()
           .HasKey(photosOfProperties => photosOfProperties.Id);
 
+                modelBuilder.Entity<FavoriteProperty>()
+         .HasKey(fav => fav.Id);
 
             #endregion
 
@@ -245,6 +252,17 @@ namespace RealEstateApp.Infrastructure.Persistence.Context
 
             modelBuilder.Entity<PhotosOfProperties>()
                 .Property(a => a.IdProperty)
+                .IsRequired();
+            #endregion
+
+            #region FavoriteProperty
+
+            modelBuilder.Entity<FavoriteProperty>()
+                .Property(a => a.PropertyId)
+                .IsRequired();
+
+            modelBuilder.Entity<FavoriteProperty>()
+                .Property(a => a.IdUser)
                 .IsRequired();
             #endregion
 

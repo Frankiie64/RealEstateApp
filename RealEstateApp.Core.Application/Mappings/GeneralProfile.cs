@@ -12,6 +12,7 @@ using RealEstateApp.Core.Application.Features.TypeProperties.Commands.CreateType
 using RealEstateApp.Core.Application.Features.TypeProperties.Commands.UpdateTypeProperty;
 using RealEstateApp.Core.Application.Features.TypeSales.Commands.CreateTypeSale;
 using RealEstateApp.Core.Application.Features.TypeSales.Commands.UpdateTypeSale;
+using RealEstateApp.Core.Application.ViewModels.FavoriteProperty;
 using RealEstateApp.Core.Application.ViewModels.Improvement;
 using RealEstateApp.Core.Application.ViewModels.PhotoProperties;
 using RealEstateApp.Core.Application.ViewModels.Property;
@@ -140,6 +141,7 @@ namespace RealEstateApp.Core.Application.Mappings
 
             CreateMap<Property, PropertyViewModel>()
                .ForMember(x => x.agent, opt => opt.Ignore())
+               .ForMember(x => x.IsFavorite, opt => opt.Ignore())
                .ReverseMap();
 
             CreateMap<Property, SavePropertyViewModel>()
@@ -153,7 +155,8 @@ namespace RealEstateApp.Core.Application.Mappings
                 .ForMember(x => x.UrlPhotos, opt => opt.Ignore())
                .ForMember(x => x.File, opt => opt.Ignore())
                .ReverseMap()
-               .ForMember(x => x.agent, opt => opt.Ignore());
+               .ForMember(x => x.agent, opt => opt.Ignore())
+               .ForMember(x => x.IsFavorite, opt => opt.Ignore());
 
             CreateMap<Improvement, ImprovementViewModel>()
                .ReverseMap();
@@ -202,6 +205,16 @@ namespace RealEstateApp.Core.Application.Mappings
               .ReverseMap()
               .ForMember(x => x.Property, opt => opt.Ignore());
 
+            CreateMap<FavoriteProperty, FavoritePropertyViewModel>()
+              .ReverseMap();
+
+                CreateMap<FavoriteProperty, SaveFavoritePropertyViewModel>()
+          .ReverseMap()
+          .ForMember(x => x.Id, opt => opt.Ignore());
+
+            CreateMap<FavoriteProperty, SaveFavoritePropertyViewModel>()
+          .ReverseMap()
+          .ForMember(x => x.Id, opt => opt.Ignore());
 
             #region DTO's
 
