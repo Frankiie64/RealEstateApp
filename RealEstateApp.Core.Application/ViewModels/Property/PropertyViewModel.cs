@@ -30,6 +30,7 @@ namespace RealEstateApp.Core.Application.ViewModels.Property
         public DateTime Creadted { get; set; }
         public string LastModifiedBy { get; set; }
         public DateTime? LastModified { get; set; }
+        public bool IsFavorite { get; set; }
 
     }
 }

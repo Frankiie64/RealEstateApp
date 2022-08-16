@@ -99,10 +99,19 @@
                             }
                             <img src="@item.UrlPhotos[photo].ImagUrl" class="card-img-top" alt="Imagen Terreno">
                             <div class="card-body">
-                                <small class="card-title fw-bolder fs-5">
-                                    @item.TypeProperty.Name
-                                </small>
-                                <br />
+                                <div class="d-flex">
+                                    <small class="card-title fw-bolder fs-5">
+                                        @item.TypeProperty.Name
+                                    </small>
+                                        @if (true)
+                                        {
+                                            <a type="button" asp-controller="Client" asp-action="EstatusFavorite" asp-route-id="@item.Id" class="mt-1"><i class="fa-solid fa-star text-warning bg-transparent"></i></a>
+                                        }
+                                        else
+                                        {
+                                            <a type="button" asp-controller="Client" asp-action="EstatusFavorite" asp-route-id="@item.Id" class="mt-1"><i class="fa-solid fa-star text-black bg-transparent"></i></a>
+                                        }
+                                </div>
                                 <small class="text-center text-capitalize fw-bolder text-muted mb-2 ">@item.Location</small>
                                 <br />
                                 <small class="card-subtitle text-dark fs-6">
@@ -111,7 +120,7 @@
                                 <br />
                                 <small class="text-center text-capitalize fw-bolder  ">@item.Code</small>
                                 <br />
-                                <small class="card-subtitle text-dark fs-6">                                                                       
+                                <small class="card-subtitle text-dark fs-6">
                                     @item.TypeSale.Name
                                 </small>
                                 <br />
