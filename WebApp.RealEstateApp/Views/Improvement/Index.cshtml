@@ -1,0 +1,58 @@
+﻿@using RealEstateApp.Core.Application.ViewModels.Improvement
+@model List<ImprovementViewModel>
+@{
+    ViewData["Title"] = "Mejoras";
+}
+
+<div class="container-fluid">
+
+    <div class="row mb-3 mt-4">
+        <div class="col-3 offset-9">
+            <a asp-controller="Improvement" asp-action="Create" class="btn btn-primary fw-bold">Añadir nueva Mejora</a>
+        </div>
+    </div>
+    <div class="row">
+
+        <div class="col">
+            <h2 class="text-center mb-5 display-4"> Listado de Mejoras</h2>
+        </div>
+    </div>
+
+    <div class="row">
+        @if (Model == null || Model.Count == 0)
+        {
+            <h3>No hay mejoras</h3>
+        }
+        else
+        {
+            @foreach (ImprovementViewModel item in Model)
+            {
+                <div class="col-4">
+
+                    <figure class="user-card teal shadow-lg">
+                        <figcaption>
+                            <h4>@item.Name</h4>
+                            <p>@item.Description</p>
+
+                            <div class="clearfix">
+                                <a asp-controller="Improvement" asp-action="Edit" asp-route-id="@item.Id" type="button" class="btn btn-labeled btn-primary">
+                                    <span class="btn-label">
+                                        <i class="fa fa-edit"></i>
+                                    </span>Editar
+                                </a>
+
+                                <a asp-controller="Improvement" asp-action="Delete" asp-route-id="@item.Id" type="button" class="btn btn-labeled btn-danger">
+                                    <span class="btn-label">
+                                        <i class="fa fa-times"></i>
+                                    </span>Eliminar
+                                </a>
+                            </div>
+                        </figcaption>
+                    </figure>
+
+                </div>
+            }
+        }
+    </div>
+
+</div>

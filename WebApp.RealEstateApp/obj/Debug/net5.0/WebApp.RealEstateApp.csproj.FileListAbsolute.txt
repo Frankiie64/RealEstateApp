@@ -1846,3 +1846,20 @@ C:\Users\bra\Source\Repos\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5.0\We
 C:\Users\bra\Source\Repos\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5.0\ref\WebApp.RealEstateApp.dll
 C:\Users\bra\Source\Repos\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5.0\WebApp.RealEstateApp.pdb
 C:\Users\bra\Source\Repos\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5.0\WebApp.RealEstateApp.genruntimeconfig.cache
+C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5.0\Razor\Views\Agent\Details.cshtml.g.cs
+C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5.0\Razor\Views\Agent\Index.cshtml.g.cs
+C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5.0\Razor\Views\TypeSale\Delete.cshtml.g.cs
+C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5.0\Razor\Views\TypeSale\Index.cshtml.g.cs
+C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5.0\Razor\Views\TypeSale\SaveTypeSale.cshtml.g.cs
+C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5.0\Razor\Views\User\AccessDenied.cshtml.g.cs
+C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5.0\Razor\Views\User\ConfirmEmail.cshtml.g.cs
+C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5.0\Razor\Views\User\ForgotPassword.cshtml.g.cs
+C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5.0\Razor\Views\User\Index.cshtml.g.cs
+C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5.0\Razor\Views\User\Register.cshtml.g.cs
+C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5.0\Razor\Views\User\ResetPassword.cshtml.g.cs
+C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5.0\Razor\Views\TypeProperty\Index.cshtml.g.cs
+C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5.0\Razor\Views\TypeProperty\SaveTypeProperty.cshtml.g.cs
+C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5.0\Razor\Views\Improvement\Delete.cshtml.g.cs
+C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5.0\Razor\Views\Improvement\Index.cshtml.g.cs
+C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5.0\Razor\Views\Improvement\SaveImprovement.cshtml.g.cs
+C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5.0\Razor\Views\TypeProperty\Delete.cshtml.g.cs

@@ -6040,24 +6040,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\bra\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\Eleikel\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\bra\\Source\\Repos\\RealEstateApp\\RealEstateApp.Infrastructure.Persistence\\RealEstateApp.Infrastructure.Persistence.csproj",
+      "projectUniqueName": "C:\\Users\\Eleikel\\Desktop\\ITLA\\Programacion III\\Real Estate\\RealEstateApp\\RealEstateApp.Infrastructure.Persistence\\RealEstateApp.Infrastructure.Persistence.csproj",
       "projectName": "RealEstateApp.Infrastructure.Persistence",
-      "projectPath": "C:\\Users\\bra\\Source\\Repos\\RealEstateApp\\RealEstateApp.Infrastructure.Persistence\\RealEstateApp.Infrastructure.Persistence.csproj",
-      "packagesPath": "C:\\Users\\bra\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\bra\\Source\\Repos\\RealEstateApp\\RealEstateApp.Infrastructure.Persistence\\obj\\",
+      "projectPath": "C:\\Users\\Eleikel\\Desktop\\ITLA\\Programacion III\\Real Estate\\RealEstateApp\\RealEstateApp.Infrastructure.Persistence\\RealEstateApp.Infrastructure.Persistence.csproj",
+      "packagesPath": "C:\\Users\\Eleikel\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Eleikel\\Desktop\\ITLA\\Programacion III\\Real Estate\\RealEstateApp\\RealEstateApp.Infrastructure.Persistence\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\bra\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\Eleikel\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -6071,11 +6066,11 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Users\\bra\\Source\\Repos\\RealEstateApp\\RealEstateApp.Core.Application\\RealEstateApp.Core.Application.csproj": {
-              "projectPath": "C:\\Users\\bra\\Source\\Repos\\RealEstateApp\\RealEstateApp.Core.Application\\RealEstateApp.Core.Application.csproj"
+            "C:\\Users\\Eleikel\\Desktop\\ITLA\\Programacion III\\Real Estate\\RealEstateApp\\RealEstateApp.Core.Application\\RealEstateApp.Core.Application.csproj": {
+              "projectPath": "C:\\Users\\Eleikel\\Desktop\\ITLA\\Programacion III\\Real Estate\\RealEstateApp\\RealEstateApp.Core.Application\\RealEstateApp.Core.Application.csproj"
             },
-            "C:\\Users\\bra\\Source\\Repos\\RealEstateApp\\RealEstateApp.Core.Domain\\RealEstateApp.Core.Domain.csproj": {
-              "projectPath": "C:\\Users\\bra\\Source\\Repos\\RealEstateApp\\RealEstateApp.Core.Domain\\RealEstateApp.Core.Domain.csproj"
+            "C:\\Users\\Eleikel\\Desktop\\ITLA\\Programacion III\\Real Estate\\RealEstateApp\\RealEstateApp.Core.Domain\\RealEstateApp.Core.Domain.csproj": {
+              "projectPath": "C:\\Users\\Eleikel\\Desktop\\ITLA\\Programacion III\\Real Estate\\RealEstateApp\\RealEstateApp.Core.Domain\\RealEstateApp.Core.Domain.csproj"
             }
           }
         }
@@ -6118,7 +6113,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.203\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.302\\RuntimeIdentifierGraph.json"
       }
     }
   }
