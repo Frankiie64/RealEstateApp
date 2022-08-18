@@ -45,7 +45,7 @@ namespace RealEstateApp.Core.Application.Features.Agent.Queries.GetAgentById
          
             var properties = await _propertyRepository.GetAllAsync();
 
-            return agents.Where(agent => agent.Roles[0] == "Agent" && agent.Id == agent.Id).Select(agent => new AgentDto
+            return agents.Where(agent => agent.Roles[0] == "Agent" && agent.Id == agentId).Select(agent => new AgentDto
             {
                 Id = agent.Id,
                 Firstname = agent.Firstname,
