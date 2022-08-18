@@ -39,6 +39,20 @@
                         <li class="nav-item">
                             <a class="nav-link text-light fw-bolder" asp-area="" asp-controller="Agent" asp-action="Index">Agentes</a>
                         </li>
+
+                        @if (User != null && isAdmin)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-light fw-bolder" asp-area="" asp-controller="TypeSale" asp-action="Index"> Tipos de Ventas</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-light fw-bolder" asp-area="" asp-controller="TypeProperty" asp-action="Index"> Tipos de Propiedades</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-light fw-bolder" asp-area="" asp-controller="Improvement" asp-action="Index"> Mejoras</a>
+                            </li>
+                        }
+
                     </ul>
                     <ul class="navbar-nav flex-grow-1 justify-content-end">
                         @if (User != null)
