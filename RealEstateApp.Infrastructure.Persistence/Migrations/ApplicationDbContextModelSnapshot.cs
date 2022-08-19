@@ -35,7 +35,7 @@ namespace RealEstateApp.Infrastructure.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("FavoriteProperty");
+                    b.ToTable("ImpromentsWithProperty");
                 });
 
             modelBuilder.Entity("RealEstateApp.Core.Domain.Entities.Improvement", b =>
@@ -55,9 +55,6 @@ namespace RealEstateApp.Infrastructure.Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("IdProperty")
-                        .HasColumnType("int");
-
                     b.Property<DateTime?>("LastModified")
                         .HasColumnType("datetime2");
 
@@ -69,8 +66,6 @@ namespace RealEstateApp.Infrastructure.Persistence.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("IdProperty");
 
                     b.ToTable("Improvements");
                 });
@@ -157,6 +152,28 @@ namespace RealEstateApp.Infrastructure.Persistence.Migrations
                     b.ToTable("Properties");
                 });
 
+            modelBuilder.Entity("RealEstateApp.Core.Domain.Entities.TypeImproments", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("IdImproment")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IdProperty")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IdImproment");
+
+                    b.HasIndex("IdProperty");
+
+                    b.ToTable("TypeImproments");
+                });
+
             modelBuilder.Entity("RealEstateApp.Core.Domain.Entities.TypeProperty", b =>
                 {
                     b.Property<int>("Id")
@@ -221,17 +238,6 @@ namespace RealEstateApp.Infrastructure.Persistence.Migrations
                     b.ToTable("TypeSales");
                 });
 
-            modelBuilder.Entity("RealEstateApp.Core.Domain.Entities.Improvement", b =>
-                {
-                    b.HasOne("RealEstateApp.Core.Domain.Entities.Property", "Property")
-                        .WithMany("Improvements")
-                        .HasForeignKey("IdProperty")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Property");
-                });
-
             modelBuilder.Entity("RealEstateApp.Core.Domain.Entities.PhotosOfProperties", b =>
                 {
                     b.HasOne("RealEstateApp.Core.Domain.Entities.Property", "Property")
@@ -262,9 +268,33 @@ namespace RealEstateApp.Infrastructure.Persistence.Migrations
                     b.Navigation("TypeSale");
                 });
 
+            modelBuilder.Entity("RealEstateApp.Core.Domain.Entities.TypeImproments", b =>
+                {
+                    b.HasOne("RealEstateApp.Core.Domain.Entities.Improvement", "Improvement")
+                        .WithMany("typeImproments")
+                        .HasForeignKey("IdImproment")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("RealEstateApp.Core.Domain.Entities.Property", "Property")
+                        .WithMany("Improments")
+                        .HasForeignKey("IdProperty")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Improvement");
+
+                    b.Navigation("Property");
+                });
+
+            modelBuilder.Entity("RealEstateApp.Core.Domain.Entities.Improvement", b =>
+                {
+                    b.Navigation("typeImproments");
+                });
+
             modelBuilder.Entity("RealEstateApp.Core.Domain.Entities.Property", b =>
                 {
-                    b.Navigation("Improvements");
+                    b.Navigation("Improments");
 
                     b.Navigation("UrlPhotos");
                 });

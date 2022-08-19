@@ -1863,3 +1863,12 @@ C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApp.
 C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5.0\Razor\Views\Improvement\Index.cshtml.g.cs
 C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5.0\Razor\Views\Improvement\SaveImprovement.cshtml.g.cs
 C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5.0\Razor\Views\TypeProperty\Delete.cshtml.g.cs
+C:\Users\Franklyn\Source\Repos\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5.0\Razor\Views\Improvement\Delete.cshtml.g.cs
+C:\Users\Franklyn\Source\Repos\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5.0\Razor\Views\Improvement\Index.cshtml.g.cs
+C:\Users\Franklyn\Source\Repos\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5.0\Razor\Views\Improvement\SaveImprovement.cshtml.g.cs
+C:\Users\Franklyn\Source\Repos\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5.0\Razor\Views\TypeProperty\Delete.cshtml.g.cs
+C:\Users\Franklyn\Source\Repos\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5.0\Razor\Views\TypeProperty\Index.cshtml.g.cs
+C:\Users\Franklyn\Source\Repos\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5.0\Razor\Views\TypeProperty\SaveTypeProperty.cshtml.g.cs
+C:\Users\Franklyn\Source\Repos\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5.0\Razor\Views\TypeSale\Delete.cshtml.g.cs
+C:\Users\Franklyn\Source\Repos\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5.0\Razor\Views\TypeSale\Index.cshtml.g.cs
+C:\Users\Franklyn\Source\Repos\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5.0\Razor\Views\TypeSale\SaveTypeSale.cshtml.g.cs

@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using RealEstateApp.Core.Application.Interfaces.Repository;
 using RealEstateApp.Core.Application.Interfaces.Service;
+using RealEstateApp.Core.Application.Interfaces.Service.Service_App;
 using RealEstateApp.Core.Application.Interfaces.Services;
 using RealEstateApp.Core.Application.ViewModels.Property;
 using RealEstateApp.Core.Domain.Entities;
@@ -14,27 +15,32 @@ namespace RealEstateApp.Core.Application.Services.ServicesApp
     {
         private readonly IMapper mapper;
         private readonly IPropertyRepository repo;
+        private readonly ITypeImpromentsServices ImpromentService;
         private readonly IUserService userService;
 
-        public PropertyServices(IMapper mapper, IPropertyRepository repo, IPhotosPropertyRepository PhotoRepo, IUserService userService) : base(repo,mapper)
+        public PropertyServices(IMapper mapper, IPropertyRepository repo, IPhotosPropertyRepository PhotoRepo, IUserService userService,
+            ITypeImpromentsServices ImpromentService) : base(repo,mapper)
         {
             this.mapper = mapper;
             this.repo = repo;
             this.userService = userService;
+            this.ImpromentService = ImpromentService;
         }
 
         public async Task<List<PropertyViewModel>> GetAllViewModelWithIncludeAsync()
         {
-            var entityList = await repo.GetAllWithIncludeAsync(new List<string> { "TypeProperty", "TypeSale", "Improvements", "UrlPhotos" });
+            var entityList = await repo.GetAllWithIncludeAsync(new List<string> { "TypeProperty", "TypeSale", "Improments", "UrlPhotos" });
 
             var listMapped = mapper.Map<List<PropertyViewModel>>(entityList);
             var users = await userService.GetAllUsersAsync();
+            var improvemnts = await ImpromentService.GetAllViewModelWithIncludeAsync();
 
             foreach (var item in listMapped)
             {
                 item.agent = users.Where(agent => agent.Id == item.AgentId).SingleOrDefault();
+                item.Improvements = improvemnts.Where(improvement => improvement.IdProperty == item.Id).Select(x=>x.Improvement).ToList();
             }
-
+           
             return listMapped;
         }
 
