@@ -6,7 +6,7 @@
 @{
     var User = httpContextAccessor.HttpContext.Session.Get<AuthenticationResponse>("user");
     var isAdmin = User != null ? User.Roles.Any(r => r == "Admin") : false;
-    var isBasic = User != null ? User.Roles.Any(r => r == "Client") : false;
+    var IsClient = User != null ? User.Roles.Any(r => r == "Client") : false;
     var isDev = User != null ? User.Roles.Any(r => r == "Developer") : false;
     var isAgent = User != null ? User.Roles.Any(r => r == "Agent") : false;
 
@@ -37,8 +37,15 @@
                             <a class="nav-link text-light fw-bolder" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light fw-bolder" asp-area="" asp-controller="Agent" asp-action="Index">Agentes</a>
+                            <a class="nav-link text-light fw-bolder" asp-area="" asp-controller="Agent" asp-action="Index"><i class="fa-solid fa-id-badge"></i> Agentes</a>
                         </li>
+
+                        @if (User != null && IsClient)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-light fw-bolder" asp-area="" asp-controller="Client" asp-action="PropertiesFavorite"><i class="fa-solid fa-bookmark"></i> Mis Propiedades</a>
+                            </li>
+                        }
 
                         @if (User != null && isAdmin)
                         {
@@ -57,8 +64,8 @@
                     <ul class="navbar-nav flex-grow-1 justify-content-end">
                         @if (User != null)
                         {
-                            <li class="nav-item text-end">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="LogOut">Cerrar Sesion <i class="fa-solid fa-arrow-right-from-bracket"></i> </a>
+                            <li class="nav-item text-end ">
+                                <a class="nav-link text-light fw-bolder" asp-area="" asp-controller="User" asp-action="LogOut"><i class="fa-solid fa-arrow-right-from-bracket"></i> Cerrar Sesion </a>
                             </li>
                         }
                         else

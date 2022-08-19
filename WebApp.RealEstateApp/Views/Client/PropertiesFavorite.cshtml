@@ -1,0 +1,91 @@
+﻿@using RealEstateApp.Core.Application.ViewModels.Property;
+@using RealEstateApp.Core.Application.ViewModels.TypeProperty;
+
+@{
+    ViewData["Title"] = "Favoritos";
+}
+
+<div class="container-fluid">
+    @if (ViewBag.Properties.Count != 0 || ViewBag.Properties == null)
+    {
+        <h5 class="fs-5 card-title fw-bolder">Favoritos</h5>
+        <hr />
+        <div class=" m-1 row mt-3">
+            @foreach (PropertyViewModel item in ViewBag.Properties)
+            {
+                <div class="col-4 ">
+                    <a asp-controller="Home" asp-action="Details" asp-route-id="@item.Id" type="button" class="w-100 text-decoration-none text-dark mb-2" style="text-decoration:none">
+                        <div class="card" style="width: 16rem;">
+                            @{
+                                Random random = new Random();
+
+                                int photo = random.Next(0, (item.UrlPhotos.Count - 1));
+                            }
+                            <img src="@item.UrlPhotos[photo].ImagUrl" class="card-img-top" alt="Imagen Terreno">
+                            <div class="card-body">
+                                <div class="d-flex">
+                                    <small class="card-title fw-bolder fs-5">
+                                        @item.TypeProperty.Name
+                                    </small>
+                                    @if (item.IsFavorite)
+                                    {
+                                        <a type="button" asp-controller="Client" asp-action="EstatusFavorite" asp-route-id="@item.Id" class="mt-1"><i class="fa-solid fa-star text-warning bg-transparent"></i></a>
+                                    }
+                                    else
+                                    {
+                                        <a type="button" asp-controller="Client" asp-action="EstatusFavorite" asp-route-id="@item.Id" class="mt-1"><i class="fa-solid fa-star text-black bg-transparent"></i></a>
+                                    }
+                                </div>
+                                <small class="text-center text-capitalize fw-bolder text-muted mb-2 ">@item.Location</small>
+                                <br />
+                                <small class="card-subtitle text-dark fs-6">
+                                    Codigo
+                                </small>
+                                <br />
+                                <small class="text-center text-capitalize fw-bolder  ">@item.Code</small>
+                                <br />
+                                <small class="card-subtitle text-dark fs-6">
+                                    @item.TypeSale.Name
+                                </small>
+                                <br />
+                                <small class="text-center text-capitalize fw-bolder text-danger ">RD$ @item.Price  - US$ @(item.Price / 54 ) </small>
+                                <br />
+                                <hr clas />
+                                <small class="fs-6 d-flex justify-content-evenly">
+
+                                    @if (item.Bathroom != 0)
+                                    {
+                                        <div class="me-2"><i class="fa-solid fa-hot-tub-person"></i> @item.Bathroom</div>
+                                    }
+
+                                    @if (item.Room != 0)
+                                    {
+                                        <div class="me-2"><i class="fa-solid fa-bed"></i> @item.Room</div>
+                                    }
+                                    <div class="me-2"><i class="fa-solid fa-building"></i> @(item.Meters)mt</div>
+                                </small>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+            }
+        </div> }
+    else
+    {
+        <div class="row mt-5">
+            <div class="col-6 offset-3">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <h3 class="text-center">NO HAY FAVORITOS</h3>
+                            <div class="text-center ">
+                                <p>No hay propiedades agregadas como favoritas por el momento</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

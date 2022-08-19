@@ -53,9 +53,25 @@ namespace WebApp.RealEstateApp.Controllers
 
         public async Task<IActionResult> PropertysByFilter(PropertyByFiltering filter)
         {
-            ViewBag.TypePropertys = await serviceTypeProperty.GetAllViewModelAsync();
+            ViewBag.TypeProperties = await serviceTypeProperty.GetAllViewModelAsync();
 
-            ViewBag.Propertys = await serviceProperty.GetAllViewModelWithIncludeByFilterAsync(filter);
+            var Properties = await serviceProperty.GetAllViewModelWithIncludeByFilterAsync(filter);
+
+            if (user != null)
+            {
+                var ListFavorite = await serviceFavProperty.GetAllViewModelAsync();
+                ListFavorite = ListFavorite.Where(x => x.IdUser == user.Id).ToList();
+
+                foreach (var item in Properties)
+                {
+                    if (ListFavorite.Any(x => x.PropertyId == item.Id))
+                    {
+                        item.IsFavorite = true;
+                    }
+                }
+            }
+
+            ViewBag.Properties = Properties;
 
             return View("Index");
         }
