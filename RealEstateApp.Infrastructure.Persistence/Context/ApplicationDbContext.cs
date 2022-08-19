@@ -24,6 +24,8 @@ namespace RealEstateApp.Infrastructure.Persistence.Context
         public DbSet<TypeProperty> TypeProperties { get; set; }
         public DbSet<TypeSale> TypeSales { get; set; }
         public DbSet<Improvement> Improvements { get; set; }
+        public DbSet<TypeImproments> TypeImproments { get; set; }
+
         public DbSet<FavoriteProperty> FavoriteProperty { get; set; }
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
@@ -73,23 +75,26 @@ namespace RealEstateApp.Infrastructure.Persistence.Context
             #region Table
 
 
-            modelBuilder.Entity<Property>()
-                .ToTable("Properties");
+                modelBuilder.Entity<Property>()
+                    .ToTable("Properties");
 
-            modelBuilder.Entity<TypeProperty>()
-                .ToTable("TypeProperties");
+                modelBuilder.Entity<TypeProperty>()
+                    .ToTable("TypeProperties");
 
-            modelBuilder.Entity<TypeSale>()
-                .ToTable("TypeSales");
+                modelBuilder.Entity<TypeSale>()
+                    .ToTable("TypeSales");
 
-            modelBuilder.Entity<Improvement>()
-                .ToTable("Improvements");
+                modelBuilder.Entity<Improvement>()
+                    .ToTable("Improvements");
 
-            modelBuilder.Entity<PhotosOfProperties>()
-          .ToTable("PhotosOfProperties");
+                modelBuilder.Entity<PhotosOfProperties>()
+              .ToTable("PhotosOfProperties");
 
-            modelBuilder.Entity<FavoriteProperty>()
-        .ToTable("FavoriteProperty");
+                modelBuilder.Entity<FavoriteProperty>()
+            .ToTable("FavoriteProperty");
+
+                modelBuilder.Entity<FavoriteProperty>()
+           .ToTable("ImpromentsWithProperty");
 
 
             #endregion
@@ -116,6 +121,8 @@ namespace RealEstateApp.Infrastructure.Persistence.Context
                 modelBuilder.Entity<FavoriteProperty>()
          .HasKey(fav => fav.Id);
 
+            modelBuilder.Entity<TypeImproments>()
+       .HasKey(tImp => tImp.Id);
             #endregion
 
 
@@ -142,10 +149,16 @@ namespace RealEstateApp.Infrastructure.Persistence.Context
                 .OnDelete(deleteBehavior: DeleteBehavior.Cascade);
 
             modelBuilder.Entity<Property>()
-          .HasMany(property => property.Improvements)
+          .HasMany(property => property.Improments)
           .WithOne(improvement => improvement.Property)
           .HasForeignKey(improvement => improvement.IdProperty)
           .OnDelete(deleteBehavior: DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Improvement>()
+         .HasMany(Improvement => Improvement.typeImproments)
+         .WithOne(property => property.Improvement)
+         .HasForeignKey(property => property.IdImproment)
+         .OnDelete(deleteBehavior: DeleteBehavior.Cascade);
 
             /*
             modelBuilder.Entity<Property>()
@@ -266,6 +279,18 @@ namespace RealEstateApp.Infrastructure.Persistence.Context
                 .IsRequired();
             #endregion
 
+            #region TypeImproments
+
+
+            modelBuilder.Entity<TypeImproments>()
+                .Property(a => a.IdImproment)
+                .IsRequired();
+
+            modelBuilder.Entity<TypeImproments>()
+               .Property(a => a.IdProperty)
+               .IsRequired();
+
+            #endregion
 
             #endregion
 

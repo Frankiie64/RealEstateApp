@@ -1,4 +1,5 @@
 ﻿using RealEstateApp.Core.Domain.Common;
+using System.Collections.Generic;
 
 namespace RealEstateApp.Core.Domain.Entities
 {
@@ -6,8 +7,6 @@ namespace RealEstateApp.Core.Domain.Entities
     {
         public string Name { get; set; }
         public string Description { get; set; }
-        public int IdProperty { get; set; }
-        public Property Property { get; set; }
-
+        public ICollection<TypeImproments> typeImproments { get; set; }
     }
 }

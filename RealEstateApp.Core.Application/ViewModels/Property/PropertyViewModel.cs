@@ -1,5 +1,6 @@
 ﻿using RealEstateApp.Core.Application.ViewModels.Improvement;
 using RealEstateApp.Core.Application.ViewModels.PhotoProperties;
+using RealEstateApp.Core.Application.ViewModels.TypeImproments;
 using RealEstateApp.Core.Application.ViewModels.TypeProperty;
 using RealEstateApp.Core.Application.ViewModels.TypeSale;
 using RealEstateApp.Core.Application.ViewModels.Users;
@@ -25,6 +26,7 @@ namespace RealEstateApp.Core.Application.ViewModels.Property
         public int TypeSaleId { get; set; }
         public TypeSaleViewModel TypeSale { get; set; }
         public List<PhotosPropertyViewModel> UrlPhotos { get; set; }
+        public List<TypeImpromentsViewModel> TypeImproments { get; set; }
         public List<ImprovementViewModel> Improvements { get; set; }
         public string CreatedBy { get; set; }
         public DateTime Creadted { get; set; }
