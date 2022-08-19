@@ -1,4 +1,6 @@
 ﻿using RealEstateApp.Core.Application.ViewModels.Property;
+using RealEstateApp.Core.Application.ViewModels.TypeImproments;
+using System.Collections.Generic;
 
 namespace RealEstateApp.Core.Application.ViewModels.Improvement
 {
@@ -8,7 +10,7 @@ namespace RealEstateApp.Core.Application.ViewModels.Improvement
 
         public string Name { get; set; }
         public string Description { get; set; }
-        public int IdProperty { get; set; }
-        public PropertyViewModel Property { get; set; }
+        public ICollection<TypeImpromentsViewModel> typeImproments { get; set; }
+
     }
 }

@@ -18,7 +18,7 @@ namespace RealEstateApp.Core.Application.Dtos.Account
         public bool IsActive { get; set; }
 
         public string JWTtoken { get; set; }
-        [JsonIgnore]
+        //[JsonIgnore]
         public string RefreshToken { get; set; }
         public bool HasError { get; set; }
         public string Error { get; set; }

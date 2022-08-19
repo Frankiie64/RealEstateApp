@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RealEstateApp.Core.Application.Dtos.TypeSale;
 using RealEstateApp.Core.Application.Features.TypeSale.Queries.GetAllTypeProperties;
@@ -18,6 +19,7 @@ namespace WebApi.RealEstateApp.Controllers.v1
     [SwaggerTag("Mantenimiento Tipos de Ventas")]
     public class TypeSaleController : BaseApiController
     {
+        [Authorize(Roles = "Admin,SuperAdmin,Developer")]
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(TypeSaleDto))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -38,6 +40,8 @@ namespace WebApi.RealEstateApp.Controllers.v1
             }
         }
 
+
+        [Authorize(Roles = "Admin,SuperAdmin,Developer")]
         [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(TypeSaleDto))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -58,6 +62,7 @@ namespace WebApi.RealEstateApp.Controllers.v1
             }
         }
 
+        [Authorize(Roles = "Admin,SuperAdmin")]
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -85,7 +90,7 @@ namespace WebApi.RealEstateApp.Controllers.v1
             }
         }
 
-
+        [Authorize(Roles = "Admin,SuperAdmin")]
         [HttpPut("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SaveTypeSaleDto))]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -115,7 +120,7 @@ namespace WebApi.RealEstateApp.Controllers.v1
             }
         }
 
-
+        [Authorize(Roles = "Admin,SuperAdmin")]
         [HttpDelete("{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
