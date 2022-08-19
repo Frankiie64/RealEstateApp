@@ -11,6 +11,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using Microsoft.IdentityModel.Tokens;
+using System.Security.Cryptography;
+using RealEstateApp.Core.Domain.Settings;
+using Microsoft.Extensions.Options;
 
 namespace RealEstateApp.Infrastructure.Identity.Services
 {
@@ -19,12 +25,15 @@ namespace RealEstateApp.Infrastructure.Identity.Services
         private readonly UserManager<ApplicationUser> userManager;
         private readonly SignInManager<ApplicationUser> signManager;
         private readonly IEmailService emailService;
+        private readonly JWTSettings _jwtSettings;
 
-        public AccountServices(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signManager, IEmailService emailService)
+
+        public AccountServices(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signManager, IEmailService emailService, IOptions<JWTSettings> jwtSettings)
         {
             this.userManager = userManager;
             this.signManager = signManager;
             this.emailService = emailService;
+            _jwtSettings = jwtSettings.Value;
         }
 
         public async Task<AuthenticationResponse> AuthenticationAsync(AuthenticationRequest request)
@@ -78,6 +87,13 @@ namespace RealEstateApp.Infrastructure.Identity.Services
             response.Roles = rolesList.ToList();
             response.IsVerified = user.EmailConfirmed;
 
+            JwtSecurityToken jwtSecurityToken = await GenerateJWToken(user);
+
+
+            response.JWTtoken = new JwtSecurityTokenHandler().WriteToken(jwtSecurityToken);
+            var refreshToken = GenerateRefreshToken();
+            response.RefreshToken = refreshToken.Token;
+
             return response;
         }
 
@@ -126,6 +142,18 @@ namespace RealEstateApp.Infrastructure.Identity.Services
 
             if(request.Rol == Roles.Client.ToString())
             {
+                user.IsActive = true;
+            }
+
+            if (request.Rol == Roles.SuperAdmin.ToString())
+            {
+                user.EmailConfirmed = true;
+                user.IsActive = true;
+            }
+
+            if (request.Rol == Roles.Developer.ToString())
+            {
+                user.EmailConfirmed = true;
                 user.IsActive = true;
             }
 
@@ -389,5 +417,64 @@ namespace RealEstateApp.Infrastructure.Identity.Services
             return response;
 
         }
+
+
+        #region API AUTHENTICATION
+        private async Task<JwtSecurityToken> GenerateJWToken(ApplicationUser user)
+        {
+            var userClaims = await userManager.GetClaimsAsync(user); //Claims = Permisos
+            var roles = await userManager.GetRolesAsync(user);
+
+            var roleClaims = new List<Claim>(); //Agregar los roles a los claims
+
+            foreach (var role in roles)
+            {
+                roleClaims.Add(new Claim("roles", role));
+            }
+
+            var claims = new[]
+            {
+                new Claim(JwtRegisteredClaimNames.Sub,user.UserName),
+                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()), //token unico
+                new Claim(JwtRegisteredClaimNames.Email,user.Email),
+                new Claim("uid", user.Id)
+            }
+            .Union(userClaims)
+            .Union(roleClaims);
+
+            var symmectricSecurityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSettings.Key));
+            var signingCredetials = new SigningCredentials(symmectricSecurityKey, SecurityAlgorithms.HmacSha256);
+
+            var jwtSecurityToken = new JwtSecurityToken(
+                issuer: _jwtSettings.Issuer,
+                audience: _jwtSettings.Audience,
+                claims: claims,
+                expires: DateTime.UtcNow.AddMinutes(_jwtSettings.DurantionInMinutes),
+                signingCredentials: signingCredetials);
+
+            return jwtSecurityToken;
+        }
+
+        private RefreshToken GenerateRefreshToken()
+        {
+            return new RefreshToken
+            {
+                Token = RandomTokenString(),
+                Expires = DateTime.UtcNow.AddDays(7),
+                Created = DateTime.UtcNow
+            };
+        }
+
+        private string RandomTokenString()
+        {
+            using var rngCryptoServiceProvider = new RNGCryptoServiceProvider();
+            var ramdomBytes = new byte[40];
+            rngCryptoServiceProvider.GetBytes(ramdomBytes);
+
+            return BitConverter.ToString(ramdomBytes).Replace("-", "");
+        }
+
+        #endregion
+
     }
 }

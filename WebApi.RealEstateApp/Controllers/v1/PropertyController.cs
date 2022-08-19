@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RealEstateApp.Core.Application.Dtos.Property;
 using RealEstateApp.Core.Application.Features.Properties.Queries.GetAllProperties;
@@ -11,6 +12,7 @@ using WebAPI.RealEstateApp.Controllers;
 
 namespace WebApi.RealEstateApp.Controllers.v1
 {
+    [Authorize(Roles = "Admin,SuperAdmin,Developer")]
     [ApiVersion("1.0")]
     [SwaggerTag("Mantenimiento Propiedades")]
     public class PropertyController : BaseApiController
@@ -62,7 +64,7 @@ namespace WebApi.RealEstateApp.Controllers.v1
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [SwaggerOperation(
             Summary = "Mejoras por Codigo",
-            Description = "Obtener una mejora por Codigo"
+            Description = "Obtener una propiedad por Codigo"
          )]
         public async Task<IActionResult> GetByCode(int code)
         {
