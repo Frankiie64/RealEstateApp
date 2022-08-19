@@ -1,16 +1,16 @@
 {
   "ExpandedNodes": [
     "",
-    "\\RealEstateApp.Core.Domain",
-    "\\RealEstateApp.Core.Domain\\Entities",
+    "\\RealEstateApp.Core.Application",
+    "\\RealEstateApp.Core.Application\\ViewModels",
+    "\\RealEstateApp.Core.Application\\ViewModels\\Property",
     "\\RealEstateApp.Infrastructure.Identity",
-    "\\RealEstateApp.Infrastructure.Identity\\Services",
+    "\\RealEstateApp.Infrastructure.Identity\\Entities",
     "\\WebApp.RealEstateApp",
     "\\WebApp.RealEstateApp\\Views",
-    "\\WebApp.RealEstateApp\\Views\\Shared",
-    "\\WebApp.RealEstateApp\\wwwroot",
-    "\\WebApp.RealEstateApp\\wwwroot\\css"
+    "\\WebApp.RealEstateApp\\Views\\Client",
+    "\\WebApp.RealEstateApp\\Views\\Shared"
   ],
-  "SelectedNode": "\\RealEstateApp.Infrastructure.Identity\\Services\\AccountServices.cs",
+  "SelectedNode": "\\WebApp.RealEstateApp\\Views\\Shared\\_Layout.cshtml",
   "PreviewInSolutionExplorer": false
 }

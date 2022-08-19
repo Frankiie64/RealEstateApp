@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RealEstateApp.Core.Application.Dtos.Account;
 using RealEstateApp.Core.Application.helper;
@@ -8,9 +9,12 @@ using RealEstateApp.Core.Application.ViewModels.FavoriteProperty;
 using RealEstateApp.Core.Application.ViewModels.Property;
 using System.Linq;
 using System.Threading.Tasks;
+using WebApp.RealEstateApp.middlewares;
+using WebApp.RealEstateApp.Middlewares;
 
 namespace WebApp.RealEstateApp.Controllers
 {
+    [AllowAnonymous]
     public class HomeController : Controller
     {
         private readonly IPropertyService serviceProperty;
@@ -27,7 +31,7 @@ namespace WebApp.RealEstateApp.Controllers
             this.context = context;
             user = context.HttpContext.Session.Get<AuthenticationResponse>("user");
         }
-
+        [ServiceFilter(typeof(SelectHome))]
         public async Task<IActionResult> Index()
         {
             var Properties = await serviceProperty.GetAllViewModelWithIncludeAsync();
@@ -50,7 +54,7 @@ namespace WebApp.RealEstateApp.Controllers
 
             return View();
         }
-
+        [ServiceFilter(typeof(SelectHome))]
         public async Task<IActionResult> PropertysByFilter(PropertyByFiltering filter)
         {
             ViewBag.TypeProperties = await serviceTypeProperty.GetAllViewModelAsync();
@@ -75,7 +79,7 @@ namespace WebApp.RealEstateApp.Controllers
 
             return View("Index");
         }
-
+        [ServiceFilter(typeof(SelectHome))]
         public async Task<IActionResult> Details(int id)
         {
             // No me mire, no hay mucho tiempo xD

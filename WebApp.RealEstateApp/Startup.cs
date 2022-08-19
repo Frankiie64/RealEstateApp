@@ -9,6 +9,7 @@ using RealEstateApp.Infrastructure.Identity;
 using RealEstateApp.Infrastructure.Persistence;
 using RealEstateApp.Infrastructure.Shared;
 using WebApp.RealEstateApp.middlewares;
+using WebApp.RealEstateApp.Middlewares;
 
 namespace WebApp.RealEstateApp
 {
@@ -31,6 +32,7 @@ namespace WebApp.RealEstateApp
             services.AddSharedInfrastructure(_Config);
             services.AddControllersWithViews();
             services.AddScoped<LoginAuthorize>();
+            services.AddScoped<SelectHome>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddTransient<ValidSession, ValidSession>();
         }
