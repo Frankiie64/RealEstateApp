@@ -33,7 +33,7 @@ namespace RealEstateApp.Core.Application
             services.AddTransient<IFavoritePropertyServices, FavoritePropertyServices>();
             services.AddTransient<ITypeSaleService, TypeSaleServices>();
             services.AddTransient<IImprovementService, ImprovementServices>();
-
+            services.AddTransient<ITypeImpromentsServices, TypeImpromentServices>();
 
             /*
             services.AddTransient<IImprovementService, IMPRO>();
