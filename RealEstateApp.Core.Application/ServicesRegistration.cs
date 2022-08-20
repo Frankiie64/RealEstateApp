@@ -7,6 +7,8 @@ using RealEstateApp.Core.Application.Interfaces.Service;
 using RealEstateApp.Core.Application.Services.ServicesApp;
 using MediatR;
 using RealEstateApp.Core.Application.Interfaces.Service.Service_App;
+using RealEstateApp.Core.Application.Interfaces.Service.Service_Api;
+using RealEstateApp.Core.Application.Services.ServicesApi;
 
 namespace RealEstateApp.Core.Application
 {
@@ -22,6 +24,7 @@ namespace RealEstateApp.Core.Application
             #region Services 
 
             services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IUserServiceApi, UserServiceApi>();
 
             services.AddTransient(typeof(IGenericServices<,,>), typeof(GenericServices<,,>));
 

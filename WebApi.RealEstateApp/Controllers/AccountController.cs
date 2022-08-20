@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RealEstateApp.Core.Application.Dtos.Account;
 using RealEstateApp.Core.Application.Enums;
+using RealEstateApp.Core.Application.Interfaces.Service.Service_Api;
 using RealEstateApp.Core.Application.Interfaces.Services;
 using Swashbuckle.AspNetCore.Annotations;
 using System.Net.Mime;
@@ -15,9 +16,9 @@ namespace WebAPI.RealEstateApp.Controllers
     [ApiController]
     public class AccountController : ControllerBase
     {
-        private readonly IAccountServices _accountService;
+        private readonly IAccountServiceApi _accountService;
         private readonly IMapper mapper;
-        public AccountController(IAccountServices accountService, IMapper mapper)
+        public AccountController(IAccountServiceApi accountService, IMapper mapper)
         {
             _accountService = accountService;
             this.mapper = mapper;
@@ -52,7 +53,7 @@ namespace WebAPI.RealEstateApp.Controllers
 
 
 
-
+        [Authorize(Roles = "Admin,SuperAdmin")]
         [HttpPost("RegisterDeveloper")]
         //[Consumes(MediaTypeNames.Application.Json)]
         [SwaggerOperation(

@@ -678,16 +678,6 @@ C:\Users\Franklyn\Source\Repos\RealEstateApp\WebApi.RealEstateApp\obj\Debug\net5
 C:\Users\Franklyn\Source\Repos\RealEstateApp\WebApi.RealEstateApp\obj\Debug\net5.0\ref\WebApi.RealEstateApp.dll
 C:\Users\Franklyn\Source\Repos\RealEstateApp\WebApi.RealEstateApp\obj\Debug\net5.0\WebApi.RealEstateApp.pdb
 C:\Users\Franklyn\Source\Repos\RealEstateApp\WebApi.RealEstateApp\obj\Debug\net5.0\WebApi.RealEstateApp.genruntimeconfig.cache
-C:\Users\Eleikel\Desktop\ITLA\Programacion III\REAL ESTATE FINALLLLLLLLLLLLLLL\RealEstateApp\WebApi.RealEstateApp\obj\Debug\net5.0\WebApi.RealEstateApp.csproj.AssemblyReference.cache
-C:\Users\Eleikel\Desktop\ITLA\Programacion III\REAL ESTATE FINALLLLLLLLLLLLLLL\RealEstateApp\WebApi.RealEstateApp\obj\Debug\net5.0\WebApi.RealEstateApp.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\Eleikel\Desktop\ITLA\Programacion III\REAL ESTATE FINALLLLLLLLLLLLLLL\RealEstateApp\WebApi.RealEstateApp\obj\Debug\net5.0\WebApi.RealEstateApp.AssemblyInfoInputs.cache
-C:\Users\Eleikel\Desktop\ITLA\Programacion III\REAL ESTATE FINALLLLLLLLLLLLLLL\RealEstateApp\WebApi.RealEstateApp\obj\Debug\net5.0\WebApi.RealEstateApp.AssemblyInfo.cs
-C:\Users\Eleikel\Desktop\ITLA\Programacion III\REAL ESTATE FINALLLLLLLLLLLLLLL\RealEstateApp\WebApi.RealEstateApp\obj\Debug\net5.0\WebApi.RealEstateApp.csproj.CoreCompileInputs.cache
-C:\Users\Eleikel\Desktop\ITLA\Programacion III\REAL ESTATE FINALLLLLLLLLLLLLLL\RealEstateApp\WebApi.RealEstateApp\obj\Debug\net5.0\WebApi.RealEstateApp.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\Eleikel\Desktop\ITLA\Programacion III\REAL ESTATE FINALLLLLLLLLLLLLLL\RealEstateApp\WebApi.RealEstateApp\obj\Debug\net5.0\WebApi.RealEstateApp.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\Eleikel\Desktop\ITLA\Programacion III\REAL ESTATE FINALLLLLLLLLLLLLLL\RealEstateApp\WebApi.RealEstateApp\obj\Debug\net5.0\WebApi.RealEstateApp.dll
-C:\Users\Eleikel\Desktop\ITLA\Programacion III\REAL ESTATE FINALLLLLLLLLLLLLLL\RealEstateApp\WebApi.RealEstateApp\obj\Debug\net5.0\refint\WebApi.RealEstateApp.dll
-C:\Users\Eleikel\Desktop\ITLA\Programacion III\REAL ESTATE FINALLLLLLLLLLLLLLL\RealEstateApp\WebApi.RealEstateApp\obj\Debug\net5.0\WebApi.RealEstateApp.pdb
 C:\Users\Eleikel\Desktop\ITLA\Programacion III\REAL ESTATE FINALLLLLLLLLLLLLLL\RealEstateApp\WebApi.RealEstateApp\bin\Debug\net5.0\appsettings.Development.json
 C:\Users\Eleikel\Desktop\ITLA\Programacion III\REAL ESTATE FINALLLLLLLLLLLLLLL\RealEstateApp\WebApi.RealEstateApp\bin\Debug\net5.0\appsettings.json
 C:\Users\Eleikel\Desktop\ITLA\Programacion III\REAL ESTATE FINALLLLLLLLLLLLLLL\RealEstateApp\WebApi.RealEstateApp\bin\Debug\net5.0\WebApi.RealEstateApp.exe
@@ -842,9 +832,19 @@ C:\Users\Eleikel\Desktop\ITLA\Programacion III\REAL ESTATE FINALLLLLLLLLLLLLLL\R
 C:\Users\Eleikel\Desktop\ITLA\Programacion III\REAL ESTATE FINALLLLLLLLLLLLLLL\RealEstateApp\WebApi.RealEstateApp\bin\Debug\net5.0\RealEstateApp.Infrastructure.Identity.pdb
 C:\Users\Eleikel\Desktop\ITLA\Programacion III\REAL ESTATE FINALLLLLLLLLLLLLLL\RealEstateApp\WebApi.RealEstateApp\bin\Debug\net5.0\RealEstateApp.Infrastructure.Persistence.pdb
 C:\Users\Eleikel\Desktop\ITLA\Programacion III\REAL ESTATE FINALLLLLLLLLLLLLLL\RealEstateApp\WebApi.RealEstateApp\bin\Debug\net5.0\RealEstateApp.Infrastructure.Shared.pdb
+C:\Users\Eleikel\Desktop\ITLA\Programacion III\REAL ESTATE FINALLLLLLLLLLLLLLL\RealEstateApp\WebApi.RealEstateApp\obj\Debug\net5.0\WebApi.RealEstateApp.csproj.AssemblyReference.cache
+C:\Users\Eleikel\Desktop\ITLA\Programacion III\REAL ESTATE FINALLLLLLLLLLLLLLL\RealEstateApp\WebApi.RealEstateApp\obj\Debug\net5.0\WebApi.RealEstateApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Eleikel\Desktop\ITLA\Programacion III\REAL ESTATE FINALLLLLLLLLLLLLLL\RealEstateApp\WebApi.RealEstateApp\obj\Debug\net5.0\WebApi.RealEstateApp.AssemblyInfoInputs.cache
+C:\Users\Eleikel\Desktop\ITLA\Programacion III\REAL ESTATE FINALLLLLLLLLLLLLLL\RealEstateApp\WebApi.RealEstateApp\obj\Debug\net5.0\WebApi.RealEstateApp.AssemblyInfo.cs
+C:\Users\Eleikel\Desktop\ITLA\Programacion III\REAL ESTATE FINALLLLLLLLLLLLLLL\RealEstateApp\WebApi.RealEstateApp\obj\Debug\net5.0\WebApi.RealEstateApp.csproj.CoreCompileInputs.cache
+C:\Users\Eleikel\Desktop\ITLA\Programacion III\REAL ESTATE FINALLLLLLLLLLLLLLL\RealEstateApp\WebApi.RealEstateApp\obj\Debug\net5.0\WebApi.RealEstateApp.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Eleikel\Desktop\ITLA\Programacion III\REAL ESTATE FINALLLLLLLLLLLLLLL\RealEstateApp\WebApi.RealEstateApp\obj\Debug\net5.0\WebApi.RealEstateApp.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Eleikel\Desktop\ITLA\Programacion III\REAL ESTATE FINALLLLLLLLLLLLLLL\RealEstateApp\WebApi.RealEstateApp\obj\Debug\net5.0\scopedcss\bundle\WebApi.RealEstateApp.styles.css
 C:\Users\Eleikel\Desktop\ITLA\Programacion III\REAL ESTATE FINALLLLLLLLLLLLLLL\RealEstateApp\WebApi.RealEstateApp\obj\Debug\net5.0\staticwebassets\WebApi.RealEstateApp.StaticWebAssets.Manifest.cache
 C:\Users\Eleikel\Desktop\ITLA\Programacion III\REAL ESTATE FINALLLLLLLLLLLLLLL\RealEstateApp\WebApi.RealEstateApp\obj\Debug\net5.0\WebApi.RealEstateApp.RazorTargetAssemblyInfo.cache
 C:\Users\Eleikel\Desktop\ITLA\Programacion III\REAL ESTATE FINALLLLLLLLLLLLLLL\RealEstateApp\WebApi.RealEstateApp\obj\Debug\net5.0\WebApi.RealEstateApp.csproj.CopyComplete
+C:\Users\Eleikel\Desktop\ITLA\Programacion III\REAL ESTATE FINALLLLLLLLLLLLLLL\RealEstateApp\WebApi.RealEstateApp\obj\Debug\net5.0\WebApi.RealEstateApp.dll
+C:\Users\Eleikel\Desktop\ITLA\Programacion III\REAL ESTATE FINALLLLLLLLLLLLLLL\RealEstateApp\WebApi.RealEstateApp\obj\Debug\net5.0\refint\WebApi.RealEstateApp.dll
+C:\Users\Eleikel\Desktop\ITLA\Programacion III\REAL ESTATE FINALLLLLLLLLLLLLLL\RealEstateApp\WebApi.RealEstateApp\obj\Debug\net5.0\WebApi.RealEstateApp.pdb
 C:\Users\Eleikel\Desktop\ITLA\Programacion III\REAL ESTATE FINALLLLLLLLLLLLLLL\RealEstateApp\WebApi.RealEstateApp\obj\Debug\net5.0\WebApi.RealEstateApp.genruntimeconfig.cache
 C:\Users\Eleikel\Desktop\ITLA\Programacion III\REAL ESTATE FINALLLLLLLLLLLLLLL\RealEstateApp\WebApi.RealEstateApp\obj\Debug\net5.0\ref\WebApi.RealEstateApp.dll
