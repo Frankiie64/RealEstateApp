@@ -25,15 +25,12 @@ namespace RealEstateApp.Infrastructure.Identity.Services
         private readonly UserManager<ApplicationUser> userManager;
         private readonly SignInManager<ApplicationUser> signManager;
         private readonly IEmailService emailService;
-        private readonly JWTSettings _jwtSettings;
 
-
-        public AccountServices(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signManager, IEmailService emailService, IOptions<JWTSettings> jwtSettings)
+        public AccountServices(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signManager, IEmailService emailService)
         {
             this.userManager = userManager;
             this.signManager = signManager;
             this.emailService = emailService;
-            _jwtSettings = jwtSettings.Value;
         }
 
         public async Task<AuthenticationResponse> AuthenticationAsync(AuthenticationRequest request)
@@ -45,7 +42,7 @@ namespace RealEstateApp.Infrastructure.Identity.Services
 
             if (user == null)
             {
-                 user = await userManager.FindByNameAsync(request.Name);
+                user = await userManager.FindByNameAsync(request.Name);
             }
 
             if (user == null)
@@ -87,13 +84,6 @@ namespace RealEstateApp.Infrastructure.Identity.Services
             response.Roles = rolesList.ToList();
             response.IsVerified = user.EmailConfirmed;
 
-            JwtSecurityToken jwtSecurityToken = await GenerateJWToken(user);
-
-
-            response.JWTtoken = new JwtSecurityTokenHandler().WriteToken(jwtSecurityToken);
-            var refreshToken = GenerateRefreshToken();
-            response.RefreshToken = refreshToken.Token;
-
             return response;
         }
 
@@ -130,30 +120,18 @@ namespace RealEstateApp.Infrastructure.Identity.Services
                 Firstname = request.Firstname,
                 Lastname = request.Lastname,
                 DocumementId = request.DocumementId,
-                UserName = request.Username,     
+                UserName = request.Username,
                 PhotoProfileUrl = request.PhotoProfileUrl,
                 PhoneNumberConfirmed = true
-             };
+            };
 
             if (request.Rol == Roles.Agent.ToString())
             {
                 user.EmailConfirmed = true;
             }
 
-            if(request.Rol == Roles.Client.ToString())
+            if (request.Rol == Roles.Client.ToString())
             {
-                user.IsActive = true;
-            }
-
-            if (request.Rol == Roles.SuperAdmin.ToString())
-            {
-                user.EmailConfirmed = true;
-                user.IsActive = true;
-            }
-
-            if (request.Rol == Roles.Developer.ToString())
-            {
-                user.EmailConfirmed = true;
                 user.IsActive = true;
             }
 
@@ -162,7 +140,7 @@ namespace RealEstateApp.Infrastructure.Identity.Services
             if (result.Succeeded)
             {
                 await userManager.AddToRoleAsync(user, request.Rol);
-                
+
                 var url = await SendVerificationEmailUrl(user, origin);
 
                 if (request.Rol == Roles.Client.ToString())
@@ -174,7 +152,7 @@ namespace RealEstateApp.Infrastructure.Identity.Services
                         Subject = "Confirmar nuevo usuario"
                     });
                 }
-                
+
             }
             else
             {
@@ -185,7 +163,7 @@ namespace RealEstateApp.Infrastructure.Identity.Services
 
             var item = await userManager.FindByNameAsync(user.UserName);
 
-            response.IdUser = item.Id;  
+            response.IdUser = item.Id;
 
             return response;
         }
@@ -202,7 +180,7 @@ namespace RealEstateApp.Infrastructure.Identity.Services
 
             var result = await userManager.ConfirmEmailAsync(user, token);
             if (result.Succeeded)
-            {               
+            {
                 return $"La cuenta ha sido confirmada para el correo de {user.Email}. Ahora puede utilizar nuestra aplicacion.";
             }
             else
@@ -227,21 +205,21 @@ namespace RealEstateApp.Infrastructure.Identity.Services
 
             var rolList = await userManager.GetRolesAsync(account);
 
-            if (rolList.Any(r=>r != Roles.Client.ToString()))
+            if (rolList.Any(r => r != Roles.Client.ToString()))
             {
                 response.HasError = true;
                 response.Error = $"Esta opcion solo esta disponible para usuario tipo clientes.";
                 return response;
             }
             var url = await SendForgotPasswordVerificationEmailUrl(account, origin);
-            
+
             await emailService.SendAsync(new EmailRequest()
             {
                 To = request.Email,
                 Body = $"Por favor entra en este link para el cambio de contraseña, mediante la visita de este link. {url}",
                 Subject = "Recuperar contraseña"
             });
-            
+
             response.Url = url;
 
             return response;
@@ -251,7 +229,7 @@ namespace RealEstateApp.Infrastructure.Identity.Services
         {
             ResetPasswordResponse response = new();
             response.HasError = false;
-           
+
             var account = await userManager.FindByEmailAsync(request.Email);
 
             if (account == null)
@@ -326,7 +304,7 @@ namespace RealEstateApp.Infrastructure.Identity.Services
                     PhoneNumber = vm.PhoneNumber,
                     PhotoProfileUrl = vm.PhotoProfileUrl,
                     IsActive = vm.IsActive
-                    
+
                 };
 
                 list.Add(item);
@@ -344,7 +322,7 @@ namespace RealEstateApp.Infrastructure.Identity.Services
 
             AuthenticationResponse item = new AuthenticationResponse
             {
-                Id = vm.Id,               
+                Id = vm.Id,
                 Roles = rol.ToList(),
             };
 
@@ -393,7 +371,7 @@ namespace RealEstateApp.Infrastructure.Identity.Services
                 response.Error = $"Ha ocurrido un error actualizando el usuario";
                 return response;
             }
-           
+
             response.IdUser = user.Id;
 
             return response;
@@ -404,8 +382,8 @@ namespace RealEstateApp.Infrastructure.Identity.Services
             response.HasError = false;
 
             var user = await userManager.FindByIdAsync(request.Id);
-            
-            user.IsActive = user.IsActive == true?false:true;
+
+            user.IsActive = user.IsActive == true ? false : true;
 
             var result = await userManager.UpdateAsync(user);
 
@@ -417,64 +395,6 @@ namespace RealEstateApp.Infrastructure.Identity.Services
             return response;
 
         }
-
-
-        #region API AUTHENTICATION
-        private async Task<JwtSecurityToken> GenerateJWToken(ApplicationUser user)
-        {
-            var userClaims = await userManager.GetClaimsAsync(user); //Claims = Permisos
-            var roles = await userManager.GetRolesAsync(user);
-
-            var roleClaims = new List<Claim>(); //Agregar los roles a los claims
-
-            foreach (var role in roles)
-            {
-                roleClaims.Add(new Claim("roles", role));
-            }
-
-            var claims = new[]
-            {
-                new Claim(JwtRegisteredClaimNames.Sub,user.UserName),
-                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()), //token unico
-                new Claim(JwtRegisteredClaimNames.Email,user.Email),
-                new Claim("uid", user.Id)
-            }
-            .Union(userClaims)
-            .Union(roleClaims);
-
-            var symmectricSecurityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSettings.Key));
-            var signingCredetials = new SigningCredentials(symmectricSecurityKey, SecurityAlgorithms.HmacSha256);
-
-            var jwtSecurityToken = new JwtSecurityToken(
-                issuer: _jwtSettings.Issuer,
-                audience: _jwtSettings.Audience,
-                claims: claims,
-                expires: DateTime.UtcNow.AddMinutes(_jwtSettings.DurantionInMinutes),
-                signingCredentials: signingCredetials);
-
-            return jwtSecurityToken;
-        }
-
-        private RefreshToken GenerateRefreshToken()
-        {
-            return new RefreshToken
-            {
-                Token = RandomTokenString(),
-                Expires = DateTime.UtcNow.AddDays(7),
-                Created = DateTime.UtcNow
-            };
-        }
-
-        private string RandomTokenString()
-        {
-            using var rngCryptoServiceProvider = new RNGCryptoServiceProvider();
-            var ramdomBytes = new byte[40];
-            rngCryptoServiceProvider.GetBytes(ramdomBytes);
-
-            return BitConverter.ToString(ramdomBytes).Replace("-", "");
-        }
-
-        #endregion
-
+      
     }
 }
