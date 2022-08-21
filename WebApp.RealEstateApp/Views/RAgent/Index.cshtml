@@ -4,11 +4,8 @@
 <div class="row">
     <div class="col d-flex">
         <div class="col-6 mt-1">
-            <h5 class="fs-5"> Mantenimiento Propiedades <i class="fa-solid fa-hotel"></i></h5>
-        </div>       
-        <div class="col-6 text-end">
-            <button class="btn btn-sm btn-success"> Crear una nueva propiedad <i class="fa-solid fa-circle-plus"></i></button>
-        </div>
+            <h5 class="fs-5"> Ultimas Propiedades Añadidas <i class="fa-solid fa-clock"></i></h5>
+        </div>              
     </div>
     <hr class="m-3"/>
     <div class="col-4">
@@ -56,16 +53,7 @@
                                 <div class="me-2"><i class="fa-solid fa-bed"></i> @item.Room</div>
                             }
                             <div class="me-2"><i class="fa-solid fa-building"></i> @(item.Meters)mt</div>
-                        </small>
-                        <hr />
-                        <div class="d-flex gap-3">
-                            <a type="button" asp-controller="RAgent" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">
-                                Eliminar
-                            </a>
-                            <a type="button" asp-controller="RAgent" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning text-light">
-                                Editar
-                            </a>
-                        </div>
+                        </small>                                           
                     </div>
                 </div>
             </a>            

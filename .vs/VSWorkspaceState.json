@@ -2,15 +2,15 @@
   "ExpandedNodes": [
     "",
     "\\RealEstateApp.Core.Application",
+    "\\RealEstateApp.Core.Application\\Mappings",
+    "\\RealEstateApp.Core.Application\\Services",
     "\\RealEstateApp.Core.Application\\ViewModels",
+    "\\RealEstateApp.Core.Application\\ViewModels\\Improvement",
     "\\RealEstateApp.Core.Application\\ViewModels\\Property",
-    "\\RealEstateApp.Infrastructure.Identity",
-    "\\RealEstateApp.Infrastructure.Identity\\Entities",
     "\\WebApp.RealEstateApp",
     "\\WebApp.RealEstateApp\\Views",
-    "\\WebApp.RealEstateApp\\Views\\Client",
-    "\\WebApp.RealEstateApp\\Views\\Shared"
+    "\\WebApp.RealEstateApp\\Views\\User"
   ],
-  "SelectedNode": "\\WebApp.RealEstateApp\\Views\\Shared\\_Layout.cshtml",
+  "SelectedNode": "\\WebApp.RealEstateApp\\Views\\RAgent\\Create.cshtml",
   "PreviewInSolutionExplorer": false
 }

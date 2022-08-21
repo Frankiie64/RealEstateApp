@@ -33,8 +33,7 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
 
-
-                        @if (User != null && IsClient)
+                        @if (User == null || IsClient)
                         {
                             <li class="nav-item">
                                 <a class="nav-link text-light fw-bolder" asp-area="" asp-controller="Home" asp-action="Index"><i class="fa-solid fa-house"></i> Home</a>
@@ -42,6 +41,10 @@
                             <li class="nav-item">
                                 <a class="nav-link text-light fw-bolder" asp-area="" asp-controller="Agent" asp-action="Index"><i class="fa-solid fa-id-badge"></i> Agentes</a>
                             </li>
+                        }
+
+                        @if (User != null && IsClient)
+                        {
                             <li class="nav-item">
                                 <a class="nav-link text-light fw-bolder" asp-area="" asp-controller="Client" asp-action="PropertiesFavorite"><i class="fa-solid fa-bookmark"></i> Mis Propiedades</a>
                             </li>

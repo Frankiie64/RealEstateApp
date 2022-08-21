@@ -26,7 +26,21 @@ namespace RealEstateApp.Core.Application.Services.ServicesApp
             this.userService = userService;
             this.ImpromentService = ImpromentService;
         }
+        public override async  Task<SavePropertyViewModel> CreateAsync(SavePropertyViewModel vm)
+        {
+            var list = await repo.GetAllAsync();
 
+            if (list.Count == 0)
+            {
+                vm.Code = 100000;
+            }
+            else
+            {
+                vm.Code = 1 + list.Max(x => x.Code);
+            }
+
+            return await base.CreateAsync(vm);
+        }
         public async Task<List<PropertyViewModel>> GetAllViewModelWithIncludeAsync()
         {
             var entityList = await repo.GetAllWithIncludeAsync(new List<string> { "TypeProperty", "TypeSale", "Improments", "UrlPhotos" });

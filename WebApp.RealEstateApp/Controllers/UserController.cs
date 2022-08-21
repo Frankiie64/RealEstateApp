@@ -57,7 +57,7 @@ namespace WebApp.RealEstateApp.Controllers
         [HttpPost]
         public async Task<IActionResult> Register(SaveUserVM vm)
         {
-           
+            vm.HasError = false;
             if (!ModelState.IsValid)
             {
                 return View(vm);
@@ -77,7 +77,7 @@ namespace WebApp.RealEstateApp.Controllers
             {
                 if (!string.IsNullOrWhiteSpace(response.IdUser))
                 {
-                    vm.PhotoProfileUrl = UploadPhoto.UploadFile(vm.file, "User", response.IdUser);
+                    vm.PhotoProfileUrl = Photo.Upload(vm.file, "User", response.IdUser);
 
                     await userService.UpdateAsync(vm,response.IdUser);
                 }
