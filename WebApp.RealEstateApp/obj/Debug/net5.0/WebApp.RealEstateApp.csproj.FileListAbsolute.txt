@@ -1879,7 +1879,6 @@ C:\Users\Franklyn\Source\Repos\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5
 C:\Users\Franklyn\Source\Repos\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5.0\WebApp.RealEstateApp.genruntimeconfig.cache
 C:\Users\Franklyn\Source\Repos\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5.0\Razor\Views\RAgent\Delete.cshtml.g.cs
 =======
-C:\Users\Franklyn\Source\Repos\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5.0\Razor\Views\Client\PropertiesFavorite.cshtml.g.cs
 C:\Users\Eleikel\Desktop\ITLA\Programacion III\REAL ESTATE FINALLLLLLLLLLLLLLL\RealEstateApp\WebApp.RealEstateApp\bin\Debug\net5.0\appsettings.Development.json
 C:\Users\Eleikel\Desktop\ITLA\Programacion III\REAL ESTATE FINALLLLLLLLLLLLLLL\RealEstateApp\WebApp.RealEstateApp\bin\Debug\net5.0\appsettings.json
 C:\Users\Eleikel\Desktop\ITLA\Programacion III\REAL ESTATE FINALLLLLLLLLLLLLLL\RealEstateApp\WebApp.RealEstateApp\bin\Debug\net5.0\WebApp.RealEstateApp.exe
