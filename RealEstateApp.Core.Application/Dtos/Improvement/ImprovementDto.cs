@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace RealEstateApp.Core.Application.Dtos.Improvement
@@ -13,7 +14,9 @@ namespace RealEstateApp.Core.Application.Dtos.Improvement
 
         public string Name { get; set; }
         public string Description { get; set; }
+        [JsonIgnore]
         public int IdProperty { get; set; }
+        [JsonIgnore]
         public PropertyDto Property { get; set; }
 
     }

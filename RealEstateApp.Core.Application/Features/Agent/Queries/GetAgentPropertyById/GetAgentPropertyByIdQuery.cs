@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using MediatR;
 using RealEstateApp.Core.Application.Dtos.Agent;
+using RealEstateApp.Core.Application.Dtos.Improvement;
 using RealEstateApp.Core.Application.Dtos.Property;
 using RealEstateApp.Core.Application.Dtos.TypeProperty;
 using RealEstateApp.Core.Application.Dtos.TypeSale;
@@ -24,13 +25,23 @@ namespace RealEstateApp.Core.Application.Features.Agent.Queries.GetAgentProperty
     {
         private readonly IAccountServices _accountServices;
         private readonly IPropertyRepository _propertyRepository;
+        private readonly IImprovementRepository _improvementRepository;
+        private readonly ITypeImpromentRepository _typeImpromentRepository;
         private readonly IMapper _mapper;
 
-        public GetAgentPropertyByIdQueryHandler(IAccountServices accountServices, IPropertyRepository propertyRepository, IMapper mapper)
+        public GetAgentPropertyByIdQueryHandler
+            (IAccountServices accountServices,
+            IPropertyRepository propertyRepository,
+            IMapper mapper,
+            IImprovementRepository improvementRepository,
+            ITypeImpromentRepository typeImpromentRepository
+            )
         {
             _accountServices = accountServices;
             _propertyRepository = propertyRepository;
             _mapper = mapper;
+            _improvementRepository = improvementRepository;
+            _typeImpromentRepository = typeImpromentRepository;
         }
 
         public async Task<IEnumerable<PropertyDto>> Handle(GetAgentPropertyByIdQuery query, CancellationToken cancellationToken)
@@ -47,13 +58,15 @@ namespace RealEstateApp.Core.Application.Features.Agent.Queries.GetAgentProperty
 
             var agent = await _accountServices.GetUserByIdAsync(userId);
 
-            List<PropertyDto> properties = _mapper.Map<List<PropertyDto>>(await _propertyRepository.GetAllWithIncludeAsync(new List<string> { "TypeProperty", "TypeSale", "Improvements" }));
-
+            List<PropertyDto> properties = _mapper.Map<List<PropertyDto>>(await _propertyRepository.GetAllWithIncludeAsync(new List<string> { "TypeProperty", "TypeSale", "Improments" }));
             if (properties.Where(property => property.AgentId == agent.Id).Count() <= 0) throw new Exception($"Este Agente no tiene propiedades");
+
+            var improvements = await _improvementRepository.GetAllWithIncludeAsync(new List<string> { "typeImproments" });
+            var typeImprovements = await _typeImpromentRepository.GetAllAsync();
+
 
             return properties.Where(property => property.AgentId == agent.Id).Select(property => new PropertyDto
             {
-
                 Code = property.Code,
                 Location = property.Location,
                 Id = property.Id,
@@ -65,9 +78,17 @@ namespace RealEstateApp.Core.Application.Features.Agent.Queries.GetAgentProperty
                 AgentId = property.AgentId,
                 TypeProperty = _mapper.Map<TypePropertyDto>(property.TypeProperty),
                 TypeSale = _mapper.Map<TypeSaleDto>(property.TypeSale),
-                AgentName = agents.FirstOrDefault(x => x.Id == property.AgentId).Firstname + " " + agents.FirstOrDefault(x => x.Id == property.AgentId).Lastname
+                AgentName = agents.FirstOrDefault(x => x.Id == property.AgentId).Firstname + " " + agents.FirstOrDefault(x => x.Id == property.AgentId).Lastname,
+                Improvements = _mapper.Map<List<ImprovementDto>>(typeImprovements.Where(x => x.IdProperty == property.Id).Select(typeImprovement => new ImprovementDto
+                {
+                    Id = typeImprovement.IdImproment,
+                    Name = typeImprovement.Improvement.Name,
+                    Description = typeImprovement.Improvement.Description
+                })).ToList()
+
             }).ToList();
         }
+
 
 
 

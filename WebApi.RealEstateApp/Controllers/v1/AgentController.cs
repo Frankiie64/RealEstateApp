@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RealEstateApp.Core.Application.Dtos.Agent;
@@ -16,12 +17,13 @@ using WebAPI.RealEstateApp.Controllers;
 
 namespace WebApi.RealEstateApp.Controllers.v1
 {
+
     [ApiVersion("1.0")]
     [SwaggerTag("Mantenimiento Agentes")]
     public class AgentController : BaseApiController
     {
 
-
+        [Authorize(Roles = "Admin,SuperAdmin,Developer")]
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<AgentDto>))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -42,7 +44,7 @@ namespace WebApi.RealEstateApp.Controllers.v1
             }
         }
 
-
+        [Authorize(Roles = "Admin,SuperAdmin,Developer")]
         [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(AgentDto))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -64,7 +66,7 @@ namespace WebApi.RealEstateApp.Controllers.v1
         }
 
 
-        //[Authorize(Roles = "")]
+        [Authorize(Roles = "Admin,SuperAdmin")]
         [HttpPut("ChangeState/{id}")]
         [Consumes(MediaTypeNames.Application.Json)]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(AgentDto))]
@@ -95,7 +97,7 @@ namespace WebApi.RealEstateApp.Controllers.v1
             }
         }
 
-
+        [Authorize(Roles = "Admin,SuperAdmin,Developer")]
         [HttpGet("GetAgentProperty/{agentId}")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<PropertyDto>))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]

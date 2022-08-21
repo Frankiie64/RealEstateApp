@@ -14,6 +14,8 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 using RealEstateApp.Core.Application.Dtos.Account;
+using RealEstateApp.Core.Application.Interfaces.Service.Service_Api;
+using RealEstateApp.Infrastructure.Identity.Services.Services_API;
 
 namespace RealEstateApp.Infrastructure.Identity
 {
@@ -47,6 +49,8 @@ namespace RealEstateApp.Infrastructure.Identity
             #region Identity
 
             services.AddTransient<IAccountServices, AccountServices>();
+            services.AddTransient<IAccountServiceApi, AccountServicesApi>();
+
 
             services.ConfigureApplicationCookie(opt =>
             {
@@ -140,6 +144,8 @@ namespace RealEstateApp.Infrastructure.Identity
             #region Identity
 
             services.AddTransient<IAccountServices, AccountServices>();
+            services.AddTransient<IAccountServiceApi, AccountServicesApi>();
+
             #endregion
         }
     }

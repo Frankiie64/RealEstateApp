@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RealEstateApp.Core.Application.Dtos.Improvement;
 using RealEstateApp.Core.Application.Features.Improvements.Commands.CreateImprovement;
@@ -19,7 +20,7 @@ namespace WebApi.RealEstateApp.Controllers.v1
 
     public class ImprovementController : BaseApiController
     {
-
+        [Authorize(Roles = "Admin,SuperAdmin,Developer")]
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ImprovementDto))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -40,6 +41,7 @@ namespace WebApi.RealEstateApp.Controllers.v1
             }
         }
 
+        [Authorize(Roles = "Admin,SuperAdmin,Developer")]
         [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ImprovementDto))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -60,6 +62,7 @@ namespace WebApi.RealEstateApp.Controllers.v1
             }
         }
 
+        [Authorize(Roles = "Admin,SuperAdmin")]
         [HttpPost]
         [Consumes(MediaTypeNames.Application.Json)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
@@ -87,7 +90,7 @@ namespace WebApi.RealEstateApp.Controllers.v1
             }
         }
 
-
+        [Authorize(Roles = "Admin,SuperAdmin")]
         [HttpPut("{id}")]
         [Consumes(MediaTypeNames.Application.Json)]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SaveImprovementDto))]
@@ -117,7 +120,7 @@ namespace WebApi.RealEstateApp.Controllers.v1
             }
         }
 
-
+        [Authorize(Roles = "Admin,SuperAdmin")]
         [HttpDelete("{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]

@@ -1,8 +1,9 @@
 ﻿using AutoMapper;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RealEstateApp.Core.Application.Dtos.Account;
 using RealEstateApp.Core.Application.Enums;
+using RealEstateApp.Core.Application.Interfaces.Service.Service_Api;
 using RealEstateApp.Core.Application.Interfaces.Services;
 using Swashbuckle.AspNetCore.Annotations;
 using System.Net.Mime;
@@ -15,14 +16,13 @@ namespace WebAPI.RealEstateApp.Controllers
     [ApiController]
     public class AccountController : ControllerBase
     {
-        private readonly IAccountServices _accountService;
+        private readonly IAccountServiceApi _accountService;
         private readonly IMapper mapper;
-        public AccountController(IAccountServices accountService,IMapper mapper)
+        public AccountController(IAccountServiceApi accountService, IMapper mapper)
         {
             _accountService = accountService;
             this.mapper = mapper;
         }
-
 
 
         [HttpPost("authenticate")]
@@ -36,8 +36,10 @@ namespace WebAPI.RealEstateApp.Controllers
             return Ok(await _accountService.AuthenticationAsync(request));
         }
 
+
+        [Authorize(Roles = "Admin,SuperAdmin")]
         [HttpPost("RegisterAdmin")]
-        [Consumes(MediaTypeNames.Application.Json)]
+        //[Consumes(MediaTypeNames.Application.Json)]
         [SwaggerOperation(
             Summary = "Registrar un nuevo Administrador",
             Description = "Recibe los parametros para crear un usuario con el Rol Administrador"
@@ -45,12 +47,15 @@ namespace WebAPI.RealEstateApp.Controllers
         public async Task<IActionResult> RegisterAdminAsync(RegisterRequest request)
         {
             var origin = Request.Headers["origin"];
-            request.Rol = Roles.Admin.ToString();
+            request.Rol = Roles.SuperAdmin.ToString();
             return Ok(await _accountService.RegisterUserAsync(request, origin));
         }
 
+
+
+        [Authorize(Roles = "Admin,SuperAdmin")]
         [HttpPost("RegisterDeveloper")]
-        [Consumes(MediaTypeNames.Application.Json)]
+        //[Consumes(MediaTypeNames.Application.Json)]
         [SwaggerOperation(
             Summary = "Registrar un nuevo Desarrollador",
             Description = "Recibe los parametros para crear un usuario con el Rol Desarrollador"
@@ -61,6 +66,6 @@ namespace WebAPI.RealEstateApp.Controllers
             request.Rol = Roles.Developer.ToString();
             return Ok(await _accountService.RegisterUserAsync(request, origin));
         }
-      
+
     }
 }

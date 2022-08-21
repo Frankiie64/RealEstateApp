@@ -11,6 +11,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using Microsoft.IdentityModel.Tokens;
+using System.Security.Cryptography;
+using RealEstateApp.Core.Domain.Settings;
+using Microsoft.Extensions.Options;
 
 namespace RealEstateApp.Infrastructure.Identity.Services
 {
@@ -36,7 +42,7 @@ namespace RealEstateApp.Infrastructure.Identity.Services
 
             if (user == null)
             {
-                 user = await userManager.FindByNameAsync(request.Name);
+                user = await userManager.FindByNameAsync(request.Name);
             }
 
             if (user == null)
@@ -114,17 +120,17 @@ namespace RealEstateApp.Infrastructure.Identity.Services
                 Firstname = request.Firstname,
                 Lastname = request.Lastname,
                 DocumementId = request.DocumementId,
-                UserName = request.Username,     
+                UserName = request.Username,
                 PhotoProfileUrl = request.PhotoProfileUrl,
                 PhoneNumberConfirmed = true
-             };
+            };
 
             if (request.Rol == Roles.Agent.ToString())
             {
                 user.EmailConfirmed = true;
             }
 
-            if(request.Rol == Roles.Client.ToString())
+            if (request.Rol == Roles.Client.ToString())
             {
                 user.IsActive = true;
             }
@@ -134,7 +140,7 @@ namespace RealEstateApp.Infrastructure.Identity.Services
             if (result.Succeeded)
             {
                 await userManager.AddToRoleAsync(user, request.Rol);
-                
+
                 var url = await SendVerificationEmailUrl(user, origin);
 
                 if (request.Rol == Roles.Client.ToString())
@@ -146,7 +152,7 @@ namespace RealEstateApp.Infrastructure.Identity.Services
                         Subject = "Confirmar nuevo usuario"
                     });
                 }
-                
+
             }
             else
             {
@@ -157,7 +163,7 @@ namespace RealEstateApp.Infrastructure.Identity.Services
 
             var item = await userManager.FindByNameAsync(user.UserName);
 
-            response.IdUser = item.Id;  
+            response.IdUser = item.Id;
 
             return response;
         }
@@ -174,7 +180,7 @@ namespace RealEstateApp.Infrastructure.Identity.Services
 
             var result = await userManager.ConfirmEmailAsync(user, token);
             if (result.Succeeded)
-            {               
+            {
                 return $"La cuenta ha sido confirmada para el correo de {user.Email}. Ahora puede utilizar nuestra aplicacion.";
             }
             else
@@ -199,21 +205,21 @@ namespace RealEstateApp.Infrastructure.Identity.Services
 
             var rolList = await userManager.GetRolesAsync(account);
 
-            if (rolList.Any(r=>r != Roles.Client.ToString()))
+            if (rolList.Any(r => r != Roles.Client.ToString()))
             {
                 response.HasError = true;
                 response.Error = $"Esta opcion solo esta disponible para usuario tipo clientes.";
                 return response;
             }
             var url = await SendForgotPasswordVerificationEmailUrl(account, origin);
-            
+
             await emailService.SendAsync(new EmailRequest()
             {
                 To = request.Email,
                 Body = $"Por favor entra en este link para el cambio de contraseña, mediante la visita de este link. {url}",
                 Subject = "Recuperar contraseña"
             });
-            
+
             response.Url = url;
 
             return response;
@@ -223,7 +229,7 @@ namespace RealEstateApp.Infrastructure.Identity.Services
         {
             ResetPasswordResponse response = new();
             response.HasError = false;
-           
+
             var account = await userManager.FindByEmailAsync(request.Email);
 
             if (account == null)
@@ -298,7 +304,7 @@ namespace RealEstateApp.Infrastructure.Identity.Services
                     PhoneNumber = vm.PhoneNumber,
                     PhotoProfileUrl = vm.PhotoProfileUrl,
                     IsActive = vm.IsActive
-                    
+
                 };
 
                 list.Add(item);
@@ -316,7 +322,7 @@ namespace RealEstateApp.Infrastructure.Identity.Services
 
             AuthenticationResponse item = new AuthenticationResponse
             {
-                Id = vm.Id,               
+                Id = vm.Id,
                 Roles = rol.ToList(),
             };
 
@@ -365,7 +371,7 @@ namespace RealEstateApp.Infrastructure.Identity.Services
                 response.Error = $"Ha ocurrido un error actualizando el usuario";
                 return response;
             }
-           
+
             response.IdUser = user.Id;
 
             return response;
@@ -376,8 +382,8 @@ namespace RealEstateApp.Infrastructure.Identity.Services
             response.HasError = false;
 
             var user = await userManager.FindByIdAsync(request.Id);
-            
-            user.IsActive = user.IsActive == true?false:true;
+
+            user.IsActive = user.IsActive == true ? false : true;
 
             var result = await userManager.UpdateAsync(user);
 
@@ -389,5 +395,6 @@ namespace RealEstateApp.Infrastructure.Identity.Services
             return response;
 
         }
+      
     }
 }
