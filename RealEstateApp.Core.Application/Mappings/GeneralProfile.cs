@@ -168,7 +168,7 @@ namespace RealEstateApp.Core.Application.Mappings
 
             CreateMap<ImprovementViewModel, SaveImprovementViewModel>()
                .ReverseMap()
-               .ForMember(x => x.Property, opt => opt.Ignore());
+               .ForMember(x => x.typeImproments, opt => opt.Ignore());
 
 
             CreateMap<TypeProperty, TypePropertyViewModel>()
@@ -231,12 +231,22 @@ namespace RealEstateApp.Core.Application.Mappings
          .ReverseMap()
          .ForMember(x => x.Id, opt => opt.Ignore())
           .ForMember(x => x.Improvement, opt => opt.Ignore())
-           .ForMember(x => x.Property, opt => opt.Ignore()); 
+           .ForMember(x => x.Property, opt => opt.Ignore());
 
             #region DTO's
 
+            CreateMap<TypeImproments, ImprovementDto>()
+                .ForMember(x => x.Name, opt => opt.Ignore())
+                .ForMember(x => x.Description, opt => opt.Ignore())
+               .ReverseMap()
+                .ForMember(x => x.IdImproment, opt => opt.Ignore())
+                .ForMember(x => x.Improvement, opt => opt.Ignore());
+
+
+
             CreateMap<Property, PropertyDto>()
                 .ForMember(x => x.User, opt => opt.Ignore())
+                .ForMember(x => x.Improvements, opt => opt.Ignore())
                .ReverseMap()
                 .ForMember(x => x.Creadted, opt => opt.Ignore())
                 .ForMember(x => x.LastModified, opt => opt.Ignore())

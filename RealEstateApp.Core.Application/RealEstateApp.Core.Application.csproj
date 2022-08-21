@@ -12,10 +12,8 @@
     <Folder Include="Features\Properties\Commands\UpdateProperty\" />
     <Folder Include="Features\Properties\Commands\DeletePropertyById\" />
     <Folder Include="Features\TypeProperties\Queries\NewFolder\" />
-    <Folder Include="Interfaces\Service\Service Api\" />
     <Folder Include="Mappings\" />
     <Folder Include="Enums\" />
-    <Folder Include="Services\ServicesApi\" />
   </ItemGroup>
 
   <ItemGroup>
