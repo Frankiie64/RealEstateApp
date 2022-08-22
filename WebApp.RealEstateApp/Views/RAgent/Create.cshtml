@@ -116,7 +116,7 @@
                                 <div class="mb-3 col-4">
                                     @if (editMode)
                                     {
-                                        <button type="submit" asp-route-PhotoEdit="True" class="btn btn-primary">Guardar</button>
+                                        <A type="button" asp-controller="RAgent" asp-action="IndexPhoto" asp-route-id="@Model.Id" class="btn btn-success mt-4">Editar fotos</A>
                                     }
                                     else
                                     {

@@ -137,22 +137,24 @@ namespace WebApp.RealEstateApp.Controllers
             var vm = await serviceProperty.GetByIdSaveViewModelAsync(id);
 
             vm.IdImproments = typeImp.Where(x => x.IdProperty == vm.Id).Select(x=>x.IdImproment).ToList();
+            vm.HasError = true;
+            vm.Error = "Asegurate de guardar los cambios antes de  ir al apartado de editar fotos.";
             return View("Create",vm);
         }
         [HttpPost]
-        public async Task<IActionResult> EditPost(SavePropertyViewModel vm,bool PhotoEdit = false)
+        public async Task<IActionResult> EditPost(SavePropertyViewModel vm,bool PhotoEdit)
         {
             vm.HasError = false;
             vm.AgentId = user.Id;
-
-            ViewBag.typePrperties = await serviceTypeProperty.GetAllViewModelAsync();
-            ViewBag.typeSale = await serviceTypeSale.GetAllViewModelAsync();
-            ViewBag.improvements = await serviceImprovement.GetAllViewModelAsync();
-
+        
             var response = await serviceProperty.UpdateAsync(vm,vm.Id);
 
             if (!response)
             {
+                ViewBag.typePrperties = await serviceTypeProperty.GetAllViewModelAsync();
+                ViewBag.typeSale = await serviceTypeSale.GetAllViewModelAsync();
+                ViewBag.improvements = await serviceImprovement.GetAllViewModelAsync();
+
                 vm.HasError = true;
                 vm.Error = "Ha ocurrido un error cuando se estaba actualizando la propiedad.";
                 return View("Create", vm);
@@ -171,15 +173,11 @@ namespace WebApp.RealEstateApp.Controllers
                     IdProperty = vm.Id
                 };
                 await servicesTypeImproments.CreateAsync(improvements);
-            }
-
-            if (PhotoEdit)
-            {
-                return RedirectToRoute(new { controller = "RAgent", action = "Properties" });
-            }
+            }       
           
             return RedirectToRoute(new { controller = "RAgent", action = "Properties" });
         }
+      
         public async Task<IActionResult> Delete(int id)
         {
             var vm = await serviceProperty.GetByIdSaveViewModelAsync(id);
@@ -204,6 +202,33 @@ namespace WebApp.RealEstateApp.Controllers
             await serviceProperty.DeleteAsync(vm.Id);
 
             return RedirectToRoute(new { controller = "RAgent", action = "Index" });
+        }
+        public async Task<IActionResult> IndexPhoto(int id)
+        {
+            var photos = await servicesPhotos.GetAllViewModelAsync();
+            photos = photos.Where(x => x.IdProperty == id).ToList();
+
+            ViewBag.Photos = photos.ToList();
+
+            return View();
+        }
+        public async Task<IActionResult> DeletePhoto(int id)
+        {
+            var photos = await servicesPhotos.GetAllViewModelAsync();
+            var photo = photos.Where(x => x.Id == id).SingleOrDefault();
+
+            List<string> PartsOfPhoto = photo.ImagUrl.Split("/").ToList();
+
+            
+            Photo.DeleteOnePhoto("Properties", photo.IdProperty.ToString(), PartsOfPhoto.Last());
+
+            await servicesPhotos.DeleteAsync(id);
+
+            photos = await servicesPhotos.GetAllViewModelAsync();
+            photos = photos.Where(x => x.IdProperty == photo.IdProperty).ToList();
+            ViewBag.Photos = photos.ToList();
+
+            return View("IndexPhoto");
         }
         public IActionResult Profile()
         {

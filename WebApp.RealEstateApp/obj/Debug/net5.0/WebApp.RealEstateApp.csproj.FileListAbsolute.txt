@@ -2355,3 +2355,4 @@ C:\Users\Eleikel\Desktop\ITLA\Programacion III\REAL ESTATE FINALLLLLLLLLLLLLLL\R
 C:\Users\Eleikel\Desktop\ITLA\Programacion III\REAL ESTATE FINALLLLLLLLLLLLLLL\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5.0\WebApp.RealEstateApp.genruntimeconfig.cache
 C:\Users\Eleikel\Desktop\ITLA\Programacion III\REAL ESTATE FINALLLLLLLLLLLLLLL\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5.0\ref\WebApp.RealEstateApp.dll
 >>>>>>> main
+C:\Users\Franklyn\Source\Repos\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5.0\Razor\Views\RAgent\IndexPhoto.cshtml.g.cs
