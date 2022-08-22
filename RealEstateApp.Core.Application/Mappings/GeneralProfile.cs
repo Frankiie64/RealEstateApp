@@ -148,6 +148,7 @@ namespace RealEstateApp.Core.Application.Mappings
             CreateMap<Property, SavePropertyViewModel>()
                .ForMember(x => x.File, opt => opt.Ignore())
                .ForMember(x => x.UrlPhotos, opt => opt.Ignore())
+               .ForMember(x => x.IdImproments, opt => opt.Ignore())
                .ReverseMap()
                 .ForMember(x => x.UrlPhotos, opt => opt.Ignore())
                .ForMember(x => x.Improments, opt => opt.Ignore());
@@ -155,6 +156,7 @@ namespace RealEstateApp.Core.Application.Mappings
             CreateMap<PropertyViewModel, SavePropertyViewModel>()
                 .ForMember(x => x.UrlPhotos, opt => opt.Ignore())
                .ForMember(x => x.File, opt => opt.Ignore())
+               .ForMember(x => x.IdImproments, opt => opt.Ignore())
                .ReverseMap()
                .ForMember(x => x.agent, opt => opt.Ignore())
                .ForMember(x => x.IsFavorite, opt => opt.Ignore());

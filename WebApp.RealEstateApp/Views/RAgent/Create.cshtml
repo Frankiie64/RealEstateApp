@@ -1,0 +1,120 @@
+﻿@using RealEstateApp.Core.Application.ViewModels.Property;
+@model SavePropertyViewModel;
+
+@{
+    ViewData["Title"] = "Crear Propiedades";
+}
+
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-10 mx-auto">
+            <div class="card">
+                <div class="card-header bg-dark text-light">
+                    <h4>Registro de nueva Propiedad</h4>
+                </div>
+                <div class="card-body">
+
+                    @if (Model.HasError)
+                    {
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <p>@Model.Error</p>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    }
+                    <form method="post" asp-controller="RAgent" asp-action="CreatePost" enctype="multipart/form-data">
+                        <div class="row container-fluid">
+                            <div class="col col-12 d-flex gap-3 mx-auto">
+
+                                <div class="mb-3 col-8">
+                                    <label asp-for="Location" class="form-label">Ubicacion: </label>
+                                    <input asp-for="Location" class="form-control" />
+                                    <span asp-validation-for="Location" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="col col-12 d-flex gap-2">
+
+                                <div class="mb-3 col-3">
+                                    <label asp-for="Price" class="form-label">Precio: </label>
+                                    <input asp-for="Price" type="number" step="any" class="form-control" />
+                                    <span asp-validation-for="Price" class="text-danger"></span>
+                                </div>
+
+                                <div class="mb-3 col-3">
+                                    <label asp-for="Bathroom" class="form-label">Cantidad de baños:</label>
+                                    <input asp-for="Bathroom"  step="any" class="form-control" />
+                                    <span asp-validation-for="Bathroom" class="text-danger"></span>
+                                </div>
+
+                                <div class="mb-3 col-3">
+                                    <label asp-for="Meters" class="form-label">Metros: </label>
+                                    <input asp-for="Meters" type="number" step="any" class="form-control" />
+                                    <span asp-validation-for="Meters" class="text-danger"></span>
+                                </div>
+
+                                <div class="mb-3 col-3">
+                                    <label asp-for="Room" class="form-label">Cantidad de Habitaciones:</label>
+                                    <input asp-for="Room" step="any" class="form-control" />
+                                    <span asp-validation-for="Room" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col col-12 d-flex gap-3">
+                                <div class="mb-3 col-4">
+                                    <label class="form-label" asp-for="TypePropertyId">Tipo de Propiedad:</label>
+                                    <select asp-for="TypePropertyId" class="form-control form-select form-select-sm">
+                                        @foreach (var item in ViewBag.typePrperties)
+                                        {
+                                            <option value="@item.Id">@item.Name</option>
+                                        }
+                                    </select>
+                                    <span asp-validation-for="TypePropertyId" class="text-danger"></span>
+                                </div>
+                                <div class="mb-3 col-4">
+                                    <label class="form-label" asp-for="TypeSaleId">Tipo de venta:</label>
+                                    <select asp-for="TypeSaleId" class="form-control form-select form-select-sm">
+                                        @foreach (var item in ViewBag.typeSale)
+                                        {
+                                            <option value="@item.Id">@item.Name</option>
+                                        }
+                                    </select>
+                                    <span asp-validation-for="TypeSaleId" class="text-danger"></span>
+                                </div>
+                                <div class="mb-3 col-4">
+                                    <label asp-for="File" class="form-label">Fotos de la propiedad</label>
+                                    <input  asp-for="File" class="form-control form-control-sm" />
+                                    <span asp-validation-for="File" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="col col-12 d-flex gap-3 m-1">
+                                <div class="col-6">
+                                    <textarea asp-for="Description" class="form-control" placeholder="Descripcion" id="floatingTextarea2" style="height: 100px"></textarea>
+                                    <span asp-validation-for="Description" class="text-danger"></span>
+                                </div>
+                                <div class="col-6">
+                                    <label class="m-1">Mejoras:</label>
+                                    <div class="row w-100">
+                                        @foreach (var item in ViewBag.improvements)
+                                        {
+                                            <div class="col-4">
+                                                <div class="form-check">
+                                                    <input class="form-check-input ml-0" type="checkbox" name="IdImproments" value="@item.Id" id="@item.Id">
+                                                    <label class="form-check-label" for="@item.Id">@item.Name</label>
+                                                </div>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col col-12 d-flex gap-3 justify-content-end">
+                                <a asp-controller="RAgent" asp-action="Properties" class="btn btn-warning">Cancelar</a>
+                                <button type="submit" class="btn btn-primary">Guardar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

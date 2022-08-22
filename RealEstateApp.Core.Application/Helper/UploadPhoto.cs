@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace RealEstateApp.Core.Application.helper
 {
-    public class UploadPhoto
+    public class Photo
     {
-        public static string UploadFile(IFormFile file, string Chapter, string id, bool isEditMode = false, string imagePath = "")
+        public static string Upload(IFormFile file, string Chapter, string id, bool isEditMode = false, string imagePath = "")
         {
             if (isEditMode)
             {
@@ -50,6 +50,27 @@ namespace RealEstateApp.Core.Application.helper
                 }
             }
             return $"{basePath}/{fileName}";
+        }
+        public static void Delete(string route, string id)
+        {
+            string basePath = $"/Img/{route}/{id}";
+            string path = Path.Combine(Directory.GetCurrentDirectory(), $"wwwroot{basePath}");
+
+            if (Directory.Exists(path))
+            {
+                DirectoryInfo directoryInfo = new DirectoryInfo(path);
+                foreach (FileInfo item in directoryInfo.GetFiles())
+                {
+                    item.Delete();
+                }
+
+                foreach (DirectoryInfo folder in directoryInfo.GetDirectories())
+                {
+                    folder.Delete(true);
+                }
+
+                Directory.Delete(path);
+            }
         }
     }
 }
