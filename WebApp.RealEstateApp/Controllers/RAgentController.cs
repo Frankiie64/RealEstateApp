@@ -125,15 +125,61 @@ namespace WebApp.RealEstateApp.Controllers
                 await servicesTypeImproments.CreateAsync(improvements);
             }
           
-            return RedirectToRoute(new { controller = "RAgent", action = "Index" });
+            return RedirectToRoute(new { controller = "RAgent", action = "Properties" });
         }
-
-        /*
-        public async Task<IActionResult> Edit()
+        public async Task<IActionResult> Edit(int id)
         {
+            ViewBag.typePrperties = await serviceTypeProperty.GetAllViewModelAsync();
+            ViewBag.typeSale = await serviceTypeSale.GetAllViewModelAsync();
+            ViewBag.improvements = await serviceImprovement.GetAllViewModelAsync();
 
+            var typeImp = await servicesTypeImproments.GetAllViewModelAsync();
+            var vm = await serviceProperty.GetByIdSaveViewModelAsync(id);
+
+            vm.IdImproments = typeImp.Where(x => x.IdProperty == vm.Id).Select(x=>x.IdImproment).ToList();
+            return View("Create",vm);
         }
-        */
+        [HttpPost]
+        public async Task<IActionResult> EditPost(SavePropertyViewModel vm,bool PhotoEdit = false)
+        {
+            vm.HasError = false;
+            vm.AgentId = user.Id;
+
+            ViewBag.typePrperties = await serviceTypeProperty.GetAllViewModelAsync();
+            ViewBag.typeSale = await serviceTypeSale.GetAllViewModelAsync();
+            ViewBag.improvements = await serviceImprovement.GetAllViewModelAsync();
+
+            var response = await serviceProperty.UpdateAsync(vm,vm.Id);
+
+            if (!response)
+            {
+                vm.HasError = true;
+                vm.Error = "Ha ocurrido un error cuando se estaba actualizando la propiedad.";
+                return View("Create", vm);
+            }
+
+            var improvoments = await servicesTypeImproments.GetAllViewModelAsync();
+            improvoments = improvoments.Where(x => x.IdProperty == vm.Id).ToList();
+
+            improvoments.ForEach(x => servicesTypeImproments.DeleteAsync(x.Id).Wait());
+
+            foreach (var item in vm.IdImproments)
+            {
+                SaveTypeImpromentsViewModel improvements = new SaveTypeImpromentsViewModel
+                {
+                    IdImproment = item,
+                    IdProperty = vm.Id
+                };
+                await servicesTypeImproments.CreateAsync(improvements);
+            }
+
+            if (PhotoEdit)
+            {
+                return RedirectToRoute(new { controller = "RAgent", action = "Properties" });
+            }
+          
+            return RedirectToRoute(new { controller = "RAgent", action = "Properties" });
+        }
         public async Task<IActionResult> Delete(int id)
         {
             var vm = await serviceProperty.GetByIdSaveViewModelAsync(id);
