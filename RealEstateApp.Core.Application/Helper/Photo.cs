@@ -72,5 +72,23 @@ namespace RealEstateApp.Core.Application.helper
                 Directory.Delete(path);
             }
         }
+        public static void DeleteOnePhoto(string route, string idProperty,string Guid)
+        {
+            string basePath = $"/Img/{route}/{idProperty}";
+            string path = Path.Combine(Directory.GetCurrentDirectory(), $"wwwroot{basePath}");
+
+            if (Directory.Exists(path))
+            {
+                DirectoryInfo directoryInfo = new DirectoryInfo(path);
+                foreach (FileInfo item in directoryInfo.GetFiles())
+                {
+                    if (Guid == item.Name)
+                    {
+                        item.Delete();
+                    }
+                }
+
+            }
+        }
     }
 }

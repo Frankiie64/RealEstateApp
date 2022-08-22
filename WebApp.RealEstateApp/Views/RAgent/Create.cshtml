@@ -2,7 +2,18 @@
 @model SavePropertyViewModel;
 
 @{
-    ViewData["Title"] = "Crear Propiedades";
+
+
+    bool editMode = Model.Id != 0 ? true : false;
+
+    if (editMode)
+    {
+        ViewData["Title"] = "Actualizar Propiedad";
+    }
+    else
+    {
+        ViewData["Title"] = "Crear Propiedad";
+    }
 }
 
 <div class="container-fluid">
@@ -11,7 +22,14 @@
         <div class="col-10 mx-auto">
             <div class="card">
                 <div class="card-header bg-dark text-light">
-                    <h4>Registro de nueva Propiedad</h4>
+                    @if (editMode)
+                    {
+                        <h4>Editar Propiedad</h4>
+                    }
+                    else
+                    {
+                        <h4>Registro de nueva Propiedad</h4>
+                    }
                 </div>
                 <div class="card-body">
 
@@ -22,13 +40,13 @@
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
                     }
-                    <form method="post" asp-controller="RAgent" asp-action="CreatePost" enctype="multipart/form-data">
+                    <form method="post" asp-controller="RAgent" asp-action="@(editMode ? "EditPost": "CreatePost")" enctype="multipart/form-data">
                         <div class="row container-fluid">
                             <div class="col col-12 d-flex gap-3 mx-auto">
 
                                 <div class="mb-3 col-8">
                                     <label asp-for="Location" class="form-label">Ubicacion: </label>
-                                    <input asp-for="Location" class="form-control" />
+                                    <input asp-for="Location" value="@Model.Location" class="form-control" />
                                     <span asp-validation-for="Location" class="text-danger"></span>
                                 </div>
                             </div>
@@ -37,25 +55,25 @@
 
                                 <div class="mb-3 col-3">
                                     <label asp-for="Price" class="form-label">Precio: </label>
-                                    <input asp-for="Price" type="number" step="any" class="form-control" />
+                                    <input asp-for="Price" value="@Model.Price" type="number" step="any" class="form-control" />
                                     <span asp-validation-for="Price" class="text-danger"></span>
                                 </div>
 
                                 <div class="mb-3 col-3">
                                     <label asp-for="Bathroom" class="form-label">Cantidad de baños:</label>
-                                    <input asp-for="Bathroom"  step="any" class="form-control" />
+                                    <input asp-for="Bathroom" value="@Model.Bathroom"  step="any" class="form-control" />
                                     <span asp-validation-for="Bathroom" class="text-danger"></span>
                                 </div>
 
                                 <div class="mb-3 col-3">
                                     <label asp-for="Meters" class="form-label">Metros: </label>
-                                    <input asp-for="Meters" type="number" step="any" class="form-control" />
+                                    <input asp-for="Meters" value="@Model.Meters" type="number" step="any" class="form-control" />
                                     <span asp-validation-for="Meters" class="text-danger"></span>
                                 </div>
 
                                 <div class="mb-3 col-3">
                                     <label asp-for="Room" class="form-label">Cantidad de Habitaciones:</label>
-                                    <input asp-for="Room" step="any" class="form-control" />
+                                    <input asp-for="Room" value="@Model.Room" step="any" class="form-control" />
                                     <span asp-validation-for="Room" class="text-danger"></span>
                                 </div>
                             </div>
@@ -65,7 +83,14 @@
                                     <select asp-for="TypePropertyId" class="form-control form-select form-select-sm">
                                         @foreach (var item in ViewBag.typePrperties)
                                         {
-                                            <option value="@item.Id">@item.Name</option>
+                                            @if (editMode && item.Id == Model.TypePropertyId)
+                                            {
+                                                <option selected value="@item.Id">@item.Name</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@item.Id">@item.Name</option>
+                                            }
                                         }
                                     </select>
                                     <span asp-validation-for="TypePropertyId" class="text-danger"></span>
@@ -75,21 +100,36 @@
                                     <select asp-for="TypeSaleId" class="form-control form-select form-select-sm">
                                         @foreach (var item in ViewBag.typeSale)
                                         {
-                                            <option value="@item.Id">@item.Name</option>
+                                            @if (editMode && item.Id == Model.TypeSaleId)
+                                            {
+                                                <option selected value="@item.Id">@item.Name</option>
+
+                                            }
+                                            else
+                                            {
+                                                <option value="@item.Id">@item.Name</option>
+                                            }
                                         }
                                     </select>
                                     <span asp-validation-for="TypeSaleId" class="text-danger"></span>
                                 </div>
                                 <div class="mb-3 col-4">
-                                    <label asp-for="File" class="form-label">Fotos de la propiedad</label>
-                                    <input  asp-for="File" class="form-control form-control-sm" />
-                                    <span asp-validation-for="File" class="text-danger"></span>
+                                    @if (editMode)
+                                    {
+                                        <A type="button" asp-controller="RAgent" asp-action="IndexPhoto" asp-route-id="@Model.Id" class="btn btn-success mt-4">Editar fotos</A>
+                                    }
+                                    else
+                                    {
+                                        <label asp-for="File" class="form-label">Fotos de la propiedad</label>
+                                        <input asp-for="File" class="form-control form-control-sm" />
+                                        <span asp-validation-for="File" class="text-danger"></span>
+                                    }
                                 </div>
                             </div>
 
                             <div class="col col-12 d-flex gap-3 m-1">
                                 <div class="col-6">
-                                    <textarea asp-for="Description" class="form-control" placeholder="Descripcion" id="floatingTextarea2" style="height: 100px"></textarea>
+                                    <textarea asp-for="Description" class="form-control" placeholder="Descripcion" id="floatingTextarea2" style="height: 100px">@Model.Description</textarea>
                                     <span asp-validation-for="Description" class="text-danger"></span>
                                 </div>
                                 <div class="col-6">
@@ -97,15 +137,29 @@
                                     <div class="row w-100">
                                         @foreach (var item in ViewBag.improvements)
                                         {
-                                            <div class="col-4">
-                                                <div class="form-check">
-                                                    <input class="form-check-input ml-0" type="checkbox" name="IdImproments" value="@item.Id" id="@item.Id">
-                                                    <label class="form-check-label" for="@item.Id">@item.Name</label>
+                                            if (editMode && Model.IdImproments.Any(x => x == item.Id))
+                                            {
+                                                <div class="col-4">
+                                                    <div class="form-check">
+                                                        <input checked class="form-check-input ml-0" type="checkbox" name="IdImproments" value="@item.Id" id="@item.Id">
+                                                        <label class="form-check-label" for="@item.Id">@item.Name</label>
+                                                    </div>
                                                 </div>
-                                            </div>
+                                            }
+                                            else
+                                            {
+                                                <div class="col-4">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input ml-0" type="checkbox" name="IdImproments" value="@item.Id" id="@item.Id">
+                                                        <label class="form-check-label" for="@item.Id">@item.Name</label>
+                                                    </div>
+                                                </div>
+                                            }
                                         }
                                     </div>
                                 </div>
+                                <input hidden asp-for="Id" value="@Model.Id" />
+                                <input hidden asp-for="Code" value="@Model.Code"/>
                             </div>
                             <div class="col col-12 d-flex gap-3 justify-content-end">
                                 <a asp-controller="RAgent" asp-action="Properties" class="btn btn-warning">Cancelar</a>
