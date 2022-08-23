@@ -1,0 +1,45 @@
+﻿@{
+    ViewData["Title"] = "Actualizar fotos ";
+}
+<div class="row">
+    <div class="col d-flex">
+        <div class="col-6 mt-1">
+            <h5 class="fs-5"> Actualizar Fotos <i class="fa-solid fa-camera"></i></h5>
+        </div>
+        @if (ViewBag.Photos.Count < 4)
+        {
+            <div class="col-6 text-end">
+                <a asp-controller="RAgent" asp-action="CreatePhoto" asp-route-idProperty="@ViewBag.Photos[0].IdProperty" class="btn btn-sm btn-success"> Agregar una foto <i class="fa-solid fa-circle-plus"></i></a>
+            </div>
+        }
+    </div>
+    <hr class="m-3" />
+    @foreach (var item in ViewBag.Photos)
+    {
+        <div class="col-3">
+            <div class="w-100 text-decoration-none text-dark mb-2">
+                <div class="card" style="width: 16rem;">
+                    <img src="@item.ImagUrl" class="card-img-top" alt="Imagen Terreno">
+                    <div class="card-body">
+                        <div class="d-flex gap-3">
+                            @if (ViewBag.Photos.Count != 1)
+                            {
+                                <a asp-controller="RAgent" asp-action="DeletePhoto" asp-route-id="@item.Id" class="btn btn-sm btn-danger">
+                                    Eliminar
+                                </a>
+                            }
+                        <form method="post" asp-controller="RAgent" asp-action="EditPhoto">
+                            <input hidden name="Id" value="@item.Id" />
+                            <input hidden name="idProperty" value="@item.IdProperty" />
+
+                            <button type="submit" class="btn btn-sm btn-warning text-light">
+                                Editar
+                            </button>
+                        </form>                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
