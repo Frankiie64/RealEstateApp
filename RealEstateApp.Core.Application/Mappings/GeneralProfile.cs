@@ -12,6 +12,7 @@ using RealEstateApp.Core.Application.Features.TypeProperties.Commands.CreateType
 using RealEstateApp.Core.Application.Features.TypeProperties.Commands.UpdateTypeProperty;
 using RealEstateApp.Core.Application.Features.TypeSales.Commands.CreateTypeSale;
 using RealEstateApp.Core.Application.Features.TypeSales.Commands.UpdateTypeSale;
+using RealEstateApp.Core.Application.ViewModels;
 using RealEstateApp.Core.Application.ViewModels.FavoriteProperty;
 using RealEstateApp.Core.Application.ViewModels.Improvement;
 using RealEstateApp.Core.Application.ViewModels.PhotoProperties;
@@ -113,11 +114,20 @@ namespace RealEstateApp.Core.Application.Mappings
 
 
 
+            CreateMap<SaveUserVM, SaveUserGenericVM>()
+               .ReverseMap()
+               .ForMember(x => x.PhoneNumber, opt => opt.Ignore())
+               .ForMember(x => x.file, opt => opt.Ignore())
+               .ForMember(x => x.PhotoProfileUrl, opt => opt.Ignore())
+               .ForMember(x => x.Error, opt => opt.Ignore())
+               .ForMember(x => x.HasError, opt => opt.Ignore());
 
-
-
-
-
+            CreateMap<UserVM, SaveUserGenericVM>()
+               .ForMember(x => x.Password, opt => opt.Ignore())
+               .ForMember(x => x.ConfirmPassword, opt => opt.Ignore())
+               .ReverseMap()
+               .ForMember(x => x.PhoneNumber, opt => opt.Ignore())
+               .ForMember(x => x.PhotoProfileUrl, opt => opt.Ignore());
 
 
             CreateMap<UserVM, ChangeAgentStatusCommand>()

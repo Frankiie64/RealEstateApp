@@ -16,10 +16,13 @@ namespace RealEstateApp.Core.Application.Interfaces.Services
         Task<List<UserVM>> GetAllUsersAsync();
         Task<List<UserVM>> GetAllClientsAsync();
         Task<List<UserVM>> GetAllAgentAsync();
+        Task<List<UserVM>> GetAllAdminAsync();
+        Task<List<UserVM>> GetAllDevelopersAsync();
         Task<UserVM> GetUserByIdAsync(string id);
         Task<RegisterResponse> UpdateAsync(SaveUserVM vm,string id);
         Task<RegisterResponse> ChangeStatus(AgentDto vm, string id);
 
         Task SignOutAsync();
+        Task<AuthenticationResponse> IsActive(string id);
     }
 }

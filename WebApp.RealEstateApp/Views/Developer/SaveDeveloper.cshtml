@@ -1,0 +1,69 @@
+﻿@using RealEstateApp.Core.Application.ViewModels;
+@model SaveUserGenericVM
+@{
+    bool isEditing = string.IsNullOrWhiteSpace(Model.Id) ? false : true;
+
+}
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
+<div id="contact" class="contact-area section-padding">
+
+    <div class="row mb-3 mt-4">
+        <div class="col-3">
+            <a asp-controller="Developer" asp-action="Index" class="btn btn-contact-bg h2">Volver</a>
+        </div>
+    </div>
+
+    <div class="container text-center">
+        <div class="section-title text-center mt-5">
+            <h1>@(isEditing ? $"Editando el Desarrollador: {Model.Firstname}" : "Registrando un nuevo Desarrollador")</h1>
+        </div>
+        <div class="row">
+            <div class="col-11">
+                <div class="contact">
+                    <form method="post" asp-controller="Developer" asp-action="@(isEditing ? "Update":"Create")" class="form" name="enq">
+
+                        <div class="row">
+
+                            <div class="form-group col-md-6 mb-4">
+                                <input asp-for="Firstname" type="text" name="Firstname" class="form-control" placeholder="Nombre">
+                                <span asp-validation-for="Firstname" class="text-danger"></span>
+                            </div>
+                            <div class="form-group col-md-6 mb-4">
+                                <input asp-for="Lastname" type="text" name="Lastname" class="form-control" placeholder="Apellido">
+                                <span asp-validation-for="Lastname" class="text-danger"></span>
+                            </div>
+                            <div class="form-group col-md-6 mb-4">
+                                <input asp-for="DocumementId" type="DocumementId" name="DocumementId" class="form-control" placeholder="Cedula">
+                                <span asp-validation-for="DocumementId" class="text-danger"></span>
+                            </div>
+                            <div class="form-group col-md-6 mb-5">
+                                <input asp-for="Email" type="email" name="Email" class="form-control" placeholder="Correo Electronico">
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+                            <div class="form-group col-md-12 mb-4">
+                                <input asp-for="Username" type="text" name="Username" class="form-control" placeholder="Username">
+                                <span asp-validation-for="Username" class="text-danger"></span>
+                            </div>
+                            <div class="form-group col-md-12 mb-4">
+                                <input asp-for="Password" type="password" name="Password" class="form-control" placeholder="Contreseña">
+                                <span asp-validation-for="Password" class="text-danger"></span>
+                            </div>
+                            <div class="form-group col-md-12 mb-4">
+                                <input asp-for="ConfirmPassword" type="password" name="ConfirmPassword" class="form-control" placeholder="Confirmar Contreseña">
+                                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                            </div>
+
+                            <div class="col-md-12 text-center">
+                                <button type="submit" value="Send message" name="submit" id="submitButton" class="btn btn-contact-bg" title="Guardar">Guardar</button>
+                            </div>
+                        </div>
+                        <input type="hidden" asp-for="Id" />
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

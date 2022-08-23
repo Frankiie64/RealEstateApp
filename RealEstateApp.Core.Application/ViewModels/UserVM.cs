@@ -25,6 +25,8 @@ namespace RealEstateApp.Core.Application.ViewModels.Users
         public List<string> Roles { get; set; }
         [JsonIgnore]
         public bool IsVerified { get; set; }
+        public bool IsActive { get; set; }
+
         [JsonIgnore]
         public List<PropertyViewModel> Properties { get; set; }
     }

@@ -18,7 +18,6 @@ namespace RealEstateApp.Core.Application.Interfaces.Services
         Task SignOutAsync();
 
         Task<RegisterResponse> ChangeStatusAsync(RegisterRequest request);
-
-
+        Task<AuthenticationResponse> IsActive(string id);
     }
 }

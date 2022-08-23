@@ -1,0 +1,93 @@
+﻿@using RealEstateApp.Core.Application.ViewModels;
+@model DashboardViewModel;
+@{
+    ViewData["Title"] = "Home";
+}
+
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container bootstrap snippets bootdey">
+    <div class="row">
+
+        <div class="col-md-3 col-sm-6 col-xs-6">
+            <div class="panel panel-info panel-colorful">
+                <div class="panel-body text-center">
+                    <h3 class="text-uppercase mar-btm text-sm">Propiedades Registradas</h3>
+                    <i class="fa fa-home fa-5x"></i>
+                    <hr>
+                    <p class="h1 text-thin">@Model.PropertiesQuantity</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 col-sm-6 col-xs-6">
+            <div class="panel panel-dark panel-colorful">
+                <div class="panel-body text-center">
+                    <h3 class="text-uppercase mar-btm text-sm">Agentes Activos</h3>
+                    <i class="fa fa-users fa-5x"></i>
+                    <hr>
+                    <p class="h1 text-thin">@Model.AgentActive</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 col-sm-6 col-xs-6">
+            <div class="panel panel-danger panel-colorful">
+                <div class="panel-body text-center">
+                    <h3 class="text-uppercase mar-btm text-sm">Agentes Inactivos</h3>
+                    <i class="fa fa-user-times fa-5x"></i>
+                    <hr>
+                    <p class="h1 text-thin">@Model.AgentDisabled</p>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="col-md-3 col-sm-6 col-xs-6">
+            <div class="panel panel-primary panel-colorful">
+                <div class="panel-body text-center">
+                    <h3 class="text-uppercase mar-btm text-sm">Clientes Activos</h3>
+                    <i class="fa fa-users fa-5x"></i>
+                    <hr>
+                    <p class="h1 text-thin">@Model.ClientActive</p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-md-3 col-sm-6 col-xs-6">
+            <div class="panel panel-danger panel-colorful">
+                <div class="panel-body text-center">
+                    <h3 class="text-uppercase mar-btm text-sm">Clientes Inactivos</h3>
+                    <i class="fa fa-user-times fa-5x"></i>
+                    <hr>
+                    <p class="h1 text-thin">@Model.ClientDisabled</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 col-sm-6 col-xs-6">
+            <div class="panel panel-purple panel-colorful">
+                <div class="panel-body text-center">
+                    <h3 class="text-uppercase mar-btm text-sm">Desarroladores Activos</h3>
+                    <i class="fa fa-users fa-5x"></i>
+                    <hr>
+                    <p class="h1 text-thin">@Model.DeveloperActive</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 col-sm-6 col-xs-6">
+            <div class="panel panel-danger panel-colorful">
+                <div class="panel-body text-center">
+                    <p class="text-uppercase mar-btm text-sm">Desarroladores Inactivos</p>
+                    <i class="fa fa-user-times fa-5x"></i>
+                    <hr>
+                    <p class="h1 text-thin">@Model.DeveloperDisabled</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

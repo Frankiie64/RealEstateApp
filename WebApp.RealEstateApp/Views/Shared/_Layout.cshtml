@@ -43,6 +43,7 @@
                             </li>
                         }
 
+
                         @if (User != null && IsClient)
                         {
                             <li class="nav-item">
@@ -73,6 +74,15 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-light fw-bolder" asp-area="" asp-controller="Improvement" asp-action="Index"> Mejoras</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-light fw-bolder" asp-area="" asp-controller="Admin" asp-action="Index"> Administrador</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-light fw-bolder" asp-area="" asp-controller="Developer" asp-action="Index"> Desarrollador</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-light fw-bolder" asp-area="" asp-controller="Home" asp-action="IndexAdmin"> Dashboard</a>
                             </li>
                         }
 

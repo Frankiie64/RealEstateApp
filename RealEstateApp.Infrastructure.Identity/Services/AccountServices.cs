@@ -134,6 +134,16 @@ namespace RealEstateApp.Infrastructure.Identity.Services
             {
                 user.IsActive = true;
             }
+            if (request.Rol == Roles.SuperAdmin.ToString())
+            {
+                user.IsActive = true;
+                user.EmailConfirmed = true;
+            }
+            if (request.Rol == Roles.Admin.ToString())
+            {
+                user.IsActive = true;
+                user.EmailConfirmed = true;
+            }
 
             var result = await userManager.CreateAsync(user, request.Password);
 
@@ -324,10 +334,56 @@ namespace RealEstateApp.Infrastructure.Identity.Services
             {
                 Id = vm.Id,
                 Roles = rol.ToList(),
+                Firstname = vm.Firstname,
+                Lastname= vm.Lastname,
+                Username = vm.UserName,
+                DocumementId=vm.DocumementId,
+                Email = vm.Email,
+                PhoneNumber = vm.PhoneNumber,
+                PhotoProfileUrl =vm.PhotoProfileUrl,
+                IsActive = vm.IsActive
+
             };
 
             return item;
         }
+
+
+
+        public async Task<AuthenticationResponse> IsActive(string id)
+        {
+            var vm = await userManager.FindByIdAsync(id);
+
+            var rol = await userManager.GetRolesAsync(vm).ConfigureAwait(false);
+
+            //if (vm.EmailConfirmed == false)
+            //{
+            //    string token = await userManager.GenerateEmailConfirmationTokenAsync(vm);
+            //    var response = await userManager.ConfirmEmailAsync(vm, token);
+            //}
+
+            vm.IsActive = vm.IsActive == true ? false : true;
+
+            await userManager.UpdateAsync(vm);
+
+            AuthenticationResponse item = new AuthenticationResponse
+            {
+                Id = vm.Id,
+                Firstname = vm.Firstname,
+                Lastname = vm.Lastname,
+                Username = vm.UserName,
+                DocumementId = vm.DocumementId,
+                Email = vm.Email,
+                Roles = rol.ToList(),
+                //IsVerified = vm.IsActive,
+                IsActive = vm.IsActive
+            };
+
+            return item;
+
+        }
+
+
         public async Task<RegisterResponse> UpdateUserAsync(RegisterRequest request)
         {
             RegisterResponse response = new();
@@ -395,6 +451,6 @@ namespace RealEstateApp.Infrastructure.Identity.Services
             return response;
 
         }
-      
+
     }
 }

@@ -5,6 +5,8 @@ using RealEstateApp.Core.Application.Dtos.Account;
 using RealEstateApp.Core.Application.helper;
 using RealEstateApp.Core.Application.Interfaces.Service;
 using RealEstateApp.Core.Application.Interfaces.Service.Service_App;
+using RealEstateApp.Core.Application.Interfaces.Services;
+using RealEstateApp.Core.Application.ViewModels;
 using RealEstateApp.Core.Application.ViewModels.FavoriteProperty;
 using RealEstateApp.Core.Application.ViewModels.Property;
 using System.Linq;
@@ -20,14 +22,17 @@ namespace WebApp.RealEstateApp.Controllers
         private readonly IPropertyService serviceProperty;
         private readonly IFavoritePropertyServices serviceFavProperty;
         private readonly ITypePropertyService serviceTypeProperty;
+        private readonly IUserService userService;
+
         private readonly IHttpContextAccessor context;
         AuthenticationResponse user;
 
-        public HomeController(IPropertyService serviceProperty, ITypePropertyService serviceTypeProperty, IHttpContextAccessor context, IFavoritePropertyServices serviceFavProperty)
+        public HomeController(IPropertyService serviceProperty, ITypePropertyService serviceTypeProperty, IHttpContextAccessor context, IFavoritePropertyServices serviceFavProperty, IUserService userService)
         {
             this.serviceProperty = serviceProperty;
             this.serviceFavProperty = serviceFavProperty;
             this.serviceTypeProperty = serviceTypeProperty;
+            this.userService = userService;
             this.context = context;
             user = context.HttpContext.Session.Get<AuthenticationResponse>("user");
         }
@@ -85,10 +90,33 @@ namespace WebApp.RealEstateApp.Controllers
             // No me mire, no hay mucho tiempo xD
             var properties = await serviceProperty.GetAllViewModelWithIncludeAsync();
             var property = properties.Where(property => property.Id == id).SingleOrDefault();
-            return View("Details",property);
+            return View("Details", property);
         }
-      
 
+
+        //Dashboard
+        public async Task<IActionResult> IndexAdmin(int id)
+        {
+
+            var properties = await serviceProperty.GetAllViewModelWithIncludeAsync();
+            var agents = await userService.GetAllAgentAsync(); 
+            var clients = await userService.GetAllClientsAsync();
+            var developers = await userService.GetAllDevelopersAsync();
+
+
+            DashboardViewModel dashBoard = new()
+            {
+                PropertiesQuantity = properties.Count(),
+                AgentActive = agents.Where(agent => agent.IsActive == true).Count(),
+                AgentDisabled = agents.Where(agent => agent.IsActive == false).Count(),
+                ClientActive = clients.Where(client => client.IsActive == true).Count(),
+                ClientDisabled = clients.Where(client => client.IsActive == false).Count(),
+                DeveloperActive = developers.Where(dev => dev.IsActive == true).Count(),
+                DeveloperDisabled = developers.Where(dev => dev.IsActive == false).Count()
+            };
+
+            return View("Dashboard", dashBoard);
+        }
 
     }
 }
