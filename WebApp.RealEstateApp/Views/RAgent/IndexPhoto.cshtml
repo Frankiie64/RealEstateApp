@@ -28,9 +28,14 @@
                                     Eliminar
                                 </a>
                             }
-                            <a asp-controller="RAgent" asp-action="EditPhoto" asp-route-id="@item.Id" class="btn btn-sm btn-warning text-light">
+                        <form method="post" asp-controller="RAgent" asp-action="EditPhoto">
+                            <input hidden name="Id" value="@item.Id" />
+                            <input hidden name="idProperty" value="@item.IdProperty" />
+
+                            <button type="submit" class="btn btn-sm btn-warning text-light">
                                 Editar
-                            </a>
+                            </button>
+                        </form>                           
                         </div>
                     </div>
                 </div>

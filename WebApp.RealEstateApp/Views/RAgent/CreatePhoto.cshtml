@@ -37,7 +37,7 @@
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
                     }
-                    <form method="post" asp-controller="RAgent" asp-action="@(editMode ? "EditPhoto": "CreatePhoto")" enctype="multipart/form-data">
+                    <form method="post" asp-controller="RAgent" asp-action="@(editMode ? "EditPhotoPost": "CreatePhoto")" enctype="multipart/form-data">
                         <div class="row container-fluid">
                             <div class="col col-12 d-flex gap-3 mx-auto">
 
@@ -46,10 +46,11 @@
                                     <input asp-for="File" class="form-control form-control-sm" />
                                     <span asp-validation-for="File" class="text-danger"></span>
                                 </div>
-                            </div>        
-                            <input hidden asp-for="IdProperty" value="@Model.IdProperty" />
+                            </div>
+                            <input hidden asp-for="idProperty" value="@Model.idProperty" />
+                            <input hidden asp-for="Id" value="@Model.Id" />
                             <div class="col col-12 d-flex gap-3 justify-content-end">
-                                <a asp-controller="RAgent" asp-action="IndexPhoto" asp-route-id="@Model.IdProperty" class="btn btn-warning">Volver Atras</a>
+                                <a asp-controller="RAgent" asp-action="IndexPhoto" asp-route-id="@Model.idProperty" class="btn btn-warning">Volver Atras</a>
                                 <button type="submit" class="btn btn-primary">Subir</button>
                             </div>
                         </div>

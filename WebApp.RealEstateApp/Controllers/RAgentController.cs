@@ -215,7 +215,7 @@ namespace WebApp.RealEstateApp.Controllers
         }
         public IActionResult CreatePhoto(int idProperty)
         {
-            return View(new RequestPhoto { IdProperty = idProperty });
+            return View(new RequestPhoto { idProperty = idProperty });
         }
 
         [HttpPost]
@@ -230,11 +230,11 @@ namespace WebApp.RealEstateApp.Controllers
                 return View(request);
             }
 
-            request.ImgUrl= Photo.Upload(request.File, "Properties", request.IdProperty.ToString());
+            request.ImgUrl= Photo.Upload(request.File, "Properties", request.idProperty.ToString());
 
             SavePhotosPropertyViewModel vm = new SavePhotosPropertyViewModel
             {
-                IdProperty = request.IdProperty,
+                IdProperty = request.idProperty,
                 ImagUrl = request.ImgUrl
             };
 
@@ -247,7 +247,44 @@ namespace WebApp.RealEstateApp.Controllers
                 return View(request);
             }
 
-            return RedirectToRoute(new { controller = "RAgent", action = "IndexPhoto",id = request.IdProperty });
+            return RedirectToRoute(new { controller = "RAgent", action = "IndexPhoto",id = request.idProperty });
+        }
+        public IActionResult EditPhoto(RequestPhoto request)
+        {
+            return View("CreatePhoto",new RequestPhoto {Id = request.Id, idProperty = request.idProperty });
+        }
+        [HttpPost]
+        public async Task<IActionResult> EditPhotoPost(RequestPhoto request)
+        {
+            request.HasError = false;
+
+            if (request.File == null)
+            {
+                request.HasError = true;
+                request.Error = "Debe seleccioar alguna foto";
+                return View("CreatePhoto",request);
+            }
+
+            var oldImg = await servicesPhotos.GetByIdSaveViewModelAsync(request.Id);
+            request.ImgUrl = Photo.Upload(request.File, "Properties", request.idProperty.ToString(),true,oldImg.ImagUrl);
+
+            SavePhotosPropertyViewModel vm = new SavePhotosPropertyViewModel
+            {
+                Id = request.Id,
+                IdProperty = request.idProperty,
+                ImagUrl = request.ImgUrl
+            };
+
+            bool response = await servicesPhotos.UpdateAsync(vm,request.Id);
+
+            if (!response)
+            {
+                request.HasError = true;
+                request.Error = "Ha ocurrido algun error cuando se intento subir la foto.";
+                return View("CreatePhoto",request);
+            }
+
+            return RedirectToRoute(new { controller = "RAgent", action = "IndexPhoto", id = request.idProperty });
         }
         public async Task<IActionResult> DeletePhoto(int id)
         {
@@ -272,5 +309,35 @@ namespace WebApp.RealEstateApp.Controllers
             return View();
         }
 
+        private string EditPhoto(IFormFile file, int idProperty, string imagePath)
+        {
+           
+            string basePath = $"/Img/Properties/{idProperty}";
+            string path = Path.Combine(Directory.GetCurrentDirectory(), $"wwwroot{basePath}");
+
+
+
+                    Guid guid = Guid.NewGuid();
+            FileInfo fileInfo = new(file.FileName);
+            string fileName = guid + fileInfo.Extension;
+
+            string fileNameWithPath = Path.Combine(path, fileName);
+
+            using (var stream = new FileStream(fileNameWithPath, FileMode.Create))
+            {
+                file.CopyTo(stream);
+            }
+
+            string[] oldImagePart = imagePath.Split("/");
+            string oldImagePath = oldImagePart[^1];
+            string completeImageOldPath = Path.Combine(path, oldImagePath);
+
+            if (System.IO.File.Exists(completeImageOldPath))
+            {
+                System.IO.File.Delete(completeImageOldPath);
+            }
+
+            return $"{basePath}/{fileName}";
+        }
     }
 }
