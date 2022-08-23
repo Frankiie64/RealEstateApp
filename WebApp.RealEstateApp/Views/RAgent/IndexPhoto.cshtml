@@ -9,7 +9,7 @@
         @if (ViewBag.Photos.Count < 4)
         {
             <div class="col-6 text-end">
-                <a asp-controller="RAgent" asp-action="AddPhoto" class="btn btn-sm btn-success"> Agregar una foto <i class="fa-solid fa-circle-plus"></i></a>
+                <a asp-controller="RAgent" asp-action="CreatePhoto" asp-route-idProperty="@ViewBag.Photos[0].IdProperty" class="btn btn-sm btn-success"> Agregar una foto <i class="fa-solid fa-circle-plus"></i></a>
             </div>
         }
     </div>

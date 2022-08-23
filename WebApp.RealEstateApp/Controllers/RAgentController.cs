@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using WebApp.RealEstateApp.Models;
 
 namespace WebApp.RealEstateApp.Controllers
 {
@@ -142,7 +143,7 @@ namespace WebApp.RealEstateApp.Controllers
             return View("Create",vm);
         }
         [HttpPost]
-        public async Task<IActionResult> EditPost(SavePropertyViewModel vm,bool PhotoEdit)
+        public async Task<IActionResult> EditPost(SavePropertyViewModel vm)
         {
             vm.HasError = false;
             vm.AgentId = user.Id;
@@ -211,6 +212,42 @@ namespace WebApp.RealEstateApp.Controllers
             ViewBag.Photos = photos.ToList();
 
             return View();
+        }
+        public IActionResult CreatePhoto(int idProperty)
+        {
+            return View(new RequestPhoto { IdProperty = idProperty });
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreatePhoto(RequestPhoto request)
+        {
+            request.HasError = false;
+
+            if (request.File == null)
+            {
+                request.HasError = true;
+                request.Error = "Debe seleccioar alguna foto";
+                return View(request);
+            }
+
+            request.ImgUrl= Photo.Upload(request.File, "Properties", request.IdProperty.ToString());
+
+            SavePhotosPropertyViewModel vm = new SavePhotosPropertyViewModel
+            {
+                IdProperty = request.IdProperty,
+                ImagUrl = request.ImgUrl
+            };
+
+            var response = await servicesPhotos.CreateAsync(vm);
+
+            if (response == null)
+            {
+                request.HasError = true;
+                request.Error =  "Ha ocurrido algun error cuando se intento guardar una foto.";
+                return View(request);
+            }
+
+            return RedirectToRoute(new { controller = "RAgent", action = "IndexPhoto",id = request.IdProperty });
         }
         public async Task<IActionResult> DeletePhoto(int id)
         {

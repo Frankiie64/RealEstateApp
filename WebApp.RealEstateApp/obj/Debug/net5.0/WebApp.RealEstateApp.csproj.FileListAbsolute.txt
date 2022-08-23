@@ -478,3 +478,4 @@ C:\Users\Franklyn\Source\Repos\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5
 C:\Users\Franklyn\Source\Repos\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5.0\ref\WebApp.RealEstateApp.dll
 C:\Users\Franklyn\Source\Repos\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5.0\WebApp.RealEstateApp.pdb
 C:\Users\Franklyn\Source\Repos\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5.0\WebApp.RealEstateApp.genruntimeconfig.cache
+C:\Users\Franklyn\Source\Repos\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5.0\Razor\Views\RAgent\CreatePhoto.cshtml.g.cs
