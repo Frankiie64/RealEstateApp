@@ -37,18 +37,17 @@ namespace WebApp.RealEstateApp.Middlewares
             {
                 await next();
                 return;
-
             }
 
             if (user.Roles.Any(r => r == Roles.Agent.ToString()))
             {
                 var controller = (HomeController)context.Controller;
-                context.Result = controller.RedirectToAction("index", "RAdmin");
+                context.Result = controller.RedirectToAction("Index", "RAgent");
             }
             if (user.Roles.Any(r => r == Roles.Admin.ToString()))
             {
                 var controller = (HomeController)context.Controller;
-                context.Result = controller.RedirectToAction("index", "RAnget");
+                context.Result = controller.RedirectToAction("Index", "RAdmin");
             }          
         }
     }

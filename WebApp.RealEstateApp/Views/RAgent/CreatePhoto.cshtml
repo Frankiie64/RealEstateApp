@@ -1,0 +1,62 @@
+﻿@model WebApp.RealEstateApp.Models.RequestPhoto;
+@{
+    bool editMode = Model.Id != 0 ? true:false;
+
+    if (editMode)
+    {
+        ViewData["Title"] = "Editar Foto";
+
+    }
+    else
+    {
+        ViewData["Title"] = "Subir Foto";
+    }
+}
+
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-10 mx-auto">
+            <div class="card">
+                <div class="card-header bg-dark text-light">
+                    @if (editMode)
+                    {
+                        <h4>Editar Propiedad</h4>
+                    }
+                    else
+                    {
+                        <h4>Registro de nueva Propiedad</h4>
+                    }
+                </div>
+                <div class="card-body">
+
+                    @if (Model.HasError)
+                    {
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <p>@Model.Error</p>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    }
+                    <form method="post" asp-controller="RAgent" asp-action="@(editMode ? "EditPhotoPost": "CreatePhoto")" enctype="multipart/form-data">
+                        <div class="row container-fluid">
+                            <div class="col col-12 d-flex gap-3 mx-auto">
+
+                                <div class="mb-3 col-8">
+                                    <label asp-for="File" class="form-label">Foto de la propiedad</label>
+                                    <input asp-for="File" class="form-control form-control-sm" />
+                                    <span asp-validation-for="File" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <input hidden asp-for="idProperty" value="@Model.idProperty" />
+                            <input hidden asp-for="Id" value="@Model.Id" />
+                            <div class="col col-12 d-flex gap-3 justify-content-end">
+                                <a asp-controller="RAgent" asp-action="IndexPhoto" asp-route-id="@Model.idProperty" class="btn btn-warning">Volver Atras</a>
+                                <button type="submit" class="btn btn-primary">Subir</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
