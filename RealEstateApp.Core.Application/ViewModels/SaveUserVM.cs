@@ -10,6 +10,7 @@ namespace RealEstateApp.Core.Application.ViewModels.Users
 {
     public class SaveUserVM
     {
+        public string Id { get; set; }
         [Required(ErrorMessage ="Debes ingresar tu Nombre")]
         [DataType(DataType.Text)]
         public string Firstname { get; set; }

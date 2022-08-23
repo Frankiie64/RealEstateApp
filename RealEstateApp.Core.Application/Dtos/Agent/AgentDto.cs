@@ -15,6 +15,6 @@ namespace RealEstateApp.Core.Application.Dtos.Agent
         //public string Email { get; set; }
         //public string Phone { get; set; }
         public int PropertiesQuantity { get; set; }
-        public bool IsActive { get; set; }
+        //public bool IsActive { get; set; }
     }
 }

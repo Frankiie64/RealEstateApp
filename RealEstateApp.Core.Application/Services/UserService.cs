@@ -90,8 +90,28 @@ namespace RealEstateApp.Application.Services
             List<UserVM> items = mapper.Map<List<UserVM>>(await accountServices.GetAllUsersAsync());
 
             items = items.Where(clients => clients.Roles[0] == Roles.Agent.ToString()).ToList();
-            return items;
-            
+            return items;            
         }
+
+        public async Task<List<UserVM>> GetAllAdminAsync()
+        {
+            List<UserVM> items = mapper.Map<List<UserVM>>(await accountServices.GetAllUsersAsync());
+
+            items = items.Where(clients => clients.Roles[0] == Roles.SuperAdmin.ToString()).ToList();
+            return items;
+        }
+        public async Task<List<UserVM>> GetAllDevelopersAsync()
+        {
+            List<UserVM> items = mapper.Map<List<UserVM>>(await accountServices.GetAllUsersAsync());
+
+            items = items.Where(clients => clients.Roles[0] == Roles.Developer.ToString()).ToList();
+            return items;
+        }
+
+        public async Task<AuthenticationResponse> IsActive(string id)
+        {
+            return await accountServices.IsActive(id);
+        }
+
     }
 }
