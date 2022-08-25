@@ -1,9 +1,12 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RealEstateApp.Core.Application.Dtos.Account;
 using RealEstateApp.Core.Application.helper;
 using RealEstateApp.Core.Application.Interfaces.Service;
 using RealEstateApp.Core.Application.Interfaces.Services;
+using RealEstateApp.Core.Application.ViewModels.Agent;
 using RealEstateApp.Core.Application.ViewModels.Users;
 using System;
 using System.Collections.Generic;
@@ -17,19 +20,24 @@ namespace WebApp.RealEstateApp.Controllers
         private readonly IUserService userService;
         private readonly IHttpContextAccessor context;
         private readonly IPropertyService propertyServices;
+        private readonly IMapper _mapper;
+
         AuthenticationResponse user;
 
-        public AgentController(IHttpContextAccessor context, IUserService userService, IPropertyService propertyServices)
+        public AgentController(IHttpContextAccessor context, IUserService userService, IPropertyService propertyServices, IMapper mapper)
         {
             this.userService = userService;
             this.context = context;
             this.propertyServices = propertyServices;
+            _mapper = mapper;
             user = context.HttpContext.Session.Get<AuthenticationResponse>("user");
         }
 
         public async Task<IActionResult> Index()
         {
-            ViewBag.Agents = await userService.GetAllAgentAsync();
+            var agents = await userService.GetAllAgentAsync();
+            agents = agents.Where(x => x.IsActive == true).ToList();
+            ViewBag.Agents = agents;
             return View();
         }
 
@@ -39,7 +47,7 @@ namespace WebApp.RealEstateApp.Controllers
             var agents = await userService.GetAllAgentAsync();
             List<string> PartName = fullname.Split(" ").ToList();
 
-            var filter = new List<UserVM>();
+            var filter = new List<AgentVM>();
             ViewBag.Agents = new List<UserVM>();
 
             foreach (var name in PartName)
@@ -56,7 +64,7 @@ namespace WebApp.RealEstateApp.Controllers
 
                 filter.Clear();
             }
-            
+
             return View();
         }
 
@@ -67,8 +75,49 @@ namespace WebApp.RealEstateApp.Controllers
             var agent = Listagent.Where(x => x.Id == id).SingleOrDefault();
 
             agent.Properties = listProperties.Where(x => x.AgentId == id).ToList();
-            
+
             return View(agent);
         }
+
+        [Authorize(Roles = "SuperAdmin, Admin")]
+
+        public async Task<IActionResult> AgentList()
+        {
+            var agents = _mapper.Map<List<AgentVM>>(await userService.GetAllAgentAsync());
+            var listProperties = await propertyServices.GetAllViewModelWithIncludeAsync();
+            foreach (var agent in agents)
+            {
+                agent.PropertyQuantity = listProperties.Where(property => property.AgentId == agent.Id).Count();
+            }
+
+            ViewBag.AgentList = agents;
+            return View();
+        }
+
+
+        public async Task<IActionResult> IsActive(UserVM vm)
+        {
+            if (vm.Id == user.Id)
+            {
+                return RedirectToRoute(new { controller = "User", action = "AccessDenied" });
+            }
+            await userService.IsActive(vm.Id);
+
+            return RedirectToRoute
+                (new { controller = "Agent", action = "Index" });
+        }
+
+
+        public async Task<IActionResult> Delete(string id)
+        {
+            return View(_mapper.Map<SaveUserVM>(await userService.GetUserByIdAsync(id)));
+        }
+
+        public async Task<IActionResult> DeletePost(string id)
+        {
+            await userService.DeleteUserAsync(id);
+            return RedirectToRoute(new { controller = "Agent", action = "Index" });
+        }
+
     }
 }

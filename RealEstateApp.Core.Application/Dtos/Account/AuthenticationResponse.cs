@@ -19,6 +19,8 @@ namespace RealEstateApp.Core.Application.Dtos.Account
         public List<string> Roles { get; set; }
         public bool IsVerified { get; set; }
         public bool IsActive { get; set; }
+        public int PropertyQuantity { get; set; }
+
 
         public string JWTtoken { get; set; }
         //[JsonIgnore]

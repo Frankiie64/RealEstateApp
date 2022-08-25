@@ -299,10 +299,12 @@ namespace RealEstateApp.Infrastructure.Identity.Services
 
             foreach (var vm in items)
             {
+
                 var rol = await userManager.GetRolesAsync(vm).ConfigureAwait(false);
 
                 AuthenticationResponse item = new AuthenticationResponse
                 {
+
                     Id = vm.Id,
                     Firstname = vm.Firstname,
                     Lastname = vm.Lastname,
@@ -313,8 +315,7 @@ namespace RealEstateApp.Infrastructure.Identity.Services
                     IsVerified = vm.EmailConfirmed,
                     PhoneNumber = vm.PhoneNumber,
                     PhotoProfileUrl = vm.PhotoProfileUrl,
-                    IsActive = vm.IsActive
-
+                    IsActive = vm.IsActive,
                 };
 
                 list.Add(item);
@@ -335,12 +336,12 @@ namespace RealEstateApp.Infrastructure.Identity.Services
                 Id = vm.Id,
                 Roles = rol.ToList(),
                 Firstname = vm.Firstname,
-                Lastname= vm.Lastname,
+                Lastname = vm.Lastname,
                 Username = vm.UserName,
-                DocumementId=vm.DocumementId,
+                DocumementId = vm.DocumementId,
                 Email = vm.Email,
                 PhoneNumber = vm.PhoneNumber,
-                PhotoProfileUrl =vm.PhotoProfileUrl,
+                PhotoProfileUrl = vm.PhotoProfileUrl,
                 IsActive = vm.IsActive
 
             };
@@ -356,11 +357,6 @@ namespace RealEstateApp.Infrastructure.Identity.Services
 
             var rol = await userManager.GetRolesAsync(vm).ConfigureAwait(false);
 
-            //if (vm.EmailConfirmed == false)
-            //{
-            //    string token = await userManager.GenerateEmailConfirmationTokenAsync(vm);
-            //    var response = await userManager.ConfirmEmailAsync(vm, token);
-            //}
 
             vm.IsActive = vm.IsActive == true ? false : true;
 
@@ -375,7 +371,6 @@ namespace RealEstateApp.Infrastructure.Identity.Services
                 DocumementId = vm.DocumementId,
                 Email = vm.Email,
                 Roles = rol.ToList(),
-                //IsVerified = vm.IsActive,
                 IsActive = vm.IsActive
             };
 
@@ -446,11 +441,28 @@ namespace RealEstateApp.Infrastructure.Identity.Services
             if (!result.Succeeded)
             {
                 response.HasError = true;
-                response.Error = "Haocurrido algun problema cuando se intento cambiar el estado del usuario.";
+                response.Error = "Ha ocurrido algun problema cuando se intento cambiar el estado del usuario.";
             }
             return response;
 
         }
 
+        public async Task<RegisterResponse> DeleteUser(string id)
+        {
+            RegisterResponse response = new();
+            response.HasError = false;
+
+            var user = await userManager.FindByIdAsync(id);
+
+            var result = await userManager.DeleteAsync(user);
+            if (!result.Succeeded)
+            {
+                response.HasError = true;
+                response.Error = "Ocurrio un problema eliminando este usuario";
+            }
+
+            return response;
+
+        }
     }
 }

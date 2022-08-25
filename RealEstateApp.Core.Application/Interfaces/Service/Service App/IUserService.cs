@@ -1,5 +1,6 @@
 ﻿using RealEstateApp.Core.Application.Dtos.Account;
 using RealEstateApp.Core.Application.Dtos.Agent;
+using RealEstateApp.Core.Application.ViewModels.Agent;
 using RealEstateApp.Core.Application.ViewModels.Users;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -15,7 +16,7 @@ namespace RealEstateApp.Core.Application.Interfaces.Services
         Task<ResetPasswordResponse> ResetPasswordAsync(ResetPasswordVM vm);
         Task<List<UserVM>> GetAllUsersAsync();
         Task<List<UserVM>> GetAllClientsAsync();
-        Task<List<UserVM>> GetAllAgentAsync();
+        Task<List<AgentVM>> GetAllAgentAsync();
         Task<List<UserVM>> GetAllAdminAsync();
         Task<List<UserVM>> GetAllDevelopersAsync();
         Task<UserVM> GetUserByIdAsync(string id);
@@ -24,5 +25,6 @@ namespace RealEstateApp.Core.Application.Interfaces.Services
 
         Task SignOutAsync();
         Task<AuthenticationResponse> IsActive(string id);
+        Task<RegisterResponse> DeleteUserAsync(string id);
     }
 }
