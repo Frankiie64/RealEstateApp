@@ -19,5 +19,6 @@ namespace RealEstateApp.Core.Application.Interfaces.Services
 
         Task<RegisterResponse> ChangeStatusAsync(RegisterRequest request);
         Task<AuthenticationResponse> IsActive(string id);
+        Task<RegisterResponse> DeleteUser(string id);
     }
 }

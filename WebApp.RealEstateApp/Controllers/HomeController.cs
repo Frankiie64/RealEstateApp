@@ -95,7 +95,9 @@ namespace WebApp.RealEstateApp.Controllers
 
 
         //Dashboard
-        public async Task<IActionResult> IndexAdmin(int id)
+        [Authorize(Roles = "SuperAdmin, Admin")]
+
+        public async Task<IActionResult> Dashboard(int id)
         {
 
             var properties = await serviceProperty.GetAllViewModelWithIncludeAsync();

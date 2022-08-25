@@ -25,14 +25,13 @@
 <body class="bg-home">
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-menu border-bottom box-shadow mb-3">
-            <div class="container">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+            <div class="container-fluid">
+                <a href="#" class="navbar-brand">Real Estate</a>
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-
+                <div id="navbarCollapse" class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav flex-grow-1">
                         @if (User == null || IsClient)
                         {
                             <li class="nav-item">
@@ -42,14 +41,13 @@
                                 <a class="nav-link text-light fw-bolder" asp-area="" asp-controller="Agent" asp-action="Index"><i class="fa-solid fa-id-badge"></i> Agentes</a>
                             </li>
                         }
-
-
                         @if (User != null && IsClient)
                         {
                             <li class="nav-item">
                                 <a class="nav-link text-light fw-bolder" asp-area="" asp-controller="Client" asp-action="PropertiesFavorite"><i class="fa-solid fa-bookmark"></i> Mis Propiedades</a>
                             </li>
                         }
+
 
                         @if (User != null && isAgent)
                         {
@@ -63,30 +61,37 @@
                                 <a class="nav-link text-light fw-bolder" asp-area="" asp-controller="RAgent" asp-action="Properties"><i class="fa-solid fa-hotel"></i> Propiedades</a>
                             </li>
                         }
-
-                        @if (User != null && isAdmin)
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link text-light fw-bolder" asp-area="" asp-controller="TypeSale" asp-action="Index"> Tipos de Ventas</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-light fw-bolder" asp-area="" asp-controller="TypeProperty" asp-action="Index"> Tipos de Propiedades</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-light fw-bolder" asp-area="" asp-controller="Improvement" asp-action="Index"> Mejoras</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-light fw-bolder" asp-area="" asp-controller="Admin" asp-action="Index"> Administrador</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-light fw-bolder" asp-area="" asp-controller="Developer" asp-action="Index"> Desarrollador</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-light fw-bolder" asp-area="" asp-controller="Home" asp-action="IndexAdmin"> Dashboard</a>
-                            </li>
-                        }
-
                     </ul>
+
+
+                    @if (User != null && isAdmin)
+                    {
+                        <ul class="navbar-nav flex-grow-1 justify-content-end">
+
+                            <li class="nav-item text-end">
+                                <a class="nav-link text-light fw-bolder" asp-area="" asp-controller="Home" asp-action="Dashboard"> Dashboard</a>
+                            </li>
+
+                            <li class="nav-item dropdown text-end">
+                                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Administrador</a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item fw-bolder" asp-area="" asp-controller="Admin" asp-action="Index"> Administradores</a>
+                                    <a class="dropdown-item fw-bolder" asp-area="" asp-controller="Agent" asp-action="AgentList"> Lista de Agentes</a>
+
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item fw-bolder" asp-area="" asp-controller="TypeSale" asp-action="Index"> Tipos de Ventas</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item fw-bolder" asp-area="" asp-controller="TypeProperty" asp-action="Index"> Tipos de Propiedades</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item fw-bolder" asp-area="" asp-controller="Improvement" asp-action="Index"> Mejoras</a>
+                                    <a class="dropdown-item fw-bolder" asp-area="" asp-controller="Developer" asp-action="Index"> Desarrollador</a>
+
+                                </div>
+                            </li>
+                        </ul>
+                    }
+
+
                     <ul class="navbar-nav flex-grow-1 justify-content-end">
                         @if (User != null)
                         {
@@ -104,6 +109,7 @@
                             </li>
                         }
                     </ul>
+
                 </div>
             </div>
         </nav>

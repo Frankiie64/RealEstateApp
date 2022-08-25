@@ -1,0 +1,101 @@
+﻿@using RealEstateApp.Core.Application.Enums
+@using RealEstateApp.Core.Application.ViewModels.Agent
+@using RealEstateApp.Core.Application.ViewModels.Users;
+@model AgentVM
+
+@if (ViewBag.AgentList.Count == 0)
+{
+    <h2 class="text-center mt-5">No se encontro ningun Agente Registrado </h2>
+}
+else
+{
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+    <hr>
+    <div class="col">
+        <h2 class="text-center mb-5 display-5"> Lista de Agentes</h2>
+    </div>
+    <hr>
+    <div class="container-fluid bootstrap snippets bootdey mt-4">
+        <div class="row">
+            <div class="col">
+                <div class="main-box no-header clearfix">
+                    <div class="main-box-body clearfix">
+                        <div class="table-responsive shadow-lg p-3 mb-5 bg-white rounded">
+                            <table class="table user-list">
+                                <thead>
+                                    <tr>
+                                        <th>Nombre</th>
+                                        <th>Apellido</th>
+                                        <th>Correo</th>
+                                        <th>Cantidad de Propiedades</th>
+                                        <th>Estado</th>
+                                        <td class="fw-bolder" style="">Acciones</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (AgentVM item in ViewBag.AgentList)
+                                    {
+                                        <tr>
+                                            <td>@item.Firstname</td>
+                                            <td>@item.Lastname</td>
+                                            <td><a href="#"> @item.Email</a></td>
+                                            <td>@item.PropertyQuantity</td>
+                                            <td>
+                                                @if (item.IsActive == true)
+                                                {
+                                                    <span class="label label-active"> Activa</span>
+                                                }
+                                                else
+                                                {
+                                                    <span class="label label-disabled"> Inactiva</span>
+                                                }
+
+                                            </td>
+                                            <td class="justify-content-end">
+                                                <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="@($"#{item.Username}")" )">
+                                                    @(item.IsActive == true ? "Inactivar" : "Activar")
+                                                </button>
+
+                                                <div class="modal fade" id="@item.Username" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+                                                    <form method="post" asp-controller="Agent" asp-action="IsActive">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="exampleModalLabel">Atencion</h5>
+                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    Estas seguro de que deseas @(item.IsActive == true ? "Inactivar" : "Activar") esta cuenta ?
+                                                                </div>
+                                                                <input hidden asp-for="Id" value="@item.Id" />
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Cancelar</button>
+                                                                    <button type="submit" class="btn btn-danger">Aceptar</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <a asp-controller="Agent" asp-action="Delete" asp-route-id="@item.Id" type="button" class="btn btn-labeled btn-danger">
+                                                    <span class="btn-label">
+                                                        <i class="fa fa-times"></i>
+                                                    </span>Eliminar
+                                                </a>
+
+                                            </td>
+
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}

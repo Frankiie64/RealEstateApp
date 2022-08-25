@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Eleikel\\Desktop\\ITLA\\Programacion III\\Real Estate 3\\RealEstateApp\\RealEstateApp.Core.Domain\\RealEstateApp.Core.Domain.csproj",
+      "projectUniqueName": "C:\\Users\\Eleikel\\Desktop\\ITLA\\Programacion III\\Real Estate 5\\RealEstateApp\\RealEstateApp.Core.Domain\\RealEstateApp.Core.Domain.csproj",
       "projectName": "RealEstateApp.Core.Domain",
-      "projectPath": "C:\\Users\\Eleikel\\Desktop\\ITLA\\Programacion III\\Real Estate 3\\RealEstateApp\\RealEstateApp.Core.Domain\\RealEstateApp.Core.Domain.csproj",
+      "projectPath": "C:\\Users\\Eleikel\\Desktop\\ITLA\\Programacion III\\Real Estate 5\\RealEstateApp\\RealEstateApp.Core.Domain\\RealEstateApp.Core.Domain.csproj",
       "packagesPath": "C:\\Users\\Eleikel\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Eleikel\\Desktop\\ITLA\\Programacion III\\Real Estate 3\\RealEstateApp\\RealEstateApp.Core.Domain\\obj\\",
+      "outputPath": "C:\\Users\\Eleikel\\Desktop\\ITLA\\Programacion III\\Real Estate 5\\RealEstateApp\\RealEstateApp.Core.Domain\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Eleikel\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -13,6 +13,7 @@ using RealEstateApp.Core.Application.Features.TypeProperties.Commands.UpdateType
 using RealEstateApp.Core.Application.Features.TypeSales.Commands.CreateTypeSale;
 using RealEstateApp.Core.Application.Features.TypeSales.Commands.UpdateTypeSale;
 using RealEstateApp.Core.Application.ViewModels;
+using RealEstateApp.Core.Application.ViewModels.Agent;
 using RealEstateApp.Core.Application.ViewModels.FavoriteProperty;
 using RealEstateApp.Core.Application.ViewModels.Improvement;
 using RealEstateApp.Core.Application.ViewModels.PhotoProperties;
@@ -59,6 +60,13 @@ namespace RealEstateApp.Core.Application.Mappings
 
             CreateMap<AuthenticationResponse, UserVM>()
                .ForMember(x => x.Properties, opt => opt.Ignore())
+               .ReverseMap()
+               .ForMember(x => x.HasError, opt => opt.Ignore())
+               .ForMember(x => x.Error, opt => opt.Ignore());
+
+            CreateMap<AuthenticationResponse, AgentVM>()
+               .ForMember(x => x.Properties, opt => opt.Ignore())
+               .ForMember(x => x.PropertyQuantity, opt => opt.Ignore())
                .ReverseMap()
                .ForMember(x => x.HasError, opt => opt.Ignore())
                .ForMember(x => x.Error, opt => opt.Ignore());
@@ -113,6 +121,10 @@ namespace RealEstateApp.Core.Application.Mappings
                .ForMember(x => x.Properties, opt => opt.Ignore());
 
 
+            CreateMap<UserVM, AgentVM>()
+               .ForMember(x => x.PropertyQuantity, opt => opt.Ignore())
+               .ReverseMap();
+               
 
             CreateMap<SaveUserVM, SaveUserGenericVM>()
                .ReverseMap()

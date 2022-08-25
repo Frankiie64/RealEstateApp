@@ -2,8 +2,10 @@
 using RealEstateApp.Core.Application.Dtos.Account;
 using RealEstateApp.Core.Application.Dtos.Agent;
 using RealEstateApp.Core.Application.Enums;
+using RealEstateApp.Core.Application.Interfaces.Repository;
 using RealEstateApp.Core.Application.Interfaces.Service;
 using RealEstateApp.Core.Application.Interfaces.Services;
+using RealEstateApp.Core.Application.ViewModels.Agent;
 using RealEstateApp.Core.Application.ViewModels.Users;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +16,7 @@ namespace RealEstateApp.Application.Services
     public class UserService : IUserService
     {
         private readonly IAccountServices accountServices;
+
         private readonly IMapper mapper;
 
         public UserService(IAccountServices accountServices, IMapper mapper)
@@ -33,12 +36,12 @@ namespace RealEstateApp.Application.Services
         {
             await accountServices.SignOutAsync();
         }
-        public async Task<RegisterResponse>  RegisterAsync(SaveUserVM vm, string origin)
+        public async Task<RegisterResponse> RegisterAsync(SaveUserVM vm, string origin)
         {
             RegisterRequest registerRequest = mapper.Map<RegisterRequest>(vm);
             return await accountServices.RegisterUserAsync(registerRequest, origin);
         }
-        public async Task<RegisterResponse> UpdateAsync(SaveUserVM vm,string id)
+        public async Task<RegisterResponse> UpdateAsync(SaveUserVM vm, string id)
         {
             RegisterRequest registerRequest = mapper.Map<RegisterRequest>(vm);
             registerRequest.Id = id;
@@ -55,12 +58,12 @@ namespace RealEstateApp.Application.Services
         }
         public async Task<ResetPasswordResponse> ResetPasswordAsync(ResetPasswordVM vm)
         {
-            ResetPasswordRequest resetRequest = mapper.Map<ResetPasswordRequest>(vm);            
+            ResetPasswordRequest resetRequest = mapper.Map<ResetPasswordRequest>(vm);
             return await accountServices.ResetPasswordAsync(resetRequest);
         }
         public async Task<List<UserVM>> GetAllUsersAsync()
         {
-            var items = mapper.Map<List<UserVM>>( await accountServices.GetAllUsersAsync());
+            var items = mapper.Map<List<UserVM>>(await accountServices.GetAllUsersAsync());
             return items;
         }
         public async Task<List<UserVM>> GetAllClientsAsync()
@@ -71,7 +74,7 @@ namespace RealEstateApp.Application.Services
 
             return items;
         }
- 
+
         public async Task<UserVM> GetUserByIdAsync(string id)
         {
             return mapper.Map<UserVM>(await accountServices.GetUserByIdAsync(id));
@@ -84,21 +87,46 @@ namespace RealEstateApp.Application.Services
             return await accountServices.ChangeStatusAsync(registerRequest);
         }
 
-        public async Task<List<UserVM>> GetAllAgentAsync()
+        public async Task<List<AgentVM>> GetAllAgentAsync()
         {
 
-            List<UserVM> items = mapper.Map<List<UserVM>>(await accountServices.GetAllUsersAsync());
+            List<AgentVM> items = mapper.Map<List<AgentVM>>(await accountServices.GetAllUsersAsync());
 
-            items = items.Where(clients => clients.Roles[0] == Roles.Agent.ToString()).ToList();
-            return items;            
+            return items.Where(clients => clients.Roles[0] == Roles.Agent.ToString()).Select(agent => new AgentVM
+            {
+                Id = agent.Id,
+                Firstname = agent.Firstname,
+                Lastname = agent.Lastname,
+                Username = agent.Username,
+                DocumementId = agent.DocumementId,
+                PhotoProfileUrl = agent.PhotoProfileUrl,
+                PhoneNumber = agent.PhoneNumber,
+                Email = agent.Email,
+                IsActive = agent.IsActive,
+            }).ToList();
+
+
         }
 
         public async Task<List<UserVM>> GetAllAdminAsync()
         {
-            List<UserVM> items = mapper.Map<List<UserVM>>(await accountServices.GetAllUsersAsync());
+            List<UserVM> admins = new();
+            List<UserVM> users = mapper.Map<List<UserVM>>(await accountServices.GetAllUsersAsync());
+            var superAdm = users.Where(clients => clients.Roles[0] == Roles.SuperAdmin.ToString()).ToList();
 
-            items = items.Where(clients => clients.Roles[0] == Roles.SuperAdmin.ToString()).ToList();
-            return items;
+            foreach (var superAdmin in superAdm)
+            {
+                admins.Add(superAdmin);
+            }
+
+            var adm = users.Where(clients => clients.Roles[0] == Roles.Admin.ToString()).ToList();
+
+            foreach (var admin in adm)
+            {
+                admins.Add(admin);
+            }
+
+            return admins;
         }
         public async Task<List<UserVM>> GetAllDevelopersAsync()
         {
@@ -113,5 +141,11 @@ namespace RealEstateApp.Application.Services
             return await accountServices.IsActive(id);
         }
 
+        public async Task<RegisterResponse> DeleteUserAsync(string id)
+        {
+            var user = await accountServices.GetUserByIdAsync(id);
+            return await accountServices.DeleteUser(user.Id);
+
+        }
     }
 }
