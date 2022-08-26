@@ -44,7 +44,7 @@ namespace WebAPI.RealEstateApp.Controllers
             Summary = "Registrar un nuevo Administrador",
             Description = "Recibe los parametros para crear un usuario con el Rol Administrador"
          )]
-        public async Task<IActionResult> RegisterAdminAsync(RegisterRequest request)
+        public async Task<IActionResult> RegisterAdminAsync([FromBody]RegisterRequest request)
         {
             var origin = Request.Headers["origin"];
             request.Rol = Roles.SuperAdmin.ToString();
@@ -60,7 +60,7 @@ namespace WebAPI.RealEstateApp.Controllers
             Summary = "Registrar un nuevo Desarrollador",
             Description = "Recibe los parametros para crear un usuario con el Rol Desarrollador"
          )]
-        public async Task<IActionResult> RegisterDeveloperAsync(RegisterRequest request)
+        public async Task<IActionResult> RegisterDeveloperAsync([FromBody]RegisterRequest request)
         {
             var origin = Request.Headers["origin"];
             request.Rol = Roles.Developer.ToString();

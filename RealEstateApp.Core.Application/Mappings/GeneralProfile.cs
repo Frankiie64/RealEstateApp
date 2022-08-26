@@ -302,6 +302,11 @@ namespace RealEstateApp.Core.Application.Mappings
                 .ForMember(x => x.LastModifiedBy, opt => opt.Ignore())
                 .ForMember(x => x.CreatedBy, opt => opt.Ignore());
 
+            CreateMap<ImprovementViewModel, ImprovementDto>()
+               .ForMember(x => x.IdProperty, opt => opt.Ignore())
+               .ForMember(x => x.Property, opt => opt.Ignore())
+               .ReverseMap()
+               .ForMember(x => x.typeImproments, opt => opt.Ignore());
 
 
             CreateMap<TypeProperty, TypePropertyDto>()
@@ -328,6 +333,11 @@ namespace RealEstateApp.Core.Application.Mappings
                 .ForMember(x => x.LastModified, opt => opt.Ignore())
                 .ForMember(x => x.LastModifiedBy, opt => opt.Ignore())
                 .ForMember(x => x.CreatedBy, opt => opt.Ignore());
+
+            CreateMap<TypePropertyViewModel, TypePropertyDto>()
+               .ReverseMap()
+               .ForMember(x => x.Properties, opt => opt.Ignore())
+                .ForMember(x => x.PropertiesQuantity, opt => opt.Ignore());
 
 
 
@@ -358,8 +368,13 @@ namespace RealEstateApp.Core.Application.Mappings
                 .ForMember(x => x.LastModifiedBy, opt => opt.Ignore())
                 .ForMember(x => x.CreatedBy, opt => opt.Ignore());
 
+            CreateMap<TypeSaleViewModel, TypeSaleDto>()
+               .ReverseMap()
+               .ForMember(x => x.Properties, opt => opt.Ignore())
+                .ForMember(x => x.PropertiesQuantity, opt => opt.Ignore());
 
-                     //CQRS & MEDIATOR
+
+            //CQRS & MEDIATOR
 
             CreateMap<CreateImprovementCommand, Improvement>()
                 .ForMember(x => x.typeImproments, opt => opt.Ignore())

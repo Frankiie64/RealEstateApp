@@ -5,6 +5,8 @@ using RealEstateApp.Core.Application.Dtos.Property;
 using RealEstateApp.Core.Application.Dtos.TypeProperty;
 using RealEstateApp.Core.Application.Dtos.TypeSale;
 using RealEstateApp.Core.Application.Interfaces.Repository;
+using RealEstateApp.Core.Application.Interfaces.Service;
+using RealEstateApp.Core.Application.Interfaces.Services;
 using RealEstateApp.Core.Application.ViewModels.Property;
 using RealEstateApp.Core.Application.ViewModels.TypeImproments;
 using RealEstateApp.Core.Domain.Entities;
@@ -27,14 +29,17 @@ namespace RealEstateApp.Core.Application.Features.Properties.Queries.GetProperty
         private readonly IPropertyRepository _propertyRepository;
         private readonly IImprovementRepository _improvementRepository;
         private readonly ITypeImpromentRepository _typeImpromentRepository;
-
+        private readonly IPropertyService _propertyService;
+        private readonly IUserService _userService;
         private readonly IMapper _mapper;
 
 
-        public GetPropertyByIdQueryHandler(IPropertyRepository propertyRepository, IMapper mapper, IImprovementRepository improvementRepository, ITypeImpromentRepository typeImpromentRepository)
+        public GetPropertyByIdQueryHandler(IPropertyRepository propertyRepository, IMapper mapper, IImprovementRepository improvementRepository, ITypeImpromentRepository typeImpromentRepository, IPropertyService propertyService, IUserService userService)
         {
             _propertyRepository = propertyRepository;
             _improvementRepository = improvementRepository;
+            _propertyService = propertyService;
+            _userService = userService;
             _mapper = mapper;
             _typeImpromentRepository = typeImpromentRepository;
         }
@@ -47,8 +52,11 @@ namespace RealEstateApp.Core.Application.Features.Properties.Queries.GetProperty
 
         public async Task<PropertyDto> GetByIdDto(int id)
         {
-            var propertyList = await _propertyRepository.GetAllWithIncludeAsync(new List<string> { "Improments", "TypeProperty", "TypeSale" });
+            var propertyList = await _propertyService.GetAllViewModelWithIncludeAsync();
+            propertyList = propertyList.Where(property => property.agent != null).ToList();
             if (propertyList.Where(x => x.Id == id).Count() < 1) throw new Exception($"Property Not Found.");
+
+            var users = await _userService.GetAllUsersAsync();
 
             var improvements = await _improvementRepository.GetAllWithIncludeAsync(new List<string> { "typeImproments" });
             var typeImprovements = await _typeImpromentRepository.GetAllAsync();
@@ -66,6 +74,7 @@ namespace RealEstateApp.Core.Application.Features.Properties.Queries.GetProperty
                 Meters = property.Meters,
                 Bathroom = property.Bathroom,
                 AgentId = property.AgentId,
+                AgentName = users.FirstOrDefault(x => x.Id == property.AgentId).Firstname + " " + users.FirstOrDefault(x => x.Id == property.AgentId).Lastname,
                 TypeProperty = _mapper.Map<TypePropertyDto>(property.TypeProperty),
                 TypeSale = _mapper.Map<TypeSaleDto>(property.TypeSale),
                 Improvements = _mapper.Map<List<ImprovementDto>>(typeImprovements.Where(x => x.IdProperty == id).Select(typeImprovement => new ImprovementDto
