@@ -9,6 +9,7 @@
     var IsClient = User != null ? User.Roles.Any(r => r == "Client") : false;
     var isDev = User != null ? User.Roles.Any(r => r == "Developer") : false;
     var isAgent = User != null ? User.Roles.Any(r => r == "Agent") : false;
+    var isSuperAdmin = User != null ? User.Roles.Any(r => r == "SuperAdmin") : false;
 
 }
 <!DOCTYPE html>
@@ -26,7 +27,7 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-menu border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a href="#" class="navbar-brand">Real Estate</a>
+                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Real Estate</a>
                 <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -64,8 +65,21 @@
                     </ul>
 
 
-                    @if (User != null && isAdmin)
+                    @if (User != null && (isAdmin || isSuperAdmin))
                     {
+                        <ul class="nav navbar-nav flex-grow-1">
+
+                                <li class="nav-item">
+                                    <a class="nav-link text-light fw-bolder" asp-area="" asp-controller="Home" asp-action="Index"><i class="fa-solid fa-house"></i> Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-light fw-bolder" asp-area="" asp-controller="Agent" asp-action="Index"><i class="fa-solid fa-id-badge"></i> Agentes</a>
+                                </li>
+                        </ul>
+
+                       
+                            ////
+                        
                         <ul class="navbar-nav flex-grow-1 justify-content-end">
 
                             <li class="nav-item text-end">
@@ -89,6 +103,8 @@
                                 </div>
                             </li>
                         </ul>
+                 
+                        
                     }
 
 

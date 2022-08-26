@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "iTnrMTw5IH5gVhHjYpImRk6DSK6SvT+xjNmW3Ke1229Q04QQgxuEPcAGNxHcz3OMKKd+pAT8DQHetqNifot8jg==",
+  "dgSpecHash": "5IhVDLlb9UgHaxC7WLjcIVc1+wqsEYVzetVbbdP5kkLE2DXGZqKFvb/D+1jw1GQ/ids4R6w2F9kj3t+6yxxS4g==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Eleikel\\Desktop\\ITLA\\Programacion III\\Real Estate 5\\RealEstateApp\\RealEstateApp.Infrastructure.Identity\\RealEstateApp.Infrastructure.Identity.csproj",
+  "projectFilePath": "C:\\Users\\Eleikel\\Desktop\\ITLA\\Programacion III\\Real Estate 6\\RealEstateApp\\RealEstateApp.Infrastructure.Identity\\RealEstateApp.Infrastructure.Identity.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Eleikel\\.nuget\\packages\\automapper\\11.0.1\\automapper.11.0.1.nupkg.sha512",
     "C:\\Users\\Eleikel\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\11.0.0\\automapper.extensions.microsoft.dependencyinjection.11.0.0.nupkg.sha512",

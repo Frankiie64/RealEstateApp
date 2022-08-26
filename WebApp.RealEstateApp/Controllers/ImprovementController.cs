@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WebApp.RealEstateApp.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin, SuperAdmin")]
     public class ImprovementController : Controller
     {
         public readonly IImprovementService _improvementServices;

@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RealEstateApp;
@@ -12,6 +13,7 @@ using System.Threading.Tasks;
 
 namespace WebApp.RealEstateApp.Controllers
 {
+    [Authorize(Roles = "Admin, SuperAdmin")]
     public class DeveloperController : Controller
     {
         private readonly IUserService _userService;

@@ -9,6 +9,7 @@ using RealEstateApp.Core.Application.Interfaces.Services;
 using RealEstateApp.Core.Application.ViewModels;
 using RealEstateApp.Core.Application.ViewModels.FavoriteProperty;
 using RealEstateApp.Core.Application.ViewModels.Property;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WebApp.RealEstateApp.middlewares;
@@ -40,6 +41,7 @@ namespace WebApp.RealEstateApp.Controllers
         public async Task<IActionResult> Index()
         {
             var Properties = await serviceProperty.GetAllViewModelWithIncludeAsync();
+            List<PropertyViewModel> propertyList = Properties.Where(property => property.agent != null).ToList();
             if (user != null)
             {
                 var ListFavorite = await serviceFavProperty.GetAllViewModelAsync();
@@ -54,7 +56,7 @@ namespace WebApp.RealEstateApp.Controllers
                 }
             }
 
-            ViewBag.Properties = Properties;
+            ViewBag.Properties = propertyList;
             ViewBag.TypeProperties = await serviceTypeProperty.GetAllViewModelAsync();
 
             return View();
