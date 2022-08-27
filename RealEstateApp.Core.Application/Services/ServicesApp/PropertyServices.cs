@@ -44,6 +44,7 @@ namespace RealEstateApp.Core.Application.Services.ServicesApp
         public async Task<List<PropertyViewModel>> GetAllViewModelWithIncludeAsync()
         {
             var entityList = await repo.GetAllWithIncludeAsync(new List<string> { "TypeProperty", "TypeSale", "Improments", "UrlPhotos" });
+            entityList = entityList.OrderByDescending(x => x.Creadted).ToList();
 
             var listMapped = mapper.Map<List<PropertyViewModel>>(entityList);
             var users = await userService.GetAllUsersAsync();
@@ -60,7 +61,8 @@ namespace RealEstateApp.Core.Application.Services.ServicesApp
 
         public async Task<List<PropertyViewModel>> GetAllViewModelWithIncludeByFilterAsync(PropertyByFiltering filter)
         {
-            var entityList = await repo.GetAllWithIncludeAsync(new List<string> { "TypeProperty", "TypeSale", "Improvements", "PropertyImprovements", "UrlPhotos" });
+            var entityList = await repo.GetAllWithIncludeAsync(new List<string> { "TypeProperty", "TypeSale", "Improments", "UrlPhotos" });
+            entityList = entityList.OrderByDescending(x => x.Creadted).ToList();
 
             var listMapped = mapper.Map<List<PropertyViewModel>>(entityList);
 

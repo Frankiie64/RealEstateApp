@@ -48,7 +48,6 @@ namespace WebApp.RealEstateApp.Controllers
         public async Task<IActionResult> Index()
         {
             var Properties = await serviceProperty.GetAllViewModelWithIncludeAsync();
-            Properties = Properties.OrderBy(x => x.Creadted).ToList();
             ViewBag.Properties = Properties.Where(x => x.AgentId == user.Id).ToList();
             return View();
         }
@@ -73,6 +72,8 @@ namespace WebApp.RealEstateApp.Controllers
         {
             vm.HasError = false;
             vm.AgentId = user.Id;
+            vm.Creadted = DateTime.Now;
+            vm.CreatedBy = "user";
 
             ViewBag.typePrperties = await serviceTypeProperty.GetAllViewModelAsync();
             ViewBag.typeSale = await serviceTypeSale.GetAllViewModelAsync();
@@ -149,6 +150,10 @@ namespace WebApp.RealEstateApp.Controllers
         [HttpPost]
         public async Task<IActionResult> EditPost(SavePropertyViewModel vm)
         {
+            var prop = await serviceProperty.GetByIdSaveViewModelAsync(vm.Id);
+
+            vm.Creadted = prop.Creadted;
+            vm.CreatedBy = prop.CreatedBy;
             vm.HasError = false;
             vm.AgentId = user.Id;
         

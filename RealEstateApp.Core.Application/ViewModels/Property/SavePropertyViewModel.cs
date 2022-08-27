@@ -37,6 +37,10 @@ namespace RealEstateApp.Core.Application.ViewModels.Property
         [Range(1, int.MaxValue, ErrorMessage = "Este campo es obligatorio")]
         public int TypeSaleId { get; set; }
         public List<int> IdImproments { get; set; } = new List<int>();
+        public string CreatedBy { get; set; }
+        public DateTime Creadted { get; set; }
+        public string LastModifiedBy { get; set; }
+        public DateTime? LastModified { get; set; }
         public bool HasError { get; set; } = false;
         public string Error { get; set; }
     }

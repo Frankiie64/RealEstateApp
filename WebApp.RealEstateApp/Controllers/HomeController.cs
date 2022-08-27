@@ -67,6 +67,7 @@ namespace WebApp.RealEstateApp.Controllers
             ViewBag.TypeProperties = await serviceTypeProperty.GetAllViewModelAsync();
 
             var Properties = await serviceProperty.GetAllViewModelWithIncludeByFilterAsync(filter);
+            Properties = Properties.Where(x => x.agent != null).ToList();
 
             if (user != null)
             {
