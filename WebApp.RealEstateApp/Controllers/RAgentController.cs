@@ -5,9 +5,11 @@ using RealEstateApp.Core.Application.Dtos.Account;
 using RealEstateApp.Core.Application.helper;
 using RealEstateApp.Core.Application.Interfaces.Service;
 using RealEstateApp.Core.Application.Interfaces.Service.Service_App;
+using RealEstateApp.Core.Application.Interfaces.Services;
 using RealEstateApp.Core.Application.ViewModels.PhotoProperties;
 using RealEstateApp.Core.Application.ViewModels.Property;
 using RealEstateApp.Core.Application.ViewModels.TypeImproments;
+using RealEstateApp.Core.Application.ViewModels.Users;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -25,12 +27,13 @@ namespace WebApp.RealEstateApp.Controllers
         private readonly ITypeSaleService serviceTypeSale;
         private readonly ITypeImpromentsServices servicesTypeImproments;
         private readonly IImprovementService serviceImprovement;
-        private IPhotosOfPropertyService servicesPhotos;
+        private  readonly IPhotosOfPropertyService servicesPhotos;
+        private readonly IUserService userService;
         private readonly IHttpContextAccessor context;
         AuthenticationResponse user;
 
         public RAgentController(IHttpContextAccessor context, IPropertyService serviceProperty, IPhotosOfPropertyService servicesPhotos, ITypePropertyService serviceTypeProperty,
-            ITypeSaleService serviceTypeSale, IImprovementService serviceImprovement, ITypeImpromentsServices servicesTypeImproments)
+            ITypeSaleService serviceTypeSale, IImprovementService serviceImprovement, ITypeImpromentsServices servicesTypeImproments, IUserService userService)
         {        
             this.context = context;
             this.serviceProperty = serviceProperty;
@@ -39,6 +42,7 @@ namespace WebApp.RealEstateApp.Controllers
             this.serviceTypeProperty = serviceTypeProperty;
             this.serviceTypeSale = serviceTypeSale;
             this.serviceImprovement = serviceImprovement;
+            this.userService = userService;
             user = context.HttpContext.Session.Get<AuthenticationResponse>("user");
         }
         public async Task<IActionResult> Index()
@@ -304,11 +308,51 @@ namespace WebApp.RealEstateApp.Controllers
 
             return View("IndexPhoto");
         }
-        public IActionResult Profile()
+        public async Task<IActionResult> Profile()
         {
-            return View();
-        }
+            var OldUser = await userService.GetUserByIdAsync(user.Id);
 
+            requestAgent request = new requestAgent
+            {
+                Id = OldUser.Id,
+                Firstname = OldUser.Firstname,
+                Lastname = OldUser.Lastname,
+                PhoneNumber = OldUser.PhoneNumber,
+                PhotoProfileUrl = OldUser.PhotoProfileUrl
+            };
+
+            return View(request);
+        }
+        [HttpPost]
+        public async Task<IActionResult> Profile(requestAgent request)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(request);
+            }
+
+            if (request.file != null)
+            {
+                request.PhotoProfileUrl = Photo.Upload(request.file, "User", request.Id, true, request.PhotoProfileUrl);
+            }
+
+
+            UserVM userVm = await userService.GetUserByIdAsync(request.Id);
+
+            SaveUserVM vm = new SaveUserVM
+            {
+                Id = request.Id,
+                Firstname = request.Firstname,
+                Lastname = request.Lastname,
+                PhoneNumber = request.PhoneNumber,
+                PhotoProfileUrl = request.PhotoProfileUrl,
+                Username = userVm.Username,
+                Email = userVm.Email
+            };
+
+            await userService.UpdateAsync(vm, vm.Id);
+            return RedirectToRoute(new { controller = "RAgent", action = "Profile" });
+        }
         private string EditPhoto(IFormFile file, int idProperty, string imagePath)
         {
            

@@ -1936,3 +1936,11 @@ C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate 6\RealEstateApp\WebAp
 C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate 6\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5.0\WebApp.RealEstateApp.pdb
 C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate 6\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5.0\WebApp.RealEstateApp.genruntimeconfig.cache
 C:\Users\Eleikel\Desktop\ITLA\Programacion III\Real Estate 6\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5.0\ref\WebApp.RealEstateApp.dll
+C:\Users\Franklyn\Source\Repos\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5.0\Razor\Views\Admin\Index.cshtml.g.cs
+C:\Users\Franklyn\Source\Repos\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5.0\Razor\Views\Admin\SaveAdmin.cshtml.g.cs
+C:\Users\Franklyn\Source\Repos\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5.0\Razor\Views\Agent\AgentList.cshtml.g.cs
+C:\Users\Franklyn\Source\Repos\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5.0\Razor\Views\Agent\Delete.cshtml.g.cs
+C:\Users\Franklyn\Source\Repos\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5.0\Razor\Views\Developer\Index.cshtml.g.cs
+C:\Users\Franklyn\Source\Repos\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5.0\Razor\Views\Developer\SaveDeveloper.cshtml.g.cs
+C:\Users\Franklyn\Source\Repos\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5.0\Razor\Views\Home\Dashboard.cshtml.g.cs
+C:\Users\Franklyn\Source\Repos\RealEstateApp\WebApp.RealEstateApp\obj\Debug\net5.0\Razor\Views\RAgent\Profile.cshtml.g.cs

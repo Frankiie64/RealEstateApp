@@ -1,0 +1,68 @@
+﻿@using WebApp.RealEstateApp.Models
+@using RealEstateApp.Core.Application.Enums
+@model requestAgent;
+@{
+    ViewData["Title"] = "Mi Perfil";
+}
+
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-10 mx-auto">
+            <div class="card">
+                <div class="card-header bg-dark text-light">
+                    <h4>Registro de nuevo usuario</h4>
+                </div>
+                <div class="card-body">
+
+                    @if (Model.HasError)
+                    {
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <p>@Model.Error</p>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    }
+                    <form method="post" asp-controller="RAgent" asp-action="Profile" enctype="multipart/form-data">
+                        <div class="row container-fluid">
+                            <div class="col col-12 d-flex gap-3">
+                                <div class="mb-3">
+                                    <label asp-for="Firstname" class="form-label">Nombre: </label>
+                                    <input asp-for="Firstname" value="@Model.Firstname" class="form-control" />
+                                    <span asp-validation-for="Firstname" class="text-danger"></span>
+                                </div>
+                                <div class="mb-3">
+                                    <label asp-for="Lastname" class="form-label">Apellido: </label>
+                                    <input asp-for="Lastname" value="@Model.Lastname" class="form-control" />
+                                    <span asp-validation-for="Lastname" class="text-danger"></span>
+                                </div>                
+                                <div class="mb-3">
+                                    <label asp-for="PhoneNumber" class="form-label">Telefono: </label>
+                                    <input asp-for="PhoneNumber" value="@Model.PhoneNumber" class="form-control" />
+                                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="col col-12 d-flex gap-3">
+                                <div class="mb-2 form-group">
+                                    <img src="@Model.PhotoProfileUrl" class="card-img-top" alt="FotoPerfil" style="width:25%">
+                                </div>
+                                </div>
+                                <div class="col col-12 d-flex gap-3">
+                                    <div class="mb-2 form-group">
+                                        <label asp-for="file" class="form-label">Foto de perfil</label>
+                                        <input asp-for="file" class="form-control form-control-sm" />
+                                    </div>
+                                </div>
+                                <input hidden asp-for="Id" value="@Model.Id" />
+                            <input hidden asp-for="PhotoProfileUrl" value="@Model.PhotoProfileUrl" />
+                                <div class="col col-12 d-flex gap-3 justify-content-end">
+                                    <button type="submit" class="btn btn-primary">Guardar</button>
+                                    <a asp-controller="User" asp-action="Index" class="btn btn-warning">Ir a Login</a>
+                                </div>
+                            </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
