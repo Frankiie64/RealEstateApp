@@ -37,6 +37,8 @@ namespace RealEstateApp.Core.Application
             services.AddTransient<ITypeSaleService, TypeSaleServices>();
             services.AddTransient<IImprovementService, ImprovementServices>();
             services.AddTransient<ITypeImpromentsServices, TypeImpromentServices>();
+            services.AddTransient<IRequestService, RequestService>();
+
 
             /*
             services.AddTransient<IImprovementService, IMPRO>();

@@ -18,6 +18,7 @@ using RealEstateApp.Core.Application.ViewModels.FavoriteProperty;
 using RealEstateApp.Core.Application.ViewModels.Improvement;
 using RealEstateApp.Core.Application.ViewModels.PhotoProperties;
 using RealEstateApp.Core.Application.ViewModels.Property;
+using RealEstateApp.Core.Application.ViewModels.Request;
 using RealEstateApp.Core.Application.ViewModels.TypeImproments;
 using RealEstateApp.Core.Application.ViewModels.TypeProperty;
 using RealEstateApp.Core.Application.ViewModels.TypeSale;
@@ -257,6 +258,19 @@ namespace RealEstateApp.Core.Application.Mappings
           .ForMember(x => x.Improvement, opt => opt.Ignore())
            .ForMember(x => x.Property, opt => opt.Ignore());
 
+            CreateMap<Request, RequestViewModel>()
+        .ReverseMap()
+         .ForMember(x => x.LastModified, opt => opt.Ignore())
+          .ForMember(x => x.LastModifiedBy, opt => opt.Ignore());
+
+            CreateMap<Request, SaveRequestViewModel>()
+           .ReverseMap()
+            .ForMember(x => x.LastModified, opt => opt.Ignore())
+             .ForMember(x => x.LastModifiedBy, opt => opt.Ignore());
+
+            CreateMap<RequestViewModel, SaveRequestViewModel>()
+         .ReverseMap();
+ 
             #region DTO's
 
             CreateMap<TypeImproments, ImprovementDto>()
