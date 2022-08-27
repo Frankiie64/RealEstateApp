@@ -73,9 +73,22 @@ namespace RealEstateApp.Core.Application.Services.ServicesApp
                 item.agent = users.Where(agent => agent.Id == item.AgentId).SingleOrDefault();
             }
 
-            return listMapped.Where(x =>
+            if (filter.code != 0)
+            {
+                listMapped = listMapped.Where(x => x.Code == filter.code).ToList();
+            }            
 
-            (x.Code != 0 ? x.Code == x.Code : x.Code != 0) &&
+            if (filter.IdTypeProperty.Count() != 0 && !filter.IdTypeProperty.Any(x=> x == 0))
+            {
+                List<PropertyViewModel> filtro = new List<PropertyViewModel>();
+
+                listMapped.ForEach(x =>
+               filtro.Add(filter.IdTypeProperty.Any(prop => prop == x.TypePropertyId) ? x: null)
+                );
+                listMapped = filtro.Where(x => x != null).ToList();
+            }
+
+            return listMapped.Where(x =>           
 
             (x.Bathroom >= (filter.MinBathRooms != 0 ? filter.MinBathRooms : 0) && x.Bathroom <= (filter.MaxBathRooms != 0 ? filter.MaxBathRooms : x.Bathroom)) &&
 
