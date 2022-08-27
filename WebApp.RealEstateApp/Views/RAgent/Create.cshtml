@@ -16,10 +16,20 @@
     }
 }
 
+
 <div class="container-fluid">
 
     <div class="row">
         <div class="col-10 mx-auto">
+            @if (ViewBag.improvements.Count == 0 || ViewBag.typeSale.Count == 0 || ViewBag.typePrperties.Count == 0)
+            {
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <p>Necesitas tener al menos una mejora, un tipo de venta y un tipo de propiedad para poder crear la misma.</p>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            }
+            else
+            {
             <div class="card">
                 <div class="card-header bg-dark text-light">
                     @if (editMode)
@@ -40,7 +50,7 @@
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
                     }
-                    <form method="post" asp-controller="RAgent" asp-action="@(editMode ? "EditPost": "CreatePost")" enctype="multipart/form-data">
+                    <form method="post" asp-controller="RAgent" asp-action="@(editMode ? "EditPost" : "CreatePost")" enctype="multipart/form-data">
                         <div class="row container-fluid">
                             <div class="col col-12 d-flex gap-3 mx-auto">
 
@@ -61,7 +71,7 @@
 
                                 <div class="mb-3 col-3">
                                     <label asp-for="Bathroom" class="form-label">Cantidad de baños:</label>
-                                    <input asp-for="Bathroom" value="@Model.Bathroom"  step="any" class="form-control" />
+                                    <input asp-for="Bathroom" value="@Model.Bathroom" step="any" class="form-control" />
                                     <span asp-validation-for="Bathroom" class="text-danger"></span>
                                 </div>
 
@@ -159,7 +169,7 @@
                                     </div>
                                 </div>
                                 <input hidden asp-for="Id" value="@Model.Id" />
-                                <input hidden asp-for="Code" value="@Model.Code"/>
+                                <input hidden asp-for="Code" value="@Model.Code" />
                             </div>
                             <div class="col col-12 d-flex gap-3 justify-content-end">
                                 <a asp-controller="RAgent" asp-action="Properties" class="btn btn-warning">Cancelar</a>
@@ -169,6 +179,7 @@
                     </form>
                 </div>
             </div>
+            }
         </div>
     </div>
 </div>
