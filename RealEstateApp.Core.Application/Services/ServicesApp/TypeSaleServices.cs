@@ -15,23 +15,27 @@ namespace RealEstateApp.Core.Application.Services.ServicesApp
     {
         private readonly IMapper mapper;
         private readonly ITypeSaleRepository repo;
-        public TypeSaleServices(IMapper mapper, ITypeSaleRepository repo) : base(repo, mapper)
+        private readonly IPropertyService serviceProperty;
+        public TypeSaleServices(IMapper mapper, ITypeSaleRepository repo, IPropertyService serviceProperty) : base(repo, mapper)
         {
             this.mapper = mapper;
+            this.serviceProperty = serviceProperty;
             this.repo = repo;
         }
-
 
         public async Task<List<TypeSaleViewModel>> GetAllViewModelWithInclude()
         {
             var typeSaleList = await repo.GetAllWithIncludeAsync(new List<string> { "Properties" });
+            var propertyViews = await serviceProperty.GetAllViewModelWithIncludeAsync();
+
+            propertyViews = propertyViews.Where(x => x.agent != null).ToList();
 
             return typeSaleList.Select(typeSale => new TypeSaleViewModel
             {
                 Id = typeSale.Id,
                 Name = typeSale.Name,
                 Description = typeSale.Description,
-                PropertiesQuantity = typeSale.Properties.Where(property => property.TypeSaleId == typeSale.Id).Count()
+                PropertiesQuantity = propertyViews.Where(property => property.TypeSaleId == typeSale.Id).Count()
             }).ToList();
         }
 

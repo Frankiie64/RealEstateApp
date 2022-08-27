@@ -36,7 +36,7 @@ namespace WebApp.RealEstateApp.Controllers
         public async Task<IActionResult> Index()
         {
             var agents = await userService.GetAllAgentAsync();
-            agents = agents.Where(x => x.IsActive == true).ToList();
+            agents = agents.Where(x => x.IsActive == true).OrderBy(x=>x.Firstname).ToList();
             ViewBag.Agents = agents;
             return View();
         }
@@ -44,11 +44,20 @@ namespace WebApp.RealEstateApp.Controllers
         [HttpPost]
         public async Task<IActionResult> Index(string fullname)
         {
+            
             var agents = await userService.GetAllAgentAsync();
+
+            agents = agents.OrderBy(x => x.Firstname).ToList();
+
+            if (string.IsNullOrWhiteSpace(fullname))
+            {
+                ViewBag.Agents = agents;
+                return View();
+            }
             List<string> PartName = fullname.Split(" ").ToList();
 
             var filter = new List<AgentVM>();
-            ViewBag.Agents = new List<UserVM>();
+            var order = new List<UserVM>();
 
             foreach (var name in PartName)
             {
@@ -58,13 +67,14 @@ namespace WebApp.RealEstateApp.Controllers
                 {
                     foreach (var item in filter)
                     {
-                        ViewBag.Agents.Add(item);
+                       order.Add(item);
                     }
                 }
 
                 filter.Clear();
             }
-
+            order = order.OrderBy(x => x.Firstname).ToList();
+            ViewBag.Agents = order;
             return View();
         }
 

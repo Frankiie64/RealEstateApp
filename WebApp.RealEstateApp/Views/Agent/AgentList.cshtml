@@ -2,6 +2,9 @@
 @using RealEstateApp.Core.Application.ViewModels.Agent
 @using RealEstateApp.Core.Application.ViewModels.Users;
 @model AgentVM
+@{
+    ViewData["Title"] = "Listado de agentes";
+}
 
 @if (ViewBag.AgentList.Count == 0)
 {

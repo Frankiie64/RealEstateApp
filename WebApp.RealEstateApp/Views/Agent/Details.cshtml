@@ -14,7 +14,18 @@
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
-                        <h4 class="card-title fs-3">@Model.Firstname @Model.Lastname</h4>
+                        <div class="d-flex justify-content-between m-2">
+                            <h4 class="card-title fs-3">@Model.Firstname @Model.Lastname</h4>
+
+                            @if (Model.IsActive)
+                            {
+                                <span class="btn btn-success btn-sm text-center">Activo</span>
+                            }
+                            else
+                            {
+                                <span class="btn btn-danger btn-sm text-center">Inactivo</span>
+                            }
+                        </div>
                         <p class="text-body">
                             @Model.Firstname @Model.Lastname es uno de nuestros agentes inmbiliarios, tiene un total de @Model.Properties.Count propiedades de alto calibre a
                             su disposicion, si encuentra alguna que le guste puede comunicarse con el, mediante algunos de los siguientes metodos de comunicacion que le

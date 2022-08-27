@@ -1,6 +1,9 @@
 ﻿@using RealEstateApp.Core.Application.Enums
 @using RealEstateApp.Core.Application.ViewModels.Users;
 @model UserVM
+@{
+    ViewData["Title"] = "Listado de desarroladores";
+}
 
 @if (ViewBag.Developers.Count == 0)
 {
