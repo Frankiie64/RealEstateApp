@@ -31,14 +31,12 @@ namespace WebApp.RealEstateApp.Middlewares
             {
                 await next();
                 return;
-            }
-
-            if (user.Roles.Count > 1 || user.Roles.Any(x => x == Roles.Client.ToString()))
+            }          
+            if (user.Roles.Any(x => x == Roles.Client.ToString()))
             {
                 await next();
                 return;
             }
-
             if (user.Roles.Any(r => r == Roles.Agent.ToString()))
             {
                 var controller = (HomeController)context.Controller;
@@ -47,13 +45,14 @@ namespace WebApp.RealEstateApp.Middlewares
             if (user.Roles.Any(r => r == Roles.Admin.ToString()))
             {
                 var controller = (HomeController)context.Controller;
-                context.Result = controller.RedirectToAction("Dashboard", "Home");
+                context.Result = controller.RedirectToAction("Dashboard","Admin");
             }
             if (user.Roles.Any(r => r == Roles.SuperAdmin.ToString()))
             {
                 var controller = (HomeController)context.Controller;
-                context.Result = controller.RedirectToAction("Dashboard", "Home");
+                context.Result = controller.RedirectToAction("Dashboard", "Admin");
             }
+
         }
     }
 }

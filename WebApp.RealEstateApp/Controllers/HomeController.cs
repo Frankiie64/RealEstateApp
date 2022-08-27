@@ -96,31 +96,7 @@ namespace WebApp.RealEstateApp.Controllers
         }
 
 
-        //Dashboard
-        [Authorize(Roles = "SuperAdmin, Admin")]
-
-        public async Task<IActionResult> Dashboard(int id)
-        {
-
-            var properties = await serviceProperty.GetAllViewModelWithIncludeAsync();
-            var agents = await userService.GetAllAgentAsync(); 
-            var clients = await userService.GetAllClientsAsync();
-            var developers = await userService.GetAllDevelopersAsync();
-
-
-            DashboardViewModel dashBoard = new()
-            {
-                PropertiesQuantity = properties.Count(),
-                AgentActive = agents.Where(agent => agent.IsActive == true).Count(),
-                AgentDisabled = agents.Where(agent => agent.IsActive == false).Count(),
-                ClientActive = clients.Where(client => client.IsActive == true).Count(),
-                ClientDisabled = clients.Where(client => client.IsActive == false).Count(),
-                DeveloperActive = developers.Where(dev => dev.IsActive == true).Count(),
-                DeveloperDisabled = developers.Where(dev => dev.IsActive == false).Count()
-            };
-
-            return View("Dashboard", dashBoard);
-        }
+      
 
     }
 }

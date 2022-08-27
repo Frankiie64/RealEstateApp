@@ -33,7 +33,7 @@
                 </button>
                 <div id="navbarCollapse" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav flex-grow-1">
-                        @if (User == null || IsClient)
+                        @if (User == null || (IsClient && !isSuperAdmin))
                         {
                             <li class="nav-item">
                                 <a class="nav-link text-light fw-bolder" asp-area="" asp-controller="Home" asp-action="Index"><i class="fa-solid fa-house"></i> Home</a>
@@ -42,7 +42,7 @@
                                 <a class="nav-link text-light fw-bolder" asp-area="" asp-controller="Agent" asp-action="Index"><i class="fa-solid fa-id-badge"></i> Agentes</a>
                             </li>
                         }
-                        @if (User != null && IsClient)
+                        @if (User != null && (IsClient && !isSuperAdmin))
                         {
                             <li class="nav-item">
                                 <a class="nav-link text-light fw-bolder" asp-area="" asp-controller="Client" asp-action="PropertiesFavorite"><i class="fa-solid fa-bookmark"></i> Mis Propiedades</a>
@@ -50,7 +50,7 @@
                         }
 
 
-                        @if (User != null && isAgent)
+                        @if (User != null && (isAgent && !isSuperAdmin))
                         {
                             <li class="nav-item">
                                 <a class="nav-link text-light fw-bolder" asp-area="" asp-controller="RAgent" asp-action="Index"><i class="fa-solid fa-house"></i> Home</a>
@@ -62,30 +62,13 @@
                                 <a class="nav-link text-light fw-bolder" asp-area="" asp-controller="RAgent" asp-action="Properties"><i class="fa-solid fa-hotel"></i> Propiedades</a>
                             </li>
                         }
-                    </ul>
 
-
-                    @if (User != null && (isAdmin || isSuperAdmin))
-                    {
-                        <ul class="nav navbar-nav flex-grow-1">
-
-                                <li class="nav-item">
-                                    <a class="nav-link text-light fw-bolder" asp-area="" asp-controller="Home" asp-action="Index"><i class="fa-solid fa-house"></i> Home</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link text-light fw-bolder" asp-area="" asp-controller="Agent" asp-action="Index"><i class="fa-solid fa-id-badge"></i> Agentes</a>
-                                </li>
-                        </ul>
-
-                       
-                            ////
-                        
-                        <ul class="navbar-nav flex-grow-1 justify-content-end">
+                        @if (User != null && (isAdmin || isSuperAdmin))
+                        {
 
                             <li class="nav-item text-end">
-                                <a class="nav-link text-light fw-bolder" asp-area="" asp-controller="Home" asp-action="Dashboard"> Dashboard</a>
+                                <a class="nav-link text-light fw-bolder" asp-area="" asp-controller="Admin" asp-action="Dashboard"> Dashboard</a>
                             </li>
-
                             <li class="nav-item dropdown text-end">
                                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Administrador</a>
                                 <div class="dropdown-menu">
@@ -102,12 +85,8 @@
 
                                 </div>
                             </li>
-                        </ul>
-                 
-                        
-                    }
-
-
+                        }
+                    </ul>
                     <ul class="navbar-nav flex-grow-1 justify-content-end">
                         @if (User != null)
                         {

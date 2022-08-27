@@ -94,6 +94,7 @@ namespace WebApp.RealEstateApp.Controllers
             return View();
         }
 
+        [Authorize(Roles = "SuperAdmin, Admin")]
 
         public async Task<IActionResult> IsActive(UserVM vm)
         {
@@ -104,19 +105,19 @@ namespace WebApp.RealEstateApp.Controllers
             await userService.IsActive(vm.Id);
 
             return RedirectToRoute
-                (new { controller = "Agent", action = "Index" });
+                (new { controller = "Agent", action = "AgentList" });
         }
 
-
+        [Authorize(Roles = "SuperAdmin, Admin")]
         public async Task<IActionResult> Delete(string id)
         {
             return View(_mapper.Map<SaveUserVM>(await userService.GetUserByIdAsync(id)));
         }
-
+        [Authorize(Roles = "SuperAdmin, Admin")]
         public async Task<IActionResult> DeletePost(string id)
         {
             await userService.DeleteUserAsync(id);
-            return RedirectToRoute(new { controller = "Agent", action = "Index" });
+            return RedirectToRoute(new { controller = "Agent", action = "AgentList" });
         }
 
     }
