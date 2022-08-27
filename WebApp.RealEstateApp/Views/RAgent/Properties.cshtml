@@ -11,6 +11,15 @@
         </div>
     </div>
     <hr class="m-3" />
+    @if (ViewBag.Properties.Count == 0)
+    {
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <p>No haz creado ninguna propiedad todavia</p>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+    else
+    {
         @foreach (var item in ViewBag.Properties)
         {
             <div class="col-4 ">
@@ -69,5 +78,6 @@
                     </div>
                 </a>
             </div>
-        }
-</div>
+                            }
+                            }
+    </div>

@@ -90,9 +90,11 @@
                     <ul class="navbar-nav flex-grow-1 justify-content-end">
                         @if (User != null)
                         {
-                            <li class="nav-item text-end ">
-                                <a class="nav-link text-light fw-bolder" asp-area="" asp-controller="User" asp-action="LogOut"><i class="fa-solid fa-arrow-right-from-bracket"></i> Cerrar Sesion </a>
-                            </li>
+                        <li class="nav-item text-end">
+                            <a class="nav-link text-light fw-bolder" asp-area="" asp-controller="User" asp-action="LogOut">
+                                <i class="fa-solid fa-arrow-right-from-bracket"></i> Cerrar Sesion <img src="@User.PhotoProfileUrl" style="width:3%" class="rounded-circle" alt="FotoPerfil">                            </a>
+                        </li>
+                            
                         }
                         else
                         {

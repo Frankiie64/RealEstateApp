@@ -30,6 +30,7 @@ namespace WebApp.RealEstateApp.Controllers
         private  readonly IPhotosOfPropertyService servicesPhotos;
         private readonly IUserService userService;
         private readonly IHttpContextAccessor context;
+
         AuthenticationResponse user;
 
         public RAgentController(IHttpContextAccessor context, IPropertyService serviceProperty, IPhotosOfPropertyService servicesPhotos, ITypePropertyService serviceTypeProperty,
@@ -291,7 +292,7 @@ namespace WebApp.RealEstateApp.Controllers
                 request.HasError = true;
                 request.Error = "Ha ocurrido algun error cuando se intento subir la foto.";
                 return View("CreatePhoto",request);
-            }
+            }           
 
             return RedirectToRoute(new { controller = "RAgent", action = "IndexPhoto", id = request.idProperty });
         }
@@ -355,7 +356,21 @@ namespace WebApp.RealEstateApp.Controllers
                 Email = userVm.Email
             };
 
-            await userService.UpdateAsync(vm, vm.Id);
+            var value = await userService.UpdateAsync(vm, vm.Id);
+
+            if (value.HasError)
+            {
+                request.HasError = true;
+                request.Error = "Ha ocurrido algun problema con la actualización.";
+                return View("CreatePhoto", request);
+            }
+
+            var json = user;
+
+            json.PhotoProfileUrl = vm.PhotoProfileUrl;      
+
+            HttpContext.Session.Set<AuthenticationResponse>("user", json);
+
             return RedirectToRoute(new { controller = "RAgent", action = "Profile" });
         }
         private string EditPhoto(IFormFile file, int idProperty, string imagePath)
