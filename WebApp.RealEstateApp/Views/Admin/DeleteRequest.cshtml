@@ -1,0 +1,30 @@
+﻿@model int
+@{
+    ViewData["Title"] = "Eliminar Peticion";
+}
+
+<div class="row">
+
+    <div class="col-6 offset-3" >
+        <div class="card">
+            <div class="card-header bg-danger text-light">
+                <h4>Esta seguro que desea eliminar esta petición</h4>
+            </div>
+            <div class="card-body">
+
+                <form method="post" asp-controller="Admin" asp-action="DeleteRequestPost">
+                
+                    <input type="hidden" name="Id" value="@Model" />
+
+                    <button type="submit" class="btn btn-danger">Eliminar</button>
+                    <a asp-controller="Admin" asp-action="Requests" class="btn btn-warning">Cancelar</a>
+                
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+

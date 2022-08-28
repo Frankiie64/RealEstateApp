@@ -25,17 +25,17 @@
                     <form method="post" asp-controller="RAgent" asp-action="CreateRequest" >
                         <div class="row container-fluid">
                             <div class="col col-12 d-flex gap-3">
-                                <div class="mb-3 col-6">
+                                <div class="mb-3 col-4">
                                     <label asp-for="Name" class="form-label">Nombre: </label>
                                     <input asp-for="Name" value="@Model.Name" class="form-control" />
                                     <span asp-validation-for="Name" class="text-danger"></span>
                                 </div>
-                                <div class="mb-3 col-6">
-                                    <label asp-for="Description" class="form-label">Nombre: </label>
+                                <div class="mb-3 col-4">
+                                    <label asp-for="Description" class="form-label">Descripción: </label>
                                     <input asp-for="Description" value="@Model.Description" class="form-control" />
                                     <span asp-validation-for="Description" class="text-danger"></span>
                                 </div>
-                                <div class="mb-3 col-6">
+                                <div class="mb-3 col-4">
                                     <label class="form-label" asp-for="Table">Tipo de Petición:</label>
                                     <select asp-for="Table" class="form-control form-select form-select">
                                         <option selected value="@Tables.TypeSale.ToString()">Tipo de venta</option>

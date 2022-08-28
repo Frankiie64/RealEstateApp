@@ -88,16 +88,28 @@
 
                                 </div>
                             </li>
+                            <li class="nav-item text-end">
+                                <a class="nav-link text-light fw-bolder" asp-area="" asp-controller="Admin" asp-action="Requests"> Peticiones</a>
+                            </li>
                         }
                     </ul>
                     <ul class="navbar-nav flex-grow-1 justify-content-end">
-                        @if (User != null)
+                        @if (User != null && !isSuperAdmin)
                         {
-                        <li class="nav-item text-end">
-                            <a class="nav-link text-light fw-bolder" asp-area="" asp-controller="User" asp-action="LogOut">
-                                <i class="fa-solid fa-arrow-right-from-bracket"></i> Cerrar Sesion <img src="@User.PhotoProfileUrl" style="width:3%" class="rounded-circle" alt="FotoPerfil">                            </a>
-                        </li>
-                            
+                            <li class="nav-item text-end">
+                                <a class="nav-link text-light fw-bolder" asp-area="" asp-controller="User" asp-action="LogOut">
+                                    <i class="fa-solid fa-arrow-right-from-bracket"></i> Cerrar Sesion <img src="@User.PhotoProfileUrl" style="width:3%" class="rounded-circle" alt="FotoPerfil">
+                                </a>
+                            </li>
+
+                        }
+                        else if (isSuperAdmin)
+                        {
+                            <li class="nav-item text-end">
+                                <a class="nav-link text-light fw-bolder" asp-area="" asp-controller="User" asp-action="LogOut">
+                                    <i class="fa-solid fa-arrow-right-from-bracket"></i> Cerrar Sesion 
+                                </a>
+                            </li>
                         }
                         else
                         {
