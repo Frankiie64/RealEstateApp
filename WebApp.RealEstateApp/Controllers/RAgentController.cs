@@ -8,6 +8,7 @@ using RealEstateApp.Core.Application.Interfaces.Service.Service_App;
 using RealEstateApp.Core.Application.Interfaces.Services;
 using RealEstateApp.Core.Application.ViewModels.PhotoProperties;
 using RealEstateApp.Core.Application.ViewModels.Property;
+using RealEstateApp.Core.Application.ViewModels.Request;
 using RealEstateApp.Core.Application.ViewModels.TypeImproments;
 using RealEstateApp.Core.Application.ViewModels.Users;
 using System;
@@ -29,12 +30,14 @@ namespace WebApp.RealEstateApp.Controllers
         private readonly IImprovementService serviceImprovement;
         private  readonly IPhotosOfPropertyService servicesPhotos;
         private readonly IUserService userService;
+        private readonly IRequestService requestService;
         private readonly IHttpContextAccessor context;
 
         AuthenticationResponse user;
 
         public RAgentController(IHttpContextAccessor context, IPropertyService serviceProperty, IPhotosOfPropertyService servicesPhotos, ITypePropertyService serviceTypeProperty,
-            ITypeSaleService serviceTypeSale, IImprovementService serviceImprovement, ITypeImpromentsServices servicesTypeImproments, IUserService userService)
+            ITypeSaleService serviceTypeSale, IImprovementService serviceImprovement, ITypeImpromentsServices servicesTypeImproments, IUserService userService,
+            IRequestService requestService)
         {        
             this.context = context;
             this.serviceProperty = serviceProperty;
@@ -44,6 +47,7 @@ namespace WebApp.RealEstateApp.Controllers
             this.serviceTypeSale = serviceTypeSale;
             this.serviceImprovement = serviceImprovement;
             this.userService = userService;
+            this.requestService = requestService;
             user = context.HttpContext.Session.Get<AuthenticationResponse>("user");
         }
         public async Task<IActionResult> Index()
@@ -372,6 +376,30 @@ namespace WebApp.RealEstateApp.Controllers
             HttpContext.Session.Set<AuthenticationResponse>("user", json);
 
             return RedirectToRoute(new { controller = "RAgent", action = "Profile" });
+        }
+
+        public IActionResult CreateRequest()
+        {            
+            return View(new SaveRequestViewModel());
+        }
+        [HttpPost]
+        public async Task<IActionResult> CreateRequest(SaveRequestViewModel vm)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(vm);
+            }
+
+            var response = await requestService.CreateAsync(vm);
+
+            if (response == null || response.Id == 0)
+            {
+                vm.HasError = true;
+                vm.Error = "Ha ocurrido algun problema cuando se intento crear la solicitud.";
+                return View(vm);
+            }
+
+            return RedirectToRoute(new { controller = "RAgent", action = "Index" });
         }
         private string EditPhoto(IFormFile file, int idProperty, string imagePath)
         {

@@ -1,0 +1,103 @@
+﻿@using RealEstateApp.Core.Application.Enums
+@using RealEstateApp.Core.Application.ViewModels.Request
+@model RequestViewModel;
+@{
+    ViewData["Title"] = "Solicitudes Pendientes";
+}
+
+@if (ViewBag.Requests.Count == 0)
+{
+    <h2 class="text-center mt-5">No se encontro ninguna solicitud </h2>
+}
+else
+{
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+    <hr>
+    <div class="col">
+        <h2 class="text-center mb-5 display-5"> Listado de solictudes</h2>
+    </div>
+    <hr>
+    <div class="container-fluid bootstrap snippets bootdey mt-4">
+        <div class="row">
+            <div class="col">
+                <div class="main-box no-header clearfix">
+                    <div class="main-box-body clearfix">
+                        <div class="table-responsive shadow-lg p-3 mb-5 bg-white rounded">
+                            <table class="table user-list">
+                                <thead>
+                                    <tr>
+                                        <th>Tipo de operacion</th>
+                                        <th>Nombre</th>
+                                        <th>Estado</th>
+                                        <th>Solicitante</th>
+                                        <th>Fecha de Solicitud</th>
+                                        <td class="fw-bolder" style="">Acciones</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (RequestViewModel item in ViewBag.Requests)
+                                    {
+                                    <tr>
+                                        @if (item.Table == Tables.TypeSale.ToString())
+                                        {
+                                            <td>Tipo de Venta</td>
+                                        }
+                                        @if (item.Table == Tables.TypeProperty.ToString())
+                                        {
+                                            <td>Tipo de Propiedad</td>
+                                        }
+                                        @if (item.Table == Tables.Improvements.ToString())
+                                        {
+                                            <td>Mejora</td>
+                                        }
+                                        <td>@item.Name</td>
+                                        <td>Pendiente</td>
+                                        <td>@item.CreatedBy</td>
+                                        <td>@item.Creadted</td>                                       
+                                        <td class="justify-content-end">
+                                            <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="@($"#{item.CreatedBy}")" )">
+                                                @(item.Estado == true ? "Desapobrar" : "Aprobar")
+                                            </button>
+
+                                            <div class="modal fade" id="@item.CreatedBy" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+                                                <form method="post" asp-controller="Admin" asp-action="CreateRequest">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="exampleModalLabel">Atencion</h5>
+                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                Estas seguro de que deseas @(item.Estado == true ? "apobrar" : "aprobar") esta solicitud ?
+                                                            </div>
+                                                            <input hidden name="Id" value="@item.Id" />
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Cancelar</button>
+                                                                <button type="submit" class="btn btn-danger">Aceptar</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <a asp-controller="Admin" asp-action="DeleteRequest" asp-route-id="@item.Id" type="button" class="btn btn-labeled btn-danger">
+                                                <span class="btn-label">
+                                                    <i class="fa fa-times"></i>
+                                                </span>Eliminar
+                                            </a>
+                                        </td>
+
+                                    </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}

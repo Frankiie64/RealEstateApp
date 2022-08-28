@@ -7,8 +7,13 @@ using RealEstateApp.Core.Application.Dtos.Account;
 using RealEstateApp.Core.Application.Enums;
 using RealEstateApp.Core.Application.helper;
 using RealEstateApp.Core.Application.Interfaces.Service;
+using RealEstateApp.Core.Application.Interfaces.Service.Service_App;
 using RealEstateApp.Core.Application.Interfaces.Services;
 using RealEstateApp.Core.Application.ViewModels;
+using RealEstateApp.Core.Application.ViewModels.Improvement;
+using RealEstateApp.Core.Application.ViewModels.Request;
+using RealEstateApp.Core.Application.ViewModels.TypeProperty;
+using RealEstateApp.Core.Application.ViewModels.TypeSale;
 using RealEstateApp.Core.Application.ViewModels.Users;
 using System.Linq;
 using System.Threading.Tasks;
@@ -20,16 +25,25 @@ namespace WebApp.RealEstateApp.Controllers
     public class AdminController : Controller
     {
         private readonly IUserService _userService;
+        private readonly IImprovementService _improvementService;
+        private readonly ITypeSaleService _typeSaleService;
+        private readonly ITypePropertyService _typePropertyService;
         private readonly IHttpContextAccessor _context;
         private readonly IPropertyService _serviceProperty;
+        private readonly IRequestService _requestService;
         private readonly IMapper _mapper;
         AuthenticationResponse _user;
 
-        public AdminController(IUserService userService, IHttpContextAccessor context, IMapper mapper, IPropertyService serviceProperty)
+        public AdminController(IUserService userService, IHttpContextAccessor context, IMapper mapper, IPropertyService serviceProperty,
+            IRequestService requestService, IImprovementService improvementService, ITypeSaleService typeSaleService, ITypePropertyService typePropertyService)
         {
             _userService = userService;
             _serviceProperty = serviceProperty;
+            _improvementService = improvementService;
+            _typePropertyService = typePropertyService;
+            _typeSaleService = typeSaleService;
             _mapper = mapper;
+            _requestService = requestService;
             _context = context;
             _user = _context.HttpContext.Session.Get<AuthenticationResponse>("user");
         }
@@ -137,7 +151,66 @@ namespace WebApp.RealEstateApp.Controllers
             }
             return RedirectToRoute(new { controller = "Admin", action = "Index" });
         }
+        public async Task<IActionResult> Requests()
+        {
+           var requests = await _requestService.GetAllViewModelAsync();
 
+            requests = requests.Where(x => x.Estado == false).ToList();
+
+            ViewBag.Requests = requests;
+
+            return View();
+        }
+
+        public async Task<IActionResult> CreateRequest(int Id)
+        {
+            var vm = await _requestService.GetByIdSaveViewModelAsync(Id);
+            if (vm.Table == Tables.Improvements.ToString()) 
+            {
+                SaveImprovementViewModel request = new SaveImprovementViewModel
+                {
+                    Name = vm.Name,
+                    Description = vm.Description
+                };
+
+                await _improvementService.CreateAsync(request);
+            }
+            if (vm.Table == Tables.TypeProperty.ToString()) 
+            {
+                SaveTypePropertyViewModel request = new SaveTypePropertyViewModel
+                {
+                    Name = vm.Name,
+                    Description = vm.Description
+                };
+
+                await _typePropertyService.CreateAsync(request);
+            }
+
+            if (vm.Table == Tables.TypeSale.ToString()) 
+            {
+                SaveTypeSaleViewModel request = new SaveTypeSaleViewModel
+                {
+                    Name = vm.Name,
+                    Description = vm.Description
+                };
+
+                await _typeSaleService.CreateAsync(request);
+            }
+
+            await _requestService.DeleteAsync(Id);
+            return RedirectToRoute(new { controller = "Admin", action = "Requests" });
+
+        }
+
+        public  IActionResult DeleteRequest(int Id)
+        {
+            return View(Id);
+        }
+        public async Task<IActionResult> DeleteRequestPost(int Id)
+        {
+            await _requestService.DeleteAsync(Id);
+            return RedirectToRoute(new { controller = "Admin", action = "Requests" });
+        }
 
 
     }

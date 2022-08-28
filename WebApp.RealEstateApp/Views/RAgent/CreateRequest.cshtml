@@ -1,0 +1,58 @@
+﻿@using RealEstateApp.Core.Application.ViewModels.Request;
+@using RealEstateApp.Core.Application.Enums
+@model SaveRequestViewModel;
+@{
+    ViewData["Title"] = "Hacer una solicitud";
+}
+
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-10 mx-auto">
+            <div class="card">
+                <div class="card-header bg-dark text-light">
+                    <h4>Solicitudes</h4>
+                </div>
+                <div class="card-body">
+
+                    @if (Model.HasError)
+                    {
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <p>@Model.Error</p>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    }
+                    <form method="post" asp-controller="RAgent" asp-action="CreateRequest" >
+                        <div class="row container-fluid">
+                            <div class="col col-12 d-flex gap-3">
+                                <div class="mb-3 col-4">
+                                    <label asp-for="Name" class="form-label">Nombre: </label>
+                                    <input asp-for="Name" value="@Model.Name" class="form-control" />
+                                    <span asp-validation-for="Name" class="text-danger"></span>
+                                </div>
+                                <div class="mb-3 col-4">
+                                    <label asp-for="Description" class="form-label">Descripción: </label>
+                                    <input asp-for="Description" value="@Model.Description" class="form-control" />
+                                    <span asp-validation-for="Description" class="text-danger"></span>
+                                </div>
+                                <div class="mb-3 col-4">
+                                    <label class="form-label" asp-for="Table">Tipo de Petición:</label>
+                                    <select asp-for="Table" class="form-control form-select form-select">
+                                        <option selected value="@Tables.TypeSale.ToString()">Tipo de venta</option>
+                                        <option value="@Tables.TypeProperty.ToString()">Tipo de Propiedad</option>
+                                        <option value="@Tables.Improvements.ToString()">Mejora</option>
+                                    </select>
+                                </div>
+                            </div>                         
+
+                            <div class="col col-12 d-flex gap-3 justify-content-end">
+                                <button type="submit" class="btn btn-primary">Guardar</button>
+                                <a asp-controller="RAgent" asp-action="Index" class="btn btn-warning">Home</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

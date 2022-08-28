@@ -25,8 +25,8 @@ namespace RealEstateApp.Infrastructure.Persistence.Context
         public DbSet<TypeSale> TypeSales { get; set; }
         public DbSet<Improvement> Improvements { get; set; }
         public DbSet<TypeImproments> TypeImproments { get; set; }
-
         public DbSet<FavoriteProperty> FavoriteProperty { get; set; }
+        public DbSet<Request> Request { get; set; }
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
         {
@@ -56,11 +56,11 @@ namespace RealEstateApp.Infrastructure.Persistence.Context
                 {
                     case EntityState.Modified:
                         entry.Entity.LastModified = DateTime.Now;
-                        entry.Entity.LastModifiedBy = "user";
+                        entry.Entity.LastModifiedBy = user.Username;
                         break;
                     case EntityState.Added:
                         entry.Entity.Creadted = DateTime.Now;
-                        entry.Entity.CreatedBy = "user";
+                        entry.Entity.CreatedBy = user.Username;
                         break;
                 }
             }
@@ -96,6 +96,8 @@ namespace RealEstateApp.Infrastructure.Persistence.Context
                 modelBuilder.Entity<FavoriteProperty>()
            .ToTable("ImpromentsWithProperty");
 
+            modelBuilder.Entity<Request>()
+          .ToTable("Request");
 
             #endregion
 
@@ -123,6 +125,9 @@ namespace RealEstateApp.Infrastructure.Persistence.Context
 
             modelBuilder.Entity<TypeImproments>()
        .HasKey(tImp => tImp.Id);
+
+            modelBuilder.Entity<Request>()
+       .HasKey(rq => rq.Id);
             #endregion
 
 
@@ -289,6 +294,18 @@ namespace RealEstateApp.Infrastructure.Persistence.Context
             modelBuilder.Entity<TypeImproments>()
                .Property(a => a.IdProperty)
                .IsRequired();
+
+            #endregion
+
+            #region Request
+
+            modelBuilder.Entity<Request>()
+              .Property(a => a.Table)
+              .IsRequired();
+
+            modelBuilder.Entity<Request>()
+              .Property(a => a.Name)
+              .IsRequired();
 
             #endregion
 

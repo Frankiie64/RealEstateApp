@@ -13,7 +13,6 @@
     <Folder Include="Features\Properties\Commands\DeletePropertyById\" />
     <Folder Include="Features\TypeProperties\Queries\NewFolder\" />
     <Folder Include="Mappings\" />
-    <Folder Include="Enums\" />
   </ItemGroup>
 
   <ItemGroup>
